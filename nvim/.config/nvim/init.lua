@@ -103,7 +103,8 @@ require('lazy').setup({
 
       -- Adds LSP completion capabilities
       'hrsh7th/cmp-nvim-lsp',
-
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
       -- Adds a number of user-friendly snippets
       'rafamadriz/friendly-snippets',
     },
@@ -181,10 +182,6 @@ require('lazy').setup({
         end,
       },
     },
-  },
-  {
-    "nvim-telescope/telescope-file-browser.nvim",
-    dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
   },
 
   {
@@ -321,7 +318,7 @@ require('nvim-treesitter.configs').setup {
     'rust', 'toml', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim', 'yaml' },
 
   -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
-  auto_install = false,
+  auto_install = true,
 
   highlight = { enable = true },
   indent = { enable = true },
@@ -440,11 +437,11 @@ end
 --  If you want to override the default filetypes that your language server will attach to you can
 --  define the property 'filetypes' to the map in question.
 local servers = {
-  -- clangd = {},
-  -- gopls = {},
-  -- pyright = {},
-  -- rust_analyzer = {},
-  -- tsserver = {},
+  clangd = {},
+  gopls = {},
+  pylsp = {},
+  rust_analyzer = {},
+  tsserver = {},
   -- html = { filetypes = { 'html', 'twig', 'hbs'} },
 
   lua_ls = {
@@ -488,6 +485,17 @@ require('luasnip.loaders.from_vscode').lazy_load()
 luasnip.config.setup {}
 
 cmp.setup {
+  formatting = {
+    format = function(entry, vim_item)
+      vim_item.menu = ({
+        buffer = "[Buffer]",
+        nvim_lsp = "[LSP]",
+        luasnip = "[LuaSnip]",
+        path = "[Path]",
+      })[entry.source.name]
+      return vim_item
+    end
+  },
   snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body)
@@ -525,6 +533,8 @@ cmp.setup {
   sources = {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
+    { name = "buffer" },
+    { name = "path" },
   },
 }
 
