@@ -17,7 +17,7 @@ autoload -Uz _zinit
 # PROMPT            #
 #####################
 source ~/.zsh/variables.zsh
-export STARSHIP_CONFIG=~/dotfiles/zsh/.zsh/starship.toml
+export STARSHIP_CONFIG=~/.zsh/starship.toml
 eval "$(starship init zsh)"
 
 ##########################
