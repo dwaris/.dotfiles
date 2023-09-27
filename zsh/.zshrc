@@ -44,6 +44,7 @@ zinit wait lucid for \
 	OMZL::spectrum.zsh \
 	OMZP::git \
 	OMZP::fzf \
+    OMZP::sudo \
   hlissner/zsh-autopair \
 
 #####################
