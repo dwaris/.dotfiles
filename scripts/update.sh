@@ -39,7 +39,7 @@ update() {
 	echo
 
 	if [[ $OS == "Fedora Linux" ]]; then
-		sudo dnf5 up;
+		sudo dnf5 up --refresh;
 		check_exit_status
 	elif [[ $OS == "Arch Linux" ]]; then
 		paru
