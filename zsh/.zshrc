@@ -27,8 +27,8 @@ setopt promptsubst globdots
 zinit lucid for \
     atinit"
       ZSH_TMUX_FIXTERM=false
-      ZSH_TMUX_AUTOSTART=true
-      ZSH_TMUX_AUTOCONNECT=true" \
+      ZSH_TMUX_AUTOSTART=false
+      ZSH_TMUX_AUTOCONNECT=false" \
   OMZP::tmux \
   OMZL::history.zsh \
 
@@ -44,7 +44,7 @@ zinit wait lucid for \
 	OMZL::spectrum.zsh \
 	OMZP::git \
 	OMZP::fzf \
-    OMZP::sudo \
+	OMZP::sudo \
   hlissner/zsh-autopair \
 
 #####################
@@ -79,5 +79,7 @@ zinit wait lucid for \
       zstyle :plugin:history-search-multi-word reset-prompt-protect 1" \
     bindmap"^R -> ^H" \
   zdharma-continuum/history-search-multi-word \
+  Aloxaf/fzf-tab
 
 source ~/.zsh/aliases.zsh
+export PATH=$PATH:/home/dwaris/.spicetify
