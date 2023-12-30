@@ -1,37 +1,20 @@
 import = ["~/.config/alacritty/theme/catppucin/catppuccin-mocha.toml"]
 live_config_reload = true
 
-[mouse]
-hide_when_typing = false
-
 [cursor]
 unfocused_hollow = true
-
-[cursor.style]
-blinking = "On"
-shape = "Beam"
 
 [font]
 size = 12.0
 
 [font.normal]
-family = "FiraCode"
+family = "Source Code Pro"
 
 [shell]
 args = ["-l", "-c", "tmux attach || tmux"]
 program = "/bin/zsh"
 
 [window]
-decorations = "none"
-dynamic_padding = true
 dynamic_title = true
-opacity = 1.0
-startup_mode = "Maximized"
-
-[window.dimensions]
-columns = 0
-lines = 0
-
-[window.padding]
-x = 0
-y = 0
+decorations = "Full"
+#startup_mode = "Maximized" currently broken lol
