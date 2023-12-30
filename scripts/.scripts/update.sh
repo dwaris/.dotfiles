@@ -7,6 +7,9 @@ BLUE="\e[0;96m"
 RESET="\e[0m"
 RESETN="\e[0m\n"
 
+rust=false
+flatpak=false
+
 check_exit_status() {
 	if [[ $? -eq 0 ]]; then
 		echo
@@ -35,7 +38,7 @@ check_exit_status() {
 }
 
 update() {
-	printf "${BLUE}===> DNF/Pacman package upgrade${RESETN}"
+	printf "${BLUE}=== upgrade packages ===${RESETN}"
 	echo
 
 	if [[ $OS == "Fedora Linux" ]]; then
@@ -46,36 +49,51 @@ update() {
 		check_exit_status
 	fi
 
-	printf "${BLUE}===> Flatpaks upgrade${RESETN}"
-	echo
+    if [[ $flatpak == true ]]; then
+        printf "${BLUE}=== upgrade flatpaks ===${RESETN}"
+        echo
 
-	flatpak update
-	check_exit_status
+        flatpak update
+        check_exit_status
+    fi
 
-	printf "${BLUE}===> Rust upgrade${RESETN}"
+
+    if [[ $rust == true ]]; then
+	printf "${BLUE}=== upgrade Rust ===${RESETN}"
 	echo
 
 	rustup update stable
 	check_exit_status
+    fi
 }
 
 cleanup() {
-	printf "${BLUE}===> Cleaning DNF/Pacman packages${RESETN}"
+	printf "${BLUE}=== cleanup packages ===${RESETN}"
 	echo
 
 	if [[ $OS == "Fedora Linux" ]]; then
 		sudo dnf autoremove
 		check_exit_status
 	elif [[ $OS == "Arch Linux" ]]; then
-		sudo pacman -Qdtq | sudo pacman -Rs -
-		echo
+        to_remove=$(pacman -Qdtq)
+
+        if [ -n "$to_remove" ]; then
+            sudo pacman -Rs $to_remove
+        else
+            printf "Nothing unused to uninstall"
+            echo
+        fi
+        check_exit_status
 	fi
 
-	printf "${BLUE}===> Cleaning Flatpak packages${RESET}"
-	echo
+    if [[ $flatpak == true ]]; then
+        printf "${BLUE}=== cleanup flatpaks ===${RESETN}"
+        echo
 
-	flatpak remove --unused
-	check_exit_status
+        flatpak uninstall --unused
+        check_exit_status
+    fi
+
 }
 
 leave() {
@@ -90,6 +108,21 @@ if [ -f /etc/os-release ]; then
 	. /etc/os-release
 	OS=$NAME
 fi
+
+while getopts "fr" flag; do
+ case $flag in
+   f) # flatpak
+    flatpak=true
+    ;;
+   r) # rust
+    rust=true
+    ;;
+   ?)
+    echo "Usage: $0 [-f] [-r]"
+    exit 1
+    ;;
+ esac
+done
 
 update "$OS"
 cleanup "$OS"
