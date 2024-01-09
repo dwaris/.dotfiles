@@ -1,4 +1,4 @@
-import = ["~/.config/alacritty/theme/catppucin/catppuccin-mocha.toml"]
+import = ["~/.config/alacritty/theme/catppuccin/catppuccin-mocha.toml"]
 live_config_reload = true
 
 [cursor]
@@ -17,4 +17,4 @@ program = "/bin/zsh"
 [window]
 dynamic_title = true
 decorations = "Full"
-#startup_mode = "Maximized" currently broken lol
+startup_mode = "Maximized"
