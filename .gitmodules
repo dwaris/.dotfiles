@@ -1,3 +1,6 @@
 [submodule "private"]
 	path = private
 	url = git@github.com:Dwaris/private.git
+[submodule "alacritty/.config/alacritty/theme/catppuccin"]
+	path = alacritty/.config/alacritty/theme/catppuccin
+	url = https://github.com/catppuccin/alacritty.git
