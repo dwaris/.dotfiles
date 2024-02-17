@@ -17,4 +17,4 @@ program = "/bin/zsh"
 [window]
 dynamic_title = true
 decorations = "Full"
-startup_mode = "Maximized"
+#startup_mode = "Maximized" still buggy
