@@ -12,7 +12,7 @@ family = "Source Code Pro"
 
 [shell]
 args = ["-l", "-c", "tmux attach || tmux"]
-program = "/bin/zsh"
+program = "/bin/bash"
 
 [window]
 dynamic_title = true

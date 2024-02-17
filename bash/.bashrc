@@ -19,6 +19,7 @@ HISTIGNORE=?:??
 HISTSIZE=100000
 SAVEHIST=100000
 HISTCONTROL=ignorespace
+PROMPT_COMMAND="history -a; history -n"
 
 export VISUAL=nvim
 export EDITOR=nvim
@@ -45,6 +46,4 @@ eval "$(starship init bash)"
 function history_sharing() {
     history -a && history -n
 }
-
 starship_precmd_user_func="history_sharing"
-
