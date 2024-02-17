@@ -27,14 +27,18 @@ export PATH=$HOME/.cargo/bin:$HOME/.local/bin:$PATH
 export PAGER="less -R"
 export EDITOR=nvim
 
-# fzf
-export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
-source /usr/share/fzf/completion.bash
-source /usr/share/fzf/key-bindings.bash
+if [ -f /usr/share/fzf/completion.bash ]; then
+  source /usr/share/fzf/completion.bash
+fi
 
-# autocomplete
-[[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] && \
-    . /usr/share/bash-completion/bash_completion
+if [ -f /usr/share/fzf/key-bindings.bash ]; then
+  source /usr/share/fzf/key-bindings.bash
+  export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
+fi
+
+if [ -f /usr/share/bash-completion/bash_completion ]; then
+  source /usr/share/bash-completion/bash_completion
+fi
 
 # i can do it without this
 #source $HOME/.fzf-tab-completion/bash/fzf-bash-completion.sh
