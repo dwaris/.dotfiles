@@ -26,6 +26,7 @@ export EDITOR=nvim
 export PATH=$HOME/.cargo/bin:$HOME/.local/bin:$PATH
 export PAGER="less -R"
 export EDITOR=nvim
+export STARSHIP_CONFIG=~/.config/starship/starship.toml
 
 if [ -f /usr/share/fzf/completion.bash ]; then
   source /usr/share/fzf/completion.bash
