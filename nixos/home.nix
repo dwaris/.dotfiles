@@ -4,12 +4,9 @@
   home.username = "dwaris";
   home.homeDirectory = "/home/dwaris";
 
-  nixpkgs = {
-	config = {
+  nixpkgs.config = {
   		allowUnfree = true;
-      		allowUnfreePredicate = (_: true);
- 
-		};
+      allowUnfreePredicate = _: true;
 	};
 
   # The home.packages option allows you to install Nix packages into your
@@ -21,6 +18,21 @@
     starship
     btop
     bottom
+    git
+    fzf
+    fd
+    ripgrep
+    gnumake
+    cmake
+    gcc
+    htop
+    rsync
+    wget
+    curl
+    stow
+    unzip
+    vlc
+    bash-completion
     neofetch
     sqlite
     python3Full
@@ -45,38 +57,10 @@
     texlive.combined.scheme-medium
     ffmpeg
 
-    git
-    fzf
-    fd
-    ripgrep
-    gnumake
-    cmake
-    gcc
-    htop
-    rsync
-    wget
-    curl
-    unzip
-    vlc
+    microsoft-edge
+    floorp
   ];
 
-  home.file = {
-    ".config/alacritty" = {
-      source = ./.dotfiles/alacritty/.config/alacritty;
-      recursive = true;
-    };
-    ".bashrc".source = ./.dotfiles/bash/.bashrc;
-    ".inputrc".source = ./.dotfiles/bash/.inputrc;
-    ".config/starship/starship.toml".source = ./.dotfiles/bash/.config/starship.toml;
-    ".config/nvim" = {
-      source = ./.dotfiles/nvim/.config/nvim;
-      recursive = true;
-    };
-    ".tmux.conf".source = ./.dotfiles/tmux/.tmux.conf;
-    ".vimrc".source = ./.dotfiles/vim/.vimrc;
-    ".ssh/config".source = ./.dotfiles/private/ssh/.ssh/config;
-    ".gitconfig".source = ./.dotfiles/private/git/.gitconfig;
-  };
 
   home.sessionVariables = {
     EDITOR = "nvim";
