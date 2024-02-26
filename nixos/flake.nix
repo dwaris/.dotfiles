@@ -8,6 +8,16 @@
        url = "github:nix-community/home-manager";
        inputs.nixpkgs.follows = "nixpkgs";
     };
+
+  #  dotfiles = {
+  #    url = "github:dwaris/.dotfiles";
+  #    flake = false;
+  #  };
+  
+  #  dotfiles-private = {
+  #    url = "github:dwaris/private";
+  #    flake = false;
+  #  };
   };
 
   outputs = { self, nixpkgs, ... }@inputs: 
