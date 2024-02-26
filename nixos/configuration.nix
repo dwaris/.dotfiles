@@ -21,7 +21,7 @@
   boot.initrd.secrets = {
     "/crypto_keyfile.bin" = null;
   };
-  boot.kernelPackages = pkgs.linuxPackages_zen;
+  boot.kernelPackages = pkgs.linuxPackages;
   boot.kernelParams = [
     # https://wiki.archlinux.org/index.php/Lenovo_ThinkPad_X260#Thinkpad_X260
   "i915.enable_psr=0"
@@ -77,7 +77,6 @@
   };
 
   # Configure console keymap
-  #console.keyMap = "de-latin1-nodeadkeys";
   console.keyMap = "us";
 
   # Enable CUPS to print documents.
@@ -104,10 +103,10 @@
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
   home-manager = {
-	extraSpecialArgs = {inherit inputs;};
-	users = {
-		"dwaris" = import ./home.nix;
-	};
+    extraSpecialArgs = {inherit inputs;};
+    users = {
+      "dwaris" = import ./home.nix;
+    };
   };
 
   # Allow unfree packages
@@ -147,7 +146,7 @@
 
   security.pki.certificates = [ "/etc/ssl/certs/root_ca.crt" ];
   
-  services.flatpak.enable = false;
+  services.flatpak.enable = true;
   
   system.stateVersion = "23.05"; # Did you read the comment?
 }
