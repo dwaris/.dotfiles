@@ -1,6 +1,9 @@
 { config, pkgs, ... }: {
   imports = [
+    ../../modules/home-manager/default.nix
     ../../modules/home-manager/gnu-radio.nix
+    ../../modules/home-manager/encoding.nix
+    ../../modules/home-manager/languages.nix
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
@@ -16,51 +19,10 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
-    gnomeExtensions.appindicator
-    neovim
-    tmux
-    starship
-    btop
-    bottom
-    git
-    fzf
-    fd
-    ripgrep
-    gnumake
-    cmake
-    gcc
-    htop
-    rsync
-    wget
-    curl
-    stow
-    unzip
-    vlc
-    bash-completion
-    neofetch
-    rustup
-    nodejs
-    love
-    go
-    neovide
-    
-    firefox-wayland
-    vivaldi
-    vivaldi-ffmpeg-codecs
-    
-    gnome.gnome-tweaks
-    discord
-    nextcloud-client
-    alacritty
-    rnote
-    joplin-desktop
-    xournalpp
-    vscode-fhs
-    texlive.combined.scheme-medium
-    ffmpeg
-
-    microsoft-edge
-    floorp
+        microsoft-edge
+        floorp
+        neovide
+        love
 ];
 
   home.sessionVariables = {
