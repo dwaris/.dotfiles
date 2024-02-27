@@ -24,7 +24,6 @@
 
   boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
   networking.hostName = "jedha"; # Define your hostname.
-  
   networking.hostId = "74f65184";
 
   # Enable networking
@@ -87,14 +86,17 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
-
+  
+  virtualisation.docker.enable = true;
+  
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.dwaris = {
     isNormalUser = true;
     description = "dwaris";
     shell = pkgs.bash;
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
   };
+
   # Enable Flakes
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
@@ -107,6 +109,8 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+    programs.hyprland.enable = true;
+
   
   # List packages installed in system profile. To search, run:
   # $ nix search wget
