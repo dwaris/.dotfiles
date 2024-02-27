@@ -14,6 +14,7 @@
 
   boot.loader.grub = {
     enable = true;
+    default = "saved";
     zfsSupport = true;
     efiSupport = true;
     efiInstallAsRemovable = true;
@@ -117,6 +118,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     vim
+    gnomeExtensions.appindicator
     wl-clipboard
   ];
 
@@ -125,6 +127,25 @@
     source-code-pro
   ];
 
+  environment.gnome.excludePackages = (with pkgs; [
+   gnome-photos
+   gnome-tour
+   gedit
+  ]) ++ (with pkgs.gnome; [
+  cheese # webcam tool
+  gnome-music
+  gnome-terminal
+  epiphany # web browser
+  geary # email reader
+  evince # document viewer
+  gnome-characters
+  totem # video player
+  tali # poker game
+  iagno # go game
+  hitori # sudoku game
+  atomix # puzzle game
+ ]);
+
   # Automatic Garbage Collection
   nix.gc = {
     automatic = true;
@@ -132,6 +153,9 @@
     options = "--delete-older-than 7d";
   };
   
+
+  services.udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
+
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
