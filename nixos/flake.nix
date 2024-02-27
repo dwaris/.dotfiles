@@ -17,20 +17,20 @@
     in
     {
 
-      nixosconfigurations = {
-        jedha = nixpkgs.lib.nixossystem {
-          specialargs = { inherit inputs; };
+      nixosConfigurations = {
+        jedha = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; };
 	  modules = [
             ./hosts/jedha/configuration.nix
-            inputs.home-manager.nixosmodules.default
+            inputs.home-manager.nixosModules.default
           ];
         };
 
-        kashyyyk = nixpkgs.lib.nixossystem {
-          specialargs = { inherit inputs; };
+        kashyyyk = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; };
 	  modules = [
             ./hosts/kashyyyk/configuration.nix
-            inputs.home-manager.nixosmodules.default
+            inputs.home-manager.nixosModules.default
           ];
         };
       };
