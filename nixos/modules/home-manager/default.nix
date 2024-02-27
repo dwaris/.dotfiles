@@ -1,5 +1,5 @@
 { config, pkgs, ... }: {
-    import = [
+    imports = [
         ../home-manager/cli.nix
         ../home-manager/gnome.nix
         ../home-manager/browsers.nix
