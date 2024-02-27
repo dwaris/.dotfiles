@@ -2,14 +2,14 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, ... }:
 
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+      ../../modules/nixos/defaults.nix
+      ../../modules/nixos/gnome.nix
       ../../modules/nixos/steam.nix
-      inputs.home-manager.nixosModules.default
     ];
 
   boot.loader.grub = {
@@ -28,92 +28,8 @@
   networking.hostName = "jedha"; # Define your hostname.
   networking.hostId = "74f65184";
 
-  # Enable networking
-  networking.networkmanager.enable = true;
+  programs.hyprland.enable = true;
 
-  # Set your time zone.
-  time.timeZone = "Europe/Berlin";
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "de_DE.UTF-8";
-    LC_IDENTIFICATION = "de_DE.UTF-8";
-    LC_MEASUREMENT = "de_DE.UTF-8";
-    LC_MONETARY = "de_DE.UTF-8";
-    LC_NAME = "de_DE.UTF-8";
-    LC_NUMERIC = "de_DE.UTF-8";
-    LC_PAPER = "de_DE.UTF-8";
-    LC_TELEPHONE = "de_DE.UTF-8";
-    LC_TIME = "de_DE.UTF-8";
-  };
-
-  # Enable the XWayland Fallback windowing system.
-  programs.xwayland.enable = true;
-
-  # Configure keymap in and Dispay Manager
-  services.xserver = {
-    xkb = {
-      layout = "eu";
-    };
-    enable = true;
-    displayManager = {
-      gdm = {
-        enable = true;
-        wayland = true;
-      };
-    };
-
-    desktopManager = {
-      gnome = {
-        enable = true;
-      };
-    };
-    videoDrivers = [ "amdgpu" ];
-  };
-
-  # Configure console keymap
-  console.keyMap = "us";
-
-  # Enable CUPS to print documents.
-  services.printing.enable = false;
-
-  # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
-  
-  virtualisation.docker.enable = true;
-  
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.dwaris = {
-    isNormalUser = true;
-    description = "dwaris";
-    shell = pkgs.bash;
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
-  };
-
-  # Enable Flakes
-  nix.settings.experimental-features = ["nix-command" "flakes"];
-
-  home-manager = {
-    extraSpecialArgs = {inherit inputs;};
-    users = {
-      "dwaris" = import ./home.nix;
-    };
-  };
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-    programs.hyprland.enable = true;
-
-  
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -121,40 +37,6 @@
     gnomeExtensions.appindicator
     wl-clipboard
   ];
-
-  fonts.packages = with pkgs; [
-    noto-fonts
-    source-code-pro
-  ];
-
-  environment.gnome.excludePackages = (with pkgs; [
-   gnome-photos
-   gnome-tour
-   gedit
-  ]) ++ (with pkgs.gnome; [
-  cheese # webcam tool
-  gnome-music
-  gnome-terminal
-  epiphany # web browser
-  geary # email reader
-  evince # document viewer
-  gnome-characters
-  totem # video player
-  tali # poker game
-  iagno # go game
-  hitori # sudoku game
-  atomix # puzzle game
- ]);
-
-  # Automatic Garbage Collection
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 7d";
-  };
-  
-
-  services.udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
