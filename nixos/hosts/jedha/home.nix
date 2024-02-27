@@ -1,4 +1,8 @@
 { config, pkgs, ... }: {
+  imports = [
+    ../../modules/home-manager/gnu-radio.nix
+  ];
+
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "dwaris";
@@ -57,26 +61,7 @@
 
     microsoft-edge
     floorp
-  ];
-
-  
-#  home.file = {
-#    ".config/alacritty" = {
-#      source = "${dotfiles}/alacritty/.config/alacritty";
-#      recursive = true;
-#    };
-#    ".bashrc".source = "${dotfiles}/bash/.bashrc";
-#    ".inputrc".source = "${dotfiles}/bash/.inputrc";
-#    ".config/starship/starship.toml".source = "${dotfiles}/bash/.config/starship.toml";
-#    ".config/nvim" = {
-#      source = "${dotfiles}/nvim/.config/nvim";
-#      recursive = true;
-#    };
-#    ".tmux.conf".source = "${dotfiles}/tmux/.tmux.conf";
-#    ".vimrc".source = "${dotfiles}/vim/.vimrc";
-#    ".ssh/config".source = "${dotfiles-private}/ssh/.ssh/config";
-#    ".gitconfig".source = "${dotfiles-private}/git/.gitconfig";
-#  };
+];
 
   home.sessionVariables = {
     EDITOR = "nvim";
