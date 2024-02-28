@@ -2,14 +2,17 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   imports =
     [ # Include the results of the hardware scan.
+      ./hardware-configuration.nix
       ../../modules/nixos/defaults.nix
       ../../modules/nixos/gnome.nix
       ../../modules/nixos/steam.nix
+      ../../modules/nixos/amdgpu.nix
+      inputs.home-manager.nixosModules.default
     ];
 
   boot.loader.grub = {
@@ -37,6 +40,13 @@
     gnomeExtensions.appindicator
     wl-clipboard
   ];
+
+  home-manager = {
+    extraSpecialArgs = {inherit inputs;};
+    users = {
+      "dwaris" = import ./home.nix;
+    };
+  };
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
