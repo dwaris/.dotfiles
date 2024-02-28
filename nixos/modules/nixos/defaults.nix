@@ -1,10 +1,8 @@
-{ config, pkgs, inputs ... }: {
-import = [
-  ./hardware-configuration.nix
+{ config, pkgs, ... }: {
+imports = [
   ../../modules/nixos/user.nix
   ../../modules/nixos/locale.nix
   ../../modules/nixos/audio.nix
-  inputs.home-manager.nixosModules.default
 ];
   # Enable networking
   networking.networkmanager.enable = true;
@@ -28,7 +26,6 @@ import = [
   
   # Enable Flakes
   nix.settings.experimental-features = ["nix-command" "flakes"];
-
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
