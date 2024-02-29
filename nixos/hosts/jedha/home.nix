@@ -5,6 +5,7 @@
     ../../modules/home-manager/encoding.nix
     ../../modules/home-manager/languages.nix
     ../../modules/home-manager/media.nix
+    ../../modules/home-manager/game-launchers.nix
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
