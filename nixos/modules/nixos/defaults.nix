@@ -32,7 +32,12 @@ imports = [
 
   fonts.packages = with pkgs; [
     noto-fonts
-    source-code-pro
+    noto-fonts-cjk
+    noto-fonts-emoji
+    liberation_ttf
+    fira-code
+    fira-code-symbols
+    (nerdfonts.override { fonts = [ "SourceCodePro" "FiraCode" ]; })
   ];
 
   # Automatic Garbage Collection
