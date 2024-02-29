@@ -23,28 +23,17 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Plugins
 require('lazy').setup {
-  -- Theme
-  {
-    'catppuccin/nvim', name = 'catppuccin',
-    priority = 1000,
-
-    config = function()
-      vim.cmd.colorscheme 'catppuccin'
-    end,
-  },
-
   -- Git related plugins
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
 
-  'tpope/vim-sleuth',  -- Detect tabstop and shiftwidth automatically
-
+  -- Detect tabstop and shiftwidth automatically
+  'tpope/vim-sleuth',  
+  
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim', opts = {} },
 
   { 'folke/todo-comments.nvim', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
-
-  'mbbill/undotree',
 
   { import = 'dwaris.plugins' },
 
