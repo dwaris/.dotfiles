@@ -46,4 +46,10 @@ imports = [
     dates = "weekly";
     options = "--delete-older-than 7d";
   };
+
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    lua-language-server
+    marksman
+  ];
 }

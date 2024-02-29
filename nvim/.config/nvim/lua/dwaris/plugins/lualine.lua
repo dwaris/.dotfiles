@@ -139,14 +139,11 @@ ins_right {
     icons_enabled = false, -- I think icons are cool but Eviline doesn't have them. sigh
     color = { fg = colors.salmon, gui = 'bold' },
 }
-require('lualine').setup(config)
 
 return {
     'nvim-lualine/lualine.nvim',
     event = 'VeryLazy',
-    opts = function()
-        return {
-            config,
-        }
-    end,
+    config = function()
+        require('lualine').setup(config)
+    end
 }
