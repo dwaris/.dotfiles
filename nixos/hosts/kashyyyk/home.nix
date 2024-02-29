@@ -1,4 +1,12 @@
 { config, pkgs, ... }: {
+  imports = [
+    ../../modules/home-manager/default.nix
+    ../../modules/home-manager/gnu-radio.nix
+    ../../modules/home-manager/encoding.nix
+    ../../modules/home-manager/languages.nix
+    ../../modules/home-manager/media.nix
+  ];
+
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "dwaris";
@@ -11,81 +19,17 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = with pkgs; [
-    gnomeExtensions.appindicator
-    neovim
-    tmux
-    starship
-    btop
-    bottom
-    git
-    fzf
-    fd
-    ripgrep
-    gnumake
-    cmake
-    gcc
-    htop
-    rsync
-    wget
-    curl
-    stow
-    unzip
-    vlc
-    bash-completion
-    neofetch
-    rustup
-    nodejs
-    love
-    go
-    neovide
-    
-    firefox-wayland
-    vivaldi
-    vivaldi-ffmpeg-codecs
-    
-    gnome.gnome-tweaks
-    discord
-    nextcloud-client
-    alacritty
-    rnote
-    joplin-desktop
-    xournalpp
-    vscode-fhs
-    texlive.combined.scheme-medium
-    ffmpeg
-
+  home.packages = with pkgs; [ 
     microsoft-edge
     floorp
+    neovide
+    love
   ];
-
-  
-#  home.file = {
-#    ".config/alacritty" = {
-#      source = "${dotfiles}/alacritty/.config/alacritty";
-#      recursive = true;
-#    };
-#    ".bashrc".source = "${dotfiles}/bash/.bashrc";
-#    ".inputrc".source = "${dotfiles}/bash/.inputrc";
-#    ".config/starship/starship.toml".source = "${dotfiles}/bash/.config/starship.toml";
-#    ".config/nvim" = {
-#      source = "${dotfiles}/nvim/.config/nvim";
-#      recursive = true;
-#    };
-#    ".tmux.conf".source = "${dotfiles}/tmux/.tmux.conf";
-#    ".vimrc".source = "${dotfiles}/vim/.vimrc";
-#    ".ssh/config".source = "${dotfiles-private}/ssh/.ssh/config";
-#    ".gitconfig".source = "${dotfiles-private}/git/.gitconfig";
-#  };
 
   home.sessionVariables = {
     EDITOR = "nvim";
-    BROWSER = "firefox";
+    BROWSER = "floorp";
     TERMINAL = "alacritty";
-  };
-
-  home.sessionVariables = {
-    MOZ_ENABLE_WAYLAND = 1;
   };
 
   # Let Home Manager install and manage itself.
