@@ -4,6 +4,7 @@
     ../../modules/home-manager/gnu-radio.nix
     ../../modules/home-manager/encoding.nix
     ../../modules/home-manager/languages.nix
+    ../../modules/home-manager/media.nix
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
