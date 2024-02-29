@@ -31,8 +31,6 @@
   networking.hostName = "jedha"; # Define your hostname.
   networking.hostId = "74f65184";
 
-  programs.hyprland.enable = true;
-
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
