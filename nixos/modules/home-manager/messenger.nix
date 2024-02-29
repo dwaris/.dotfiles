@@ -1,6 +1,10 @@
 { config, pkgs, ... }: {
     home.packages = with pkgs; [
         element-desktop
-        discord
+
+        (pkgs.discord.override {
+            withOpenASAR = true;
+            withVencord = true;
+        })
     ];
 }
