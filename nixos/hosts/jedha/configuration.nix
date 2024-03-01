@@ -12,6 +12,7 @@
       ../../modules/nixos/gnome.nix
       ../../modules/nixos/steam.nix
       ../../modules/nixos/amdgpu.nix
+      ../../modules/nixos/hyprland.nix
       inputs.home-manager.nixosModules.default
     ];
 
