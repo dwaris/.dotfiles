@@ -3,6 +3,9 @@
     enable = true;
     xwayland.enable = true;
   };
+  programs.waybar = {
+    enable = true;
+  };
 
   environment.sessionVariables = {
     WLR_NO_HARDWARE_CURSORS = "1";
@@ -14,15 +17,9 @@
   };
   
   environment.systemPackages = with pkgs; [
-    waybar
-    (pkgs.waybar.overrideAttrs (oldAttrs: {
-      mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
-      })
-    )
     dunst
     libnotify
     swww
     rofi-wayland
-    kitty
   ];
 }
