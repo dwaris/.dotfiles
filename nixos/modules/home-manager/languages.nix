@@ -7,5 +7,10 @@
         nodejs
         love
         go
+
+        gopls
+        marksman
+        lua-language-server
+        nil
     ];
 }

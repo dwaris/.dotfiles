@@ -1,28 +1,35 @@
 require("dwaris.lazy")
 require("dwaris.keymaps")
 
-vim.opt.hlsearch = true
-vim.opt.number = true
-vim.opt.mouse = 'a'
-vim.opt.clipboard = 'unnamedplus'
-vim.opt.breakindent = true
-vim.opt.swapfile = false
-vim.opt.backup = false
-vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
-vim.opt.undofile = true
+local opt = vim.opt
 
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
-vim.opt.scrolloff = 8
-vim.opt.signcolumn = 'yes'
-vim.opt.updatetime = 250
-vim.opt.timeoutlen = 300
-vim.opt.completeopt = 'menuone,noselect'
-vim.opt.termguicolors = true
+opt.expandtab = true
+opt.hlsearch = true
+opt.number = true
+opt.mouse = 'a'
+opt.clipboard = 'unnamedplus'
+opt.breakindent = true
+opt.swapfile = false
+opt.backup = false
+opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+opt.undofile = true
 
-vim.opt.inccommand = 'split'
-vim.opt.splitright = true
-vim.opt.splitbelow = true
-vim.opt.cursorline = true
-vim.opt.showmode = false
+opt.ignorecase = true
+opt.smartcase = true
+opt.scrolloff = 8
+opt.signcolumn = 'yes'
+opt.updatetime = 250
+opt.timeoutlen = 300
+opt.completeopt = 'menuone,noselect'
+opt.termguicolors = true
+
+opt.list = true
+opt.inccommand = 'split'
+opt.splitright = true
+opt.splitbelow = true
+opt.cursorline = true
+opt.showmode = false
+
+opt.shiftwidth = 4
+opt.tabstop = 4
 
