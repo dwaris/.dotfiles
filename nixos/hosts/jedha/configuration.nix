@@ -29,6 +29,8 @@
   };
 
   boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
+  boot.supportedFilesystems = [ "ntfs" ];
+
   networking.hostName = "jedha"; # Define your hostname.
   networking.hostId = "74f65184";
 
