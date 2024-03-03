@@ -2,5 +2,8 @@
     home.packages = with pkgs; [
         plex-media-player
         plexamp
+        easyeffects
+        mpv
+        helvum
     ];
 }

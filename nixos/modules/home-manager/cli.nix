@@ -11,7 +11,7 @@
         ripgrep
         htop
         rsync
-        wget
+        wget2
         curl
         stow
         unzip

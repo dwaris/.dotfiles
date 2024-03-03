@@ -12,5 +12,7 @@
         marksman
         lua-language-server
         nil
+        black
+        stylua
     ];
 }
