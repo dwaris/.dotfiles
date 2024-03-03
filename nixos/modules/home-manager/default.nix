@@ -8,6 +8,9 @@
     ];
 
     home.packages = with pkgs; [
+        vorta
+        veracrypt
+        protonvpn-gui
         vlc
         vscode-fhs
         texlive.combined.scheme-medium
