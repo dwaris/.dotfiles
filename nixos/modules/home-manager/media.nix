@@ -4,6 +4,5 @@
         plexamp
         easyeffects
         mpv
-        helvum
     ];
 }

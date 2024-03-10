@@ -6,6 +6,7 @@
     ../../modules/home-manager/languages.nix
     ../../modules/home-manager/media.nix
     ../../modules/home-manager/game-launchers.nix
+    ../../modules/home-manager/prusa.nix
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
@@ -25,6 +26,7 @@
         floorp
         neovide
         love
+        qbittorrent
 ];
 
   home.sessionVariables = {
