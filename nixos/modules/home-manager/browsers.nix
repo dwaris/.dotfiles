@@ -5,5 +5,6 @@
             proprietaryCodecs = true;
             enableWidevine = true;
         })
+        tor-browser
     ];
 }
