@@ -6,14 +6,13 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ../../modules/nixos/defaults.nix
-      ../../modules/nixos/gnome.nix
-      ../../modules/nixos/steam.nix
-      ../../modules/nixos/amdgpu.nix
-      ../../modules/nixos/hyprland.nix
-      inputs.home-manager.nixosModules.default
+    [
+        ../../modules/system.nix
+        ../../modules/gnome.nix
+        ../../modules/nixos/steam.nix
+
+        # Include the results of the hardware scan.
+        ./hardware-configuration.nix
     ];
 
   boot.loader.grub = {
@@ -34,30 +33,44 @@
   networking.hostName = "jedha"; # Define your hostname.
   networking.hostId = "74f65184";
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
   environment.systemPackages = with pkgs; [
-    vim
-    gnomeExtensions.appindicator
-    wl-clipboard
+    nfs-utils
   ];
 
-  home-manager = {
-    extraSpecialArgs = {inherit inputs;};
-    users = {
-      "dwaris" = import ./home.nix;
-    };
-  };
+  services.zfs.autoSnapshot.enable = true;
+  services.zfs.autoScrub.enable = true;
+
+  security.pki.certificates = [ "/etc/ssl/certs/root_ca.crt" ];
+
+  # Enable networking
+  networking.networkmanager.enable = true;
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
-
-  services.zfs.autoSnapshot.enable = true;
-  services.zfs.autoScrub.enable = true;  
-
-  security.pki.certificates = [ "/etc/ssl/certs/root_ca.crt" ];
-  
   services.flatpak.enable = true;
-  
+  services.printing.enable = false;
+
+  virtualisation.docker.enable = true;
+  virtualisation.libvirtd.enable = true;
+  users.users.dwaris.extraGroups = [ "docker" "libvirtd" ];
+
+  hardware.opentabletdriver.enable = true;
+  hardware.opentabletdriver.daemon.enable = true;
+  hardware.opentabletdriver.blacklistedKernelModules = [ "wacom" ];
+  hardware.opengl.extraPackages = with pkgs; [
+    rocmPackages.clr.icd
+  ];
+
+  hardware.opengl.driSupport = true; # This is already enabled by default
+  hardware.opengl.driSupport32Bit = true; # For 32 bit applications
+
+  services.xserver.videoDrivers = [ "amdgpu" ];
+
+  boot.initrd.kernelModules = [ "amdgpu" ];
+  boot.kernelParams = [
+    "video=DP-1:2560x1440@165"
+    "video=HDMI-A-1:1920x1080@75"
+  ];
+
   system.stateVersion = "23.11"; # Did you read the comment?
 }

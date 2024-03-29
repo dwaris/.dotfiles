@@ -9,5 +9,4 @@
     "steam-original"
     "steam-run"
   ];
-
 }

@@ -17,7 +17,7 @@
     systemd-boot.enable = true;
     efi.canTouchEfiVariables = true;
   };
-  
+
   # Setup keyfile
   boot.initrd.secrets = {
     "/crypto_keyfile.bin" = null;
@@ -54,6 +54,12 @@
   services.flatpak.enable = true;
 
   security.pki.certificates = [ "/etc/ssl/certs/root_ca.crt" ];
-  
+
+  hardware.opengl.extraPackages = with pkgs; [
+    intel-media-driver
+    vaapiVdpau
+    libvdpau-va-gl
+  ];
+
   system.stateVersion = "23.05"; # Did you read the comment?
 }
