@@ -15,6 +15,7 @@ args = ["-l", "-c", "tmux attach || tmux"]
 program = "/run/current-system/sw/bin/bash"
 
 [window]
+opacity = 0.9
 dynamic_title = true
 decorations = "Full"
 #startup_mode = "Maximized" still buggy
