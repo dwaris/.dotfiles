@@ -10,6 +10,8 @@
         ../../modules/system.nix
         ../../modules/gnome.nix
         ../../modules/nixos/steam.nix
+        ../../modules/nixos/fonts.nix
+        ../../modules/nixos/opentabletdriver.nix
 
         # Include the results of the hardware scan.
         ./hardware-configuration.nix
@@ -53,20 +55,16 @@
   virtualisation.docker.enable = true;
   virtualisation.libvirtd.enable = true;
   programs.virt-manager.enable = true;
-  users.users.dwaris.extraGroups = [ "docker" "libvirtd" ];
 
-  hardware.opentabletdriver.enable = true;
-  hardware.opentabletdriver.daemon.enable = true;
-  hardware.opentabletdriver.blacklistedKernelModules = [ "wacom" ];
+  users.users.dwaris.extraGroups = [ "networkmanager" "docker" "libvirtd" ];
+
   hardware.opengl.extraPackages = with pkgs; [
     rocmPackages.clr.icd
   ];
-
   hardware.opengl.driSupport = true; # This is already enabled by default
   hardware.opengl.driSupport32Bit = true; # For 32 bit applications
 
   services.xserver.videoDrivers = [ "amdgpu" ];
-
   boot.initrd.kernelModules = [ "amdgpu" ];
   boot.kernelParams = [
     "video=DP-1:2560x1440@165"
