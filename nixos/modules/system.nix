@@ -3,7 +3,7 @@
     users.users.dwaris = {
         isNormalUser = true;
         description = "dwaris";
-        extraGroups = [ "networkmanager" "wheel" "docker"];
+        extraGroups = [ "wheel" ];
     };
 
     nix.settings.trusted-users = [username];
