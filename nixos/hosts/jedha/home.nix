@@ -1,21 +1,21 @@
 { config, pkgs, ... }: {
-  imports = [
-    ../../modules/home-manager/programs
-    ../../modules/home-manager/shell
+    imports = [
+        ../../modules/home-manager/programs
+        ../../modules/home-manager/shell
 
-    ../../modules/home-manager/programs/game-launchers.nix
-    ../../modules/home-manager/programs/gnu-radio.nix
-    ../../modules/home-manager/programs/prusa.nix
-  ];
+        ../../modules/home-manager/programs/game-launchers.nix
+        ../../modules/home-manager/programs/gnu-radio.nix
+        ../../modules/home-manager/programs/prusa.nix
+    ];
 
-  # Home Manager needs a bit of information about you and the paths it should
-  # manage.
-  home.username = "dwaris";
-  home.homeDirectory = "/home/dwaris";
+    # Home Manager needs a bit of information about you and the paths it should
+    # manage.
+    home.username = "dwaris";
+    home.homeDirectory = "/home/dwaris";
 
-  # The home.packages option allows you to install Nix packages into your
-  # environment.
-  home.packages = with pkgs; [
+    # The home.packages option allows you to install Nix packages into your
+    # environment.
+    home.packages = with pkgs; [
         qbittorrent
 
         easyeffects
@@ -34,19 +34,19 @@
         vorta
         veracrypt
         protonvpn-gui
-];
+    ];
 
-  home.sessionVariables = {
-    EDITOR = "nvim";
-    BROWSER = "floorp";
-    TERMINAL = "alacritty";
-  };
+    home.sessionVariables = {
+        EDITOR = "nvim";
+        BROWSER = "chromium";
+        TERMINAL = "alacritty";
+    };
 
-  # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
+    # Let Home Manager install and manage itself.
+    programs.home-manager.enable = true;
 
-  # Nicely reload system units when changing configs
-  systemd.user.startServices = "sd-switch";
+    # Nicely reload system units when changing configs
+    systemd.user.startServices = "sd-switch";
 
-  home.stateVersion = "23.11"; # Please read the comment before changing.
+    home.stateVersion = "23.11"; # Please read the comment before changing.
 }

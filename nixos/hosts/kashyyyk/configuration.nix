@@ -40,9 +40,17 @@
 
   zramSwap.enable = true;
 
+  # Enable networking
+  networking.networkmanager.enable = true;
+
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
   services.flatpak.enable = true;
+  services.printing.enable = false;
+
+  virtualisation.docker.enable = true;
+
+  users.users.dwaris.extraGroups = [ "networkmanager" "docker"  ];
 
   security.pki.certificates = [ "/etc/ssl/certs/root_ca.crt" ];
 
@@ -51,6 +59,8 @@
     vaapiVdpau
     libvdpau-va-gl
   ];
+
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   system.stateVersion = "23.05"; # Did you read the comment?
 }

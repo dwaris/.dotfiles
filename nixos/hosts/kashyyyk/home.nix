@@ -1,43 +1,49 @@
 { config, pkgs, ... }: {
-  imports = [
-    ../../modules/home-manager/default.nix
-    ../../modules/home-manager/gnu-radio.nix
-    ../../modules/home-manager/encoding.nix
-    ../../modules/home-manager/languages.nix
-    ../../modules/home-manager/media.nix
-  ];
+    imports = [
+        ../../modules/home-manager/programs
+        ../../modules/home-manager/shell
 
-  # Home Manager needs a bit of information about you and the paths it should
-  # manage.
-  home.username = "dwaris";
-  home.homeDirectory = "/home/dwaris";
+        ../../modules/home-manager/programs/gnu-radio.nix
+        ../../modules/home-manager/programs/prusa.nix
+    ];
 
-  nixpkgs.config = {
-      allowUnfree = true;
-      allowUnfreePredicate = _: true;
-  };
+    # Home Manager needs a bit of information about you and the paths it should
+    # manage.
+    home.username = "dwaris";
+    home.homeDirectory = "/home/dwaris";
 
-  # The home.packages option allows you to install Nix packages into your
-  # environment.
-  home.packages = with pkgs; [ 
-    microsoft-edge
-    floorp
-    neovide
-    love
-  ];
+    # The home.packages option allows you to install Nix packages into your
+    # environment.
+    home.packages = with pkgs; [
+        qbittorrent
 
-  home.sessionVariables = {
-    EDITOR = "nvim";
-    BROWSER = "floorp";
-    TERMINAL = "alacritty";
-  };
+        vscode-fhs
+        texlive.combined.scheme-medium
 
-  # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
-  programs.git.enable = true;
+        mkvtoolnix
 
-  # Nicely reload system units when changing configs
-  systemd.user.startServices = "sd-switch";
+        stow
+        alacritty
+        neovide
 
-  home.stateVersion = "23.05"; # Please read the comment before changing.
+        love
+
+        vorta
+        veracrypt
+        protonvpn-gui
+    ];
+
+    home.sessionVariables = {
+        EDITOR = "nvim";
+        BROWSER = "chromium";
+        TERMINAL = "alacritty";
+    };
+
+    # Let Home Manager install and manage itself.
+    programs.home-manager.enable = true;
+
+    # Nicely reload system units when changing configs
+    systemd.user.startServices = "sd-switch";
+
+    home.stateVersion = "23.05"; # Please read the comment before changing.
 }
