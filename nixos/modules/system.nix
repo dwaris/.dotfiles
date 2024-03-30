@@ -26,9 +26,9 @@
 
         # do garbage collection weekly to keep disk usage low
     nix.gc = {
-        automatic = lib.mkDefault true;
-        dates = lib.mkDefault "weekly";
-        options = lib.mkDefault "--delete-older-than 7d";
+        automatic = true;
+        dates = "weekly";
+        options = "--delete-older-than 7d";
     };
 
     # Allow unfree packages
@@ -58,15 +58,17 @@
     networking.firewall.enable = true;
 
     services.openssh = {
-        passwordAuthentication = false;
+        settings = {
+            PasswordAuthentication = false;
+            PermitRootLogin = "no";
+        };
         allowSFTP = false; # Don't set this if you need sftp
-        challengeResponseAuthentication = false;
         extraConfig = ''
-        AllowTcpForwarding yes
-        X11Forwarding no
-        AllowAgentForwarding no
-        AllowStreamLocalForwarding no
-        AuthenticationMethods publickey
+            AllowTcpForwarding yes
+            X11Forwarding no
+            AllowAgentForwarding no
+            AllowStreamLocalForwarding no
+            AuthenticationMethods publickey
         '';
     };
 
