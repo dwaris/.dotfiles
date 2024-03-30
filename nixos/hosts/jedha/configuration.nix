@@ -9,8 +9,9 @@
     [
         ../../modules/system.nix
         ../../modules/gnome.nix
-        ../../modules/nixos/steam.nix
         ../../modules/nixos/fonts.nix
+
+        ../../modules/nixos/steam.nix
         ../../modules/nixos/opentabletdriver.nix
 
         # Include the results of the hardware scan.
@@ -53,10 +54,8 @@
   services.printing.enable = false;
 
   virtualisation.docker.enable = true;
-  virtualisation.libvirtd.enable = true;
-  programs.virt-manager.enable = true;
 
-  users.users.dwaris.extraGroups = [ "networkmanager" "docker" "libvirtd" ];
+  users.users.dwaris.extraGroups = [ "networkmanager" "docker"  ];
 
   hardware.opengl.extraPackages = with pkgs; [
     rocmPackages.clr.icd

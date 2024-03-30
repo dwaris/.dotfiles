@@ -3,6 +3,7 @@
     # $ nix search wget
     environment.systemPackages = with pkgs; [
         gnomeExtensions.appindicator
+        gnome.gnome-tweaks
         wl-clipboard
     ];
     # Enable the XWayland Fallback windowing system.

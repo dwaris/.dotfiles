@@ -7,6 +7,6 @@
         extraPythonPackages = with gnuradio.python.pkgs; [
             numpy
         ];
-        })       
+        })
     ];
 }

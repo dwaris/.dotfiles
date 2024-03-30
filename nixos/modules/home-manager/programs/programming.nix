@@ -14,5 +14,8 @@
         nil
         black
         stylua
+
+        vscode-fhs
+        texlive.combined.scheme-medium
     ];
 }
