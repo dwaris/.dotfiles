@@ -4,7 +4,6 @@
     environment.systemPackages = with pkgs; [
         gnomeExtensions.appindicator
         wl-clipboard
-        nfs-utils
     ];
     # Enable the XWayland Fallback windowing system.
     programs.xwayland.enable = true;
