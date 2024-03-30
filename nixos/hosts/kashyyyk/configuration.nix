@@ -5,11 +5,12 @@
 { config, pkgs, inputs, ... }: {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ../../modules/nixos/defaults.nix
-      ../../modules/nixos/intel.nix
-      ../../modules/nixos/gnome.nix
-	inputs.home-manager.nixosModules.default
+        ../../modules/system.nix
+        ../../modules/gnome.nix
+        ../../modules/nixos/fonts.nix
+
+        # Include the results of the hardware scan.
+        ./hardware-configuration.nix
     ];
 
   # Bootloader.
@@ -34,18 +35,8 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    vim
     zram-generator
-    gnomeExtensions.appindicator
-    wl-clipboard
   ];
-
-  home-manager = {
-    extraSpecialArgs = {inherit inputs;};
-    users = {
-      "dwaris" = import ./home.nix;
-    };
-  };
 
   zramSwap.enable = true;
 

@@ -1,5 +1,8 @@
 { config, pkgs, ... }: {
     home.packages = with pkgs; [
-            gnome.gnome-tweaks
+        plex-media-player
+        plexamp
+        mpv
+        vlc
     ];
 }

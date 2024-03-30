@@ -1,26 +1,31 @@
 {  pkgs,  config, ...}: {
-  programs = {
+    programs = {
     chromium = {
-      enable = true;
-      commandLineArgs = ["--enable-features=UseOzonePlatform --ozone-platform=wayland"];
-      extensions = [
-         "cjpalhdlnbpafiamejdnhcphjbkeiagm" # ublock origin
-      ];
+        enable = true;
+        commandLineArgs = ["--enable-features=UseOzonePlatform --ozone-platform=wayland"];
+        extensions = [
+            "cjpalhdlnbpafiamejdnhcphjbkeiagm" # ublock origin
+            "nngceckbapebfimnlniiiahkandclblb" # bitwarden
+            "lanfdkkpgfjfdikkncbnojekcppdebfp" # canvas fingerprint defender
+            # "cankofcoohmbhfpcemhmaaeennfbnmgp" # netflix 1080p (doesn't work atm)
+            "efobhjmgoddhfdhaflheioeagkcknoji" # vertical tabs
+            "ldgfbffkinooeloadekpmfoklnobpien" # raindrop.io
+            "bkkmolkhemgaeaeggcmfbghljjjoofoh" # catppuccin mocha theme
+        ];
     };
 
-    firefox = {
-      enable = true;
-    };
+    #firefox = {
+    #    enable = true;
+    #};
   };
 
     home.packages = with pkgs; [
-        firefox-bin
         floorp
-        (vivaldi.override {
-            proprietaryCodecs = true;
-            enableWidevine = true;
-        })
         tor-browser
-        microsoft-edge
+        #(vivaldi.override {
+        #    proprietaryCodecs = true;
+        #    enableWidevine = true;
+        #})
+        #microsoft-edge
     ];
 }

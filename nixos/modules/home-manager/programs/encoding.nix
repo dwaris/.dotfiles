@@ -3,7 +3,5 @@
         parallel
         ffmpeg
         opusTools
-        mkvtoolnix
-        makemkv
     ];
 }
