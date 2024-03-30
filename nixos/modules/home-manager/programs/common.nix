@@ -11,6 +11,7 @@
 
         bottom
         fd
+        neofetch
 
         # transfer
         rsync
@@ -19,7 +20,5 @@
     programs = {
         tmux.enable = true;
         btop.enable = true;
-        neofetch.enable = true;
-        ssh.enable = true;
     };
 }

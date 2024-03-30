@@ -48,6 +48,7 @@
                     home-manager.extraSpecialArgs = inputs;
                     home-manager.users.dwaris = import ./hosts/kashyyyk/home.nix;
                 }
+                ./modules/home-manager/programs/makemkv.nix
             ];
         };
       };

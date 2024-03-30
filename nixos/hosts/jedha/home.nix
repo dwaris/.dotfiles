@@ -5,7 +5,6 @@
 
     ../../modules/home-manager/programs/game-launchers.nix
     ../../modules/home-manager/programs/gnu-radio.nix
-    ../../modules/home-manager/programs/makemkv.nix
     ../../modules/home-manager/programs/prusa.nix
   ];
 
