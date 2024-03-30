@@ -2,7 +2,7 @@
     imports = [
         ../home-manager/cli.nix
         ../home-manager/gnome.nix
-        ../home-manager/browsers.nix
+        ../home-manager/programs/browsers.nix
         ../home-manager/messenger.nix
         ../home-manager/office.nix
     ];
