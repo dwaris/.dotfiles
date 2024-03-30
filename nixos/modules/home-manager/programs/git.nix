@@ -6,8 +6,8 @@
     programs.git = {
         enable = true;
 
-        userName = "dwaris";
-        userEmail = "malina@rhrk.uni-kl.de";
+        # userName = "dwaris";
+        # userEmail = "malina@rhrk.uni-kl.de";
   };
 
 }
