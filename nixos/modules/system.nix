@@ -55,8 +55,6 @@
     # Configure console keymap
     console.keyMap = "us";
 
-    networking.firewall.enable = true;
-
     services.openssh = {
         settings = {
             PasswordAuthentication = false;
