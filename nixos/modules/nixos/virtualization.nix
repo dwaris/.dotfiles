@@ -3,10 +3,11 @@
 
     virtualisation = {
         libvirtd = {
-        enable = true;
-        qemuOvmf = true;
-        qemuSwtpm = true;
-        qemuOvmfPackage = pkgs.OVMFFull;
+            enable = true;
+            qemu = {
+                swtpm.enable = true;
+                ovmf.enable = true;
+            };
         };
     };
 
