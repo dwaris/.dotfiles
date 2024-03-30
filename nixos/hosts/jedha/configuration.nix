@@ -71,5 +71,7 @@
     "video=HDMI-A-1:1920x1080@75"
   ];
 
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+
   system.stateVersion = "23.11"; # Did you read the comment?
 }
