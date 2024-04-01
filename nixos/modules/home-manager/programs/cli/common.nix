@@ -18,7 +18,6 @@
     ];
 
     programs = {
-        tmux.enable = true;
         btop.enable = true;
     };
 }
