@@ -7,6 +7,7 @@
         nodejs
         love
         go
+        texlive.combined.scheme-medium
 
         gopls
         marksman
@@ -14,8 +15,5 @@
         nil
         black
         stylua
-
-        vscode-fhs
-        texlive.combined.scheme-medium
     ];
 }

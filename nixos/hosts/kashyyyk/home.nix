@@ -3,8 +3,8 @@
         ../../modules/home-manager/programs
         ../../modules/home-manager/shell
 
-        ../../modules/home-manager/programs/gnu-radio.nix
-        ../../modules/home-manager/programs/prusa.nix
+        ../../modules/home-manager/programs/gui/gnu-radio.nix
+        ../../modules/home-manager/programs/gui/prusa.nix
     ];
 
     # Home Manager needs a bit of information about you and the paths it should
@@ -17,19 +17,6 @@
     home.packages = with pkgs; [
         qbittorrent
 
-        vscode-fhs
-        texlive.combined.scheme-medium
-
-        mkvtoolnix
-
-        stow
-        alacritty
-        neovide
-
-        love
-
-        vorta
-        veracrypt
         protonvpn-gui
     ];
 
