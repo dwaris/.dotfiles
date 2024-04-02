@@ -9,8 +9,6 @@
         historyLimit = 100000;
         clock24 = true;
 
-        enableMouse = true;
-
         extraConfig = ''
             set -as terminal-overrides ",alacritty:RGB"
             set-option -g focus-events on
@@ -23,6 +21,8 @@
 
             bind-key -T edit-mode-vi Up send-keys -X history-up
             bind-key -T edit-mode-vi Down send-keys -X history-down
+
+            set -g mouse on
 
             # Set title
             set -g set-titles on
@@ -55,7 +55,8 @@
             set -g status-right-length 50
             set -g status-left-length 20
 
-            setw -g window-status-current-format "#I#[fg=#a6adc8]:#[fg=#cdd6f4]#W#[fg=#94e2d5]#F"
-            setw -g window-status-format "#I#[fg=#313244]:#[fg=#6c7086]#W#[fg=#6c7086]#F"
+            setw -g window-status-current-format " #I#[fg=#a6adc8]:#[fg=#cdd6f4]#W#[fg=#94e2d5]#F "
+            setw -g window-status-format " #I#[fg=#313244]:#[fg=#6c7086]#W#[fg=#6c7086]#F "
         '';
     };
+}
