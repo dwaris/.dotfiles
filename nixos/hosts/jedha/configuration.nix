@@ -18,26 +18,47 @@
         ./hardware-configuration.nix
     ];
 
-  boot.loader.grub = {
-    enable = true;
-    default = "saved";
-    zfsSupport = true;
-    efiSupport = true;
-    efiInstallAsRemovable = true;
-    useOSProber = true;
-    mirroredBoots = [
-      { devices = [ "nodev"]; path = "/boot"; }
-    ];
-  };
+#  boot.loader.grub = {
+#    enable = true;
+#    default = "saved";
+#    zfsSupport = true;
+#    efiSupport = true;
+#    efiInstallAsRemovable = true;
+#    useOSProber = true;
+#    mirroredBoots = [
+#      { devices = [ "nodev"]; path = "/boot"; }
+#    ];
+#  };
 
+  boot.loader.systemd-boot.enable = false;
+  boot.lanzaboote = {
+     enable = true;
+     pkiBundle = "/etc/secureboot";
+  };
+  boot.loader.systemd-boot.configurationLimit = 10;
+  boot.loader.efi.efiSysMountPoint = "/boot";
+  boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
-  boot.supportedFilesystems = [ "ntfs" ];
+  boot.supportedFilesystems = [ "zfs" "ntfs" ];
+
+  boot.zfs.requestEncryptionCredentials = true;
+  boot.zfs.forceImportRoot = true;
+
+  boot.initrd.systemd.enable = true;
+  boot.initrd.supportedFilesystems = [ "zfs" ];
+
+  boot.initrd.kernelModules = [ "zfs" "amdgpu" ];
+  boot.kernelParams = [
+    "video=DP-1:2560x1440@165"
+    "video=HDMI-A-1:1920x1080@75"
+  ];
 
   networking.hostName = "jedha"; # Define your hostname.
   networking.hostId = "74f65184";
 
   environment.systemPackages = with pkgs; [
     nfs-utils
+    sbctl
   ];
 
   services.zfs.autoSnapshot.enable = true;
