@@ -18,18 +18,22 @@
         inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixvim = {
-        url = "github:nix-community/nixvim";
-        inputs.nixpkgs.follows = "nixpkgs";
+    lanzaboote = {
+	url = "github:nix-community/lanzaboote/v0.3.0";
+	# Optional but recommended to limit the size of your system closure.
+	inputs.nixpkgs.follows = "nixpkgs";
     };
+
 
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs: {
+  outputs = { self, nixpkgs, lanzaboote, home-manager, ... }@inputs: {
       nixosConfigurations = {
         jedha = nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
 	        modules = [
+		lanzaboote.nixosModules.lanzaboote
+
                 ./hosts/jedha/configuration.nix
                 home-manager.nixosModules.home-manager
                 {
