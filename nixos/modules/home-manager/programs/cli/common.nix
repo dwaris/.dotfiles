@@ -15,6 +15,8 @@
 
         # transfer
         rsync
+
+	    neovim
     ];
 
     programs = {
