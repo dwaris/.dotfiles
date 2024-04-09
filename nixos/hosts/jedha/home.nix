@@ -2,6 +2,7 @@
     imports = [
         ../../modules/home-manager/programs
         ../../modules/home-manager/shell
+        ../../modules/home-manger/hyprland.nix
 
         ../../modules/home-manager/programs/gui/game-launchers.nix
         ../../modules/home-manager/programs/gui/gnu-radio.nix
