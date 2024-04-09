@@ -19,11 +19,10 @@
     };
 
     lanzaboote = {
-	url = "github:nix-community/lanzaboote/v0.3.0";
-	# Optional but recommended to limit the size of your system closure.
-	inputs.nixpkgs.follows = "nixpkgs";
+        url = "github:nix-community/lanzaboote/v0.3.0";
+        # Optional but recommended to limit the size of your system closure.
+        inputs.nixpkgs.follows = "nixpkgs";
     };
-
 
   };
 
@@ -32,9 +31,10 @@
         jedha = nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
 	        modules = [
-		lanzaboote.nixosModules.lanzaboote
+		        lanzaboote.nixosModules.lanzaboote
 
                 ./hosts/jedha/configuration.nix
+
                 home-manager.nixosModules.home-manager
                 {
                     home-manager.useGlobalPkgs = true;
