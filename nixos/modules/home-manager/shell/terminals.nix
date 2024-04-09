@@ -6,12 +6,12 @@ in
   programs.alacritty = {
     enable = true;
     settings = {
-        import = ["/home/dwaris/.dotfiles/nixos/modules/home-manager/shell/themes/alacritty/catppuccin/catppuccin-mocha.yml"];
+        import = ["/home/dwaris/.dotfiles/nixos/modules/home-manager/shell/themes/alacritty/rose-pine/rose-pine.toml"];
         live_config_reload = true;
         window = {
             startup_mode = "Maximized";
             decorations = "full";
-            opacity = 0.9;
+            opacity = 1.0;
             dynamic_title = true;
         };
 

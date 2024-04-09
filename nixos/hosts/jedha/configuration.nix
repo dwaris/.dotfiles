@@ -72,13 +72,14 @@
   networking.firewall.enable = true;
 
   # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
+  services.openssh.enable = false;
   services.flatpak.enable = true;
   services.printing.enable = false;
 
   virtualisation.docker.enable = true;
 
-  users.users.dwaris.extraGroups = [ "networkmanager" "docker"  ];
+  programs.adb.enable = true;
+  users.users.dwaris.extraGroups = [ "networkmanager" "docker" "adbusers" ];
 
   hardware.opengl.extraPackages = with pkgs; [
     rocmPackages.clr.icd
@@ -87,11 +88,6 @@
   hardware.opengl.driSupport32Bit = true; # For 32 bit applications
 
   services.xserver.videoDrivers = [ "amdgpu" ];
-  boot.initrd.kernelModules = [ "amdgpu" ];
-  boot.kernelParams = [
-    "video=DP-1:2560x1440@165"
-    "video=HDMI-A-1:1920x1080@75"
-  ];
 
 #  environment.sessionVariables.NIXOS_OZONE_WL = "1"; Wayland is not ready for prime time yet
 
