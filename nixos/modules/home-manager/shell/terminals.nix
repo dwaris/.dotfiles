@@ -6,7 +6,7 @@ in
   programs.alacritty = {
     enable = true;
     settings = {
-        import = ["/home/dwaris/.dotfiles/nixos/modules/home-manager/shell/themes/alacritty/rose-pine/rose-pine.toml"];
+        import = ["/home/dwaris/.dotfiles/nixos/modules/home-manager/shell/themes/alacritty/catppuccin/catppuccin-mocha.toml"];
         live_config_reload = true;
         window = {
             startup_mode = "Maximized";
