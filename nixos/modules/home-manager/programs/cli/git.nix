@@ -4,7 +4,12 @@
 
         userName = "dwaris";
         userEmail = "malina@rhrk.uni-kl.de";
-        signing.key	= null;
-        signing.signByDefault = true;
+        extraConfig = {
+            # Sign all commits using ssh key
+            commit.gpgsign = true;
+            gpg.format = "ssh";
+            gpg.ssh.allowedSignersFile = "~/.ssh/allowed_signers";
+            user.signingkey = "~/.ssh/id_ed25519.pub";
+      };
   };
 }
