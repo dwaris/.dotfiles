@@ -55,7 +55,7 @@
             set -g status-bg colour0
             set -g status-fg colour3
             set -g status-left ""
-            set -g status-right "#{?client_prefix, *, } #(whoami)@#h #[fg=colour0, bg=colour15,bold] %d/%m #[fg=colour0,bg=colour7,bold] %H:%M"
+            set -g status-right "#{?client_prefix, *, } #(whoami)@#h #[fg=colour0, bg=colour15,bold] %d/%m #[fg=colour0,bg=colour7,bold] %H:%M "
             set -g status-right-length 50
             set -g status-left-length 20
 
