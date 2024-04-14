@@ -28,6 +28,7 @@
         EDITOR = "nvim";
         BROWSER = "chromium";
         TERMINAL = "alacritty";
+        PAGER = "less -R";
     };
 
     # Let Home Manager install and manage itself.
