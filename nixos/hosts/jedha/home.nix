@@ -4,7 +4,6 @@
         ../../modules/home-manager/shell
 
         ../../modules/home-manager/programs/gui/game-launchers.nix
-        ../../modules/home-manager/programs/gui/gnu-radio.nix
         ../../modules/home-manager/programs/gui/prusa.nix
     ];
 
