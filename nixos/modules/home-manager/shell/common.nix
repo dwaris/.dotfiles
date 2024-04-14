@@ -4,26 +4,15 @@
     ];
     programs.bash.enable = true;
     programs.fzf.enable = true;
-    programs.starship.enable = true;
 
-    programs.starship.settings = {
-        scan_timeout = 10;
-        character = {
-            success_symbol = ''[\$](bold green)'';
-            error_symbol = ''[\$](bold red)'';
-        };
-        username = {
-            style_user = "bold purple";
-            style_root = "bold red";
-            format = "[$user]($style)";
-            disabled = false;
-            show_always = true;
-        };
-        hostname = {
-            ssh_only = false;
-            format = "[@](bolde)[$hostname](bold yellow) ";
-            disabled = false;
-        };
-        cmd_duration.disabled = true;
+    programs.bash.shellAliases = {
+        ".." = "cd ..";
+        ls="ls -a --color=auto";
+        ll="ls -la";
+        la="ls -lathr";
+        mv="mv -v";
+        vim="nvim";
     };
+    programs.bash.historyIgnore = ["ls" "cd" "exit" "clear"];
+    programs.bash.historyControl = ["erasedups" "ignoredups" "ignorespace"];
 }

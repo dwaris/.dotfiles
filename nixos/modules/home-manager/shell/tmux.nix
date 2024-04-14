@@ -47,16 +47,20 @@
             # Disable confirm before killing
             bind-key x kill-pane
 
+            # copy mode
+            setw -g mode-style 'fg=colour7 bg=colour0 bold'
+
+            # statusbar
             set -g status-position top
-            set -g status-bg "#11111b"
-            set -g status-fg "#f9e2af"
+            set -g status-bg colour0
+            set -g status-fg colour3
             set -g status-left ""
-            set -g status-right "#{?client_prefix, *, } #(whoami)@#h #[fg=#11111b, bg=#585b70,bold] %d/%m #[fg=#11111b,bg=#9399b2,bold] %H:%M"
+            set -g status-right "#{?client_prefix, *, } #(whoami)@#h #[fg=colour0, bg=colour15,bold] %d/%m #[fg=colour0,bg=colour7,bold] %H:%M"
             set -g status-right-length 50
             set -g status-left-length 20
 
-            setw -g window-status-current-format " #I#[fg=#a6adc8]:#[fg=#cdd6f4]#W#[fg=#94e2d5]#F "
-            setw -g window-status-format " #I#[fg=#313244]:#[fg=#6c7086]#W#[fg=#6c7086]#F "
+            setw -g window-status-current-format " #I#[fg=colour3]:#[fg=colour7]#W#[fg=colour6]#F "
+            setw -g window-status-format " #I#[fg=colour3]:#[fg=colour15]#W#[fg=colour15]#F "
         '';
     };
 }
