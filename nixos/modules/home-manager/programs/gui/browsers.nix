@@ -7,7 +7,7 @@
             "cjpalhdlnbpafiamejdnhcphjbkeiagm" # ublock origin
             "nngceckbapebfimnlniiiahkandclblb" # bitwarden
             "lanfdkkpgfjfdikkncbnojekcppdebfp" # canvas fingerprint defender
-            # "cankofcoohmbhfpcemhmaaeennfbnmgp" # netflix 1080p (doesn't work atm)
+            "mdlbikciddolbenfkgggdegphnhmnfcg" # netflix 1080p new?
             "efobhjmgoddhfdhaflheioeagkcknoji" # vertical tabs
             "ldgfbffkinooeloadekpmfoklnobpien" # raindrop.io
             "bkkmolkhemgaeaeggcmfbghljjjoofoh" # catppuccin mocha theme
