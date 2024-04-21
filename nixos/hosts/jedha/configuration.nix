@@ -9,6 +9,8 @@
     [
         ../../modules/system.nix
         ../../modules/gnome.nix
+        ../../modules/sway.nix
+        ../../modules/hypr.nix
         ../../modules/nixos/fonts.nix
 
         ../../modules/nixos/steam.nix
