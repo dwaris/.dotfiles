@@ -2,195 +2,212 @@
 , config
 , pkgs
 , ...
-}:
-{
-  imports = [
-    inputs.hyprland.homeManagerModules.default
-  ];
-
-  home.packages = [
-    inputs.hypr-contrib.packages.${pkgs.system}.grimblast
-    inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland
-  ];
-
-  nix.settings = {
-    substituters = [ "https://hyprland.cachix.org" ];
-    trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
-  };
-
+}: {
   wayland.windowManager.hyprland = {
     enable = true;
-    # TODO: move to https://github.com/spikespaz/hyprland-nix
     extraConfig = ''
-      # ASCII Art from https://fsymbols.com/generators/carty/
+      monitor=,preferred,auto,1
+      monitor=DP-1, 2560x1440@144, 1920x0, 1, bitdepth,10, vrr, 2
+      monitor=HDMI-A-1, 1920x1080@75, 0x0, 1
+
+      env = XDG_CURRENT_DESKTOP,Hyprland
+      env = XDG_SESSION_TYPE,wayland
+      env = XDG_SESSION_DESKTOP,Hyprland
+      env = XCURSOR_SIZE,24
+      env = QT_QPA_PLATFORM,wayland
+      env = XDG_SCREENSHOTS_DIR,~/screens
+
       input {
-      	kb_layout = gb
-      	touchpad {
-      		disable_while_typing=false
-      	}
+          kb_layout = eu
+          kb_variant =
+          kb_model =
+          kb_options =
+          kb_rules =
+
+          follow_mouse = 1
+          accel_profile = flat
+
+          touchpad {
+              natural_scroll = false
+          }
+
+          sensitivity = 0 # -1.0 - 1.0, 0 means no modification.
       }
 
       general {
-      	gaps_in = 3
-      	gaps_out = 5
-      	border_size = 3
-      	col.active_border=0xff${config.colorscheme.colors.base07}
-      	col.inactive_border=0xff${config.colorscheme.colors.base02}
+          # See https://wiki.hyprland.org/Configuring/Variables/ for more
+
+          gaps_in = 5
+          gaps_out = 10
+          border_size = 2
+          col.active_border = 0xffcba6f7
+          col.inactive_border = 0xff313244
+          no_border_on_floating = true
+          layout = dwindle
       }
 
       decoration {
-      	rounding=5
+          # See https://wiki.hyprland.org/Configuring/Variables/ for more
+
+          rounding = 5
+          active_opacity = 1.0
+          inactive_opacity = 1.0
+          blur {
+              enabled = yes
+              size = 10
+              passes = 1
+              new_optimizations = on
+          }
+          drop_shadow = yes
+          shadow_ignore_window = true
+          shadow_range = 4
+          shadow_offset = 2 2 
+          shadow_render_power = 2
+          col.shadow= 0x66000000
       }
+
+      animations {
+          enabled = true
+
+          # Some default animations, see https://wiki.hyprland.org/Configuring>
+
+          bezier = myBezier, 0.05, 0.9, 0.1, 1.05
+
+          animation = windows, 1, 7, myBezier
+          animation = windowsOut, 1, 7, default, popin 80%
+          animation = border, 1, 10, default
+          animation = borderangle, 1, 8, default
+          animation = fade, 1, 7, default
+          animation = workspaces, 1, 6, default
+      }
+
+      dwindle {
+          # See https://wiki.hyprland.org/Configuring/Dwindle-Layout/ for more
+          pseudotile = true # master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
+          preserve_split = true # you probably want this
+      }
+
+      master {
+          # See https://wiki.hyprland.org/Configuring/Master-Layout/ for more
+          new_is_master = true
+      }
+
+      gestures {
+          # See https://wiki.hyprland.org/Configuring/Variables/ for more
+          workspace_swipe = true
+          workspace_swipe_fingers = 3
+          workspace_swipe_invert = false
+          workspace_swipe_distance = 200
+      }
+
+      # Example per-device config
+      # See https://wiki.hyprland.org/Configuring/Keywords/#executing for more
 
       misc {
-       vrr = 2
-       disable_hyprland_logo = 1;
-       #disable_hypr_chan = 1
+          animate_manual_resizes = true
+          animate_mouse_windowdragging = true
+          enable_swallow = true
+          render_ahead_of_time = false
+          disable_hyprland_logo = true
+
       }
 
-      $notifycmd = notify-send -h string:x-canonical-private-synchronous:hypr-cfg -u low
+      # Example windowrule v1
+      windowrule = float, ^(imv)$
+      windowrule = float, ^(mpv)$
+      # See https://wiki.hyprland.org/Configuring/Window-Rules/ for more
 
-      # █▀ █░█ █▀█ █▀█ ▀█▀ █▀▀ █░█ ▀█▀ █▀
-      # ▄█ █▀█ █▄█ █▀▄ ░█░ █▄▄ █▄█ ░█░ ▄█
-      bind = SUPER, Return, exec, ${config.my.settings.default.terminal}
-      bind = SUPER, b, exec, ${config.my.settings.default.browser}
-      bind = SUPER, a, exec, rofi -show drun -modi drun
-      bind = ALT, Tab, exec, rofi -show window
-      bind = SUPER, w, exec, makoctl dismiss
+      # See https://wiki.hyprland.org/Configuring/Keywords/ for more
+      $mainMod = SUPER
 
-      # █▀▀ ▀▄▀ █▀▀ █▀▀ █▀█ ▀█▀ █ █▀█ █▄░█ █▀
-      # ██▄ █░█ █▄▄ ██▄ █▀▀ ░█░ █ █▄█ █░▀█ ▄█
-      windowrule = fullscreen, title:^(Guild Wars 2)$
-      windowrulev2 = idleinhibit focus, class:^(mpv)$
-      windowrulev2 = idleinhibit fullscreen, class:^(firefox)$
+      exec-once = ${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1
 
-      # ▄▀█ █░█ ▀█▀ █▀█   █▀ ▀█▀ ▄▀█ █▀█ ▀█▀
-      # █▀█ █▄█ ░█░ █▄█   ▄█ ░█░ █▀█ █▀▄ ░█░
-      exec-once = swaync &
-      exec-once = kanshi &
-      exec-once = sway-audio-idle-inhibit -w &
-      exec-once = waybar &
-      exec-once = gammastep-indicator &
-      exec-once = mullvad-gui &
-      exec-once = swaybg -i ${config.my.settings.wallpaper} --mode fill &
+      exec-once = swww init
+      # exec-once = nm-applet --indicator & waybar & dunst
 
-      # █░░ █▀█ █▀▀ █▄▀   █▀ █▀▀ █▀█ █▀▀ █▀▀ █▄░█
-      # █▄▄ █▄█ █▄▄ █░█   ▄█ █▄▄ █▀▄ ██▄ ██▄ █░▀█
-      bind=,XF86Launch5,exec,swaylock -S
-      bind=,XF86Launch4,exec,swaylock -S
-      bind=SUPER,backspace,exec,swaylock -S
+      exec-once = waybar & dunst
 
-      # █▀ █▀▀ █▀█ ▄▀█ ▀█▀ █▀▀ █░█ █▀█ ▄▀█ █▀▄
-      # ▄█ █▄▄ █▀▄ █▀█ ░█░ █▄▄ █▀█ █▀▀ █▀█ █▄▀
-      bind=SUPER,u,togglespecialworkspace
-      bind=SUPERSHIFT,u,movetoworkspace,special
+      exec-once = wl-paste --type text --watch cliphist store 
+      exec-once = wl-paste --type image --watch cliphist store
+      bind = $mainMod, C, exec, cliphist list | wofi --dmenu | cliphist decode | wl-copy
 
-      # █▀ █▀▀ █▀█ █▀▀ █▀▀ █▄░█ █▀ █░█ █▀█ ▀█▀
-      # ▄█ █▄▄ █▀▄ ██▄ ██▄ █░▀█ ▄█ █▀█ █▄█ ░█░
-      bind=,Print,exec,grimblast --notify copysave area
-      bind=SHIFT,Print,exec,grimblast --notify copy active
-      bind=CONTROL,Print,exec,grimblast --notify copy screen
-      bind=SUPER,Print,exec,grimblast --notify copy window
-      bind=ALT,Print,exec,grimblast --notify copy area
-      bind=SUPER,bracketleft,exec,grimblast --notify --cursor copysave area ~/Pictures/$(date "+%Y-%m-%d"T"%H:%M:%S_no_watermark").png
-      bind=SUPER,bracketright,exec, grimblast --notify --cursor copy area
+      # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
+      bind = $mainMod, Return, exec, alacritty
+      bind = $mainMod, Q, killactive,
+      bind = $mainMod, M, exit,
+      bind = $mainMod, E, exec, nautilus
+      bind = $mainMod, F, fullscreen, 1
+      bind = $mainMod, V, togglefloating,
+      bind = $mainMod, D, exec, wofi --show drun
+      bind = $mainMod, P, pseudo, # dwindle
+      bind = $mainMod, J, togglesplit, # dwindle
 
-      # █▄▀ █▀▀ █▄█ █▄▄ █▀█ ▄▀█ █▀█ █▀▄   █▀▀ █▀█ █▄░█ ▀█▀ █▀█ █▀█ █░░ █▀
-      # █░█ ██▄ ░█░ █▄█ █▄█ █▀█ █▀▄ █▄▀   █▄▄ █▄█ █░▀█ ░█░ █▀▄ █▄█ █▄▄ ▄█
-      bind=,XF86MonBrightnessUp,exec, brightness --inc
-      bind=,XF86MonBrightnessDown,exec, brightness --dec
-      bind=,XF86AudioRaiseVolume,exec, volume --inc
-      bind=,XF86AudioLowerVolume,exec, volume --dec
-      bind=,XF86AudioMute,exec, volume --toggle
-      bind=,XF86AudioMicMute,exec, volume --toggle-mic
-      bind=,XF86AudioNext,exec,playerctl next
-      bind=,XF86AudioPrev,exec,playerctl previous
-      bind=,XF86AudioPlay,exec,playerctl play-pause
-      bind=,XF86AudioStop,exec,playerctl stop
-      bind=ALT,XF86AudioNext,exec,playerctld shift
-      bind=ALT,XF86AudioPrev,exec,playerctld unshift
-      bind=ALT,XF86AudioPlay,exec,systemctl --user restart playerctld
+      # Move focus with mainMod + arrow keys
+      bind = $mainMod, left,  movefocus, l
+      bind = $mainMod, right, movefocus, r
+      bind = $mainMod, up,    movefocus, u
+      bind = $mainMod, down,  movefocus, d
 
-      # █▀▀ █▀█ █▀▀ █░█ █▀
-      # █▀░ █▄█ █▄▄ █▄█ ▄█
-      bind=SUPER,h,movefocus,l
-      bind=SUPER,l,movefocus,r
-      bind=SUPER,k,movefocus,u
-      bind=SUPER,j,movefocus,d
+      # Moving windows
+      bind = $mainMod SHIFT, left,  swapwindow, l
+      bind = $mainMod SHIFT, right, swapwindow, r
+      bind = $mainMod SHIFT, up,    swapwindow, u
+      bind = $mainMod SHIFT, down,  swapwindow, d
 
-      # █▀ █░█░█ ▄▀█ █▀█   █░█░█ █ █▄░█ █▀▄ █▀█ █░█░█ █▀
-      # ▄█ ▀▄▀▄▀ █▀█ █▀▀   ▀▄▀▄▀ █ █░▀█ █▄▀ █▄█ ▀▄▀▄▀ ▄█
-      bind=SUPERSHIFT,h,swapwindow,l
-      bind=SUPERSHIFT,l,swapwindow,r
-      bind=SUPERSHIFT,k,swapwindow,u
-      bind=SUPERSHIFT,j,swapwindow,d
+      # Window resizing                           X  Y
+      bind = $mainMod CTRL, left,  resizeactive, -60 0
+      bind = $mainMod CTRL, right, resizeactive,  60 0
+      bind = $mainMod CTRL, up,    resizeactive,  0 -60
+      bind = $mainMod CTRL, down,  resizeactive,  0  60
 
-      # █▀▀ █▀█ █▀▀ █░█ █▀   █▀▄▀█ █▀█ █▄░█ █ ▀█▀ █▀█ █▀█
-      # █▀░ █▄█ █▄▄ █▄█ ▄█   █░▀░█ █▄█ █░▀█ █ ░█░ █▄█ █▀▄
-      bind=SUPERCONTROL,h,focusmonitor,l
-      bind=SUPERCONTROL,l,focusmonitor,r
-      bind=SUPERCONTROL,k,focusmonitor,u
-      bind=SUPERCONTROL,j,focusmonitor,d
+      # Switch workspaces with mainMod + [0-9]
+      bind = $mainMod, 1, workspace, 1
+      bind = $mainMod, 2, workspace, 2
+      bind = $mainMod, 3, workspace, 3
+      bind = $mainMod, 4, workspace, 4
+      bind = $mainMod, 5, workspace, 5
+      bind = $mainMod, 6, workspace, 6
+      bind = $mainMod, 7, workspace, 7
+      bind = $mainMod, 8, workspace, 8
+      bind = $mainMod, 9, workspace, 9
+      bind = $mainMod, 0, workspace, 10
 
-      # █▀▄▀█ █▀█ █░█ █▀▀   ▀█▀ █▀█   █▀▄▀█ █▀█ █▄░█ █ ▀█▀ █▀█ █▀█
-      # █░▀░█ █▄█ ▀▄▀ ██▄   ░█░ █▄█   █░▀░█ █▄█ █░▀█ █ ░█░ █▄█ █▀▄
-      bind=SUPERALT,h,movecurrentworkspacetomonitor,l
-      bind=SUPERALT,l,movecurrentworkspacetomonitor,r
-      bind=SUPERALT,k,movecurrentworkspacetomonitor,u
-      bind=SUPERALT,j,movecurrentworkspacetomonitor,d
+      # Move active window to a workspace with mainMod + SHIFT + [0-9]
+      bind = $mainMod SHIFT, 1, movetoworkspacesilent, 1
+      bind = $mainMod SHIFT, 2, movetoworkspacesilent, 2
+      bind = $mainMod SHIFT, 3, movetoworkspacesilent, 3
+      bind = $mainMod SHIFT, 4, movetoworkspacesilent, 4
+      bind = $mainMod SHIFT, 5, movetoworkspacesilent, 5
+      bind = $mainMod SHIFT, 6, movetoworkspacesilent, 6
+      bind = $mainMod SHIFT, 7, movetoworkspacesilent, 7
+      bind = $mainMod SHIFT, 8, movetoworkspacesilent, 8
+      bind = $mainMod SHIFT, 9, movetoworkspacesilent, 9
+      bind = $mainMod SHIFT, 0, movetoworkspacesilent, 10
 
-      # █▀▀ █░█ ▄▀█ █▄░█ █▀▀ █▀▀   █░█░█ █▀█ █▀█ █▄▀ █▀ █▀█ ▄▀█ █▀▀ █▀▀
-      # █▄▄ █▀█ █▀█ █░▀█ █▄█ ██▄   ▀▄▀▄▀ █▄█ █▀▄ █░█ ▄█ █▀▀ █▀█ █▄▄ ██▄
-      bind=SUPER,1,workspace,01
-      bind=SUPER,2,workspace,02
-      bind=SUPER,3,workspace,03
-      bind=SUPER,4,workspace,04
-      bind=SUPER,5,workspace,05
-      bind=SUPER,6,workspace,06
-      bind=SUPER,7,workspace,07
-      bind=SUPER,8,workspace,08
-      bind=SUPER,9,workspace,09
-      bind=SUPER,0,workspace,10
+      # Scroll through existing workspaces with mainMod + scroll
+      bind = $mainMod, mouse_down, workspace, e+1
+      bind = $mainMod, mouse_up, workspace, e-1
 
-      # █▀▄▀█ █▀█ █░█ █▀▀   ▀█▀ █▀█   █░█░█ █▀█ █▀█ █▄▀ █▀ █▀█ ▄▀█ █▀▀ █▀▀
-      # █░▀░█ █▄█ ▀▄▀ ██▄   ░█░ █▄█   ▀▄▀▄▀ █▄█ █▀▄ █░█ ▄█ █▀▀ █▀█ █▄▄ ██▄
-      bind=SUPERSHIFT,1,movetoworkspacesilent,01
-      bind=SUPERSHIFT,2,movetoworkspacesilent,02
-      bind=SUPERSHIFT,3,movetoworkspacesilent,03
-      bind=SUPERSHIFT,4,movetoworkspacesilent,04
-      bind=SUPERSHIFT,5,movetoworkspacesilent,05
-      bind=SUPERSHIFT,6,movetoworkspacesilent,06
-      bind=SUPERSHIFT,7,movetoworkspacesilent,07
-      bind=SUPERSHIFT,8,movetoworkspacesilent,08
-      bind=SUPERSHIFT,9,movetoworkspacesilent,09
-      bind=SUPERSHIFT,0,movetoworkspacesilent,10
+      # Move/resize windows with mainMod + LMB/RMB and dragging
+      bindm = $mainMod, mouse:272, movewindow
+      bindm = $mainMod, mouse:273, resizewindow
 
-      bind=ALTCTRL,L,movewindow,r
-      bind=ALTCTRL,H,movewindow,l
-      bind=ALTCTRL,K,movewindow,u
-      bind=ALTCTRL,J,movewindow,d
+      # Keyboard backlight
+      bind = SUPER, F3, exec, brightnessctl -d *::kbd_backlight set +33%
+      bind = SUPER, F2, exec, brightnessctl -d *::kbd_backlight set 33%-
 
-      # █░█░█ █ █▄░█ █▀▄ █▀█ █░█░█   █▀▄▀█ ▄▀█ █▄░█ ▄▀█ █▀▀ █▀▄▀█ █▀▀ █▄░█ ▀█▀
-      # ▀▄▀▄▀ █ █░▀█ █▄▀ █▄█ ▀▄▀▄▀   █░▀░█ █▀█ █░▀█ █▀█ █▄█ █░▀░█ ██▄ █░▀█ ░█░
-      bind = SUPER, Q, killactive,
-      bind = SUPER, F, fullscreen, 0
-      bind = SUPER, F, exec, $notifycmd 'Fullscreen Mode'
-      bind = SUPER, S, pseudo,
-      bind = SUPER, S, exec, $notifycmd 'Pseudo Mode'
-      bind = SUPER, Space, togglefloating,
-      bind = SUPER, Space, centerwindow,
+      # Volume and Media Control
+      bind = , XF86AudioRaiseVolume, exec, pamixer -i 5 
+      bind = , XF86AudioLowerVolume, exec, pamixer -d 5 
+      bind = , XF86AudioMute, exec, pamixer -t
+      bind = , XF86AudioMicMute, exec, pamixer --default-source -m
 
-      # █▀▄▀█ █▀█ █░█ █▀ █▀▀   █▄▄ █ █▄░█ █▀▄ █ █▄░█ █▀▀
-      # █░▀░█ █▄█ █▄█ ▄█ ██▄   █▄█ █ █░▀█ █▄▀ █ █░▀█ █▄█
-      bindm=SUPER, mouse:272, movewindow
-      bindm=SUPER, mouse:273, resizewindow
+      # Configuration files
+      bind = , Print, exec, grimblast copysave area
 
-      # █▀█ █▀▀ █▀ █ ▀█ █▀▀
-      # █▀▄ ██▄ ▄█ █ █▄ ██▄
-      binde = SUPERALT, h, resizeactive, -20 0
-      binde = SUPERALT, l, resizeactive, 20 0
-      binde = SUPERALT, k, resizeactive, 0 -20
-      binde = SUPERALT, j, resizeactive, 0 20
+      # Waybar
+      bind = $mainMod, B, exec, pkill -SIGUSR1 waybar
+      bind = $mainMod, W, exec, pkill -SIGUSR2 waybar
     '';
   };
 }
