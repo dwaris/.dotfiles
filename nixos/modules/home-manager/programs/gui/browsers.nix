@@ -2,7 +2,7 @@
     programs = {
     chromium = {
         enable = true;
-        commandLineArgs = ["--enable-features=UseOzonePlatform --ozone-platform=wayland"];
+#        commandLineArgs = ["--enable-features=UseOzonePlatform --ozone-platform=wayland"];
         extensions = [
             "cjpalhdlnbpafiamejdnhcphjbkeiagm" # ublock origin
             "nngceckbapebfimnlniiiahkandclblb" # bitwarden
