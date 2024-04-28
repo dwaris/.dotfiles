@@ -23,7 +23,7 @@
     # Configure keymap in and Dispay Manager
     services.xserver = {
         xkb = {
-        layout = "eu";
+            layout = "eu";
         };
         enable = true;
     };
