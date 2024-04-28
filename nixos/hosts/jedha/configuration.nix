@@ -15,6 +15,7 @@
         ../../modules/nixos/steam.nix
         ../../modules/nixos/opentabletdriver.nix
         ../../modules/nixos/virtualization.nix
+        ../../modules/nixos/makemkv.nix
         # Include the results of the hardware scan.
         ./hardware-configuration.nix
     ];
