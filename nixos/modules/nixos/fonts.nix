@@ -6,6 +6,7 @@
         liberation_ttf
         fira-code
         fira-code-symbols
+        redhat-official-fonts
         (nerdfonts.override { fonts = [ "SourceCodePro" "FiraCode" ]; })
     ];
 }
