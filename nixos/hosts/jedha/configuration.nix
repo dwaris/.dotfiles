@@ -82,15 +82,12 @@
   programs.adb.enable = true;
   users.users.dwaris.extraGroups = [ "networkmanager" "docker" "adbusers" ];
 
+  hardware.opengl.enable = true;
+  hardware.opengl.driSupport = true; # This is already enabled by default
+  hardware.opengl.driSupport32Bit = true; # For 32 bit applications
   hardware.opengl.extraPackages = with pkgs; [
     rocmPackages.clr.icd
   ];
-  hardware.opengl.driSupport = true; # This is already enabled by default
-  hardware.opengl.driSupport32Bit = true; # For 32 bit applications
-
-  services.xserver.videoDrivers = [ "amdgpu" ];
-
-#  environment.sessionVariables.NIXOS_OZONE_WL = "1"; Wayland is not ready for prime time yet
 
   system.stateVersion = "23.11"; # Did you read the comment?
 }

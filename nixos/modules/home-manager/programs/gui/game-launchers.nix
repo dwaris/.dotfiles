@@ -3,6 +3,5 @@
         heroic
         mangohud
         ryujinx
-        osu-lazer
     ];
 }
