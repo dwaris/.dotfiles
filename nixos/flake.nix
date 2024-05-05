@@ -8,75 +8,72 @@
 
     inputs = {
         nixpkgs.url = "github:Nixos/nixpkgs/nixos-unstable";
-        nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
+        nixpkgs-small.url = "github:nixos/nixpkgs/nixos-unstable-small";
 
         home-manager = {
             url = "github:nix-community/home-manager";
             inputs.nixpkgs.follows = "nixpkgs";
         };
-        home-manager-stable = {
-            url = "github:nix-community/home-manager/release-23.11";
-            inputs.nixpkgs.follows = "nixpkgs-stable";
-        };
 
         lanzaboote = {
-            url = "github:nix-community/lanzaboote/v0.3.0";
-            # Optional but recommended to limit the size of your system closure.
+            url = "github:nix-community/lanzaboote";
             inputs.nixpkgs.follows = "nixpkgs";
         };
 
         nixos-wsl.url = "github:nix-community/nixos-wsl";
   };
 
-    outputs = { self, nixpkgs, nixpkgs-stable, home-manager, home-manager-stable, lanzaboote, nixos-wsl, ... }@inputs: {
-        nixosConfigurations = {
-            jedha = nixpkgs.lib.nixosSystem {
-            system = "x86_64-linux";
-                modules = [
-                    lanzaboote.nixosModules.lanzaboote
-                    ./hosts/jedha/configuration.nix
+  outputs = inputs@{ self, nixpkgs, nixpkgs-small, lanzaboote, home-manager, nixos-wsl, ... }: {
+    nixosConfigurations = {
+      jedha = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";	          
+          modules = [
+              ./hosts/jedha/configuration.nix
+              lanzaboote.nixosModules.lanzaboote
 
-                    home-manager.nixosModules.home-manager
-                    {
-                        home-manager.useGlobalPkgs = true;
-                        home-manager.useUserPackages = true;
+              home-manager.nixosModules.home-manager
+              {
+                  home-manager.useGlobalPkgs = true;
+                  home-manager.useUserPackages = true;
 
-                        home-manager.extraSpecialArgs = inputs;
-                        home-manager.users.dwaris = import ./hosts/jedha/home.nix;
-                    }
-                ];
-            };
+                  home-manager.extraSpecialArgs = inputs;
+                  home-manager.users.dwaris = import ./hosts/jedha/home.nix;
+              }
+          ];
+      };
 
-            kashyyyk = nixpkgs.lib.nixosSystem {
-            system = "x86_64-linux";
-                modules = [
-                    ./hosts/kashyyyk/configuration.nix
+      kashyyyk = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+              ./hosts/kashyyyk/configuration.nix
 
-                    home-manager.nixosModules.home-manager
-                    {
-                        home-manager.useGlobalPkgs = true;
-                        home-manager.useUserPackages = true;
+              home-manager.nixosModules.home-manager
+              {
+                  home-manager.useGlobalPkgs = true;
+                  home-manager.useUserPackages = true;
 
-                        home-manager.extraSpecialArgs = inputs;
-                        home-manager.users.dwaris = import ./hosts/kashyyyk/home.nix;
-                    }
-                ];
-            };
-            wsl = nixpkgs-stable.lib.nixosSystem {
-            system = "x86_64-linux";
-            modules = [
-                ./hosts/wsl/configuration.nix
-                nixos-wsl.nixosModules.wsl
-                home-manager-stable.nixosModules.home-manager
-                {
-                    home-manager.useGlobalPkgs = true;
-                    home-manager.useUserPackages = true;
+                  home-manager.extraSpecialArgs = inputs;
+                  home-manager.users.dwaris = import ./hosts/kashyyyk/home.nix;
+              }
+          ];
+      };
 
-                    home-manager.extraSpecialArgs = inputs;
-                    home-manager.users.dwaris = import ./hosts/wsl/home.nix;
-                }
-            ];
-            };
-        };
+      wsl = nixpkgs-small.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+              ./hosts/wsl/configuration.nix
+              nixos-wsl.nixosModules.wsl
+              
+              home-manager.nixosModules.home-manager
+              {
+                home-manager.useGlobalPkgs = true;
+                home-manager.useUserPackages = true;
+
+                home-manager.extraSpecialArgs = inputs;
+                home-manager.users.dwaris = import ./hosts/wsl/home.nix;
+              }
+          ];
+      };
     };
+  };
 }

@@ -8,6 +8,7 @@
         # utils
         ripgrep
         htop
+        btop
 
         bottom
         fd
@@ -18,8 +19,4 @@
 
 	    neovim
     ];
-
-    programs = {
-        btop.enable = true;
-    };
 }

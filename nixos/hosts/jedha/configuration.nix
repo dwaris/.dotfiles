@@ -9,35 +9,26 @@
     [
         ../../modules/system.nix
         ../../modules/gnome.nix
-        ../../modules/hypr.nix
         ../../modules/nixos/fonts.nix
 
         ../../modules/nixos/steam.nix
         ../../modules/nixos/opentabletdriver.nix
         ../../modules/nixos/virtualization.nix
         ../../modules/nixos/makemkv.nix
+        ../../modules/nixos/mysql.nix
         # Include the results of the hardware scan.
         ./hardware-configuration.nix
     ];
-
-#  boot.loader.grub = {
-#    enable = true;
-#    default = "saved";
-#    zfsSupport = true;
-#    efiSupport = true;
-#    efiInstallAsRemovable = true;
-#    useOSProber = true;
-#    mirroredBoots = [
-#      { devices = [ "nodev"]; path = "/boot"; }
-#    ];
-#  };
 
   boot.loader.systemd-boot.enable = false;
   boot.lanzaboote = {
      enable = true;
      pkiBundle = "/etc/secureboot";
+     settings = {
+        default = "@saved";
+        configurationLimit = 10;
+      };
   };
-  boot.loader.systemd-boot.configurationLimit = 10;
   boot.loader.efi.efiSysMountPoint = "/boot";
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
@@ -76,6 +67,7 @@
   services.openssh.enable = false;
   services.flatpak.enable = true;
   services.printing.enable = false;
+  services.fwupd.enable = true;
 
   virtualisation.docker.enable = true;
 
