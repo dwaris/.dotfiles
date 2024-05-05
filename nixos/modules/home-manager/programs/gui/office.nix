@@ -4,5 +4,7 @@
         joplin-desktop
         p3x-onenote
         xournalpp
+        inkscape-with-extensions
+        gimp-with-plugins
     ];
 }
