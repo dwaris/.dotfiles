@@ -6,7 +6,7 @@
   imports =
     [ # Include the results of the hardware scan.
         ../../modules/system.nix
-        ../../modules/gnome.nix
+        ../../modules/kde.nix
         ../../modules/nixos/fonts.nix
 
         # Include the results of the hardware scan.
