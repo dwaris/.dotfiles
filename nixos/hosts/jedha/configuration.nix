@@ -8,7 +8,7 @@
   imports =
     [
         ../../modules/system.nix
-        ../../modules/gnome.nix
+        ../../modules/kde.nix
         ../../modules/nixos/fonts.nix
 
         ../../modules/nixos/steam.nix

@@ -1,7 +1,7 @@
 { config, pkgs, ... }: {
     home.packages = with pkgs; [
         parallel
-        ffmpeg
+        ffmpeg_7
         opusTools
     ];
 }
