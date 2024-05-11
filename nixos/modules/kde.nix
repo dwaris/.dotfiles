@@ -2,8 +2,19 @@
     # List packages installed in system profile. To search, run:
     # $ nix search wget
     environment.systemPackages = with pkgs; [
+        pciutils
+        clinfo
+        glxinfo
+        vulkan-tools
+        wayland-utils
         wl-clipboard
+        partition-manager
         kdePackages.ksshaskpass
+        (catppuccin-kde.override {
+            flavour = [ "mocha" ];
+            accents = [ "rosewater" ];
+            winDecStyles = [ "classic" ];
+        })
     ];
     # Configure keymap in and Dispay Manager
     services = {
