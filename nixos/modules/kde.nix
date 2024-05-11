@@ -3,11 +3,13 @@
     # $ nix search wget
     environment.systemPackages = with pkgs; [
         wl-clipboard
+        kdePackages.ksshaskpass
     ];
     # Configure keymap in and Dispay Manager
     services = {
         xserver = {
             enable = true;
+            xkb.layout = "eu";
         };
         desktopManager.plasma6.enable = true;
         displayManager.sddm = {
@@ -27,6 +29,15 @@
         enableKwallet = true;
     };
 
+    programs = {
+        ssh.startAgent = true;
+        ssh.askPassword = pkgs.lib.mkForce "${pkgs.kdePackages.ksshaskpass.out}/bin/ksshaskpass";
+    };
+    
+    environment.sessionVariables = {
+        
+    };
+    
     # Enable sound with pipewire.
     hardware.pulseaudio.enable = false;
     security.rtkit.enable = true;
