@@ -44,10 +44,12 @@
         ssh.startAgent = true;
         ssh.askPassword = pkgs.lib.mkForce "${pkgs.kdePackages.ksshaskpass.out}/bin/ksshaskpass";
     };
-    
-    environment.sessionVariables = {
-        
+
+    xdg.portal = {
+        enable = true;
+        extraPortals = [ pkgs.xdg-desktop-portal-kde ];
     };
+
     
     # Enable sound with pipewire.
     hardware.pulseaudio.enable = false;
