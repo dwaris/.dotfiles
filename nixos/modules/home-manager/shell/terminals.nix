@@ -1,7 +1,4 @@
-{ pkgs, lib, ... }:
-let
-  font = "Source Code Pro";
-in
+{ pkgs, lib, ... }:<
 {
   programs.alacritty = {
     enable = true;
@@ -21,9 +18,6 @@ in
         };
 
         font = {
-            normal.family = font;
-            bold.family = font;
-            italic.family = font;
             size = 12;
         };
     };
