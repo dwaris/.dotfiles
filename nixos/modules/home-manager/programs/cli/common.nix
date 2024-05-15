@@ -3,6 +3,7 @@
         # archives
         zip
         unzip
+        unrar
         p7zip
 
         # utils
@@ -12,7 +13,7 @@
 
         bottom
         fd
-        neofetch
+        fastfetch
 
         # transfer
         rsync
