@@ -2,14 +2,16 @@
     # List packages installed in system profile. To search, run:
     # $ nix search wget
     environment.systemPackages = with pkgs; [
+        unrar
         pciutils
         clinfo
         glxinfo
         vulkan-tools
         wayland-utils
+        aha
         wl-clipboard
-        partition-manager
         kdePackages.ksshaskpass
+        kdePackages.sddm-kcm
         (catppuccin-kde.override {
             flavour = [ "mocha" ];
             accents = [ "rosewater" ];
@@ -26,6 +28,7 @@
         displayManager.sddm = {
             enable = true;
             wayland.enable = true;
+            autoNumlock = true;
         };
     };
 
@@ -50,6 +53,9 @@
         extraPortals = [ pkgs.kdePackages.xdg-desktop-portal-kde ];
     };
 
+    programs.partition-manager = {
+        enable = true;
+    };
     
     # Enable sound with pipewire.
     hardware.pulseaudio.enable = false;
