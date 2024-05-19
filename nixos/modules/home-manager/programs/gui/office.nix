@@ -2,9 +2,10 @@
     home.packages = with pkgs; [
         rnote
         joplin-desktop
-        p3x-onenote
+        anytype
         xournalpp
-        inkscape-with-extensions
-        gimp-with-plugins
+
+        inkscape
+        gimp
     ];
 }
