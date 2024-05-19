@@ -3,5 +3,6 @@
         heroic
         mangohud
         ryujinx
+        prismlauncher
     ];
 }
