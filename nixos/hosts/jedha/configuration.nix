@@ -20,13 +20,15 @@
         ./hardware-configuration.nix
     ];
 
-  boot.loader.systemd-boot.enable = false;
-  boot.lanzaboote = {
+    boot.loader.systemd-boot = {
+      enable = false;
+      configurationLimit = 10;
+    };
+    boot.lanzaboote = {
      enable = true;
      pkiBundle = "/etc/secureboot";
      settings = {
         default = "@saved";
-        configurationLimit = 10;
       };
   };
   boot.loader.efi.efiSysMountPoint = "/boot";
