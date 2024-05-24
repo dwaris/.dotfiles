@@ -46,6 +46,7 @@
           system = "x86_64-linux";
           modules = [
               ./hosts/kashyyyk/configuration.nix
+              lanzaboote.nixosModules.lanzaboote
 
               home-manager.nixosModules.home-manager
               {

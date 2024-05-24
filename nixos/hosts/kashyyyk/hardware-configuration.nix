@@ -9,19 +9,32 @@
     ];
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
-  boot.initrd.kernelModules = [ ];
+  boot.initrd.kernelModules = [ "zfs" ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/bd479fde-d810-4b11-addb-04515bc110c0";
-      fsType = "ext4";
+    { device = "zpool/root";
+      fsType = "zfs";
     };
 
-  boot.initrd.luks.devices."luks-bcf5196a-d593-4662-9349-25b31af46f2d".device = "/dev/disk/by-uuid/bcf5196a-d593-4662-9349-25b31af46f2d";
+  fileSystems."/nix" =
+    { device = "zpool/nix";
+      fsType = "zfs";
+    };
+
+  fileSystems."/var" =
+    { device = "zpool/var";
+      fsType = "zfs";
+    };
+
+  fileSystems."/home" =
+    { device = "zpool/home";
+      fsType = "zfs";
+    };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/02A6-9478";
+    { device = "/dev/disk/by-uuid/7321-60A4";
       fsType = "vfat";
     };
 

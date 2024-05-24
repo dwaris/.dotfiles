@@ -13,20 +13,27 @@
         ./hardware-configuration.nix
     ];
 
-  # Bootloader.
-  boot.loader = {
-    systemd-boot.enable = true;
-    efi.canTouchEfiVariables = true;
+  boot.loader.systemd-boot = {
+    enable = false;
+    configurationLimit = 10;
   };
+  boot.lanzaboote = {
+     enable = true;
+     pkiBundle = "/etc/secureboot";
+  };
+  boot.loader.efi.efiSysMountPoint = "/boot";
+  boot.loader.efi.canTouchEfiVariables = true;
+  boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
+  boot.supportedFilesystems = [ "zfs" "ntfs" ];
 
-  # Setup keyfile
-  boot.initrd.secrets = {
-    "/crypto_keyfile.bin" = null;
-  };
-  boot.kernelPackages = pkgs.linuxPackages;
+  boot.zfs.requestEncryptionCredentials = true;
+  boot.zfs.forceImportRoot = true;
+
+  boot.initrd.systemd.enable = true;
+  boot.initrd.supportedFilesystems = [ "zfs" ];
+
+  boot.initrd.kernelModules = [ "zfs" ];
   boot.kernelParams = [
-    # https://wiki.archlinux.org/index.php/Lenovo_ThinkPad_X260#Thinkpad_X260
-  "i915.enable_psr=0"
   ];
 
   networking.hostName = "kashyyyk"; # Define your hostname.
@@ -35,10 +42,8 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    zram-generator
+    sbctl
   ];
-
-  zramSwap.enable = true;
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -48,10 +53,12 @@
   services.openssh.enable = true;
   services.flatpak.enable = true;
   services.printing.enable = false;
+  services.fwupd.enable = true;
 
   virtualisation.docker.enable = true;
 
-  users.users.dwaris.extraGroups = [ "networkmanager" "docker"  ];
+  programs.adb.enable = true;
+  users.users.dwaris.extraGroups = [ "networkmanager" "docker" "adbusers" ];
 
   security.pki.certificates = [ "/etc/ssl/certs/root_ca.crt" ];
 
@@ -61,7 +68,5 @@
     libvdpau-va-gl
   ];
 
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
-
-  system.stateVersion = "23.05"; # Did you read the comment?
+  system.stateVersion = "23.11"; # Did you read the comment?
 }
