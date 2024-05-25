@@ -2,7 +2,6 @@
     imports = [
         ../../modules/home-manager/programs
         ../../modules/home-manager/shell
-        ../../modules/home-manager/kde.nix
 
         ../../modules/home-manager/programs/gui/prusa.nix
     ];
