@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, lib, ... }: {
     # List packages installed in system profile. To search, run:
     # $ nix search wget
     environment.systemPackages = with pkgs; [
@@ -41,20 +41,37 @@
         name = "kwallet";
         enableKwallet = true;
     };
-
-    programs = {
-        ssh.startAgent = true;
-        ssh.askPassword = pkgs.lib.mkForce "${pkgs.kdePackages.ksshaskpass.out}/bin/ksshaskpass";
+/* 
+    programs.ssh = {
+        enableAskPassword = true;
+        askPassword = (lib.getExe pkgs.kdePackages.ksshaskpass);
     };
+    environment.sessionVariables.SSH_ASKPASS_REQUIRE = "prefer";
+ */
+    programs.ssh.startAgent = true;
+    programs.ssh.askPassword = "${pkgs.kdePackages.ksshaskpass}/bin/ksshaskpass";
+
+    systemd.user.services.ssh-add-my-keys = {
+        script = ''
+        # adding ssh key using KDE, adapted from https://wiki.archlinux.org/title/KDE_Wallet
+        ${pkgs.openssh}/bin/ssh-add -q < /dev/null
+        '';
+        unitConfig.ConditionUser = "!@system"; # same as ssh-agent
+        serviceConfig.Restart = "on-failure"; # in case ssh-agent or kwallet need more time to setup
+
+        wantedBy = [ "default.target" ];
+        # assumes that plasma systemd support is activated, see https://blog.davidedmundson.co.uk/blog/plasma-and-the-systemd-startup/
+        requires = [ "ssh-agent.service" "app-pam_kwallet_init-autostart.service" ];
+        after = [ "ssh-agent.service" "app-pam_kwallet_init-autostart.service" ];
+    };
+
 
     xdg.portal = {
         enable = true;
         extraPortals = [ pkgs.kdePackages.xdg-desktop-portal-kde ];
     };
 
-    programs.partition-manager = {
-        enable = true;
-    };
+    programs.partition-manager.enable = true;
     
     # Enable sound with pipewire.
     hardware.pulseaudio.enable = false;
