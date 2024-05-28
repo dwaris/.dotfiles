@@ -3,6 +3,7 @@
         plexamp
         mpv
         vlc
+        tauon
         tidal-hifi
     ];
 }
