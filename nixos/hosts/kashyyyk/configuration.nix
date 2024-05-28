@@ -62,6 +62,7 @@
 
   security.pki.certificates = [ "/etc/ssl/certs/root_ca.crt" ];
 
+  hardware.bluetooth.enable = true;
   hardware.opengl.extraPackages = with pkgs; [
     intel-media-driver
     vaapiVdpau
