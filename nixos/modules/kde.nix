@@ -2,6 +2,8 @@
     # List packages installed in system profile. To search, run:
     # $ nix search wget
     environment.systemPackages = with pkgs; [
+        kile
+        
         pciutils
         clinfo
         glxinfo
@@ -9,6 +11,7 @@
         wayland-utils
         aha
         wl-clipboard
+        xwaylandvideobridge
         kdePackages.sddm-kcm
         (catppuccin-kde.override {
             flavour = [ "mocha" ];
@@ -31,8 +34,10 @@
     };
 
     environment.plasma6.excludePackages = with pkgs.kdePackages; [
+        plasma-browser-integration
         konsole
         oxygen
+        elisa
     ];
 
     security.pam.services.kwallet = {
