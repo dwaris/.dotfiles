@@ -10,10 +10,9 @@
         texlive.combined.scheme-medium
 
         gopls
+        pyright
         marksman
         lua-language-server
         nil
-        black
-        stylua
     ];
 }
