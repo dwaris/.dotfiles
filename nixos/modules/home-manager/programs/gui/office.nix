@@ -7,5 +7,6 @@
 
         inkscape
         gimp
+        krita
     ];
 }
