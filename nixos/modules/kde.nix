@@ -45,6 +45,7 @@
         enableKwallet = true;
     };
 
+    programs.ssh.startAgent = true;
     programs.ssh.enableAskPassword = true;
     programs.ssh.askPassword = (lib.getExe pkgs.kdePackages.ksshaskpass);
     environment.sessionVariables.SSH_ASKPASS_REQUIRE = "prefer";
@@ -55,7 +56,8 @@
     };
 
     programs.partition-manager.enable = true;
-    
+    programs.kdeconnect.enable = true;
+
     # Enable sound with pipewire.
     hardware.pulseaudio.enable = false;
     security.rtkit.enable = true;
