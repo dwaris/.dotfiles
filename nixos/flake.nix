@@ -7,7 +7,7 @@
     };
 
     inputs = {
-        nixpkgs.url = "github:Nixos/nixpkgs/nixos-unstable";
+        nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
         nixpkgs-small.url = "github:nixos/nixpkgs/nixos-unstable-small";
 
         home-manager = {
