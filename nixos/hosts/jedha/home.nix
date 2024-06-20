@@ -4,8 +4,9 @@
         ../../modules/home-manager/shell
 
         ../../modules/home-manager/programs/gui/game-launchers.nix
+
         ../../modules/home-manager/programs/gui/prusa.nix
-        ../../modules/home-manager/programs/gui/makemkv.nix
+#        ../../modules/home-manager/programs/gui/makemkv.nix
     ];
 
     # Home Manager needs a bit of information about you and the paths it should
