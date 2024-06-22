@@ -79,10 +79,10 @@
   users.users.dwaris.extraGroups = [ "networkmanager" "docker" "adbusers" ];
 
   hardware.bluetooth.enable = true;
-  hardware.opengl.enable = true;
-  hardware.opengl.driSupport = true; # This is already enabled by default
-  hardware.opengl.driSupport32Bit = true; # For 32 bit applications
-  hardware.opengl.extraPackages = with pkgs; [
+
+  hardware.graphics.enable = true;
+  hardware.graphics.enable32Bit = true;
+  hardware.graphics.extraPackages = with pkgs; [
     rocmPackages.clr.icd
   ];
 
