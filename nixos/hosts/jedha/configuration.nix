@@ -28,9 +28,9 @@
     boot.lanzaboote = {
      enable = true;
      pkiBundle = "/etc/secureboot";
-     settings = {
-        default = "@saved";
-      };
+     #settings = {
+     #   default = "@saved";
+     # };
   };
   boot.loader.efi.efiSysMountPoint = "/boot";
   boot.loader.efi.canTouchEfiVariables = true;
@@ -68,8 +68,8 @@
   networking.firewall.enable = true;
 
   # Enable the OpenSSH daemon.
-  services.openssh.enable = false;
-  services.flatpak.enable = true;
+  services.openssh.enable = true;
+  services.flatpak.enable = false;
   services.printing.enable = false;
   services.fwupd.enable = true;
 
@@ -82,9 +82,9 @@
 
   hardware.graphics.enable = true;
   hardware.graphics.enable32Bit = true;
-  hardware.graphics.extraPackages = with pkgs; [
-    rocmPackages.clr.icd
-  ];
+  #hardware.graphics.extraPackages = with pkgs; [
+  #  rocmPackages.clr.icd
+  #];
 
   system.stateVersion = "23.11"; # Did you read the comment?
 }
