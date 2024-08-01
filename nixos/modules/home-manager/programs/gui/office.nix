@@ -2,11 +2,12 @@
     home.packages = with pkgs; [
         rnote
         joplin-desktop
-        anytype
+        obsidian
         xournalpp
 
         inkscape
         gimp
         krita
+        pixelorama
     ];
 }

@@ -1,7 +1,10 @@
 { config, pkgs, ... }: {
     home.packages = with pkgs; [
-        heroic
         mangohud
+
+        lutris
+        wineWowPackages.waylandFull
+
         ryujinx
         prismlauncher
     ];
