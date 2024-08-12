@@ -1,7 +1,9 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, inputs,... }: {
     imports = [
         ../../modules/home-manager/programs
         ../../modules/home-manager/shell
+
+        inputs.nixvim.homeManagerModules.nixvim
 
         ../../modules/home-manager/programs/gui/prusa.nix
     ];
