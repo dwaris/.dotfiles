@@ -85,6 +85,7 @@
   #hardware.graphics.extraPackages = with pkgs; [
   #  rocmPackages.clr.icd
   #];
+  programs.hyprland.enable = true;
 
   system.stateVersion = "23.11"; # Did you read the comment?
 }
