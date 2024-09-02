@@ -70,7 +70,7 @@
                   home-manager.useGlobalPkgs = true;
                   home-manager.useUserPackages = true;
 
-                  home-manager.extraSpecialArgs = inputs;
+                  home-manager.extraSpecialArgs = {inherit inputs nixvim;};
                   home-manager.users.dwaris = import ./hosts/kashyyyk/home.nix;
               }
           ];
