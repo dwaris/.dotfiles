@@ -11,7 +11,7 @@ configuration {
 }
 
 /*****----- Global Properties -----*****/
-@import                          "./colors/dracula.rasi"
+@import                          "./colors/catppuccin.rasi"
 
 * {
     border-colour:               var(selected);
