@@ -1,6 +1,9 @@
 { config, pkgs, lib, ... }: {
     home.packages = with pkgs; [
         stow
+        nixfmt-classic
+        black
+        stylua
     ];
     programs.bash.enable = true;
     programs.fzf.enable = true;
