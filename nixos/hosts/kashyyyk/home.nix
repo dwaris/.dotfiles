@@ -1,4 +1,4 @@
-{ config, pkgs, inputs,... }: {
+{ config, pkgs, ... }: {
     imports = [
         ../../modules/home-manager/programs
         ../../modules/home-manager/shell
@@ -21,7 +21,7 @@
 
     home.sessionVariables = {
         EDITOR = "nvim";
-        BROWSER = "chromium";
+        BROWSER = "firefox";
         TERMINAL = "alacritty";
         PAGER = "less -R";
     };

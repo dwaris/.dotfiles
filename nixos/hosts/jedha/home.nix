@@ -2,7 +2,6 @@
     imports = [
         ../../modules/home-manager/programs
         ../../modules/home-manager/shell
-        ../../modules/home-manager/de
         ../../modules/home-manager/programs/gui/game-launchers.nix
 
         ../../modules/home-manager/programs/gui/prusa.nix
@@ -27,7 +26,7 @@
 
     home.sessionVariables = {
         EDITOR = "nvim";
-        BROWSER = "chromium";
+        BROWSER = "firefox";
         TERMINAL = "alacritty";
         PAGER = "less -R";
     };
