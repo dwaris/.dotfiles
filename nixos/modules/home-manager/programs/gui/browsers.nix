@@ -4,7 +4,7 @@
         enable = true;
         package = (pkgs.chromium.override { enableWideVine = true; });
         extensions = [
-            "cjpalhdlnbpafiamejdnhcphjbkeiagm" # ublock origin
+            "ddkjiahejlhfcafbddmgiahcphecmpfh" # ublock origin lite (R.I.P. MV2 and Fuck off Google)
             "nngceckbapebfimnlniiiahkandclblb" # bitwarden
             "lanfdkkpgfjfdikkncbnojekcppdebfp" # canvas fingerprint defender
             "mdlbikciddolbenfkgggdegphnhmnfcg" # netflix 1080p new?

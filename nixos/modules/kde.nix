@@ -13,6 +13,7 @@
         wl-clipboard
         xwaylandvideobridge
         kdePackages.sddm-kcm
+        kdePackages.filelight
         (catppuccin-kde.override {
             flavour = [ "mocha" ];
             accents = [ "rosewater" ];

@@ -26,13 +26,25 @@
         };
 
         nixos-wsl.url = "github:nix-community/nixos-wsl";
+
+        nixos-cosmic = {
+        url = "github:lilyinstarlight/nixos-cosmic";
+        inputs.nixpkgs.follows = "nixpkgs";
+        };
   };
 
-  outputs = inputs@{ self, nixpkgs, nixpkgs-small, lanzaboote, home-manager, nixos-wsl, ... }: {
+  outputs = inputs@{ self, nixpkgs, nixpkgs-small, lanzaboote, home-manager, nixos-wsl, nixvim, nixos-cosmic, ... }: {
     nixosConfigurations = {
       jedha = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";	          
           modules = [
+            {
+              nix.settings = {
+                  substituters = [ "https://cosmic.cachix.org/" ];
+                  trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
+              };
+            }
+              nixos-cosmic.nixosModules.default
               ./hosts/jedha/configuration.nix
               lanzaboote.nixosModules.lanzaboote
 
@@ -41,7 +53,7 @@
                   home-manager.useGlobalPkgs = true;
                   home-manager.useUserPackages = true;
 
-                  home-manager.extraSpecialArgs = inputs;
+                  home-manager.extraSpecialArgs = {inherit inputs nixvim;};
                   home-manager.users.dwaris = import ./hosts/jedha/home.nix;
               }
           ];

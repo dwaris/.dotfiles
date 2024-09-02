@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, ... }:
 
 {
   imports =
@@ -82,10 +82,9 @@
 
   hardware.graphics.enable = true;
   hardware.graphics.enable32Bit = true;
-  #hardware.graphics.extraPackages = with pkgs; [
-  #  rocmPackages.clr.icd
-  #];
-  programs.hyprland.enable = true;
+
+  #services.desktopManager.cosmic.enable = true;
+  #services.displayManager.cosmic-greeter.enable = true;
 
   system.stateVersion = "23.11"; # Did you read the comment?
 }
