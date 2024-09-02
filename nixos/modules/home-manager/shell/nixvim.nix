@@ -1,11 +1,11 @@
-{ pkgs, ... }:
+{ inputs, ... }: {
+  imports = [ inputs.nixvim.homeManagerModules.nixvim ];
 
-{
   programs.nixvim = {
     enable = true;
 
     # Theme
-    colorschemes.tokyonight.enable = true;
+    colorschemes.catppuccin.enable = true;
 
     # Settings
     opts = {
@@ -15,22 +15,25 @@
       tabstop = 4;
       number = true;
       clipboard = "unnamedplus";
+
+      ignorecase = true;
+      incsearch = true;
+      smartcase = true;
+      wildmode = "list:longest";
+
+      swapfile = false;
+      undofile = true;
     };
 
     # Keymaps
-    globals = {
-      mapleader = " ";
-    };
+    globals = { mapleader = " "; };
 
     plugins = {
 
       # UI
       lualine.enable = true;
-      bufferline.enable = true;
       treesitter.enable = true;
-      which-key = {
-        enable = true;
-      };
+      which-key = { enable = true; };
 
       telescope = {
         enable = true;
@@ -46,6 +49,46 @@
         };
         extensions = {
           file-browser.enable = true;
+          fzf-native.enable = true;
+        };
+      };
+      indent-blankline = { enable = true; };
+      undotree = {
+        enable = true;
+        settings = {
+          autoOpenDiff = true;
+          focusOnToggle = true;
+        };
+        settings.keymaps = [{
+          mode = "n";
+          key = "<leader>ut";
+          action = "<cmd>UndotreeToggle<CR>";
+          options = {
+            silent = true;
+            desc = "Undotree";
+          };
+        }];
+      };
+
+      conform-nvim = {
+        enable = true;
+        settings = {
+          formatOnSave = {
+            lspFallback = true;
+            timeoutMs = 500;
+          };
+          notifyOnError = true;
+          formattersByFt = {
+            html = [[ "prettierd" "prettier" ]];
+            css = [[ "prettierd" "prettier" ]];
+            javascript = [[ "prettierd" "prettier" ]];
+            typescript = [[ "prettierd" "prettier" ]];
+            python = [ "black" ];
+            lua = [ "stylua" ];
+            nix = [ "nixfmt" ];
+            markdown = [[ "prettierd" "prettier" ]];
+            yaml = [ "yamllint" "yamlfmt" ];
+          };
         };
       };
 
@@ -53,10 +96,13 @@
       lsp = {
         enable = true;
         servers = {
+          pyright.enable = true;
           marksman.enable = true;
           nil-ls.enable = true;
           rust-analyzer = {
             enable = true;
+            installCargo = true;
+            installRustc = true;
           };
         };
       };
