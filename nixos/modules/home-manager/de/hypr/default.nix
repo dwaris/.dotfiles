@@ -8,7 +8,6 @@
   home.packages = with pkgs; [ 
     waybar
     hyprpaper
-    rofi-wayland
     dunst
     gnome-icon-theme
   ];
@@ -16,10 +15,7 @@
   #test later systemd.user.targets.hyprland-session.Unit.Wants = [ "xdg-desktop-autostart.target" ];
   wayland.windowManager.hyprland = {
     enable = true;
-    systemdIntegration = true;
-    nvidiaPatches = true;
     extraConfig = ''
-
     # Monitor
     monitor=,preferred,auto,1
     monitor=DP-1, 2560x1440@144, 1920x0, 1, bitdepth,10, vrr, 2
@@ -27,17 +23,15 @@
 
 
     # Fix slow startup
-    exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-    exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP 
+    #exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+    #exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP 
 
     # Autostart
 
-    #exec-once = hyprctl setcursor Bibata-Modern-Classic 24
     exec-once = dunst
+    exec-once = systemctl --user start plasma-polkit-agent
 
-    exec-once=systemctl --user start plasma-polkit-agent
-
-    source = /home/enzo/.config/hypr/colors
+    source = /home/dwaris/.config/hypr/colors
     exec = pkill waybar & sleep 0.5 && waybar
     exec-once = hyprpaper
 
@@ -74,11 +68,6 @@
     decoration {
 
         rounding = 10
-        blur = true
-        blur_size = 3
-        blur_passes = 1
-        blur_new_optimizations = true
-
         drop_shadow = true
         shadow_range = 4
         shadow_render_power = 3
@@ -102,10 +91,6 @@
         preserve_split = yes
     }
 
-    master {
-        new_is_master = yes
-    }
-
     gestures {
         workspace_swipe = false
     }
@@ -115,28 +100,16 @@
     # Example windowrule v2
     # windowrulev2 = float,class:^(kitty)$,title:^(kitty)$
 
-    windowrule=float,^(kitty)$
-    windowrule=float,^(pavucontrol)$
-    windowrule=center,^(kitty)$
-    windowrule=float,^(blueman-manager)$
-    windowrule=size 600 500,^(kitty)$
-    windowrule=size 934 525,^(mpv)$
-    windowrule=float,^(mpv)$
-    windowrule=center,^(mpv)$
-    #windowrule=pin,^(firefox)$
-
     $mainMod = SUPER
-    bind = $mainMod, G, fullscreen,
-
+    bind = $mainMod, G, fullscreen, 0
+    bind = $mainMod, F, fullscreen, 1
 
     bind = $mainMod, RETURN, exec, alacritty
     bind = $mainMod, L, exec, firefox 
     bind = $mainMod, Q, killactive,
     bind = $mainMod, M, exit,
-    bind = $mainMod, F, exec, dolphine
     bind = $mainMod, V, togglefloating,
-    bind = $mainMod, w, exec, wofi --show drun
-    bind = $mainMod, R, exec, rofiWindow
+    bind = $mainMod, w, exec, rofi -show drun
     bind = $mainMod, P, pseudo, # dwindle
     bind = $mainMod, J, togglesplit, # dwindle
 
@@ -194,7 +167,6 @@
     # Move/resize windows with mainMod + LMB/RMB and dragging
     bindm = $mainMod, mouse:272, movewindow
     bindm = $mainMod, mouse:273, resizewindow
-    bindm = ALT, mouse:272, resizewindow
         '';
   };
 

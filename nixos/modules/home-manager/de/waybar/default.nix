@@ -68,13 +68,7 @@
                tooltip label {
                  color: rgb(217, 224, 238);
                }
-         #custom-launcher {
-                 font-size: 20px;
-                 padding-left: 8px;
-                 padding-right: 6px;
-                 color: #7ebae4;
-               }
-         #mode, #clock, #memory, #temperature,#cpu,#mpd, #custom-wall, #temperature, #backlight, #pulseaudio, #network, #battery, #custom-powermenu, #custom-cava-internal {
+         #mode, #clock, #memory, #temperature, #cpu, #backlight, #pulseaudio, #network, #battery, #custom-powermenu {
                  padding-left: 10px;
                  padding-right: 10px;
                }
@@ -92,12 +86,6 @@
          #clock {
                  color: rgb(217, 224, 238);
                }
-        /* #idle_inhibitor {
-                 color: rgb(221, 182, 242);
-               }*/
-         #custom-wall {
-                 color: #33ccff;
-            }
          #temperature {
                  color: rgb(150, 205, 251);
                }
@@ -113,27 +101,15 @@
          #network.disconnected {
                  color: rgb(255, 255, 255);
                }
-         #custom-powermenu {
-                 color: rgb(242, 143, 173);
-                 padding-right: 8px;
-               }
          #tray {
                  padding-right: 8px;
                  padding-left: 10px;
                }
-         #mpd.paused {
-                 color: #414868;
-                 font-style: italic;
-               }
-         #mpd.stopped {
-                 background: transparent;
-               }
-         #mpd {
-                 color: #c0caf5;
-               }
-         #custom-cava-internal{
-                 font-family: "Hack Nerd Font" ;
-                 color: #33ccff;
+         #custom-launcher {
+                 font-size: 20px;
+                 padding-left: 8px;
+                 padding-right: 6px;
+                 color: #7ebae4;
                }
       '';
       settings = [{
@@ -141,48 +117,71 @@
         "position" = "top";
         modules-left = [
           "custom/launcher"
-          "temperature"
-          "mpd"
-          "custom/cava-internal"
         ];
         modules-center = [
           "clock"
         ];
         modules-right = [
-          "pulseaudio"
-          "backlight"
-          "memory"
+          "pulseaudio#sink"
+          "pulseaudio#source"
+          "temperature"
           "cpu"
+          "memory"
           "network"
-          "custom/powermenu"
           "tray"
         ];
+        "hyprland/workspaces" = {
+          "format" = "{name}: {icon}";
+          "format-icons" = {
+            "1" = "";
+            "2" = "";
+            "3" = "";
+            "4" = "";
+            "5" = "";
+            "active" = "";
+            "default" = "";
+          };
+          "persistent-workspaces" = {
+            "*" = 5;
+          };
+        };
         "custom/launcher" = {
           "format" = " ";
-          "on-click" = "pkill rofi || rofi2";
-          "on-click-middle" = "exec default_wall";
-          "on-click-right" = "exec wallpaper_random";
+          "on-click" = "pkill rofi || rofi -show drun";
           "tooltip" = false;
         };
-        "custom/cava-internal" = {
-          "exec" = "sleep 1s && cava-internal";
-          "tooltip" = false;
-        };
-        "pulseaudio" = {
-          "scroll-step" = 1;
-          "format" = "{icon} {volume}%";
-          "format-muted" = "󰖁 Muted";
+        "pulseaudio#sink" = {
+          "format" = "{volume}% {icon}";
+          "format-muted" = "🔇";
+          "format-bluetooth" = "{volume}% {icon}  {format_source}";
           "format-icons" = {
-            "default" = [ "" "" "" ];
+              "headphones" = [" " " " " "];
+              "handsfree" = "";
+              "headset" =  [" " " " " "];
+              "phone" = [" " " " " "];
+              "portable" = [" " " " " "];
+              "car" = [" " " " " "];
+              "default" = ["" "" ""];
           };
-          "on-click" = "pamixer -t";
-          "tooltip" = false;
+          "on-click" = "pactl set-sink-mute @DEFAULT_SINK@ toggle";
+          "on-click-right" = "/usr/bin/pavucontrol";
+          "on-scroll-down" = "pactl set-sink-volume @DEFAULT_SINK@ -1%";
+          "on-scroll-up" = "pactl set-sink-volume @DEFAULT_SINK@ +1%";
+        };
+        "pulseaudio#source" = {
+          "format" = "{format_source}";
+          "format-source" = "{volume}% ";
+          "format-source-muted" = "";
+          "on-click" = "pactl set-source-mute @DEFAULT_SOURCE@ toggle";
+          "on-click-right" = "/usr/bin/pavucontrol";
+          "on-scroll-down" = "pactl set-source-volume @DEFAULT_SOURCE@ -1%";
+          "on-scroll-up" = "pactl set-source-volume @DEFAULT_SOURCE@ +1%";
         };
         "clock" = {
           "interval" = 1;
-          "format" = "{:%I:%M %p  %A %b %d}";
-          "tooltip" = true;
-          "tooltip-format"= "{=%A; %d %B %Y}\n<tt>{calendar}</tt>";
+          "format" = "{:%H:%M  %A %b %d}";
+          "tooltip" = false;
+
         };
         "memory" = {
           "interval" = 1;
@@ -195,32 +194,21 @@
           "interval" = 1;
           "format" = "󰍛 {usage}%";
         };
-        "mpd" = {
-          "max-length" = 25;
-          "format" = "<span foreground='#bb9af7'></span> {title}";
-          "format-paused" = " {title}";
-          "format-stopped" = "<span foreground='#bb9af7'></span>";
-          "format-disconnected" = "";
-          "on-click" = "mpc --quiet toggle";
-          "on-click-right" = "mpc update; mpc ls | mpc add";
-          "on-click-middle" = "kitty --class='ncmpcpp' ncmpcpp ";
-          "on-scroll-up" = "mpc --quiet prev";
-          "on-scroll-down" = "mpc --quiet next";
-          "smooth-scrolling-threshold" = 5;
-          "tooltip-format" = "{title} - {artist} ({elapsedTime:%M:%S}/{totalTime:%H:%M:%S})";
-        };
         "network" = {
-          "format-disconnected" = "󰯡 Disconnected";
-          "format-ethernet" = "󰒢 Connected!";
+          "format-disconnected" = "󰯡";
+          "format-ethernet" = "󰒢";
           "format-linked" = "󰖪 {essid} (No IP)";
           "format-wifi" = "󰖩 {essid}";
           "interval" = 1;
           "tooltip" = false;
         };
-        "custom/powermenu" = {
-          "format" = "";
-          "on-click" = "pkill rofi || ~/.config/rofi/powermenu/type-3/powermenu.sh";
-          "tooltip" = false;
+        "temperature" = {
+        # "thermal-zone": 2;
+        "hwmon-path" = "/sys/class/hwmon/hwmon3/temp1_input";
+        "critical-threshold" = 95;
+        # "format-critical"= "{temperatureC}°C {icon}",
+        "format" = "{temperatureC}°C {icon}";
+        "format-icons" = ["" "" ""];
         };
         "tray" = {
           "icon-size" = 15;
