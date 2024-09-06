@@ -5,6 +5,7 @@
         ../../modules/home-manager/programs/gui/game-launchers.nix
 
         ../../modules/home-manager/programs/gui/prusa.nix
+        ../../modules/home-manager/programs/gui/vr.nix
 #        ../../modules/home-manager/programs/gui/makemkv.nix
     ];
 
