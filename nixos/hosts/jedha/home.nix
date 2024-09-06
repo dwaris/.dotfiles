@@ -23,6 +23,8 @@
 
         veracrypt
         protonvpn-gui
+
+        osu-lazer-bin
     ];
 
     home.sessionVariables = {
