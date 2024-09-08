@@ -15,11 +15,7 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = with pkgs; [
-    qbittorrent
-
-    protonvpn-gui
-  ];
+  home.packages = with pkgs; [ ];
 
   home.sessionVariables = {
     EDITOR = "nvim";
