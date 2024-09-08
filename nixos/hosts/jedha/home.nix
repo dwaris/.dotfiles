@@ -1,44 +1,46 @@
-{ config, pkgs, ... }: {
-    imports = [
-        ../../modules/home-manager/programs
-        ../../modules/home-manager/shell
-        ../../modules/home-manager/programs/gui/game-launchers.nix
+{ config, pkgs, ... }:
 
-        ../../modules/home-manager/programs/gui/prusa.nix
-        ../../modules/home-manager/programs/gui/vr.nix
-#        ../../modules/home-manager/programs/gui/makemkv.nix
-    ];
+{
+  imports = [
+    ../../modules/home-manager/programs
+    ../../modules/home-manager/shell
+    ../../modules/home-manager/programs/gui/game-launchers.nix
 
-    # Home Manager needs a bit of information about you and the paths it should
-    # manage.
-    home.username = "dwaris";
-    home.homeDirectory = "/home/dwaris";
+    ../../modules/home-manager/programs/gui/prusa.nix
+    ../../modules/home-manager/programs/gui/vr.nix
+    #        ../../modules/home-manager/programs/gui/makemkv.nix
+  ];
 
-    # The home.packages option allows you to install Nix packages into your
-    # environment.
-    home.packages = with pkgs; [
-        qbittorrent
+  # Home Manager needs a bit of information about you and the paths it should
+  # manage.
+  home.username = "dwaris";
+  home.homeDirectory = "/home/dwaris";
 
-        easyeffects
+  # The home.packages option allows you to install Nix packages into your
+  # environment.
+  home.packages = with pkgs; [
+    qbittorrent
 
-        veracrypt
-        protonvpn-gui
+    easyeffects
 
-        osu-lazer-bin
-    ];
+    veracrypt
+    protonvpn-gui
 
-    home.sessionVariables = {
-        EDITOR = "nvim";
-        BROWSER = "firefox";
-        TERMINAL = "alacritty";
-        PAGER = "less -R";
-    };
+    osu-lazer-bin
+  ];
 
-    # Let Home Manager install and manage itself.
-    programs.home-manager.enable = true;
+  home.sessionVariables = {
+    EDITOR = "nvim";
+    BROWSER = "firefox";
+    TERMINAL = "alacritty";
+    PAGER = "less -R";
+  };
 
-    # Nicely reload system units when changing configs
-    systemd.user.startServices = "sd-switch";
+  # Let Home Manager install and manage itself.
+  programs.home-manager.enable = true;
 
-    home.stateVersion = "23.11"; # Please read the comment before changing.
+  # Nicely reload system units when changing configs
+  systemd.user.startServices = "sd-switch";
+
+  home.stateVersion = "23.11"; # Please read the comment before changing.
 }

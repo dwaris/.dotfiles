@@ -2,25 +2,26 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, ... }: {
-    imports =
-        [
-            ../../modules/system.nix
-            # Include the results of the hardware scan.
-            ./hardware-configuration.nix
-        ];
+{ config, pkgs, ... }:
 
-    wsl.enable = true;
-    wsl.defaultUser = "dwaris";
+{
+  imports = [
+    ../../modules/system.nix
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
-    boot.tmp.cleanOnBoot = true;
+  wsl.enable = true;
+  wsl.defaultUser = "dwaris";
 
-    networking.hostName = "wsl"; # Define your hostname.
-    networking.hostId = "533cdfa7";
+  boot.tmp.cleanOnBoot = true;
 
-    # List packages installed in system profile. To search, run:
-    # $ nix search wget
-    environment.systemPackages = with pkgs; [ ];
+  networking.hostName = "wsl"; # Define your hostname.
+  networking.hostId = "533cdfa7";
 
-    system.stateVersion = "23.05"; # Did you read the comment?
+  # List packages installed in system profile. To search, run:
+  # $ nix search wget
+  environment.systemPackages = with pkgs; [ ];
+
+  system.stateVersion = "23.05"; # Did you read the comment?
 }
