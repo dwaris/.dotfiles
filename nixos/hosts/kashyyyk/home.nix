@@ -1,36 +1,38 @@
-{ config, pkgs, ... }: {
-    imports = [
-        ../../modules/home-manager/programs
-        ../../modules/home-manager/shell
+{ config, pkgs, ... }:
 
-        ../../modules/home-manager/programs/gui/prusa.nix
-    ];
+{
+  imports = [
+    ../../modules/home-manager/programs
+    ../../modules/home-manager/shell
 
-    # Home Manager needs a bit of information about you and the paths it should
-    # manage.
-    home.username = "dwaris";
-    home.homeDirectory = "/home/dwaris";
+    ../../modules/home-manager/programs/gui/prusa.nix
+  ];
 
-    # The home.packages option allows you to install Nix packages into your
-    # environment.
-    home.packages = with pkgs; [
-        qbittorrent
+  # Home Manager needs a bit of information about you and the paths it should
+  # manage.
+  home.username = "dwaris";
+  home.homeDirectory = "/home/dwaris";
 
-        protonvpn-gui
-    ];
+  # The home.packages option allows you to install Nix packages into your
+  # environment.
+  home.packages = with pkgs; [
+    qbittorrent
 
-    home.sessionVariables = {
-        EDITOR = "nvim";
-        BROWSER = "firefox";
-        TERMINAL = "alacritty";
-        PAGER = "less -R";
-    };
+    protonvpn-gui
+  ];
 
-    # Let Home Manager install and manage itself.
-    programs.home-manager.enable = true;
+  home.sessionVariables = {
+    EDITOR = "nvim";
+    BROWSER = "firefox";
+    TERMINAL = "alacritty";
+    PAGER = "less -R";
+  };
 
-    # Nicely reload system units when changing configs
-    systemd.user.startServices = "sd-switch";
+  # Let Home Manager install and manage itself.
+  programs.home-manager.enable = true;
 
-    home.stateVersion = "23.05"; # Please read the comment before changing.
+  # Nicely reload system units when changing configs
+  systemd.user.startServices = "sd-switch";
+
+  home.stateVersion = "23.05"; # Please read the comment before changing.
 }

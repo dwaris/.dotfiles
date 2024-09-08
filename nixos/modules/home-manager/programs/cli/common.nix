@@ -1,21 +1,23 @@
-{  pkgs,  config, ...}: {
-    home.packages = with pkgs; [
-        # archives
-        zip
-        unzip
-        unrar
-        p7zip
+{ config, pkgs, ... }:
 
-        # utils
-        ripgrep
-        htop
-        btop
+{
+  home.packages = with pkgs; [
+    # archives
+    zip
+    unzip
+    unrar
+    p7zip
 
-        bottom
-        fd
-        fastfetch
+    # utils
+    ripgrep
+    htop
+    btop
 
-        # transfer
-        rsync
-    ];
+    bottom
+    fd
+    fastfetch
+
+    # transfer
+    rsync
+  ];
 }

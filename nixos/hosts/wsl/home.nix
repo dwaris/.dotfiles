@@ -1,29 +1,31 @@
-{ config, pkgs, ... }: {
-    imports = [
-        ../../modules/home-manager/programs/cli
-        ../../modules/home-manager/shell
-    ];
+{ config, pkgs, ... }:
 
-    # Home Manager needs a bit of information about you and the paths it should
-    # manage.
-    home.username = "dwaris";
-    home.homeDirectory = "/home/dwaris";
+{
+  imports = [
+    ../../modules/home-manager/programs/cli
+    ../../modules/home-manager/shell
+  ];
 
-    # The home.packages option allows you to install Nix packages into your
-    # environment.
-    home.packages = with pkgs; [ ];
+  # Home Manager needs a bit of information about you and the paths it should
+  # manage.
+  home.username = "dwaris";
+  home.homeDirectory = "/home/dwaris";
 
-    home.sessionVariables = {
-        EDITOR = "nvim";
-        TERMINAL = "alacritty";
-        PAGER = "less -R";
-    };
+  # The home.packages option allows you to install Nix packages into your
+  # environment.
+  home.packages = with pkgs; [ ];
 
-    # Let Home Manager install and manage itself.
-    programs.home-manager.enable = true;
+  home.sessionVariables = {
+    EDITOR = "nvim";
+    TERMINAL = "alacritty";
+    PAGER = "less -R";
+  };
 
-    # Nicely reload system units when changing configs
-    systemd.user.startServices = "sd-switch";
+  # Let Home Manager install and manage itself.
+  programs.home-manager.enable = true;
 
-    home.stateVersion = "23.05"; # Please read the comment before changing.
+  # Nicely reload system units when changing configs
+  systemd.user.startServices = "sd-switch";
+
+  home.stateVersion = "23.05"; # Please read the comment before changing.
 }

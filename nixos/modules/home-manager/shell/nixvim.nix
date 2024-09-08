@@ -1,4 +1,17 @@
-{ inputs, ... }: {
+{ inputs, ... }:
+
+{
+  home.packages = with pkgs; [
+    nil
+    nixfmt-rfc-style
+    black
+    stylua
+    gopls
+    pyright
+    marksman
+    lua-language-server
+  ];
+
   imports = [ inputs.nixvim.homeManagerModules.nixvim ];
 
   programs.nixvim = {
@@ -26,14 +39,18 @@
     };
 
     # Keymaps
-    globals = { mapleader = " "; };
+    globals = {
+      mapleader = " ";
+    };
 
     plugins = {
 
       # UI
       lualine.enable = true;
       treesitter.enable = true;
-      which-key = { enable = true; };
+      which-key = {
+        enable = true;
+      };
 
       telescope = {
         enable = true;
@@ -52,22 +69,26 @@
           fzf-native.enable = true;
         };
       };
-      indent-blankline = { enable = true; };
+      indent-blankline = {
+        enable = true;
+      };
       undotree = {
         enable = true;
         settings = {
           autoOpenDiff = true;
           focusOnToggle = true;
         };
-        settings.keymaps = [{
-          mode = "n";
-          key = "<leader>ut";
-          action = "<cmd>UndotreeToggle<CR>";
-          options = {
-            silent = true;
-            desc = "Undotree";
-          };
-        }];
+        settings.keymaps = [
+          {
+            mode = "n";
+            key = "<leader>ut";
+            action = "<cmd>UndotreeToggle<CR>";
+            options = {
+              silent = true;
+              desc = "Undotree";
+            };
+          }
+        ];
       };
 
       conform-nvim = {
@@ -79,15 +100,43 @@
           };
           notifyOnError = true;
           formattersByFt = {
-            html = [[ "prettierd" "prettier" ]];
-            css = [[ "prettierd" "prettier" ]];
-            javascript = [[ "prettierd" "prettier" ]];
-            typescript = [[ "prettierd" "prettier" ]];
+            html = [
+              [
+                "prettierd"
+                "prettier"
+              ]
+            ];
+            css = [
+              [
+                "prettierd"
+                "prettier"
+              ]
+            ];
+            javascript = [
+              [
+                "prettierd"
+                "prettier"
+              ]
+            ];
+            typescript = [
+              [
+                "prettierd"
+                "prettier"
+              ]
+            ];
             python = [ "black" ];
             lua = [ "stylua" ];
             nix = [ "nixfmt" ];
-            markdown = [[ "prettierd" "prettier" ]];
-            yaml = [ "yamllint" "yamlfmt" ];
+            markdown = [
+              [
+                "prettierd"
+                "prettier"
+              ]
+            ];
+            yaml = [
+              "yamllint"
+              "yamlfmt"
+            ];
           };
         };
       };

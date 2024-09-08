@@ -1,3 +1,5 @@
-{ config, lib, ...}: {
-    boot.kernelModules = [ "sg" ];
+{ config, lib, ... }:
+
+{
+  boot.kernelModules = [ "sg" ];
 }

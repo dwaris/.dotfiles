@@ -5,37 +5,39 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [
-        ../../modules/system.nix
-        ../../modules/kde.nix
-        ../../modules/nixos/fonts.nix
+  imports = [
+    ../../modules/system.nix
+    ../../modules/kde.nix
+    ../../modules/nixos/fonts.nix
 
-        ../../modules/nixos/steam.nix
-        ../../modules/nixos/opentabletdriver.nix
+    ../../modules/nixos/steam.nix
+    ../../modules/nixos/opentabletdriver.nix
 
-        ../../modules/nixos/virtualization.nix
-#        ../../modules/nixos/makemkv.nix
- 
-        # Include the results of the hardware scan.
-        ./hardware-configuration.nix
-    ];
+    ../../modules/nixos/virtualization.nix
+    #../../modules/nixos/makemkv.nix
 
-    boot.loader.systemd-boot = {
-      enable = false;
-      configurationLimit = 10;
-    };
-    boot.lanzaboote = {
-     enable = true;
-     pkiBundle = "/etc/secureboot";
-     #settings = {
-     #   default = "@saved";
-     # };
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
+
+  boot.loader.systemd-boot = {
+    enable = false;
+    configurationLimit = 10;
+  };
+  boot.lanzaboote = {
+    enable = true;
+    pkiBundle = "/etc/secureboot";
+    #settings = {
+    #default = "@saved";
+    #};
   };
   boot.loader.efi.efiSysMountPoint = "/boot";
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
-  boot.supportedFilesystems = [ "zfs" "ntfs" ];
+  boot.supportedFilesystems = [
+    "zfs"
+    "ntfs"
+  ];
 
   boot.zfs.requestEncryptionCredentials = true;
   boot.zfs.forceImportRoot = true;
@@ -43,7 +45,10 @@
   boot.initrd.systemd.enable = true;
   boot.initrd.supportedFilesystems = [ "zfs" ];
 
-  boot.initrd.kernelModules = [ "zfs" "amdgpu" ];
+  boot.initrd.kernelModules = [
+    "zfs"
+    "amdgpu"
+  ];
   boot.kernelParams = [
     "video=DP-1:2560x1440@165"
     "video=HDMI-A-1:1920x1080@75"
@@ -76,7 +81,11 @@
   virtualisation.docker.enable = true;
 
   programs.adb.enable = true;
-  users.users.dwaris.extraGroups = [ "networkmanager" "docker" "adbusers" ];
+  users.users.dwaris.extraGroups = [
+    "networkmanager"
+    "docker"
+    "adbusers"
+  ];
 
   hardware.bluetooth.enable = true;
 
