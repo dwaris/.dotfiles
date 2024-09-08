@@ -1,5 +1,7 @@
-{ config, pkgs, ... }: {
-    home.packages = with pkgs; [
-        prusa-slicer
-    ];
+{ config, pkgs, ... }:
+
+{
+  home.packages = with pkgs; [
+    prusa-slicer
+  ];
 }

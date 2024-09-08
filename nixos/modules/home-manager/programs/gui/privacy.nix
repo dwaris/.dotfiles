@@ -2,8 +2,8 @@
 
 {
   home.packages = with pkgs; [
-    neovide
-
-    vscode-fhs
+    bitwarden-desktop
+    veracrypt
+    protonvpn-gui
   ];
 }

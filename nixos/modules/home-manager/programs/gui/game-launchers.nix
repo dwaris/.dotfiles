@@ -1,11 +1,13 @@
-{ config, pkgs, ... }: {
-    home.packages = with pkgs; [
-        mangohud
+{ config, pkgs, ... }:
 
-        lutris
-        wineWowPackages.waylandFull
+{
+  home.packages = with pkgs; [
+    mangohud
 
-        ryujinx
-        prismlauncher
-    ];
+    lutris
+    wineWowPackages.waylandFull
+
+    ryujinx
+    prismlauncher
+  ];
 }

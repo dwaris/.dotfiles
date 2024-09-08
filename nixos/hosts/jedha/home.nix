@@ -23,9 +23,6 @@
 
     easyeffects
 
-    veracrypt
-    protonvpn-gui
-
     osu-lazer-bin
   ];
 
