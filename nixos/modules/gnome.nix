@@ -5,14 +5,14 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     gnomeExtensions.appindicator
-    gnome.gnome-tweaks
+    gvnome-tweaks
     wl-clipboard
   ];
   environment.gnome.excludePackages =
     (with pkgs; [
       gnome-tour
     ])
-    ++ (with pkgs.gnome; [
+    ++ (with pkgs; [
       cheese # webcam tool
       gnome-music
       epiphany # web browser
@@ -43,7 +43,6 @@
   };
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -52,5 +51,5 @@
     pulse.enable = true;
   };
 
-  services.udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
+  services.udev.packages = with pkgs; [ gnome-settings-daemon ];
 }
