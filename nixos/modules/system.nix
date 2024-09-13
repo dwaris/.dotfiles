@@ -87,5 +87,99 @@ in
     git
     sysstat
     lm_sensors
+
+    # archives
+    zip
+    unzip
+    unrar
+    p7zip
+
+    # utils
+    ripgrep
+    htop
+    btop
+
+    bottom
+    fd
+    fastfetch
+
+    # transfer
+    rsync
+
+    #encoding
+    parallel
+    ffmpeg_7
+    opusTools
+    mkvtoolnix
+    obs-studio
+
+    #browser
+    firefox
+    chromium
+    tor-browser
+
+    #backup
+    vorta
+    nextcloud-client
+
+    #game launcher
+    mangohud
+
+    lutris
+    wineWowPackages.waylandFull
+
+    ryujinx
+    prismlauncher
+
+    #media
+    plexamp
+    plex-desktop
+    mpv
+    vlc
+    tauon
+    tidal-hifi
+
+    #messanger
+    element-desktop
+    signal-desktop
+    telegram-desktop
+    vesktop
+
+    #office
+    rnote
+    joplin-desktop
+    obsidian
+    xournalpp
+
+    inkscape
+    gimp
+    krita
+    pixelorama
+
+    #privacy
+    bitwarden-desktop
+    veracrypt
+    protonvpn-gui
+
+    #code
+    vscode-fhs
+    neovim
+
+    #3d print
+    prusa-slicer
+
+    #vr
+    alvr
+    sidequest
+
+    #vim
+    nil
+    nixfmt-rfc-style
+    black
+    stylua
+    gopls
+    pyright
+    marksman
+    lua-language-server
   ];
 }
