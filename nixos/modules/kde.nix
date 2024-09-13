@@ -48,12 +48,8 @@
     elisa
   ];
 
-  security.pam.services.kwallet = {
-    name = "kwallet";
-    enableKwallet = true;
-  };
+  security.pam.services.kwallet.enableKwallet = true;
 
-  programs.ssh.startAgent = true;
   programs.ssh.enableAskPassword = true;
   programs.ssh.askPassword = (lib.getExe pkgs.kdePackages.ksshaskpass);
   environment.sessionVariables.SSH_ASKPASS_REQUIRE = "prefer";
