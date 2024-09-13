@@ -10,41 +10,22 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-small.url = "github:nixos/nixpkgs/nixos-unstable-small";
-
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     lanzaboote = {
       url = "github:nix-community/lanzaboote";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nixos-wsl.url = "github:nix-community/nixos-wsl";
 
-    nixos-cosmic = {
-      url = "github:lilyinstarlight/nixos-cosmic";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs =
     inputs@{
       self,
       nixpkgs,
-      nixpkgs-small,
       lanzaboote,
-      home-manager,
       nixos-wsl,
-      nixvim,
-      nixos-cosmic,
       ...
     }:
 
@@ -53,26 +34,8 @@
         jedha = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
-            {
-              nix.settings = {
-                substituters = [ "https://cosmic.cachix.org/" ];
-                trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
-              };
-            }
-            nixos-cosmic.nixosModules.default
             ./hosts/jedha/configuration.nix
             lanzaboote.nixosModules.lanzaboote
-
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-
-              home-manager.extraSpecialArgs = {
-                inherit inputs nixvim;
-              };
-              home-manager.users.dwaris = import ./hosts/jedha/home.nix;
-            }
           ];
         };
 
@@ -81,36 +44,14 @@
           modules = [
             ./hosts/kashyyyk/configuration.nix
             lanzaboote.nixosModules.lanzaboote
-
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-
-              home-manager.extraSpecialArgs = {
-                inherit inputs nixvim;
-              };
-              home-manager.users.dwaris = import ./hosts/kashyyyk/home.nix;
-            }
           ];
         };
 
-        wsl = nixpkgs-small.lib.nixosSystem {
+        wsl = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
             ./hosts/wsl/configuration.nix
             nixos-wsl.nixosModules.wsl
-
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-
-              home-manager.extraSpecialArgs = {
-                inherit inputs nixvim;
-              };
-              home-manager.users.dwaris = import ./hosts/wsl/home.nix;
-            }
           ];
         };
       };

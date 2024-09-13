@@ -13,7 +13,10 @@
   imports = [
     ../../modules/system.nix
     ../../modules/kde.nix
+
     ../../modules/nixos/fonts.nix
+
+    ../../modules/nixos/shell.nix
 
     ../../modules/nixos/steam.nix
     ../../modules/nixos/opentabletdriver.nix
@@ -66,6 +69,10 @@
     nfs-utils
     sshfs
     sbctl
+
+    qbittorrent
+    easyeffects
+    osu-lazer-bin
   ];
 
   services.zfs.autoSnapshot.enable = true;
