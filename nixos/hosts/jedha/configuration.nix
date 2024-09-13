@@ -11,19 +11,13 @@
 
 {
   imports = [
-    ../../modules/system.nix
-    ../../modules/kde.nix
+    ../../modules
 
-    ../../modules/nixos/fonts.nix
+    ../../modules/cli
+    ../../modules/cli/language-server.nix
 
-    ../../modules/nixos/shell.nix
-
-    ../../modules/nixos/steam.nix
-    ../../modules/nixos/opentabletdriver.nix
-
-    ../../modules/nixos/virtualization.nix
-    #../../modules/nixos/makemkv.nix
-
+    ../../modules/gui
+    ../../modules/gui/gaming
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];
@@ -35,9 +29,6 @@
   boot.lanzaboote = {
     enable = true;
     pkiBundle = "/etc/secureboot";
-    #settings = {
-    #default = "@saved";
-    #};
   };
   boot.loader.efi.efiSysMountPoint = "/boot";
   boot.loader.efi.canTouchEfiVariables = true;
@@ -72,7 +63,6 @@
 
     qbittorrent
     easyeffects
-    osu-lazer-bin
   ];
 
   services.zfs.autoSnapshot.enable = true;
