@@ -14,29 +14,27 @@ shopt -s extglob
 shopt -s globstar
 shopt -s checkjobs
 
-alias ..='cd ..'
+export EDITOR=nvim
+export PAGER="less -R"
+export STARSHIP_CONFIG=~/.config/starship/starship.toml
+
 alias la='ls -lathr'
 alias ll='ls -la'
 alias ls='ls -a --color=auto'
 alias mv='mv -v'
 alias vim=nvim
 
-#if [[ ! -v BASH_COMPLETION_VERSINFO ]]; then
-#  source /run/current-system/sw/share/fzf/completion.bash
-#  source /run/current-system/sw/share/fzf/key-bindings.bash
-#fi
-
-if command -v fzf-share >/dev/null; then
+if command -v fzf-share > /dev/null; then
   source "$(fzf-share)/key-bindings.bash"
   source "$(fzf-share)/completion.bash"
 fi
 
 eval "$(fzf --bash)"
 
-eval "$(zoxide init bash )"
+eval "$(zoxide init bash)"
 
 eval "$(starship init bash --print-full-init)"
 
-eval "$(direnv hook bash)"
-
-
+if command -v direnv > /dev/null; then
+  eval "$(direnv hook bash)"
+fi
