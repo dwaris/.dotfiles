@@ -27,9 +27,12 @@ alias vim=nvim
 if command -v fzf-share > /dev/null; then
   source "$(fzf-share)/key-bindings.bash"
   source "$(fzf-share)/completion.bash"
+  eval "$(fzf --bash)"
+elif command -v fzf > /dev/null; then # debians version of fzf us too old for --bash
+  source /usr/share/doc/fzf/examples/key-bindings.bash
+  source /usr/share/doc/fzf/examples/completion.bash
 fi
 
-eval "$(fzf --bash)"
 
 eval "$(zoxide init bash)"
 
