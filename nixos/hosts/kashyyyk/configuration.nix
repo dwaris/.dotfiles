@@ -6,11 +6,11 @@
 
 {
   imports = [
-    # Include the results of the hardware scan.
-    ../../modules/system.nix
-    ../../modules/kde.nix
-    ../../modules/nixos/fonts.nix
+    ../../modules
 
+    ../../modules/cli
+
+    ../../modules/gui
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];

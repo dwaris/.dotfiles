@@ -14,7 +14,7 @@
     ../../modules
 
     ../../modules/cli
-    ../../modules/cli/language-server.nix
+    ../../modules/cli/encoding.nix
 
     ../../modules/gui
     ../../modules/gui/gaming
