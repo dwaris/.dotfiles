@@ -1,59 +1,42 @@
-#
-# ~/.bashrc
-#
 
-# If not running interactively, don't do anything
-[[ $- != *i* ]] && return
 
-shopt -s autocd cdspell direxpand dirspell globstar histappend histverify \
-    nocaseglob no_empty_cmd_completion
+# Commands that should be applied only for interactive shells.
+[[ $- == *i* ]] || return
 
-alias ls='ls -a --color=auto'
-alias ll='ls -la'
+HISTCONTROL=erasedups:ignoredups:ignorespace
+HISTFILESIZE=100000
+HISTIGNORE=ls:cd:exit:clear
+HISTSIZE=10000
+
+shopt -s histappend
+shopt -s checkwinsize
+shopt -s extglob
+shopt -s globstar
+shopt -s checkjobs
+
+alias ..='cd ..'
 alias la='ls -lathr'
+alias ll='ls -la'
+alias ls='ls -a --color=auto'
 alias mv='mv -v'
 alias vim=nvim
 
-HISTCONTROL=ignoreboth:erasedups
-HISTIGNORE=?:??
-HISTSIZE=100000
-SAVEHIST=100000
-HISTCONTROL=ignorespace
-PROMPT_COMMAND="history -a; history -n"
-
-export VISUAL=nvim
-export EDITOR=nvim
-export PATH=$HOME/.cargo/bin:$HOME/.local/bin:$PATH
-export PAGER="less -R"
-export EDITOR=nvim
-export STARSHIP_CONFIG=~/.config/starship/starship.toml
-
-if [ -f /usr/share/fzf/completion.bash ]; then
-  source /usr/share/fzf/completion.bash
-fi
-
-if [ -f /usr/share/fzf/key-bindings.bash ]; then
-  source /usr/share/fzf/key-bindings.bash
-  export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
-fi
+#if [[ ! -v BASH_COMPLETION_VERSINFO ]]; then
+#  source /run/current-system/sw/share/fzf/completion.bash
+#  source /run/current-system/sw/share/fzf/key-bindings.bash
+#fi
 
 if command -v fzf-share >/dev/null; then
   source "$(fzf-share)/key-bindings.bash"
   source "$(fzf-share)/completion.bash"
 fi
 
-if [ -f /usr/share/bash-completion/bash_completion ]; then
-  source /usr/share/bash-completion/bash_completion
-fi
+eval "$(fzf --bash)"
 
-# i can do it without this
-#source $HOME/.fzf-tab-completion/bash/fzf-bash-completion.sh
-#bind -x '"\C-f": fzf_bash_completion'
+eval "$(zoxide init bash )"
+
+eval "$(starship init bash --print-full-init)"
+
+eval "$(direnv hook bash)"
 
 
-# Starship prompt
-eval "$(starship init bash)"
-function history_sharing() {
-    history -a && history -n
-}
-starship_precmd_user_func="history_sharing"
