@@ -14,7 +14,6 @@
     ../../modules
 
     ../../modules/cli
-    ../../modules/cli/encoding.nix
 
     ../../modules/gui
     ../../modules/gui/gaming
