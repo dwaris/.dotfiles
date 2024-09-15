@@ -1,6 +1,6 @@
 {
   imports = [
     ./shell.nix
-    ./language-server.nix
+    ./neovim.nix
   ];
 }
