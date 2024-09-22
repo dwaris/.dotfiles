@@ -31,7 +31,7 @@
   };
   boot.loader.efi.efiSysMountPoint = "/boot";
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
+  boot.kernelPackages = pkgs.linuxPackages_6_10;
   boot.supportedFilesystems = [
     "zfs"
     "ntfs"
