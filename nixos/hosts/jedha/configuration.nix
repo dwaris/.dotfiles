@@ -48,7 +48,7 @@
     "amdgpu"
   ];
   boot.kernelParams = [
-    "video=DP-1:2560x1440@165"
+    "video=DP-1:2560x1440@144"
     "video=HDMI-A-1:1920x1080@75"
   ];
 
