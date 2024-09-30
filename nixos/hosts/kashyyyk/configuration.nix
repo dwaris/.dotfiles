@@ -56,12 +56,12 @@
   networking.firewall.enable = true;
 
   # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
-  services.flatpak.enable = true;
+  services.openssh.enable = false;
+  services.flatpak.enable = false;
   services.printing.enable = false;
   services.fwupd.enable = true;
 
-  virtualisation.docker.enable = true;
+  virtualisation.docker.enable = false;
 
   programs.adb.enable = true;
   users.users.dwaris.extraGroups = [

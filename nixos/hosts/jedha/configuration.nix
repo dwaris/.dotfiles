@@ -78,7 +78,7 @@
   services.printing.enable = false;
   services.fwupd.enable = true;
 
-  virtualisation.docker.enable = true;
+  virtualisation.docker.enable = false;
 
   programs.adb.enable = true;
   users.users.dwaris.extraGroups = [
@@ -87,7 +87,7 @@
     "adbusers"
   ];
 
-  hardware.bluetooth.enable = true;
+  hardware.bluetooth.enable = false;
 
   hardware.graphics.enable = true;
   hardware.graphics.enable32Bit = true;
