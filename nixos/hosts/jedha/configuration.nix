@@ -61,7 +61,6 @@
     sbctl
 
     qbittorrent
-    easyeffects
   ];
 
   services.zfs.autoSnapshot.enable = true;
@@ -92,6 +91,17 @@
 
   hardware.graphics.enable = true;
   hardware.graphics.enable32Bit = true;
+
+  services.pipewire.extraConfig.pipewire."10-clock-rate" = {
+    "context.properties" = {
+      "default.clock.allowed-rates" = [
+        44100
+        48000
+        88200
+        96000
+      ];
+    };
+  };
 
   #services.desktopManager.cosmic.enable = true;
 
