@@ -10,6 +10,7 @@
     element-desktop
     signal-desktop
     telegram-desktop
-    vesktop
+
+    discord
   ];
 }
