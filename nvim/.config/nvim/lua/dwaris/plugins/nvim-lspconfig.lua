@@ -236,7 +236,11 @@ return {
             local lspconfig = require 'lspconfig'
             lspconfig.rust_analyzer.setup {
                 settings = {
-                    ['rust-analyzer'] = {},
+                    ['rust-analyzer'] = {
+                        checkOnSave = {
+                            command = "clippy",
+                        },
+                    },
                 },
             }
             lspconfig.gopls.setup {}
