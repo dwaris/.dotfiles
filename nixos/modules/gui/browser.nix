@@ -7,7 +7,7 @@
 {
   environment.systemPackages = with pkgs; [
     firefox
-    chromium
+    (chromium.override { enableWideVine = true; })
     tor-browser
   ];
 }
