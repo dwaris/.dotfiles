@@ -5,10 +5,6 @@
   ...
 }:
 {
-  imports = [
-    ./language-server.nix
-  ];
-
   programs.neovim = {
     enable = true;
     defaultEditor = true;
@@ -16,10 +12,15 @@
 
   environment.systemPackages = with pkgs; [
     clang
-    python3
     fd
     ripgrep
-    luarocks
-    lua5_1
+
+    bash-language-server
+
+    lua-language-server
+    stylua
+
+    nil
+    nixfmt-rfc-style
   ];
 }
