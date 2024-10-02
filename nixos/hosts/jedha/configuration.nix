@@ -61,6 +61,7 @@
     sbctl
 
     qbittorrent
+    easyeffects
   ];
 
   services.zfs.autoSnapshot.enable = true;
