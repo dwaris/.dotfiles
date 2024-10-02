@@ -43,6 +43,7 @@
 
   environment.plasma6.excludePackages = with pkgs.kdePackages; [
     plasma-browser-integration
+    kuserfeedback # nobody wants you here ok?
     konsole
     oxygen
     elisa
