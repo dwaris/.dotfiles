@@ -12,5 +12,7 @@
     telegram-desktop
 
     discord
+
+    thunderbird
   ];
 }
