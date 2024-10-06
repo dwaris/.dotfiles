@@ -21,9 +21,12 @@
           mkShell {
             buildInputs = [
               qt5.full
-              clang
-              clang-tools
+              libGL
+              libGL.dev
               cmake
+              gnumake
+              gcc
+              gdb
             ];
           };
       }
