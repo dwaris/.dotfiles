@@ -55,10 +55,12 @@
   programs.ssh.askPassword = (lib.getExe pkgs.kdePackages.ksshaskpass);
   environment.sessionVariables.SSH_ASKPASS_REQUIRE = "prefer";
 
-  xdg.portal = {
-    enable = true;
-    extraPortals = [ pkgs.kdePackages.xdg-desktop-portal-kde ];
-  };
+  xdg.portal.enable = true;
+  xdg.portal.xdgOpenUsePortal = true;
+  xdg.portal.extraPortals = [
+    pkgs.xdg-desktop-portal-kde
+    pkgs.xdg-desktop-portal-gtk
+  ];
 
   programs.partition-manager.enable = true;
   programs.kdeconnect.enable = true;
