@@ -60,6 +60,8 @@
     sshfs
     sbctl
 
+    veracrypt
+
     qbittorrent
     easyeffects
   ];
