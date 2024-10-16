@@ -33,6 +33,9 @@
       nixosConfigurations = {
         jedha = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
+          specialArgs = {
+            inherit inputs;
+          };
           modules = [
             ./hosts/jedha/configuration.nix
             lanzaboote.nixosModules.lanzaboote
@@ -41,6 +44,9 @@
 
         kashyyyk = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
+          specialArgs = {
+            inherit inputs;
+          };
           modules = [
             ./hosts/kashyyyk/configuration.nix
             lanzaboote.nixosModules.lanzaboote
