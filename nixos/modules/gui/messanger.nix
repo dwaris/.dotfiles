@@ -11,8 +11,9 @@
     signal-desktop
     telegram-desktop
 
-    discord
-
     thunderbird
+  ];
+  services.flatpak.packages = [
+    "com.discordapp.Discord"
   ];
 }
