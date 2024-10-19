@@ -10,6 +10,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.4.1";
 
     lanzaboote = {
       url = "github:nix-community/lanzaboote";
@@ -25,6 +26,7 @@
       self,
       nixpkgs,
       lanzaboote,
+      nix-flatpak,
       nixos-wsl,
       ...
     }:
@@ -39,6 +41,7 @@
           modules = [
             ./hosts/jedha/configuration.nix
             lanzaboote.nixosModules.lanzaboote
+            nix-flatpak.nixosModules.nix-flatpak
           ];
         };
 
@@ -50,6 +53,7 @@
           modules = [
             ./hosts/kashyyyk/configuration.nix
             lanzaboote.nixosModules.lanzaboote
+            nix-flatpak.nixosModules.nix-flatpak
           ];
         };
 

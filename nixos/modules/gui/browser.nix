@@ -5,9 +5,9 @@
   ...
 }:
 {
-  environment.systemPackages = with pkgs; [
-    firefox
-    (chromium.override { enableWideVine = true; })
-    tor-browser
+  services.flatpak.packages = [
+    "com.brave.Browser"
+    "net.mullvad.MullvadBrowser"
+    "org.torproject.torbrowser-launcher"
   ];
 }

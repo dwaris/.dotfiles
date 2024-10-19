@@ -57,7 +57,14 @@
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = false;
-  services.flatpak.enable = false;
+  services.flatpak.enable = true;
+  services.flatpak.update.onActivation = true;
+  services.flatpak.packages = [
+    "com.github.tchx84.Flatseal"
+  ];
+
+  environment.sessionVariables.XDG_DATA_DIRS = [ "/var/lib/flatpak/exports/share" ];
+
   services.printing.enable = false;
   services.fwupd.enable = true;
 
