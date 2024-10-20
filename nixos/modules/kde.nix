@@ -50,10 +50,8 @@
     elisa
   ];
 
-  security.pam.services.kwallet.enableKwallet = true;
-
-  programs.ssh.enableAskPassword = true;
-  programs.ssh.askPassword = (lib.getExe pkgs.kdePackages.ksshaskpass);
+  programs.ssh.startAgent = true;
+  security.pam.services.sddm.kwallet.enable = true;
   environment.sessionVariables.SSH_ASKPASS_REQUIRE = "prefer";
 
   xdg.portal.enable = true;
