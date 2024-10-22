@@ -5,8 +5,8 @@
   ...
 }:
 {
-  environment.systemPackages = with pkgs; [
-    osu-lazer-bin
+  services.flatpak.packages = [
+    "sh.ppy.osu"
   ];
 
   hardware.opentabletdriver.enable = true;
