@@ -17,6 +17,7 @@
 
     ../../modules/gui
     ../../modules/gui/gaming
+    ../../modules/gui/gaming/osu.nix
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];
