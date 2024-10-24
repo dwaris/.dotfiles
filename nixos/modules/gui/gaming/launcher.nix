@@ -5,9 +5,8 @@
   ...
 }:
 {
-  environment.systemPackages = with pkgs; [
-    lutris
-    ryujinx
-    prismlauncher
+  services.flatpak.packages = [
+    "com.usebottles.bottles"
+    "org.ryujinx.Ryujinx"
   ];
 }
