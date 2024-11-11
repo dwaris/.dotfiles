@@ -6,8 +6,8 @@
 }:
 {
   services.flatpak.packages = [
-    "com.brave.Browser"
-    "net.mullvad.MullvadBrowser"
+    "org.chromium.Chromium"
+    "io.gitlab.librewolf-community"
     "org.torproject.torbrowser-launcher"
   ];
 }
