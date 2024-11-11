@@ -7,7 +7,7 @@
 {
   services.flatpak.packages = [
     "org.chromium.Chromium"
-    "io.gitlab.librewolf-community"
+    "org.mozilla.firefox"
     "org.torproject.torbrowser-launcher"
   ];
 }
