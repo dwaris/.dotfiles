@@ -12,5 +12,8 @@
     mpv
     tauon
     tidal-hifi
+
+    komikku
+    foliate
   ];
 }
