@@ -8,12 +8,14 @@
     gnome-tweaks
     wl-clipboard
   ];
-  environment.gnome.excludePackages =
-    (with pkgs; [
+  environment.gnome.excludePackages = with pkgs; [
       gnome-tour
-    ])
-    ++ (with pkgs.gnome; [
+      gnome-contacts
+      gnome-maps
+      gnome-console
+      simple-scan
       cheese # webcam tool
+      snapshot
       gnome-music
       epiphany # web browser
       geary # email reader
@@ -22,8 +24,7 @@
       iagno # go game
       hitori # sudoku game
       atomix # puzzle game
-    ]);
-
+  ];
   # Enable the XWayland Fallback windowing system.
   programs.xwayland.enable = true;
 
@@ -41,6 +42,12 @@
     };
     desktopManager.gnome.enable = true;
   };
+
+  #xdg.portal.enable = true;
+  #xdg.portal.xdgOpenUsePortal = true;
+  #xdg.portal.extraPortals = [
+  #  pkgs.xdg-desktop-portal-gtk
+  #];
 
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
