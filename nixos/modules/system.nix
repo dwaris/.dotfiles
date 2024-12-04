@@ -85,6 +85,7 @@ in
     wget2
     curl
     git
+    git-lfs
     sysstat
     lm_sensors
   ];
