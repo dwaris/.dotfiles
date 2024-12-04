@@ -27,6 +27,8 @@
               gnumake
               gcc
               gdb
+
+              blender-hip
             ];
           };
       }
