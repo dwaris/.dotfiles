@@ -6,21 +6,21 @@
 }:
 {
   environment.systemPackages = with pkgs; [
+    # archive
     zip
     unzip
     unrar
     p7zip
 
-    ripgrep
+    # usage
     htop
     btop
-
     bottom
-    fd
-    fastfetch
 
+    # copy
     rsync
 
-    parallel
+    # misc
+    fastfetch
   ];
 }

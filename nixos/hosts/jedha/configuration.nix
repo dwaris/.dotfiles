@@ -17,7 +17,7 @@
 
     ../../modules/gui
     ../../modules/gui/gaming
-    ../../modules/gui/gaming/osu.nix
+#    ../../modules/gui/gaming/osu.nix
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];
@@ -58,7 +58,6 @@
   networking.hostId = "74f65184";
 
   environment.systemPackages = with pkgs; [
-    nfs-utils
     sshfs
     sbctl
 
