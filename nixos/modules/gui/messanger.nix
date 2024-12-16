@@ -11,7 +11,7 @@
     signal-desktop
   ];
   services.flatpak.packages = [
-    "dev.vencord.Vesktop"
+    "com.discordapp.Discord"
     "org.telegram.desktop"
     "org.mozilla.Thunderbird"
   ];
