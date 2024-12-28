@@ -66,16 +66,22 @@ in
 
   services.openssh = {
     settings = {
-      PasswordAuthentication = true;
+      Port = 42588;
+      X11Forwarding = false;
+      UseDns = false;
+      PermitEmptyPasswords = false;
+      ClientAliveCountMax = 2;
+      MaxAuthTries = 3;
+      MaxSessions = 2;
+      PubkeyAuthentication = true;
+      PasswordAuthentication = false;
+      TcpKeepAlive = false;
       PermitRootLogin = "no";
+      Protocol = 2;
+      AllowAgentForwarding = false;
+      AllowUsers = [ "dwaris" ];
     };
     allowSFTP = true; # Don't set this if you need sftp
-    extraConfig = ''
-      AllowTcpForwarding yes
-      X11Forwarding no
-      AllowAgentForwarding no
-      AllowStreamLocalForwarding no
-    '';
   };
 
   # List packages installed in system profile. To search, run:
