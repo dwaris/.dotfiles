@@ -77,6 +77,15 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  ### HARDENING
+  networking.firewall.enable = true;
+  networking.firewall.allowedTCPPorts = [ 42588 ];
+  networking.firewall.allowedUDPPorts = [];
+  systemd.coredump.enable = false;
+
+  services.clamav.daemon.enable = true;
+  services.clamav.updater.enable = true;
+
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
   services.flatpak.enable = true;

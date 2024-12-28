@@ -23,19 +23,28 @@ with lib;
     ];
   };
 
+  #boot.kernelPackages = mkDefault pkgs.linuxPackages_hardened;
+
   nix.settings.allowed-users = mkDefault [ "@users" ];
+
+  #environment.memoryAllocator.provider = mkDefault "scudo";
+  #environment.variables.SCUDO_OPTIONS = mkDefault "ZeroContents=1";
 
   security.lockKernelModules = mkDefault true;
 
   security.protectKernelImage = mkDefault true;
 
+  #security.allowSimultaneousMultithreading = mkDefault false;
+
+  #security.forcePageTableIsolation = mkDefault true;
+
   # This is required by podman to run containers in rootless mode.
-  security.unprivilegedUsernsClone = mkDefault config.virtualisation.containers.enable;
+  #security.unprivilegedUsernsClone = mkDefault config.virtualisation.containers.enable;
 
-  security.virtualisation.flushL1DataCache = mkDefault "always";
+  #security.virtualisation.flushL1DataCache = mkDefault "always";
 
-  security.apparmor.enable = mkDefault true;
-  security.apparmor.killUnconfinedConfinables = mkDefault true;
+  #security.apparmor.enable = mkDefault true;
+  #security.apparmor.killUnconfinedConfinables = mkDefault true;
 
   boot.kernelParams = [
     # Don't merge slabs
