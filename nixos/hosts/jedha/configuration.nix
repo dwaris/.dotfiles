@@ -18,6 +18,8 @@
     ../../modules/gui
     ../../modules/gui/gaming
 #    ../../modules/gui/gaming/osu.nix
+    ../../modules/hardening.nix
+
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];
@@ -32,8 +34,8 @@
   };
   boot.loader.efi.efiSysMountPoint = "/boot";
   boot.loader.efi.canTouchEfiVariables = true;
-  #  boot.kernelPackages = pkgs.linuxPackages_6_11;
-  boot.kernelPackages = pkgs.linuxPackages;
+  boot.kernelPackages = pkgs.linuxPackages_6_12;
+  #boot.kernelPackages = pkgs.linuxPackages;
   boot.supportedFilesystems = [
     "zfs"
     "ntfs"
@@ -74,7 +76,6 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
-  networking.firewall.enable = true;
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
