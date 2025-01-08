@@ -42,7 +42,7 @@
     };
     desktopManager.gnome.enable = true;
   };
-
+  
   networking.firewall.enable = true;
   networking.firewall.allowedTCPPorts = [ 42588 ];
   networking.firewall.allowedUDPPorts = [];
@@ -65,7 +65,6 @@
   #];
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
