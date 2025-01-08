@@ -18,7 +18,6 @@
     ../../modules/gui
     ../../modules/gui/gaming
 #    ../../modules/gui/gaming/osu.nix
-    ../../modules/hardening.nix
 
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -77,15 +76,6 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
-  ### HARDENING
-  networking.firewall.enable = true;
-  networking.firewall.allowedTCPPorts = [ 42588 ];
-  networking.firewall.allowedUDPPorts = [];
-  systemd.coredump.enable = false;
-
-  services.clamav.daemon.enable = true;
-  services.clamav.updater.enable = true;
-
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
   services.flatpak.enable = true;
@@ -112,17 +102,6 @@
 
   hardware.graphics.enable = true;
   hardware.graphics.enable32Bit = true;
-
-  services.pipewire.extraConfig.pipewire."10-clock-rate" = {
-    "context.properties" = {
-      "default.clock.allowed-rates" = [
-        44100
-        48000
-        88200
-        96000
-      ];
-    };
-  };
 
   system.stateVersion = "23.11"; # Did you read the comment?
 }
