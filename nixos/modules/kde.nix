@@ -50,6 +50,21 @@
     elisa
   ];
 
+  networking.firewall.enable = true;
+  networking.firewall.allowedTCPPorts = [ 42588 ];
+  networking.firewall.allowedUDPPorts = [];
+
+  services.openssh = {
+    ports = [ 42588 ];
+    allowSFTP = true; # Don't set this if you need sftp
+    
+    settings = {
+      PasswordAuthentication = false;
+      PermitRootLogin = "no";
+      AllowUsers = [ "dwaris" ];
+    };
+  };
+
   programs.ssh.startAgent = true;
   security.pam.services.sddm.kwallet.enable = true;
   environment.sessionVariables.SSH_ASKPASS_REQUIRE = "prefer";
