@@ -64,17 +64,6 @@ in
   # Configure console keymap
   console.keyMap = "us";
 
-  services.openssh = {
-    ports = [ 42588 ];
-    allowSFTP = true; # Don't set this if you need sftp
-    
-    settings = {
-      PasswordAuthentication = false;
-      PermitRootLogin = "no";
-      AllowUsers = [ "dwaris" ];
-    };
-  };
-
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [

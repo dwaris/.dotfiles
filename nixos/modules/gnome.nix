@@ -43,6 +43,21 @@
     desktopManager.gnome.enable = true;
   };
 
+  networking.firewall.enable = true;
+  networking.firewall.allowedTCPPorts = [ 42588 ];
+  networking.firewall.allowedUDPPorts = [];
+
+  services.openssh = {
+    ports = [ 42588 ];
+    allowSFTP = true; # Don't set this if you need sftp
+    
+    settings = {
+      PasswordAuthentication = false;
+      PermitRootLogin = "no";
+      AllowUsers = [ "dwaris" ];
+    };
+  };
+
   #xdg.portal.enable = true;
   #xdg.portal.xdgOpenUsePortal = true;
   #xdg.portal.extraPortals = [
