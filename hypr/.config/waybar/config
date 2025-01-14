@@ -5,7 +5,7 @@
     // "width": 1280, // Waybar width
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
-    "modules-left": ["hyprland/workspaces", "pulseaudio", "pulseaudio#mic", "keyboard-state"],
+    "modules-left": ["hyprland/workspaces", "pulseaudio", "pulseaudio#mic"],
     "modules-center": ["hyprland/window"],
     "modules-right": ["hyprland/submap", "hyprland/language", "cpu", "memory", "temperature", "battery", "network", "tray", "clock"],
     // Modules configuration
@@ -28,15 +28,6 @@
              "default": ""
          }
      },
-    "keyboard-state": {
-        "numlock": false,
-        "capslock": true,
-        "format": "{icon}",
-        "format-icons": {
-            "locked": "",
-            "unlocked": ""
-        }
-    },
     "network": {
         "tooltip": false,
         "format-wifi": "  {essid}",
@@ -60,11 +51,11 @@
         "format-alt": "{:%Y-%m-%d}"
     },
     "cpu": {
-        "format": "{usage}% ",
+        "format": "{usage}%  ",
         "tooltip": false
     },
     "memory": {
-        "format": "{}% "
+        "format": "{}%  "
     },
     "temperature": {
         // "thermal-zone": 2,
