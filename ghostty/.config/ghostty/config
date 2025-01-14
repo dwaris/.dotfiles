@@ -1,0 +1,10 @@
+# ~/.config/ghostty/config
+
+font-family = "Source Code Pro"
+window-decoration = false
+theme = catppuccin-mocha
+background-opacity = 1.00
+command=~/.config/ghostty/ghostty-tmux.sh
+keybind=ctrl+shift+w=close_window
+confirm-close-surface=false
+
