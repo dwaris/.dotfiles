@@ -1,0 +1,27 @@
+[global]
+separator_color= frame
+font = "Source Code Pro 10"
+corner_radius = 10
+offset = 5x5
+origin = top-right
+notification_limit = 8
+gap_size = 7
+frame_width = 2
+width = 300
+height = 100
+frame_color = "#cba6f7"
+separator_color= frame
+highlight = "#cba6f7"
+
+[urgency_low]
+background = "#1e1e2e"
+foreground = "#cdd6f4"
+
+[urgency_normal]
+background = "#1e1e2e"
+foreground = "#cdd6f4"
+
+[urgency_critical]
+background = "#1e1e2e"
+foreground = "#cdd6f4"
+frame_color = "#fab387"
