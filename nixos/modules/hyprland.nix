@@ -34,11 +34,9 @@
     ];
   };
 
-  security = {
-    pam.services.gdm-password.enableGnomeKeyring = true;
-  };
+  security.pam.services.gdm.enableGnomeKeyring = true;
   environment.variables.XDG_RUNTIME_DIR = "/run/user/$UID";
-  programs.ssh.startAgent = true;
+  environment.variables.SSH_AUTH_SOCK = "/run/user/1000/keyring/ssh";
 
   environment.systemPackages = with pkgs; [
     hyprpaper
