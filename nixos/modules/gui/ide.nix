@@ -7,6 +7,8 @@
 {
   environment.systemPackages = with pkgs; [
     ghostty
+    kitty
+
     vscode-fhs
   ];
 }
