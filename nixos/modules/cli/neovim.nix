@@ -16,6 +16,8 @@
     ripgrep
 
     bash-language-server
+
+    marksman
     markdownlint-cli
 
     lua-language-server
