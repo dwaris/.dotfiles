@@ -16,6 +16,7 @@
     ripgrep
 
     bash-language-server
+    markdownlint-cli
 
     lua-language-server
     stylua
