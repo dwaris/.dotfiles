@@ -5,7 +5,7 @@
     ./browser.nix
     ./ide.nix
     ./media.nix
-    ./messanger.nix
+    ./messenger.nix
     ./office.nix
     ./privacy.nix
   ];

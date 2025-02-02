@@ -21,6 +21,7 @@
           mkShell {
             buildInputs = [
               texlive.combined.scheme-medium
+              jabref
             ];
           };
       }
