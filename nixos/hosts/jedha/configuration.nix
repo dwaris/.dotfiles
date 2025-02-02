@@ -80,9 +80,6 @@
   services.openssh.enable = true;
   services.flatpak.enable = true;
   services.flatpak.update.onActivation = true;
-  services.flatpak.packages = [
-    "com.github.tchx84.Flatseal"
-  ];
 
   environment.sessionVariables.XDG_DATA_DIRS = [ "/var/lib/flatpak/exports/share" ];
 
