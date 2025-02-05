@@ -10,6 +10,7 @@
     "com.brave.Browser"
 
     "org.mozilla.firefox"
+    "net.mullvad.MullvadBrowser"
     "org.torproject.torbrowser-launcher"
   ];
 }
