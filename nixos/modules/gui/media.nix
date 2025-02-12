@@ -7,13 +7,16 @@
 
 {
   environment.systemPackages = with pkgs; [
-    plexamp
-    plex-desktop
     mpv
     tauon
     tidal-hifi
 
     komikku
     foliate
+  ];
+
+  services.flatpak.packages = [
+    "com.plexamp.Plexamp"
+    "tv.plex.PlexDesktop"
   ];
 }
