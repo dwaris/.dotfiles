@@ -6,6 +6,14 @@
   virtualisation = {
     libvirtd = {
       enable = true;
+        qemu = {
+          vhostUserPackages = with pkgs; [ virtiofsd ];
+          ovmf = {
+            enable = true;
+            packages = [ pkgs.OVMFFull.fd ];
+          };
+          swtpm.enable = true;
+        };
     };
   };
 
