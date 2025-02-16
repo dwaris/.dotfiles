@@ -21,6 +21,7 @@
     xwaylandvideobridge
     kdePackages.sddm-kcm
     kdePackages.filelight
+    kdePackages.kasts
     (catppuccin-kde.override {
       flavour = [ "mocha" ];
       accents = [ "rosewater" ];
