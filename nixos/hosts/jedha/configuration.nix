@@ -17,6 +17,8 @@
 
     ../../modules/gui
     ../../modules/gui/gaming
+    ../../modules/gui/virtualization.nix
+
 #    ../../modules/gui/gaming/osu.nix
 
     # Include the results of the hardware scan.
@@ -62,6 +64,8 @@
     sshfs
     sbctl
 
+    distrobox
+
     veracrypt
 
     qbittorrent
@@ -87,6 +91,11 @@
   services.fwupd.enable = true;
 
   virtualisation.docker.enable = false;
+
+  virtualisation.podman = {
+    enable = true;
+    dockerCompat = true;
+  };
 
   programs.adb.enable = true;
   users.users.dwaris.extraGroups = [
