@@ -7,6 +7,9 @@ BLUE="\e[0;96m"
 RESET="\e[0m"
 RESETN="\e[0m\n"
 
+rust=false
+flatpak=false
+
 check_exit_status() {
 	if [[ $? -eq 0 ]]; then
 		echo
@@ -14,7 +17,7 @@ check_exit_status() {
 		echo
 
 		echo
-		printf '%.0s-' {1..42};
+		printf '%.0s-' {1..42}
 		echo
 	else
 		echo
@@ -28,54 +31,69 @@ check_exit_status() {
 			printf "${RED}Aborting update...${RESET}"
 			echo
 
-			read -p 'Press enter to exit...'
+			read -rp 'Press enter to exit...'
 			exit 1
 		fi
 	fi
 }
 
 update() {
-	printf "${BLUE}===> DNF/Pacman package upgrade${RESETN}"
+	printf "${BLUE}=== upgrade packages ===${RESETN}"
 	echo
 
 	if [[ $OS == "Fedora Linux" ]]; then
-		sudo dnf5 up --refresh;
+		sudo dnf update --refresh
 		check_exit_status
 	elif [[ $OS == "Arch Linux" ]]; then
 		paru
 		check_exit_status
 	fi
 
-	printf "${BLUE}===> Flatpaks upgrade${RESETN}"
+    if [[ $flatpak == true ]]; then
+        printf "${BLUE}=== upgrade flatpaks ===${RESETN}"
+        echo
+
+        flatpak update
+        check_exit_status
+    fi
+
+
+    if [[ $rust == true ]]; then
+	printf "${BLUE}=== upgrade Rust ===${RESETN}"
 	echo
 
-	flatpak update;
+	rustup update stable
 	check_exit_status
-
-	printf "${BLUE}===> Rust upgrade${RESETN}"
-	echo
-
-	rustup update stable;
-	check_exit_status
+    fi
 }
 
 cleanup() {
-	printf "${BLUE}===> Cleaning DNF/Pacman packages${RESETN}"
+	printf "${BLUE}=== cleanup packages ===${RESETN}"
 	echo
 
 	if [[ $OS == "Fedora Linux" ]]; then
-		sudo dnf5 autoremove;
+		sudo dnf autoremove
 		check_exit_status
 	elif [[ $OS == "Arch Linux" ]]; then
-		sudo pacman -Qdtq | sudo pacman -Rs -;
-		echo
+        to_remove=$(pacman -Qdtq)
+
+        if [ -n "$to_remove" ]; then
+            sudo pacman -Rs $to_remove
+        else
+            printf "Nothing unused to uninstall"
+            echo
+        fi
+        check_exit_status
 	fi
 
-	printf "${BLUE}===> Cleaning Flatpak packages${RESET}"
-	echo
+    if [[ $flatpak == true ]]; then
+        printf "${BLUE}=== cleanup flatpaks ===${RESETN}"
+        echo
 
-	sudo flatpak remove --unused;
-	check_exit_status
+        flatpak uninstall --unused
+        check_exit_status
+    fi
+
 }
 
 leave() {
@@ -87,10 +105,25 @@ leave() {
 }
 
 if [ -f /etc/os-release ]; then
-		. /etc/os-release
-		OS=$NAME
+	. /etc/os-release
+	OS=$NAME
 fi
 
-update  "$OS"
+while getopts "fr" flag; do
+ case $flag in
+   f) # flatpak
+    flatpak=true
+    ;;
+   r) # rust
+    rust=true
+    ;;
+   ?)
+    echo "Usage: $0 [-f] [-r]"
+    exit 1
+    ;;
+ esac
+done
+
+update "$OS"
 cleanup "$OS"
 leave
