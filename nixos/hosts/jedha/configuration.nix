@@ -64,7 +64,7 @@
     sshfs
     sbctl
 
-    distrobox
+#    distrobox
 
     veracrypt
 
@@ -93,7 +93,7 @@
   virtualisation.docker.enable = false;
 
   virtualisation.podman = {
-    enable = true;
+    enable = false;
     dockerCompat = true;
   };
 
