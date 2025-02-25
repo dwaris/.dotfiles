@@ -18,7 +18,7 @@
     wayland-utils
     aha
     wl-clipboard
-    xwaylandvideobridge
+    kdePackages.xwaylandvideobridge
     kdePackages.sddm-kcm
     kdePackages.filelight
     kdePackages.kasts
@@ -72,7 +72,7 @@
   xdg.portal.enable = true;
   xdg.portal.xdgOpenUsePortal = true;
   xdg.portal.extraPortals = [
-    pkgs.xdg-desktop-portal-kde
+    pkgs.kdePackages.xdg-desktop-portal-kde
     pkgs.xdg-desktop-portal-gtk
   ];
 
