@@ -25,5 +25,9 @@
 
     nil
     nixfmt-rfc-style
+    
+    lazygit
+    imagemagick
+    ghostscript
   ];
 }
