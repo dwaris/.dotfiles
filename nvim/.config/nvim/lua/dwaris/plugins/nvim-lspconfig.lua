@@ -1,70 +1,27 @@
 return {
     {
-        -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
-        -- used for completion, annotations and signatures of Neovim apis
         'folke/lazydev.nvim',
         ft = 'lua',
         opts = {
             library = {
-                -- Load luvit types when the `vim.uv` word is found
                 { path = 'luvit-meta/library', words = { 'vim%.uv' } },
             },
         },
     },
     { 'Bilal2453/luvit-meta', lazy = true },
     {
-        -- Main LSP Configuration
         'neovim/nvim-lspconfig',
         dependencies = {
-            -- Automatically install LSPs and related tools to stdpath for Neovim
-            -- Useful status updates for LSP.
-            -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
             { 'j-hui/fidget.nvim', opts = {} },
-
-            -- Allows extra capabilities provided by nvim-cmp
             'hrsh7th/cmp-nvim-lsp',
         },
         config = function()
-            -- Brief aside: **What is LSP?**
-            --
-            -- LSP is an initialism you've probably heard, but might not understand what it is.
-            --
-            -- LSP stands for Language Server Protocol. It's a protocol that helps editors
-            -- and language tooling communicate in a standardized fashion.
-            --
-            -- In general, you have a "server" which is some tool built to understand a particular
-            -- language (such as `gopls`, `lua_ls`, `rust_analyzer`, etc.). These Language Servers
-            -- (sometimes called LSP servers, but that's kind of like ATM Machine) are standalone
-            -- processes that communicate with some "client" - in this case, Neovim!
-            --
-            -- LSP provides Neovim with features like:
-            --  - Go to definition
-            --  - Find references
-            --  - Autocompletion
-            --  - Symbol Search
-            --  - and more!
-            --
-            -- Thus, Language Servers are external tools that must be installed separately from
-            -- Neovim. This is where `mason` and related plugins come into play.
-            --
-            -- If you're wondering about lsp vs treesitter, you can check out the wonderfully
-            -- and elegantly composed help section, `:help lsp-vs-treesitter`
-
-            --  This function gets run when an LSP attaches to a particular buffer.
-            --    That is to say, every time a new file is opened that is associated with
-            --    an lsp (for example, opening `main.rs` is associated with `rust_analyzer`) this
-            --    function will be executed to configure the current buffer
             vim.api.nvim_create_autocmd('LspAttach', {
                 group = vim.api.nvim_create_augroup(
                     'kickstart-lsp-attach',
                     { clear = true }
                 ),
                 callback = function(event)
-                    -- NOTE: Remember that Lua is a real programming language, and as such it is possible
-                    -- to define small helper and utility functions so you don't have to repeat yourself.
-                    --
-                    -- In this case, we create a function that lets us more easily define mappings specific
-                    -- for LSP related items. It sets the mode, buffer and description for us each time.
                     local map = function(keys, func, desc, mode)
                         mode = mode or 'n'
                         vim.keymap.set(
@@ -143,64 +100,36 @@ return {
                 end,
             })
 
-            -- LSP servers and clients are able to communicate to each other what features they support.
-            --  By default, Neovim doesn't support everything that is in the LSP specification.
-            --  When you add nvim-cmp, luasnip, etc. Neovim now has *more* capabilities.
-            --  So, we create new capabilities with nvim cmp, and then broadcast that to the servers.
-            local capabilities = vim.lsp.protocol.make_client_capabilities()
-            capabilities = vim.tbl_deep_extend(
-                'force',
-                capabilities,
-                require('cmp_nvim_lsp').default_capabilities()
-            )
-
-            -- Enable the following language servers
-            --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
-            --
-            --  Add any additional override configuration in the following tables. Available keys are:
-            --  - cmd (table): Override the default command used to start the server
-            --  - filetypes (table): Override the default list of associated filetypes for the server
-            --  - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
-            --  - settings (table): Override the default settings passed when initializing the server.
-            --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
-
+            local capabilities = require('cmp_nvim_lsp').default_capabilities()
             local lspconfig = require 'lspconfig'
-            lspconfig.rust_analyzer.setup {
+            local function setup_server(server, config)
+                if not lspconfig[server] then
+                    vim.notify("LSP-Server " .. server .. " not found!", vim.log.levels.WARN)
+                    return
+                end
+                lspconfig[server].setup(config or {})
+            end
+
+            setup_server("rust_analyzer", {
                 settings = {
-                    ['rust-analyzer'] = {
-                        checkOnSave = {
-                            command = 'clippy',
-                        },
-                    },
+                    ["rust-analyzer"] = { checkOnSave = { command = "clippy" } },
                 },
-            }
-            lspconfig.gopls.setup {}
-            lspconfig.pyright.setup {}
-            lspconfig.marksman.setup {}
-            lspconfig.bashls.setup {}
-            lspconfig.lua_ls.setup {
-                settings = {
-                    Lua = {
-                        completion = {
-                            callSnippet = 'Replace',
-                        },
-                    },
-                },
-            }
-            lspconfig.nil_ls.setup {
+            })
+            setup_server("gopls", {})
+            setup_server("pyright", {})
+            setup_server("marksman", {})
+            setup_server("bashls", {})
+            setup_server("lua_ls", {
+                settings = { Lua = { completion = { callSnippet = "Replace" } } },
+            })
+            setup_server("nil_ls", {
                 settings = {
                     ["nil"] = {
-                        formatting = {
-                            command = { "nixfmt" },
-                        },
-                        nix = {
-                            flake = {
-                                autoArchive = false,
-                            },
-                        },
+                        formatting = { command = { "alejandra" } },
+                        nix = { flake = { autoArchive = false } },
                     },
                 },
-            }
+            })
         end,
     },
 }

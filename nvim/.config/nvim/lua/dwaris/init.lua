@@ -1,5 +1,5 @@
-require("dwaris.lazy")
-require("dwaris.keymaps")
+require 'dwaris.lazy'
+require 'dwaris.keymaps'
 
 local opt = vim.opt
 
@@ -11,7 +11,7 @@ opt.clipboard = 'unnamedplus'
 opt.breakindent = true
 opt.swapfile = false
 opt.backup = false
-opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+opt.undodir = os.getenv 'HOME' .. '/.nvim/undodir'
 opt.undofile = true
 
 opt.ignorecase = true
@@ -24,6 +24,7 @@ opt.completeopt = 'menuone,noselect'
 opt.termguicolors = true
 
 opt.list = true
+opt.listchars = 'tab:→ ,trail:·,extends:>,precedes:<'
 opt.inccommand = 'split'
 opt.splitright = true
 opt.splitbelow = true
@@ -32,4 +33,3 @@ opt.showmode = false
 
 opt.shiftwidth = 4
 opt.tabstop = 4
-

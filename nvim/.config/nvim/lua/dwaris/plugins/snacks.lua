@@ -6,6 +6,7 @@ return {
         bigfile = { enabled = true },
         dashboard = { enabled = true },
         indent = { enabled = true },
+        image = { enabled = true },
         input = { enabled = true },
         git = { enabled = true },
         notifier = { enabled = true },
