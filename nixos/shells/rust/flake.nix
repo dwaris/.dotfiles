@@ -22,6 +22,10 @@
             buildInputs = [
               rust-analyzer
               rustup
+              
+              openssl
+              pkg-config
+
             ];
           };
       }
