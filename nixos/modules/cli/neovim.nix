@@ -3,8 +3,7 @@
   lib,
   pkgs,
   ...
-}:
-{
+}: {
   programs.neovim = {
     enable = true;
     defaultEditor = true;
@@ -24,9 +23,8 @@
     stylua
 
     nil
-    nixfmt-rfc-style
-    
-    lazygit
+    alejandra
+
     imagemagick
     ghostscript
   ];
