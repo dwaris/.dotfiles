@@ -1,4 +1,4 @@
-#== ZINIT ============================================
+#== ZINIT INSTALLATION ============================================
 if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
 	print -P "%F{33}▓▒░ %F{220}Installing DHARMA Initiative Plugin Manager (zdharma/zinit)…%f"
 	command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
@@ -8,56 +8,77 @@ if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
 fi
 source "$HOME/.zinit/bin/zinit.zsh"
 
+# Enable Zinit autocompletion
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
-#=== ZINIT ============================================
-
 
 #####################
-# PROMPT            #
+# ENVIRONMENT       #
 #####################
+HISTCONTROL=erasedups:ignoredups:ignorespace
+HISTFILESIZE=100000
+HISTIGNORE="ls:cd:exit:clear"
+HISTSIZE=10000
+
+export EDITOR=nvim
+export PAGER="less -R"
 export STARSHIP_CONFIG=~/.config/starship/starship.toml
 
+# Enable Starship prompt
 eval "$(starship init zsh)"
 
-##########################
-# OMZ Libs and Plugins   #
-##########################
-setopt promptsubst globdots
-zinit lucid for \
-    atinit"
-      ZSH_TMUX_FIXTERM=false
-      ZSH_TMUX_AUTOSTART=false
-      ZSH_TMUX_AUTOCONNECT=false" \
-  OMZP::tmux \
-  OMZL::history.zsh \
+#####################
+# ZSH SETTINGS      #
+#####################
+setopt promptsubst globdots histignoredups sharehistory appendhistory
+setopt hist_ignore_all_dups hist_reduce_blanks hist_save_no_dups
+setopt extendedglob autocd nocaseglob notify nomatch correctall
+setopt histappend checkjobs
 
+# Keybindings (use Vim mode)
+bindkey -v  
+export KEYTIMEOUT=1
+
+#####################
+# ALIASES           #
+#####################
+alias la='ls -lathr'
+alias ll='ls -la'
+alias ls='ls -a --color=auto'
+alias mv='mv -v'
+alias vim=nvim
+
+##########################
+# OMZ Libraries & Plugins
+##########################
 zinit wait lucid for \
-	OMZL::clipboard.zsh \
-	OMZL::compfix.zsh \
-	OMZL::completion.zsh \
-	OMZL::correction.zsh \
-	OMZL::directories.zsh \
-	OMZL::git.zsh \
-	OMZL::grep.zsh \
-	OMZL::key-bindings.zsh \
-	OMZL::spectrum.zsh \
-	OMZP::git \
-	OMZP::fzf \
-	OMZP::sudo \
+  OMZL::history.zsh \
+  OMZL::clipboard.zsh \
+  OMZL::compfix.zsh \
+  OMZL::completion.zsh \
+  OMZL::correction.zsh \
+  OMZL::directories.zsh \
+  OMZL::git.zsh \
+  OMZL::grep.zsh \
+  OMZL::key-bindings.zsh \
+  OMZL::spectrum.zsh \
+  OMZP::git \
+  OMZP::fzf \
+  OMZP::sudo \
+  OMZP::tmux \
   hlissner/zsh-autopair \
 
 #####################
-# PLUGINS           #
+# ADDITIONAL PLUGINS
 #####################
 zinit wait lucid for \
-    light-mode atinit"ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20 ZSH_AUTOSUGGEST_STRATEGY=(history completion)" atload"_zsh_autosuggest_start" \
+  hlissner/zsh-autopair \
   zsh-users/zsh-autosuggestions \
-    light-mode atinit"
-      typeset -gA FAST_HIGHLIGHT; FAST_HIGHLIGHT[git-cmsg-len]=100;
-      zpcompinit; zpcdreplay" \
+    atinit"ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20 ZSH_AUTOSUGGEST_STRATEGY=(history completion)" \
+    atload"_zsh_autosuggest_start" \
   zdharma-continuum/fast-syntax-highlighting \
-    atpull'zinit creinstall -q .' \
+    atinit"zpcompinit; zpcdreplay" \
+  zdharma-continuum/history-search-multi-word \
     atinit"
       zstyle ':completion:*' completer _expand _complete _ignored _approximate
       zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
@@ -81,5 +102,15 @@ zinit wait lucid for \
   zdharma-continuum/history-search-multi-word \
   Aloxaf/fzf-tab
 
-source ~/.zsh/aliases.zsh
-export PATH=$PATH:/home/dwaris/.spicetify
+
+#####################
+# UTILITIES         #
+#####################
+eval "$(zoxide init zsh)"
+
+# Ensure completions work correctly
+autoload -U compinit && compinit
+
+# Enable job notifications
+setopt CHECK_JOBS
+
