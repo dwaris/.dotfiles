@@ -86,7 +86,7 @@ symbol = "🐧 "
 disabled = false
 
 [time]
-disabled = false
+disabled = true
 use_12hr = false
 format = '[$time]($style)'
 time_format = "%T"
