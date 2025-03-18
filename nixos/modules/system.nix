@@ -8,8 +8,11 @@ in
     isNormalUser = true;
     description = "dwaris";
     extraGroups = [ "wheel" ];
+    shell = pkgs.zsh;
   };
 
+  programs.zsh.enable = true;
+  
   nix.settings.trusted-users = [ username ];
 
   nix.settings = {
