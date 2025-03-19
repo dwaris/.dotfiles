@@ -102,15 +102,19 @@ zinit wait lucid for \
   zdharma-continuum/history-search-multi-word \
   Aloxaf/fzf-tab
 
-
 #####################
 # UTILITIES         #
 #####################
-eval "$(zoxide init zsh)"
+eval "$(direnv hook zsh)"
 
-# Ensure completions work correctly
-autoload -U compinit && compinit
+# Ensure completions work correctly; open shell faster with cache
+if [ "$(find ~/.zcompdump -mtime 1)" ] ; then
+    compinit
+fi
+compinit -C
 
 # Enable job notifications
 setopt CHECK_JOBS
 
+# must be added after compinit is called
+eval "$(zoxide init zsh)"
