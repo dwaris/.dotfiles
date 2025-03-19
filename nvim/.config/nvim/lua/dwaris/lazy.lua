@@ -20,7 +20,6 @@ vim.g.have_nerd_font = true
 
 require("lazy").setup({
   spec = {
-    { 'numToStr/Comment.nvim',  opts = {} },
     {
       'folke/todo-comments.nvim',
       dependencies = { 'nvim-lua/plenary.nvim' },
