@@ -90,7 +90,7 @@
   services.printing.enable = false;
   services.fwupd.enable = true;
 
-  virtualisation.docker.enable = false;
+  virtualisation.docker.enable = true;
 
   virtualisation.podman = {
     enable = false;
