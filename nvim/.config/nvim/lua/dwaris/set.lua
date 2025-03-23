@@ -1,32 +1,37 @@
-local opt = vim.opt
+vim.opt.guicursor = ''
 
-opt.expandtab = true
-opt.hlsearch = true
-opt.number = true
-opt.mouse = 'a'
-opt.clipboard = 'unnamedplus'
-opt.breakindent = true
-opt.swapfile = false
-opt.backup = false
-opt.undodir = os.getenv 'HOME' .. '/.nvim/undodir'
-opt.undofile = true
+vim.opt.nu = true
+vim.opt.relativenumber = true
 
-opt.ignorecase = true
-opt.smartcase = true
-opt.scrolloff = 8
-opt.signcolumn = 'yes'
-opt.updatetime = 250
-opt.timeoutlen = 300
-opt.completeopt = 'menuone,noselect'
-opt.termguicolors = true
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
 
-opt.list = true
-opt.listchars = 'tab:→ ,trail:·,extends:>,precedes:<'
-opt.inccommand = 'split'
-opt.splitright = true
-opt.splitbelow = true
-opt.cursorline = true
-opt.showmode = false
+vim.opt.smartindent = true
 
-opt.shiftwidth = 4
-opt.tabstop = 4
+vim.opt.clipboard = 'unnamedplus'
+
+vim.opt.wrap = false
+
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.undodir = os.getenv 'HOME' .. '/.nvim/undodir'
+vim.opt.undofile = true
+
+vim.opt.hlsearch = false
+vim.opt.incsearch = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+
+vim.opt.termguicolors = true
+
+vim.opt.scrolloff = 8
+vim.opt.signcolumn = 'yes'
+
+vim.opt.updatetime = 50
+
+vim.opt.cursorline = true
+vim.opt.showmode = false
+
+vim.opt.colorcolumn = '80'
