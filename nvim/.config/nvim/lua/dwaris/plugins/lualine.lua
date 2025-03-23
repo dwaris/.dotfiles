@@ -1,16 +1,16 @@
 local colors = {
-    bg       = '#1e1e2e',
-    fg       = '#CDD6F4',
-    yellow   = '#ECBE7B',
-    cyan     = '#94e2d5',
+    bg = '#1e1e2e',
+    fg = '#CDD6F4',
+    yellow = '#ECBE7B',
+    cyan = '#94e2d5',
     darkblue = '#081633',
-    green    = '#98be65',
-    orange   = '#FF8800',
-    salmon   = '#f9e2af"',
-    violet   = '#a9a1e1',
-    magenta  = '#c678dd',
-    blue     = '#51afef',
-    red      = '#ec5f67',
+    green = '#98be65',
+    orange = '#FF8800',
+    salmon = '#f9e2af"',
+    violet = '#a9a1e1',
+    magenta = '#c678dd',
+    blue = '#51afef',
+    red = '#ec5f67',
 }
 
 local conditions = {
@@ -110,7 +110,7 @@ ins_left {
 ins_right {
     function()
         local msg = 'No Active Lsp'
-        local buf_ft = vim.api.nvim_get_option_value("filetype", {})
+        local buf_ft = vim.api.nvim_get_option_value('filetype', {})
         local clients = vim.lsp.get_clients()
         if next(clients) == nil then
             return msg
@@ -128,7 +128,7 @@ ins_right {
 }
 
 ins_right {
-    'o:encoding',       -- option component same as &encoding in viml
+    'o:encoding', -- option component same as &encoding in viml
     fmt = string.upper, -- I'm not sure why it's upper case either ;)
     cond = conditions.hide_in_width,
     color = { fg = colors.salmon, gui = 'bold' },
@@ -146,5 +146,5 @@ return {
     event = 'VeryLazy',
     config = function()
         require('lualine').setup(config)
-    end
+    end,
 }
