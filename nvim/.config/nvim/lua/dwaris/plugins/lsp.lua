@@ -8,6 +8,7 @@ return {
             'hrsh7th/cmp-path',
             'hrsh7th/cmp-cmdline',
             'hrsh7th/nvim-cmp',
+            'hrsh7th/cmp-nvim-lsp-signature-help',
             'L3MON4D3/LuaSnip',
             'saadparwaiz1/cmp_luasnip',
             'j-hui/fidget.nvim',
@@ -143,6 +144,7 @@ return {
                         require('luasnip').lsp_expand(args.body)
                     end,
                 },
+
                 mapping = cmp.mapping.preset.insert {
                     ['<C-p>'] = cmp.mapping.select_prev_item(
                         cmp_select,
@@ -169,25 +171,13 @@ return {
                     ),
                 },
 
-                sources = cmp.config.sources({
+                sources = cmp.config.sources {
                     { name = 'copilot', group_index = 2 },
                     { name = 'nvim_lsp' },
                     { name = 'luasnip' },
                     { name = 'path' },
-                }, {
                     { name = 'buffer' },
-                }),
-            }
-
-            vim.diagnostic.config {
-                -- update_in_insert = true,
-                float = {
-                    focusable = false,
-                    style = 'minimal',
-                    border = 'rounded',
-                    source = 'always',
-                    header = '',
-                    prefix = '',
+                    { name = 'nvim_lsp_signature_help' },
                 },
             }
         end,
