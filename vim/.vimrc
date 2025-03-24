@@ -7,25 +7,33 @@ if has('syntax')
 endif
 
 set tabstop=4
+set softtabstop=4
 set shiftwidth=4
 set expandtab
+set smartindent
 
+set clipboard=unnamedplus
+
+set nowrap
+
+set noswapfile
+set nobackup
+set undodir=~/.vim/undodir
+set undofile
+
+set nohlsearch
+set incsearch
 set ignorecase
 set smartcase
 
-set ai
-set number
-set hlsearch
-set ruler
+set termguicolors
 
-set backspace=indent,eol,start
-set autoindent
-set nostartofline
-
-set cmdheight=2
-set wildmenu
-set showcmd
-
+set scrolloff=8
+set signcolumn=yes
+set updatetime=50
+set cursorline
+set noshowmode
+set colorcolumn=80
 if has('mouse')
   set mouse=a
 endif
