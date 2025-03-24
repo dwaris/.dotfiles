@@ -1,5 +1,15 @@
 return {
     {
+        'folke/lazydev.nvim',
+        ft = 'lua',
+        opts = {
+            library = {
+                { path = 'luvit-meta/library', words = { 'vim%.uv' } },
+            },
+        },
+    },
+    { 'Bilal2453/luvit-meta', lazy = true },
+    {
         'neovim/nvim-lspconfig',
         dependencies = {
             'stevearc/conform.nvim',
@@ -136,8 +146,6 @@ return {
 
             require('fidget').setup {}
 
-            local cmp_select = { behavior = cmp.SelectBehavior.Select }
-
             cmp.setup {
                 snippet = {
                     expand = function(args)
@@ -145,30 +153,17 @@ return {
                     end,
                 },
 
+                completion = { completeopt = 'menu,menuone,noinsert' },
+
                 mapping = cmp.mapping.preset.insert {
-                    ['<C-p>'] = cmp.mapping.select_prev_item(
-                        cmp_select,
-                        { desc = 'Previous item' }
-                    ),
-                    ['<C-n>'] = cmp.mapping.select_next_item(
-                        cmp_select,
-                        { desc = 'Next item' }
-                    ),
+                    ['<C-p>'] = cmp.mapping.select_prev_item {},
+                    ['<C-n>'] = cmp.mapping.select_next_item {},
                     ['<C-y>'] = cmp.mapping.confirm {
                         select = true,
-                        desc = 'Confirm',
                     },
-                    ['<C-Space>'] = cmp.mapping.complete {
-                        desc = 'Show completion',
-                    },
-                    ['<C-[>'] = cmp.mapping.scroll_docs(
-                        -4,
-                        { desc = 'Scroll docs up' }
-                    ),
-                    ['<C-]>'] = cmp.mapping.scroll_docs(
-                        4,
-                        { desc = 'Scroll docs down' }
-                    ),
+                    ['<C-Space>'] = cmp.mapping.complete {},
+                    -- ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+                    -- ['<C-f>'] = cmp.mapping.scroll_docs(4), same binding as tmux
                 },
 
                 sources = cmp.config.sources {
