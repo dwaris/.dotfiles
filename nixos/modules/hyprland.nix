@@ -10,8 +10,9 @@
   programs.hyprland = {
     enable = true;
     withUWSM = true;
-    xwayland.enable = true;
   };
+
+  programs.hyprlock.enable = true;
 
   services.xserver = {
     enable = true;
@@ -42,7 +43,6 @@
   environment.systemPackages = with pkgs; [
     hyprpaper
     hyprpolkitagent
-    hyprlock
 
     waybar
     pavucontrol
@@ -74,6 +74,7 @@
     power-profiles-daemon.enable = true;
     accounts-daemon.enable = true;
     gnome = {
+      sushi.enable = true;
       evolution-data-server.enable = true;
       glib-networking.enable = true;
       gnome-keyring.enable = true;
@@ -81,5 +82,5 @@
     };
   };
 
-  #  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
 }
