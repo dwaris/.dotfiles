@@ -1,88 +1,116 @@
 @import "mocha.css";
 * {
-  transition: none;
-  box-shadow: none;
+	font-family: 'Sauce Code Pro Nerd Font';
+	font-size: 14px;
+    min-height: 0;
 }
 
 #waybar {
-	font-family: 'Source Code Pro', sans-serif;
-	font-size: 1.2em;
-	font-weight: 400;
   color: @text;
   background: @base;
+  margin: 5px 5px;
 }
 
 #workspaces {
-  margin: 0 4px;
+  border-radius: 1rem;
+  margin: 5px;
+  background-color: @surface0;
+  margin-left: 1rem;
 }
 
 #workspaces button {
-  margin: 4px 0;
-  padding: 0 4px;
-  color: @overlay1;
-}
-
-#workspaces button.visible {
+  color: @lavender;
+  border-radius: 1rem;
+  padding: 0.4rem;
 }
 
 #workspaces button.active {
-  border-radius: 4px;
+  color: @sky;
+  border-radius: 1rem;
+}
+
+#workspaces button:hover {
+  color: @sapphire;
+  border-radius: 1rem;
+}
+
+#custom-music,
+#window,
+#tray,
+#backlight,
+#clock,
+#battery,
+#pulseaudio,
+#pulseaudio#mic,
+#custom-lock,
+#custom-power {
   background-color: @surface0;
-}
-
-#workspaces button.urgent {
-  color: rgba(238, 46, 36, 1);
-}
-
-#tray {
-  margin: 4px 4px 4px 4px;
-  border-radius: 4px;
-  background-color: @surface0;
-}
-
-#tray * {
-  padding: 0 6px;
-  border-left: 1px solid @mantle;
-}
-
-#tray *:first-child {
-  border-left: none;
-}
-
-#mode, #battery, #cpu, #memory, #network, #pulseaudio, #idle_inhibitor, #backlight, #custom-storage, #custom-updates, #custom-weather, #custom-mail, #clock, #temperature, #language{
-  margin: 4px 2px;
-  padding: 0 6px;
-  background-color: @surface0;
-  border-radius: 4px;
-  min-width: 20px;
-}
-
-#pulseaudio.muted {
-  color: @red;
-}
-
-#pulseaudio.bluetooth {
-  color: @blue;
+  padding: 0.5rem 1rem;
+  margin: 5px 0;
 }
 
 #clock {
-  margin-left: 0px;
-  margin-right: 4px;
-  background-color: transparent;
+  color: @blue;
+  border-radius: 1rem 1rem;
+  margin-right: 1rem;
 }
 
-#temperature.critical {
+#battery {
+  color: @green;
+}
+
+#battery.charging {
+  color: @green;
+}
+
+#battery.warning:not(.charging) {
   color: @red;
 }
 
-#window {
-  font-size: 0.9em;
-	font-weight: 400;
-	font-family: sans-serif;
+#backlight {
+  color: @yellow;
 }
 
-#language {
-	font-size: 0.9em;
-	font-weight: 500;
-	letter-spacing: -1px;
+#backlight,
+#battery {
+  border-radius: 0;
 }
+
+#pulseaudio.input {
+  border-radius: 1rem 0px 0px 1rem;
+}
+
+#pulseaudio.output {
+  border-radius: 0px 1rem 1rem 0px;
+  margin-right: 1rem;
+}
+
+#window {
+  border-radius: 1rem 1rem;
+}
+
+#custom-music {
+  color: @mauve;
+  border-radius: 1rem 1rem;
+}
+
+#custom-power {
+  margin-right: 1rem;
+  border-radius: 0px 1rem 1rem 0px;
+  color: @red;
+}
+
+#custom-lock {
+  border-radius: 1rem 0px 0px 1rem;
+  color: @blue;
+}
+
+#tray {
+  margin-right: 1rem;
+  border-radius: 1rem 1rem;
+}
+
+#workspaces button.urgent {
+  color: @red;
+}
+
