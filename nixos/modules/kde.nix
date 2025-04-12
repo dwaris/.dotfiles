@@ -6,6 +6,8 @@
 }:
 
 {
+  environment.shells = with pkgs; [ zsh ];
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -77,7 +79,7 @@
   ];
 
   programs.partition-manager.enable = true;
-  programs.kdeconnect.enable = true;
+  programs.kdeconnect.enable = false;
 
   # Enable sound with pipewire.
   security.rtkit.enable = true;

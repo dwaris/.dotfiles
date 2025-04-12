@@ -10,5 +10,6 @@
     kitty
 
     vscode-fhs
+    code-cursor
   ];
 }
