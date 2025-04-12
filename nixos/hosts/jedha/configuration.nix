@@ -1,15 +1,12 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
 {
   config,
   pkgs,
   inputs,
   ...
-}:
-
-{
+}: {
   imports = [
     ../../modules
 
@@ -46,7 +43,7 @@
   boot.zfs.forceImportRoot = true;
 
   boot.initrd.systemd.enable = true;
-  boot.initrd.supportedFilesystems = [ "zfs" ];
+  boot.initrd.supportedFilesystems = ["zfs"];
 
   boot.initrd.kernelModules = [
     "zfs"
@@ -64,8 +61,6 @@
     sshfs
     sbctl
 
-#    distrobox
-
     veracrypt
 
     qbittorrent
@@ -75,7 +70,7 @@
   services.zfs.autoSnapshot.enable = true;
   services.zfs.autoScrub.enable = true;
 
-  security.pki.certificates = [ "/etc/ssl/certs/root_ca.crt" ];
+  security.pki.certificates = ["/etc/ssl/certs/root_ca.crt"];
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -85,7 +80,7 @@
   services.flatpak.enable = true;
   services.flatpak.update.onActivation = true;
 
-  environment.sessionVariables.XDG_DATA_DIRS = [ "/var/lib/flatpak/exports/share" ];
+  environment.sessionVariables.XDG_DATA_DIRS = ["/var/lib/flatpak/exports/share"];
 
   services.printing.enable = false;
   services.fwupd.enable = true;
