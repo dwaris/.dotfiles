@@ -79,7 +79,7 @@
   border-radius: 0;
 }
 
-#pulseaudio.input {
+#pulseaudio.input, #backlight {
   border-radius: 1rem 0px 0px 1rem;
 }
 

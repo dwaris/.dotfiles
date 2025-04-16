@@ -11,10 +11,9 @@
 	"modules-right": [
 		"pulseaudio#input",
         "pulseaudio#output",
+		"tray",
 		"backlight",
 		"battery",
-		"tray",
-		"custom/lock",
 		"custom/power"
 	],
 	"hyprland/workspaces": {

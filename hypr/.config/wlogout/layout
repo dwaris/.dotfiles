@@ -1,0 +1,21 @@
+{
+    "label" : "lock",
+    "action" : "hyprlock",
+    "text" : "Lock",
+    "keybind" : "l"
+}
+{
+    "label" : "logout",
+    "action" : "hyprctl dispatch exit",
+    "text" : "Logout"
+}
+{
+    "label" : "shutdown",
+    "action" : "echo 4500 | sudo -S poweroff -f",
+    "text" : "Shutdown"
+}
+{
+    "label" : "reboot",
+    "action" : "echo 4500 | sudo -S reboot -f",
+    "text" : "Reboot"
+}
