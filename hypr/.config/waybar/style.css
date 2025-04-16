@@ -1,6 +1,6 @@
 @import "mocha.css";
 * {
-	font-family: 'Sauce Code Pro Nerd Font';
+	font-family: 'SauceCodePro Nerd Font';
 	font-size: 14px;
     min-height: 0;
 }
@@ -41,12 +41,15 @@
 #clock,
 #battery,
 #pulseaudio,
-#pulseaudio#mic,
 #custom-lock,
 #custom-power {
   background-color: @surface0;
   padding: 0.5rem 1rem;
   margin: 5px 0;
+}
+
+#pulseaudio {
+  padding: 0.5rem 0.5rem;
 }
 
 #clock {

@@ -6,7 +6,7 @@
 		"custom/music",
 	],
 	"modules-center": [
-        "hyprland/window"
+		"clock"
 	],
 	"modules-right": [
 		"pulseaudio#input",
@@ -14,7 +14,6 @@
 		"backlight",
 		"battery",
 		"tray",
-		"clock",
 		"custom/lock",
 		"custom/power"
 	],
@@ -28,8 +27,8 @@
 			"1": "",
 			"2": "󰖟",
 			"3": "",
-			"4": "󰎉",
-			"5": "󰛳",
+			"4": "",
+			"5": "",
 			"default": ""
 		}
 	},
@@ -89,12 +88,12 @@
 	},
     "pulseaudio#input": {
 		"format": "{icon} {volume}%",
-        "format-muted": "",
+        "format-muted": "  ",
         "format-icons": {
 			"default": [
-				"",
-				"",
-				" "
+				"  ",
+				"  ",
+				"  "
 			]
         },
         "scroll-step": 5,
@@ -104,8 +103,8 @@
     },
     "pulseaudio#output": {
         "format": "{format_source}",
-        "format-source": "",
-        "format-source-muted": "",
+        "format-source": " ",
+        "format-source-muted": " ",
         "scroll-step": 5,
         "on-click": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
         "ignored-sinks": ["Easy Effects Sink"]
@@ -123,7 +122,6 @@
     "hyprland/window": {
         "format": "{title}",
         "separate-outputs": true,
-        "icon": true,
         "max-length": 50,
         "tooltip": false,
         "rewrite": {
