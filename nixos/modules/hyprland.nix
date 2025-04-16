@@ -50,6 +50,8 @@
     playerctl
     networkmanagerapplet
     rofi-wayland
+    wlogout
+    brightnessctl
 
     adwaita-icon-theme
     nautilus
