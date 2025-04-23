@@ -8,7 +8,7 @@
 {
   environment.systemPackages = with pkgs; [
     mpv
-    tauon
+    vlc
     tidal-hifi
 
     komikku
