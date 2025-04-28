@@ -53,7 +53,7 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
-  networking.firewall.enable = true;
+  systemd.services.NetworkManager-wait-online.enable = false;
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = false;
