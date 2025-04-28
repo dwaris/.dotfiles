@@ -69,6 +69,7 @@
   };
 
   services = {
+    blueman.enable = true;
     gvfs.enable = true;
     devmon.enable = true;
     udisks2.enable = true;
