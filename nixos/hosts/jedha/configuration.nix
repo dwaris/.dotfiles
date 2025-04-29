@@ -59,6 +59,7 @@
   environment.systemPackages = with pkgs; [
     sshfs
     sbctl
+    via
 
     veracrypt
 
@@ -68,6 +69,7 @@
 
   services.zfs.autoSnapshot.enable = true;
   services.zfs.autoScrub.enable = true;
+  services.udev.packages = with pkgs; [ via ];
 
   security.pki.certificates = ["/etc/ssl/certs/root_ca.crt"];
 
