@@ -33,7 +33,6 @@
   boot.loader.efi.efiSysMountPoint = "/boot";
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_6_13;
-  #boot.kernelPackages = pkgs.linuxPackages;
   boot.supportedFilesystems = [
     "zfs"
     "ntfs"
@@ -51,7 +50,7 @@
   ];
   boot.kernelParams = [
     "video=DP-1:2560x1440@144"
-    "video=HDMI-A-1:1920x1080@75"
+    "video=DP-2:1920x1080@60"
   ];
 
   networking.hostName = "jedha"; # Define your hostname.
@@ -87,11 +86,6 @@
   services.fwupd.enable = true;
 
   virtualisation.docker.enable = true;
-
-  virtualisation.podman = {
-    enable = false;
-    dockerCompat = true;
-  };
 
   programs.adb.enable = true;
   users.users.dwaris.extraGroups = [
