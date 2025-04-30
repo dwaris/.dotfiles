@@ -9,8 +9,8 @@
 		"clock"
 	],
 	"modules-right": [
-		"pulseaudio#input",
-        "pulseaudio#output",
+		"pulseaudio#sink",
+        "pulseaudio#source",
 		"tray",
 		"backlight",
 		"battery",
@@ -85,7 +85,7 @@
 			""
 		]
 	},
-    "pulseaudio#input": {
+    "pulseaudio#sink": {
 		"format": "{icon} {volume}%",
         "format-muted": "  ",
         "format-icons": {
@@ -100,7 +100,7 @@
         "on-click-middle": "pavucontrol",
         "ignored-sinks": ["Easy Effects Sink"]
     },
-    "pulseaudio#output": {
+    "pulseaudio#source": {
         "format": "{format_source}",
         "format-source": " ",
         "format-source-muted": " ",
