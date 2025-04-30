@@ -38,7 +38,7 @@
 
   security.pam.services.gdm.enableGnomeKeyring = true;
   environment.variables.XDG_RUNTIME_DIR = "/run/user/$UID";
-  environment.variables.SSH_AUTH_SOCK = "/run/user/1000/keyring/ssh";
+  environment.variables.SSH_AUTH_SOCK = "$XDG_RUNTIME_DIR/keyring/ssh";
 
   environment.systemPackages = with pkgs; [
     hyprpaper
@@ -65,7 +65,7 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    wireplumber.enable = true;
+    jack.enable = true;
   };
 
   services = {
