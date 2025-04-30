@@ -59,7 +59,6 @@
   environment.systemPackages = with pkgs; [
     sshfs
     sbctl
-    via
 
     veracrypt
 
@@ -69,7 +68,6 @@
 
   services.zfs.autoSnapshot.enable = true;
   services.zfs.autoScrub.enable = true;
-  services.udev.packages = with pkgs; [ via ];
 
   security.pki.certificates = ["/etc/ssl/certs/root_ca.crt"];
 
@@ -80,7 +78,6 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
   services.flatpak.enable = true;
-  services.flatpak.update.onActivation = true;
 
   environment.sessionVariables.XDG_DATA_DIRS = ["/var/lib/flatpak/exports/share"];
 
