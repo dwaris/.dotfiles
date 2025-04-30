@@ -78,11 +78,23 @@
   border-radius: 0;
 }
 
-#pulseaudio.input, #backlight {
+#pulseaudio.sink, #backlight {
   border-radius: 1rem 0px 0px 1rem;
 }
 
-#pulseaudio.output, #battery {
+#pulseaudio.sink.muted {
+  color: @red;
+}
+
+#pulseaudio.sink:not(.muted) {
+    color: @text;
+}
+
+#pulseaudio.source-muted {
+    color: @red; 
+}
+
+#pulseaudio.source, #battery {
   border-radius: 0px 1rem 1rem 0px;
   margin-right: 1rem;
 }
