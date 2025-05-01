@@ -1,6 +1,6 @@
 {
   imports = [
-    ./default.nix
+    ./devices.nix
     ./steam.nix
     ./launcher.nix
   ];
