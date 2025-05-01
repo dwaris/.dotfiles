@@ -44,6 +44,9 @@
     hyprpaper
     hyprpolkitagent
 
+    grim
+    slurp
+
     waybar
     pavucontrol
     dunst
