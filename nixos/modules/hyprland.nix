@@ -36,9 +36,9 @@
     ];
   };
 
+  security.polkit.enable = true;
   security.pam.services.gdm.enableGnomeKeyring = true;
-  environment.variables.XDG_RUNTIME_DIR = "/run/user/$UID";
-  environment.variables.SSH_AUTH_SOCK = "$XDG_RUNTIME_DIR/keyring/ssh";
+  environment.variables.SSH_AUTH_SOCK = "/run/user/$UID/keyring/ssh";
 
   environment.systemPackages = with pkgs; [
     hyprpaper
@@ -71,17 +71,14 @@
   services = {
     blueman.enable = true;
     gvfs.enable = true;
-    devmon.enable = true;
     udisks2.enable = true;
     upower.enable = true;
     power-profiles-daemon.enable = true;
     accounts-daemon.enable = true;
     gnome = {
       sushi.enable = true;
-      evolution-data-server.enable = true;
       glib-networking.enable = true;
       gnome-keyring.enable = true;
-      gnome-online-accounts.enable = true;
     };
   };
 
