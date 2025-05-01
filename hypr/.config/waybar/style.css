@@ -20,7 +20,7 @@
 
 #workspaces button {
   color: @lavender;
-  border-radius: 1rem;
+  border: none;
   padding: 0.4rem;
 }
 
@@ -30,7 +30,10 @@
 }
 
 #workspaces button:hover {
-  color: @sapphire;
+  box-shadow: none;
+  text-shadow: none;
+  background: @lavender;
+  color: @base;
   border-radius: 1rem;
 }
 
