@@ -24,6 +24,9 @@ alias ls='ls -a --color=auto'
 alias mv='mv -v'
 alias vim=nvim
 
+bind 'set show-all-if-ambiguous on'
+bind 'TAB:menu-complete'
+
 if command -v fzf-share > /dev/null; then
   source "$(fzf-share)/key-bindings.bash"
   source "$(fzf-share)/completion.bash"
