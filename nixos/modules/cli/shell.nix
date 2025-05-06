@@ -6,7 +6,6 @@
 }:
 {
   environment.systemPackages = with pkgs; [
-    tmux
     stow
     fzf
     zoxide
