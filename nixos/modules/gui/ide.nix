@@ -3,13 +3,9 @@
   lib,
   pkgs,
   ...
-}:
-{
+}: {
   environment.systemPackages = with pkgs; [
-    ghostty
-    kitty
-
+    wezterm
     vscode-fhs
-    code-cursor
   ];
 }
