@@ -7,11 +7,12 @@
 
 #waybar {
   color: @text;
-  background: @base;
+  background-color: transparent;
   margin: 5px 5px;
 }
 
 #workspaces {
+  background-color: transparent;
   border-radius: 1rem;
   margin: 5px;
   background-color: @surface0;

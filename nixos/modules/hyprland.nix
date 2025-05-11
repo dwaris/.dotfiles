@@ -42,6 +42,7 @@
 
   environment.systemPackages = with pkgs; [
     hyprpaper
+    hyprsunset
     hyprpolkitagent
 
     grim
@@ -56,10 +57,25 @@
     wlogout
     brightnessctl
 
-    adwaita-icon-theme
-    nautilus
     wl-clipboard
     libsecret
+    neovide
+
+    nwg-look
+    adw-gtk3
+    adwaita-icon-theme 
+    kdePackages.qt6ct
+    kdePackages.breeze-icons
+
+    file-roller
+    papers
+    loupe
+    nautilus
+    gnome-calculator
+    gnome-disk-utility
+    gnome-system-monitor
+    gnome-usage
+    gnome-font-viewer
   ];
 
   security.rtkit.enable = true;
