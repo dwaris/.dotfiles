@@ -4,6 +4,18 @@ local wezterm = require("wezterm")
 -- This will hold the configuration.
 local config = wezterm.config_builder()
 
+config.hide_tab_bar_if_only_one_tab = false
+config.use_fancy_tab_bar = false
+
+config.color_scheme = "Catppuccin Mocha"
+
+config.font = wezterm.font("Sauce Code Pro Nerd Font")
+config.font = wezterm.font_with_fallback({
+	"Source Code Pro",
+})
+
+config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1000 }
+
 local function is_vim(pane)
 	-- this is set by the plugin, and unset on ExitPre in Neovim
 	return pane:get_user_vars().IS_NVIM == "true"
@@ -37,14 +49,6 @@ local function split_nav(resize_or_move, key)
 	}
 end
 
-config.color_scheme = "Catppuccin Mocha"
-
-config.font = wezterm.font("Sauce Code Pro Nerd Font")
-config.font = wezterm.font_with_fallback({
-	"Source Code Pro",
-})
-
-config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1000 }
 config.keys = {
 	-- splitting
 	{
