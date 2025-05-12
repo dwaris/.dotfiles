@@ -3,7 +3,7 @@
     "position": "top",
 	"modules-left": [
 		"hyprland/workspaces",
-		"custom/music",
+		"custom/music"
 	],
 	"modules-center": [
 		"clock"
@@ -14,6 +14,7 @@
 		"tray",
 		"backlight",
 		"battery",
+        "idle_inhibitor",
 		"custom/power"
 	],
 	"hyprland/workspaces": {
@@ -21,20 +22,27 @@
 		"on-scroll-up": "hyprctl dispatch workspace e-1",
 		"on-scroll-down": "hyprctl dispatch workspace e+1",
 		"format": "{name}: {icon}",
-		"all-outputs": true,
+		"all-outputs": false,
 		"format-icons": {
-			"1": " ",
-			"2": "󰖟 ",
-			"3": " ",
-			"4": " ",
-			"5": " ",
-			"default": " "
+			"1": "",
+			"2": "󰖟",
+			"3": "",
+			"4": "",
+			"5": "",
+			"default": ""
 		}
 	},
 	"tray": {
 		"icon-size": 17,
 		"spacing": 10
 	},
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
 	"custom/music": {
 		"format": " {}",
 		"escape": true,
@@ -87,12 +95,12 @@
 	},
     "pulseaudio#sink": {
 		"format": "{icon} {volume}%",
-        "format-muted": "  ",
+        "format-muted": "",
         "format-icons": {
 			"default": [
-				"  ",
-				"  ",
-				"  "
+				"",
+				"",
+				""
 			]
         },
         "scroll-step": 5,
@@ -102,8 +110,8 @@
     },
     "pulseaudio#source": {
         "format": "{format_source}",
-        "format-source": " ",
-        "format-source-muted": " ",
+        "format-source": "",
+        "format-source-muted": "",
         "scroll-step": 5,
         "on-click": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
         "ignored-sinks": ["Easy Effects Sink"]
@@ -124,7 +132,6 @@
         "max-length": 50,
         "tooltip": false,
         "rewrite": {
-            "Firefox Web Browser": "Firefox",
             "": "Desktop"
         }
     } 
