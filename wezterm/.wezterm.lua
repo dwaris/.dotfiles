@@ -16,6 +16,14 @@ config.font = wezterm.font_with_fallback({
 
 config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1000 }
 
+config.unix_domains = {
+	{
+		name = "unix",
+	},
+}
+
+config.default_gui_startup_args = { "connect", "unix" }
+
 local function is_vim(pane)
 	-- this is set by the plugin, and unset on ExitPre in Neovim
 	return pane:get_user_vars().IS_NVIM == "true"
