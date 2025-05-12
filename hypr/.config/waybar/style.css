@@ -1,33 +1,30 @@
 @import "mocha.css";
 * {
-	font-family: 'SauceCodePro Nerd Font';
-	font-size: 14px;
-    min-height: 0;
+  border: none;
+  font-family: "SauceCodePro Nerd Font Propo";
+  font-size: 1rem;
+  border-radius: 1rem;
 }
 
 #waybar {
-  color: @text;
   background-color: transparent;
-  margin: 5px 5px;
 }
 
 #workspaces {
-  background-color: transparent;
   border-radius: 1rem;
-  margin: 5px;
   background-color: @surface0;
-  margin-left: 1rem;
+  margin-left: 10px;
+  margin-top: 10px;
 }
 
 #workspaces button {
-  color: @lavender;
+  color: @text;
+  background-color: @surface0;
   border: none;
-  padding: 0.4rem;
 }
 
 #workspaces button.active {
-  color: @sky;
-  border-radius: 1rem;
+  color: @mauve;
 }
 
 #workspaces button:hover {
@@ -35,7 +32,6 @@
   text-shadow: none;
   background: @lavender;
   color: @base;
-  border-radius: 1rem;
 }
 
 #custom-music,
@@ -48,19 +44,15 @@
 #idle_inhibitor,
 #custom-power {
   background-color: @surface0;
+  color: @text;
   padding: 0.5rem 1rem;
-  margin: 5px 0;
-}
-
-#pulseaudio {
-  padding: 0.5rem 0.5rem;
+  margin-right: 10px;
+  margin-top: 10px;
 }
 
 #clock {
-  color: @blue;
-  border-radius: 1rem 1rem;
-  margin-right: 1rem;
-}
+  color: @mauve;
+ }
 
 #battery {
   color: @green;
@@ -78,60 +70,26 @@
   color: @yellow;
 }
 
-#backlight,
-#battery {
-  border-radius: 0;
-}
-
-#pulseaudio.sink, #backlight {
-  border-radius: 1rem 0px 0px 1rem;
-}
-
-#pulseaudio.sink.muted {
-  color: @red;
+#pulseaudio.sink, #backlight, #battery {
+  border-radius: 1rem 0 0 1rem;
+  margin-right: 0;
 }
 
 #pulseaudio.sink:not(.muted) {
     color: @text;
 }
 
-#pulseaudio.source-muted {
-    color: @red; 
-}
 
 #pulseaudio.source, #battery {
-  border-radius: 0px 1rem 1rem 0px;
-  margin-right: 1rem;
-}
-
-#window {
-  border-radius: 1rem 1rem;
+  border-radius: 0 1rem 1rem 0;
 }
 
 #custom-music {
   color: @mauve;
-  border-radius: 1rem 1rem;
 }
 
-#custom-power {
-  margin-right: 1rem;
-  border-radius: 1rem 1rem;
+#custom-power, #workspaces button.urgent, #pulseaudio.source-muted, #pulseaudio.sink.muted {
   color: @red;
-}
-
-#tray {
-  margin-right: 1rem;
-  border-radius: 1rem 1rem;
-}
-
-#workspaces button.urgent {
-  color: @red;
-}
-
-#idle_inhibitor {
-  color: @text;
-  border-radius: 1rem 1rem;
-  margin-right: 1rem;
 }
 
 #idle_inhibitor.activated {
