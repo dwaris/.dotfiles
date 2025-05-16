@@ -53,7 +53,7 @@
     dunst
     playerctl
     networkmanagerapplet
-    fuzzel
+    rofi-wayland
     wlogout
     brightnessctl
 
