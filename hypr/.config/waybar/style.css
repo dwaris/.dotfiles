@@ -79,12 +79,12 @@
     color: @text;
 }
 
-
 #pulseaudio.source, #battery {
   border-radius: 0 1rem 1rem 0;
 }
 
 #custom-music {
+  margin-left: 10px;
   color: @mauve;
 }
 
