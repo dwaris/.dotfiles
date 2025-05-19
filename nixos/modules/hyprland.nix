@@ -3,10 +3,7 @@
   config,
   pkgs,
   ...
-}:
-
-{
-
+}: {
   programs.hyprland = {
     enable = true;
     withUWSM = true;
@@ -36,9 +33,7 @@
     ];
   };
 
-  security.polkit.enable = true;
-  security.pam.services.gdm.enableGnomeKeyring = true;
-  environment.variables.SSH_AUTH_SOCK = "/run/user/$UID/keyring/ssh";
+  security.pam.services.login.enableGnomeKeyring = true;
 
   environment.systemPackages = with pkgs; [
     hyprpaper
@@ -63,7 +58,7 @@
 
     nwg-look
     adw-gtk3
-    adwaita-icon-theme 
+    adwaita-icon-theme
     kdePackages.qt6ct
     kdePackages.breeze-icons
 
