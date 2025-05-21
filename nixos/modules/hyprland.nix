@@ -10,6 +10,7 @@
   };
 
   programs.hyprlock.enable = true;
+  programs.hyprpaper.enable = true;
 
   services.xserver = {
     enable = true;
@@ -43,7 +44,6 @@
     grim
     slurp
 
-    waybar
     pavucontrol
     dunst
     playerctl
