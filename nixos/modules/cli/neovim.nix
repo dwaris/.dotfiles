@@ -4,6 +4,9 @@
   pkgs,
   ...
 }: {
+
+  programs.nix-ld.enable = true;
+  
   programs.neovim = {
     enable = true;
     defaultEditor = true;
@@ -13,17 +16,9 @@
     clang
     fd
     ripgrep
-
-    bash-language-server
-
-    marksman
-    markdownlint-cli
-
-    lua-language-server
-    stylua
-
-    nil
-    alejandra
+    
+    wget 
+    nodejs_24
 
     imagemagick
     ghostscript
