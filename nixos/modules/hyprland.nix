@@ -10,7 +10,7 @@
   };
 
   programs.hyprlock.enable = true;
-  programs.hyprpaper.enable = true;
+  programs.waybar.enable = true;
 
   services.xserver = {
     enable = true;
