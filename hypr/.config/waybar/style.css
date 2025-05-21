@@ -70,7 +70,7 @@
   color: @yellow;
 }
 
-#pulseaudio.sink, #backlight, #battery {
+#pulseaudio.sink, #backlight {
   border-radius: 1rem 0 0 1rem;
   margin-right: 0;
 }
