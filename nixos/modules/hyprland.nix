@@ -10,7 +10,6 @@
   };
 
   programs.hyprlock.enable = true;
-  programs.waybar.enable = true;
 
   services.xserver = {
     enable = true;
@@ -40,6 +39,7 @@
     hyprpaper
     hyprsunset
     hyprpolkitagent
+    waybar
 
     grim
     slurp
