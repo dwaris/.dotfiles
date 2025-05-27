@@ -199,6 +199,7 @@ return {
 
             local servers = {
                 clangd = {},
+                kotlin_language_server = {},
                 gopls = {},
                 pyright = {},
                 rust_analyzer = {},
