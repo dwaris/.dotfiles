@@ -11,18 +11,10 @@
 
   programs.hyprlock.enable = true;
 
-  services.xserver = {
-    enable = true;
-    xkb = {
-      layout = "eu";
+  services.displayManager.gdm = {
+      enable = true;
+      wayland = true;
     };
-    displayManager = {
-      gdm = {
-        enable = true;
-        wayland = true;
-      };
-    };
-  };
 
   xdg.autostart.enable = true;
   xdg.portal = {

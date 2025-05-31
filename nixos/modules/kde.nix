@@ -32,10 +32,6 @@
   ];
   # Configure keymap in and Dispay Manager
   services = {
-    xserver = {
-      enable = true;
-      xkb.layout = "eu";
-    };
     desktopManager.plasma6.enable = true;
     displayManager.sddm = {
       enable = true;

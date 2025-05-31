@@ -29,16 +29,10 @@
   programs.xwayland.enable = true;
 
   # Configure keymap in and Dispay Manager
-  services.xserver = {
-    enable = true;
-    xkb = {
-      layout = "eu";
-    };
-    displayManager = {
-      gdm = {
-        enable = true;
-        wayland = true;
-      };
+  services = {
+    displayManager.gdm = {
+      enable = true;
+      wayland = true;
     };
     desktopManager.gnome.enable = true;
   };
