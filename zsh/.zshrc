@@ -65,8 +65,6 @@ zinit wait lucid for \
   OMZP::git \
   OMZP::fzf \
   OMZP::sudo \
-  OMZP::tmux \
-  hlissner/zsh-autopair \
 
 #####################
 # ADDITIONAL PLUGINS
@@ -80,30 +78,33 @@ zinit wait lucid for \
     atinit"zpcompinit; zpcdreplay" \
   zdharma-continuum/history-search-multi-word \
     atinit"
-      zstyle ':completion:*' completer _expand _complete _ignored _approximate
-      zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-      zstyle ':completion:*' menu select=2
-      zstyle ':completion:*' select-prompt '%SScrolling active: current selection at %p%s'
-      zstyle ':completion:*' special-dirs true
-      zstyle ':completion:*:*:*:*:processes' command 'ps -u $USER -o pid,user,comm,cmd -w -w'
-      zstyle ':completion:*:descriptions' format '-- %d --'
-      zstyle ':completion:*:processes' command 'ps -au$USER'
-      zstyle ':completion:complete:*:options' sort false
-      zstyle ':fzf-tab:complete:_zlua:*' query-string input
-      zstyle ':fzf-tab:complete:cd:*' extra-opts --preview=$extract'ls -1 --color=always ${~ctxt[hpre]}$in'
-      zstyle ':fzf-tab:complete:kill:argument-rest' extra-opts --preview=$extract'ps --pid=$in[(w)1] -o cmd --no-headers -w -w' --preview-window=down:3:wrap" \
-    blockf light-mode \
-  zsh-users/zsh-completions \
-    atinit"
       zstyle :history-search-multi-word page-size 10
       zstyle :history-search-multi-word highlight-color fg=red,bold
       zstyle :plugin:history-search-multi-word reset-prompt-protect 1" \
     bindmap"^R -> ^H" \
-  zdharma-continuum/history-search-multi-word \
+  zsh-users/zsh-completions \
   Aloxaf/fzf-tab
 
 #####################
-# UTILITIES         #
+# COMPLETION SETTINGS (move common zstyle here)
+#####################
+# Must be after plugins like zsh-completions and fzf-tab are loaded,
+# and before or around compinit
+zstyle ':completion:*' completer _expand _complete _ignored _approximate
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+zstyle ':completion:*' menu select=2
+zstyle ':completion:*' select-prompt '%SScrolling active: current selection at %p%s'
+zstyle ':completion:*' special-dirs true
+zstyle ':completion:*:*:*:*:processes' command 'ps -u $USER -o pid,user,comm,cmd -w -w'
+zstyle ':completion:*:descriptions' format '-- %d --'
+zstyle ':completion:*:processes' command 'ps -au$USER'
+zstyle ':completion:complete:*:options' sort false
+zstyle ':fzf-tab:complete:_zlua:*' query-string input
+zstyle ':fzf-tab:complete:cd:*' extra-opts --preview=$extract'ls -1 --color=always ${~ctxt[hpre]}$in'
+zstyle ':fzf-tab:complete:kill:argument-rest' extra-opts --preview=$extract'ps --pid=$in[(w)1] -o cmd --no-headers -w -w' --preview-window=down:down:3:wrap
+
+#####################
+# UTILITIES
 #####################
 eval "$(direnv hook zsh)"
 
@@ -113,8 +114,6 @@ if [ "$(find ~/.zcompdump -mtime 1)" ] ; then
 fi
 compinit -C
 
-# Enable job notifications
-setopt CHECK_JOBS
-
 # must be added after compinit is called
 eval "$(zoxide init zsh)"
+
