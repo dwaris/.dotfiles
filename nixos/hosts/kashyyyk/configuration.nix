@@ -74,6 +74,14 @@
     "adbusers"
   ];
 
+  services.zfs.autoSnapshot.enable = true;
+  services.zfs.autoScrub.enable = true;
+
+  services.smartd = {
+    autodetect = true;
+    enable = true;
+  };
+
   security.pki.certificates = [ "/etc/ssl/certs/root_ca.crt" ];
 
   hardware.bluetooth.enable = true;
