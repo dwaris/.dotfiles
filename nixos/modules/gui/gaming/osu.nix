@@ -9,5 +9,5 @@
     "sh.ppy.osu"
   ];
 
-  hardware.opentabletdriver.enable = true;
+  hardware.opentabletdriver.enable = false;
 }
