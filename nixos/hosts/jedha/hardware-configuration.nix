@@ -49,6 +49,10 @@
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/3E6A-7E9B";
     fsType = "vfat";
+    options = [
+      "fmask=0077"
+      "dmask=0077"
+    ];
   };
 
   fileSystems."/mnt/Bibliothek" = {
