@@ -54,6 +54,8 @@
     kdePackages.qt6ct
     kdePackages.breeze-icons
 
+    rustdesk-flutter
+
     file-roller
     papers
     loupe
