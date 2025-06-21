@@ -19,6 +19,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.supportedFilesystems = [
     "zfs"
+    "nfs"
     "ntfs"
   ];
 
@@ -30,6 +31,7 @@
 
   environment.systemPackages = with pkgs; [
     sbctl
+    nfs-utils
   ];
 
   services.zfs.autoSnapshot.enable = true;

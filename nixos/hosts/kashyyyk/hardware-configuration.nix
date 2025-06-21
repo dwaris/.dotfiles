@@ -20,7 +20,7 @@
     "sd_mod"
     "rtsx_pci_sdmmc"
   ];
-  boot.initrd.kernelModules = [ "zfs" ];
+  boot.initrd.kernelModules = [ "zfs" "nfs" ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
