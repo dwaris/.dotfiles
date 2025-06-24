@@ -23,7 +23,7 @@
     ./hardware-configuration.nix
   ];
 
-  boot.kernelPackages = pkgs.linuxPackages_6_14;
+  boot.kernelPackages = pkgs.linuxPackages_6_15;
   boot.initrd.kernelModules = [
     "zfs"
     "amdgpu"
