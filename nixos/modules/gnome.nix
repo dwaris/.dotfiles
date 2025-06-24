@@ -10,23 +10,6 @@
     gnome-tweaks
     wl-clipboard
   ];
-  environment.gnome.excludePackages = with pkgs; [
-      gnome-tour
-      gnome-contacts
-      gnome-maps
-      gnome-console
-      simple-scan
-      cheese # webcam tool
-      snapshot
-      gnome-music
-      epiphany # web browser
-      geary # email reader
-      gnome-characters
-      tali # poker game
-      iagno # go game
-      hitori # sudoku game
-      atomix # puzzle game
-  ];
   # Enable the XWayland Fallback windowing system.
   programs.xwayland.enable = true;
 
@@ -39,27 +22,6 @@
     desktopManager.gnome.enable = true;
   };
   
-  networking.firewall.enable = true;
-  networking.firewall.allowedTCPPorts = [ 42588 ];
-  networking.firewall.allowedUDPPorts = [];
-
-  services.openssh = {
-    ports = [ 42588 ];
-    allowSFTP = true; # Don't set this if you need sftp
-    
-    settings = {
-      PasswordAuthentication = false;
-      PermitRootLogin = "no";
-      AllowUsers = [ "dwaris" ];
-    };
-  };
-
-  #xdg.portal.enable = true;
-  #xdg.portal.xdgOpenUsePortal = true;
-  #xdg.portal.extraPortals = [
-  #  pkgs.xdg-desktop-portal-gtk
-  #];
-
   # Enable sound with pipewire.
   security.rtkit.enable = true;
   services.pipewire = {
