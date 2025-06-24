@@ -53,10 +53,10 @@
 
   nixpkgs.config.packageOverrides = pkgs: {
     linux-firmware = pkgs.linux-firmware.overrideAttrs (oldAttrs: rec {
-      version = "20250509";
+      version = "20250621";
       src = pkgs.fetchzip {
         url = "https://cdn.kernel.org/pub/linux/kernel/firmware/linux-firmware-${version}.tar.xz";
-        hash = "sha256-0FrhgJQyCeRCa3s0vu8UOoN0ZgVCahTQsSH0o6G6hhY=";
+        hash = "sha256-Pz/k/ol0NRIHv/AdridwoBPDLsd0rfDAj31Paq4mPpU=";
       };
     });
   };
