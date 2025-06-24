@@ -14,6 +14,8 @@ config.font = wezterm.font_with_fallback({
 	"Source Code Pro",
 })
 
+config.window_decorations = "RESIZE"
+
 config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1000 }
 
 config.unix_domains = {
