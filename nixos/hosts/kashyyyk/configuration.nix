@@ -26,7 +26,6 @@
   environment.systemPackages = with pkgs; [
   ];
 
-  services.printing.enable = false;
   virtualisation.docker.enable = false;
 
   hardware.bluetooth.enable = true;
