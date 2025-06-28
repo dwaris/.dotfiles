@@ -45,8 +45,15 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
   services.tailscale.enable = true;
-  services.flatpak.enable = true;
 
+  services.printing.enable = true;
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
+  };
+
+  services.flatpak.enable = true;
   environment.sessionVariables.XDG_DATA_DIRS = ["/var/lib/flatpak/exports/share"];
 
   services.fwupd.enable = true;
