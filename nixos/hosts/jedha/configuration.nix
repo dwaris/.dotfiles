@@ -30,7 +30,7 @@
   ];
   boot.kernelParams = [
     "nohibernate"
-    "zfs.zfs_arc_max=17179869184" # 16 GiB
+    "zfs.zfs_arc_max=25769803776" # 24 GiB
     "video=DP-1:2560x1440@144"
     "video=DP-2:1920x1080@60"
   ];
