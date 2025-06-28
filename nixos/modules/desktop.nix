@@ -42,9 +42,22 @@
   networking.networkmanager.enable = true;
   systemd.services.NetworkManager-wait-online.enable = false;
 
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
+  # Enable nftables
+  networking.firewall.enable = true;
+  networking.nftables.enable = true;
   services.tailscale.enable = true;
+
+  # Enable the OpenSSH daemon.
+  services.openssh = {
+    enable = true;
+    allowSFTP = true; 
+    openFirewall = true;
+    settings = {
+      PasswordAuthentication = false;
+      PermitRootLogin = "no";
+      AllowUsers = [ "dwaris" ];
+    };
+  };
 
   services.printing.enable = true;
   services.avahi = {
