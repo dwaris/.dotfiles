@@ -16,7 +16,10 @@
   ];
 
   boot.kernelPackages = pkgs.linuxPackages;
-  boot.kernelParams = [ ];
+  boot.kernelParams = [ 
+    "nohibernate"
+    "zfs.zfs_arc_max=4294967296" # 4 GiB 
+  ];
 
   networking.hostName = "kashyyyk"; # Define your hostname.
   networking.hostId = "f0cacf30";
