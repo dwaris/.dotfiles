@@ -43,7 +43,6 @@
     easyeffects
   ];
 
-  services.printing.enable = false;
   virtualisation.docker.enable = true;
 
   hardware.bluetooth.enable = true;
