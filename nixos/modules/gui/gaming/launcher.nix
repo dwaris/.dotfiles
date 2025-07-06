@@ -5,8 +5,13 @@
   ...
 }:
 {
-  services.flatpak.packages = [
-    "com.usebottles.bottles"
-    "com.atlauncher.ATLauncher"
+  environment.systemPackages = with pkgs; [
+    (heroic.override {
+      extraPkgs = pkgs: [
+        pkgs.gamemode
+      ];
+    })    
+    atlauncher
   ];
+  
 }
