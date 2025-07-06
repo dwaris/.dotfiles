@@ -13,10 +13,9 @@
 
     komikku
     foliate
+
+    plex-desktop
+    plexamp
   ];
 
-  services.flatpak.packages = [
-    "com.plexamp.Plexamp"
-    "tv.plex.PlexDesktop"
-  ];
 }
