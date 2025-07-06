@@ -76,5 +76,6 @@
     "networkmanager"
     "docker"
     "adbusers"
+    "gamemode"
   ];
 }
