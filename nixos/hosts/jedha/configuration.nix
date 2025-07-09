@@ -42,7 +42,9 @@
     veracrypt
 
     qbittorrent
+
     easyeffects
+    alsa-scarlett-gui
   ];
 
   virtualisation.docker.enable = true;
