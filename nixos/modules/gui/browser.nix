@@ -10,5 +10,6 @@
     "org.torproject.torbrowser-launcher"
     
     "org.chromium.Chromium"
+    "com.microsoft.Edge"
   ];
 }
