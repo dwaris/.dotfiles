@@ -45,7 +45,7 @@
   # Enable nftables
   networking.firewall.enable = true;
   networking.nftables.enable = true;
-  services.tailscale.enable = true;
+  services.tailscale.enable = false;
 
   # Enable the OpenSSH daemon.
   services.openssh = {
