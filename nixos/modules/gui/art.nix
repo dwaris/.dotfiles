@@ -10,5 +10,6 @@
     gimp
     krita
     pixelorama
+    darktable
   ];
 }
