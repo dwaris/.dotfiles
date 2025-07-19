@@ -59,9 +59,9 @@
     };
   };
 
-  services.printing.enable = true;
+  services.printing.enable = false;
   services.avahi = {
-    enable = true;
+    enable = false;
     nssmdns4 = true;
     openFirewall = true;
   };
