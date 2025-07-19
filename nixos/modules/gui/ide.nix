@@ -7,6 +7,5 @@
   environment.systemPackages = with pkgs; [
     wezterm
     vscode-fhs
-    code-cursor
   ];
 }
