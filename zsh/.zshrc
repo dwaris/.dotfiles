@@ -23,6 +23,7 @@ HISTSIZE=10000
 export EDITOR=nvim
 export PAGER="less -R"
 export STARSHIP_CONFIG=~/.config/starship/starship.toml
+export SSH_AUTH_SOCK=/home/dwaris/.bitwarden-ssh-agent.sock
 
 # Enable Starship prompt
 eval "$(starship init zsh)"
