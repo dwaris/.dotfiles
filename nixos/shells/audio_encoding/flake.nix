@@ -1,4 +1,4 @@
-{
+f{
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     utils.url = "github:numtide/flake-utils";
@@ -22,6 +22,7 @@
             buildInputs = [
               parallel
               opusTools
+              tmux
             ];
           };
       }
