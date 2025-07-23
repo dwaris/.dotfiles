@@ -43,7 +43,10 @@
   systemd.services.NetworkManager-wait-online.enable = false;
 
   # Enable nftables
-  networking.firewall.enable = true;
+  networking.firewall = {
+    enable = true;
+    trustedInterfaces = [ "virbr0" ];
+  };
   networking.nftables.enable = true;
   services.tailscale.enable = false;
 
