@@ -9,6 +9,7 @@
     gnomeExtensions.appindicator
     gnome-tweaks
     wl-clipboard
+    adw-gtk3
   ];
   # Enable the XWayland Fallback windowing system.
   programs.xwayland.enable = true;
