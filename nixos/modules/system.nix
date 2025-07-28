@@ -76,7 +76,6 @@ in
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     vim
-    wget2
     curl
     git
     git-lfs
