@@ -42,6 +42,7 @@
     libvdpau-va-gl
   ];
 
+  services.thermald.enable = true;
   services.power-profiles-daemon.enable = true;
 
   system.stateVersion = "23.11"; # Did you read the comment?
