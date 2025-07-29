@@ -54,9 +54,6 @@
     kdePackages.qt6ct
     kdePackages.breeze-icons
 
-    remmina
-    wayvnc
-
     file-roller
     papers
     loupe

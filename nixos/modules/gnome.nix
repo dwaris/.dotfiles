@@ -7,8 +7,6 @@
 
   environment.systemPackages = with pkgs; [
     gnomeExtensions.appindicator
-    gnomeExtensions.space-bar
-    gnomeExtensions.tophat
     gnome-tweaks
     wl-clipboard
     adw-gtk3
