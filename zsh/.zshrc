@@ -107,7 +107,7 @@ zstyle ':fzf-tab:complete:kill:argument-rest' extra-opts --preview=$extract'ps -
 #####################
 # UTILITIES
 #####################
-eval "$(direnv hook zsh)"
+autoload -Uz compinit
 
 # Ensure completions work correctly; open shell faster with cache
 if [ "$(find ~/.zcompdump -mtime 1)" ] ; then
