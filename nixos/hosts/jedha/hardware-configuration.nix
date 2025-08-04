@@ -27,22 +27,22 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
-    device = "zpool/root";
+    device = "zpool/nixos/root";
     fsType = "zfs";
   };
 
   fileSystems."/nix" = {
-    device = "zpool/nix";
+    device = "zpool/nixos/nix";
     fsType = "zfs";
   };
 
   fileSystems."/var" = {
-    device = "zpool/var";
+    device = "zpool/nixos/var";
     fsType = "zfs";
   };
 
   fileSystems."/home" = {
-    device = "zpool/home";
+    device = "zpool/nixos/home";
     fsType = "zfs";
   };
 
