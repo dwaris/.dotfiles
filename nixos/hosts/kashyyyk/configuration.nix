@@ -27,12 +27,12 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    powertop
   ];
 
   virtualisation.docker.enable = false;
 
   hardware.bluetooth.enable = true;
-
   hardware.sensor.iio.enable = true;
   
   hardware.graphics.enable = true;
@@ -42,8 +42,21 @@
     libvdpau-va-gl
   ];
 
-  services.thermald.enable = true;
-  services.power-profiles-daemon.enable = true;
+  powerManagement.powertop.enable = true;
+  services = {
+    thermald.enable = true;
+    power-profiles-daemon.enable = false;
+    tlp = {
+      enable = true;
+      settings = {
+        CPU_BOOST_ON_AC = 1;
+        CPU_BOOST_ON_BAT = 0;
+        CPU_SCALING_GOVERNOR_ON_AC = "performance";
+        CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+        STOP_CHARGE_THRESH_BAT0 = 95;
+      };
+    };
+  };
 
   system.stateVersion = "23.11"; # Did you read the comment?
 }
