@@ -22,8 +22,8 @@ HISTSIZE=10000
 
 export EDITOR=nvim
 export PAGER="less -R"
-export STARSHIP_CONFIG=~/.config/starship/starship.toml
-export SSH_AUTH_SOCK=/home/dwaris/.bitwarden-ssh-agent.sock
+export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
+export SSH_AUTH_SOCK="$HOME/.bitwarden-ssh-agent.sock"
 
 # Enable Starship prompt
 eval "$(starship init zsh)"
@@ -70,20 +70,18 @@ zinit wait lucid for \
 #####################
 # ADDITIONAL PLUGINS
 #####################
+zinit lucid for zdharma-continuum/fast-syntax-highlighting
 zinit wait lucid for \
   hlissner/zsh-autopair \
   zsh-users/zsh-autosuggestions \
     atinit"ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20 ZSH_AUTOSUGGEST_STRATEGY=(history completion)" \
-    atload"_zsh_autosuggest_start" \
-  zdharma-continuum/fast-syntax-highlighting \
-    atinit"zpcompinit; zpcdreplay" \
   zdharma-continuum/history-search-multi-word \
     atinit"
       zstyle :history-search-multi-word page-size 10
       zstyle :history-search-multi-word highlight-color fg=red,bold
       zstyle :plugin:history-search-multi-word reset-prompt-protect 1" \
     bindmap"^R -> ^H" \
-  zsh-users/zsh-completions \
+  blockf zsh-users/zsh-completions \
   Aloxaf/fzf-tab
 
 #####################
@@ -110,7 +108,7 @@ zstyle ':fzf-tab:complete:kill:argument-rest' extra-opts --preview=$extract'ps -
 autoload -Uz compinit
 
 # Ensure completions work correctly; open shell faster with cache
-if [ "$(find ~/.zcompdump -mtime 1)" ] ; then
+if [ "$(find ~/.zcompdump -mtime +1)" ] ; then
     compinit
 fi
 compinit -C
