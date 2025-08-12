@@ -6,12 +6,13 @@
 }:
 {
   environment.systemPackages = with pkgs; [
+    nextcloud-client
     vorta
     syncthingtray
   ];
 
   services.syncthing = {
-    enable = true;
+    enable = false;
     openDefaultPorts = true;
     user = "dwaris";
     group = "users";
