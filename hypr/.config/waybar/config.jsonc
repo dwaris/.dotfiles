@@ -76,14 +76,15 @@
 		]
 	},
 	"battery": {
-		"states": {
-			"warning": 30,
-			"critical": 15
-		},
-		"format": "{icon}",
-		"format-charging": "󰂄",
-		"format-plugged": "",
-		"format-alt": "{icon}",
+        	"states": {
+            		"warning": 30,
+            		"critical": 15
+        	},
+        	"format": "{icon} {capacity}%",
+        	"format-charging": "󰂄 {capacity}%",
+        	"format-plugged": " {capacity}%",
+        	"format-alt": "{time} {icon}",
+        	"format-full": "{icon} {capacity}%",
 		"format-icons": [
 			"",
 			"",
@@ -91,7 +92,7 @@
 			"",
 			""
 		]
-	},
+    },
     "pulseaudio#sink": {
 		"format": "{icon} {volume}%",
         "format-muted": "",
