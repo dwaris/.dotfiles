@@ -6,6 +6,7 @@
 }:
 {
   environment.systemPackages = with pkgs; [
+    handbrake
     mkvtoolnix
     obs-studio
   ];
