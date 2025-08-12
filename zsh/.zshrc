@@ -115,6 +115,3 @@ if [ "$(find ~/.zcompdump -mtime 1)" ] ; then
 fi
 compinit -C
 
-# must be added after compinit is called
-eval "$(zoxide init zsh)"
-
