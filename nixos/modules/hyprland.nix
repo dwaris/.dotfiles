@@ -29,7 +29,6 @@
 
   environment.systemPackages = with pkgs; [
     hyprpaper
-    hyprsunset
     hyprpolkitagent
     waybar
 
@@ -79,7 +78,6 @@
     gvfs.enable = true;
     udisks2.enable = true;
     upower.enable = true;
-    power-profiles-daemon.enable = true;
     accounts-daemon.enable = true;
     gnome = {
       sushi.enable = true;
