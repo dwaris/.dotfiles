@@ -8,8 +8,19 @@
   environment.systemPackages = with pkgs; [
     stow
     fzf
-    zoxide
-    direnv
     starship
   ];
+  programs = {
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+      enableZshIntegration = true;
+      enableBashIntegration = true;
+    };
+    zoxide = {
+      enable = true;
+      enableZshIntegration = true;
+      enableBashIntegration = true;
+    };
+  };
 }
