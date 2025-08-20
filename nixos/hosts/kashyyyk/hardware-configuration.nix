@@ -44,6 +44,11 @@
     fsType = "zfs";
   };
 
+  fileSystems."/home/dwaris/Nextcloud" = {
+    device = "zpool/nextcloud";
+    fsType = "zfs";
+  };
+
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/7321-60A4";
     fsType = "vfat";
