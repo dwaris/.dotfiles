@@ -56,7 +56,7 @@
       defaultNetwork.settings.dns_enabled = true;
     };
   };
-  services.k3s.enable = true;
+  services.k3s.enable = false;
   services.k3s.role = "server";
 
   hardware.bluetooth.enable = true;
