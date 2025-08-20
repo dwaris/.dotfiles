@@ -44,9 +44,20 @@
 
     easyeffects
     alsa-scarlett-gui
+
+    podman-tui
+    podman-compose
   ];
 
-  virtualisation.docker.enable = true;
+  virtualisation.containers.enable = true;
+  virtualisation = {
+    podman = {
+      enable = true;
+      defaultNetwork.settings.dns_enabled = true;
+    };
+  };
+  services.k3s.enable = true;
+  services.k3s.role = "server";
 
   hardware.bluetooth.enable = true;
 
