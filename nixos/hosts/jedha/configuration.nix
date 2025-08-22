@@ -16,7 +16,6 @@
     ../../modules/gui
     ../../modules/gui/gaming
     ../../modules/gui/virtualization.nix
-    ../../modules/gui/android.nix
 
     ../../modules/gui/gaming/osu.nix
 

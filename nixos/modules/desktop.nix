@@ -44,11 +44,11 @@
 
   # Enable nftables
   networking.firewall = {
-    enable = false;
+    enable = true;
     trustedInterfaces = [ "virbr0" ];
   };
   networking.nftables.enable = true;
-  services.tailscale.enable = false;
+  services.tailscale.enable = true;
 
   # Enable the OpenSSH daemon.
   services.openssh = {
