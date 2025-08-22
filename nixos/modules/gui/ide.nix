@@ -7,6 +7,9 @@
   environment.systemPackages = with pkgs; [
     ghostty
     tmux
+
     vscode-fhs
+    android-studio
+    zed-editor
   ];
 }
