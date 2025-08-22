@@ -11,6 +11,7 @@
     ../../modules
 
     ../../modules/cli
+    ../../modules/cli/k8s.nix
 
     ../../modules/gui
     ../../modules/gui/gaming
@@ -44,20 +45,7 @@
 
     easyeffects
     alsa-scarlett-gui
-
-    podman-tui
-    podman-compose
   ];
-
-  virtualisation.containers.enable = true;
-  virtualisation = {
-    podman = {
-      enable = true;
-      defaultNetwork.settings.dns_enabled = true;
-    };
-  };
-  services.k3s.enable = false;
-  services.k3s.role = "server";
 
   hardware.bluetooth.enable = true;
 
