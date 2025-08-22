@@ -1,6 +1,5 @@
 {
   imports = [
-    ./3d-printer.nix
     ./backup.nix
     ./browser.nix
     ./ide.nix
