@@ -11,15 +11,33 @@
     unrar
     p7zip
 
+    # network
+    wget 
+    
     # usage
     htop
-    btop
-    bottom
 
     # copy
     rsync
 
     # misc
     fastfetch
+
+    # new
+    bat
+    eza
+    lsd
+    delta
+    dust
+    duf
+    broot
+    fd
+    ripgrep
+    fzf
+    bottom
+    procs
+    zoxide
+    doggo
+    lazygit
   ];
 }

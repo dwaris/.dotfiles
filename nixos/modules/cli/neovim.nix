@@ -14,10 +14,7 @@
 
   environment.systemPackages = with pkgs; [
     clang
-    fd
-    ripgrep
     
-    wget 
     nodejs_24
 
     imagemagick
