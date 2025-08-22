@@ -20,6 +20,7 @@ HISTFILESIZE=100000
 HISTIGNORE="ls:cd:exit:clear"
 HISTSIZE=10000
 
+export PATH="$HOME/.cargo/bin:$PATH"
 export EDITOR=nvim
 export PAGER="less -R"
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
