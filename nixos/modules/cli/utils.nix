@@ -26,7 +26,6 @@
     # new
     bat
     eza
-    lsd
     delta
     dust
     duf
@@ -35,7 +34,6 @@
     ripgrep
     fzf
     bottom
-    procs
     zoxide
     doggo
     lazygit
