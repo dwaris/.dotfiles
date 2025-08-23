@@ -49,10 +49,11 @@
   };
   networking.nftables.enable = true;
   services.tailscale.enable = true;
+  services.tailscale.useRoutingFeatures = "both";
 
   # Enable the OpenSSH daemon.
   services.openssh = {
-    enable = true;
+    enable = false;
     allowSFTP = true; 
     openFirewall = true;
     settings = {
