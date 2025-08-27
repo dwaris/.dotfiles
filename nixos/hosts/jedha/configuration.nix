@@ -15,6 +15,7 @@
 
     ../../modules/gui
     ../../modules/gui/gaming
+    ../../modules/gui/video-tools.nix
     ../../modules/gui/virtualization.nix
 
     ../../modules/gui/gaming/osu.nix

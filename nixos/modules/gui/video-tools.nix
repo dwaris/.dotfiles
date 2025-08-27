@@ -9,5 +9,8 @@
     handbrake
     mkvtoolnix
     obs-studio
+
+    yt-dlp
+    ffmpeg
   ];
 }
