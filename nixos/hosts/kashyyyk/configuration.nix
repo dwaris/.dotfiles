@@ -9,6 +9,7 @@
     ../../modules
 
     ../../modules/cli
+    ../../modules/cli/podman.nix
 
     ../../modules/gui
     # Include the results of the hardware scan.
@@ -29,8 +30,6 @@
   environment.systemPackages = with pkgs; [
     powertop
   ];
-
-  virtualisation.docker.enable = false;
 
   hardware.bluetooth.enable = true;
   hardware.sensor.iio.enable = true;
