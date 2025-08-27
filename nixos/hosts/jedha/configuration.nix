@@ -51,8 +51,6 @@
 
   hardware.graphics.enable = true;
   hardware.graphics.enable32Bit = true;
-  services.hardware.openrgb.enable = true;
-
 
   hardware.graphics.extraPackages = with pkgs; [
     rocmPackages.clr.icd
