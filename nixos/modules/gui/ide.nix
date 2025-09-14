@@ -9,7 +9,5 @@
     tmux
 
     vscode-fhs
-    android-studio
-    zed-editor
   ];
 }

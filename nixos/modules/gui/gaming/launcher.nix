@@ -12,6 +12,7 @@
       ];
     })    
     atlauncher
+    mesen
   ];
   
 }

@@ -10,7 +10,5 @@
     obsidian
 
     anki-bin
-
-    libreoffice
   ];
 }
