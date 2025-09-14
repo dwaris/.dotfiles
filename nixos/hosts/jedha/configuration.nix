@@ -11,12 +11,9 @@
     ../../modules
 
     ../../modules/cli
-    ../../modules/cli/k8s.nix
 
     ../../modules/gui
     ../../modules/gui/gaming
-    ../../modules/gui/video-tools.nix
-    ../../modules/gui/virtualization.nix
 
     ../../modules/gui/gaming/osu.nix
 
@@ -44,7 +41,6 @@
     qbittorrent
 
     easyeffects
-    alsa-scarlett-gui
   ];
 
   hardware.bluetooth.enable = true;

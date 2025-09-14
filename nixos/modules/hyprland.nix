@@ -39,7 +39,7 @@
     dunst
     playerctl
     networkmanagerapplet
-    rofi-wayland
+    rofi
     wlogout
     brightnessctl
 

@@ -37,7 +37,11 @@
           };
         };
     };
-    # gamescope = { completly broken, capSysNice doesn't work (permission error), -e (steam) doesn't work either
+    # completly broken
+    # capSysNice doesn't work (permission error)
+    # -e launch option doesn't work either
+    #
+    # gamescope = { 
     #   enable = true;
     #   capSysNice = true;
     # };
