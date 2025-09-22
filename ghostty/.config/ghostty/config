@@ -2,7 +2,7 @@
 
 font-family = "Source Code Pro"
 window-decoration = true
-theme =  dark:catppuccin-mocha,light:catppuccin-latte
+theme =  dark:Catppuccin Mocha,light:Catppuccin Latte
 background-opacity = 1.00
 command=~/.config/ghostty/ghostty-tmux.sh
 keybind=ctrl+shift+w=close_window
