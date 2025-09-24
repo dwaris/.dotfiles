@@ -37,10 +37,3 @@ elif command -v fzf > /dev/null; then # debians version of fzf us too old for --
 fi
 
 eval "$(starship init bash --print-full-init)"
-
-if command -v direnv > /dev/null; then
-  eval "$(direnv hook bash)"
-fi
-
-eval "$(zoxide init bash)"
-
