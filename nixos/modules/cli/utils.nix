@@ -34,7 +34,6 @@
     ripgrep
     fzf
     bottom
-    zoxide
     doggo
     lazygit
   ];
