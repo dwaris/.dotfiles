@@ -54,7 +54,7 @@
 
   # Enable the OpenSSH daemon.
   services.openssh = {
-    enable = false;
+    enable = true;
     allowSFTP = true; 
     openFirewall = true;
     settings = {
