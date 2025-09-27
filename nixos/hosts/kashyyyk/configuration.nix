@@ -24,6 +24,7 @@
 
   networking.hostName = "kashyyyk"; # Define your hostname.
   networking.hostId = "f0cacf30";
+  services.tailscale.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget

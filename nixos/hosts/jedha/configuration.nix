@@ -34,6 +34,8 @@
 
   networking.hostName = "jedha"; # Define your hostname.
   networking.hostId = "74f65184";
+  services.tailscale.enable = false;
+  services.tailscale.useRoutingFeatures = "both";
 
   environment.systemPackages = with pkgs; [
     veracrypt
