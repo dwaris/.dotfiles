@@ -34,7 +34,7 @@ eval "$(starship init zsh)"
 #####################
 setopt promptsubst globdots histignoredups sharehistory appendhistory
 setopt hist_ignore_all_dups hist_reduce_blanks hist_save_no_dups
-setopt extendedglob autocd nocaseglob notify nomatch correctall
+setopt extendedglob autocd nocaseglob notify nomatch
 setopt histappend checkjobs
 
 # Keybindings (use Vim mode)
