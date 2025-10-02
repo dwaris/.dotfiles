@@ -1,41 +1,47 @@
 {
-	"layer": "top",
+    "reload_style_on_change": true,
+    "layer": "top",
     "position": "top",
-	"modules-left": [
-		"hyprland/workspaces",
-		"custom/music"
-	],
-	"modules-center": [
-		"clock"
-	],
-	"modules-right": [
-		"pulseaudio#sink",
+    "spacing": 0,
+    "modules-left": [
+        "hyprland/workspaces"
+    ],
+    "modules-center": [
+        "clock",
+        "idle_inhibitor"
+    ],
+    "modules-right": [
+        "group/tray-expander",
+        "pulseaudio#sink",
         "pulseaudio#source",
-		"tray",
-		"backlight",
-		"battery",
-        "idle_inhibitor",
-		"custom/power"
-	],
-	"hyprland/workspaces": {
-		"on-click": "activate",
-		"on-scroll-up": "hyprctl dispatch workspace e-1",
-		"on-scroll-down": "hyprctl dispatch workspace e+1",
-		"format": "{name}: {icon}",
-		"all-outputs": false,
-		"format-icons": {
-			"1": "",
-			"2": "󰖟",
-			"3": "",
-			"4": "",
-			"5": "",
-			"default": ""
-		}
-	},
-	"tray": {
-		"icon-size": 17,
-		"spacing": 10
-	},
+        "backlight",
+        "battery",
+        "custom/power"
+    ],
+    "hyprland/workspaces": {
+        "on-click": "activate",
+        "format": "{icon}",
+        "format-icons": {
+            "default": "",
+            "1": "1",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "6": "6",
+            "7": "7",
+            "8": "8",
+            "9": "9",
+            "active": "󱓻"
+        },
+        "persistent-workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            "5": []
+        }
+    },
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
@@ -43,70 +49,85 @@
             "deactivated": ""
         }
     },
-	"custom/music": {
-		"format": " {}",
-		"escape": true,
-		"interval": 5,
-		"tooltip": false,
-		"exec": "playerctl metadata --format='{{artist}} - {{ title }}'",
-		"on-click": "playerctl play-pause",
-		"max-length": 50
-	},
-	"clock": {
-		"timezone": "Europe/Berlin",
-		"tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-		"format": "{:%d/%m/%Y - %H:%M}"
-	},
-	"backlight": {
-		"device": "nvidia_0",
-		"format": "{icon}",
-		"on-scroll-up": "brightnessctl s '+10%'",
-		"on-scroll-down": "brightnessctl s '10%-'",
-		"on-click": "((( $(brightnessctl g) == 100 )) && brightnessctl s '0') || (brightnessctl s '+10%')",
-		"format-icons": [
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			""
-		]
-	},
-	"battery": {
-        	"states": {
-            		"warning": 30,
-            		"critical": 15
-        	},
-        	"format": "{icon} {capacity}%",
-        	"format-charging": "󰂄 {capacity}%",
-        	"format-plugged": " {capacity}%",
-        	"format-alt": "{time} {icon}",
-        	"format-full": "{icon} {capacity}%",
-		"format-icons": [
-			"",
-			"",
-			"",
-			"",
-			""
-		]
+    "clock": {
+        "timezone": "Europe/Berlin",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format": "{:%d/%m/%Y - %H:%M}"
+    },
+    "backlight": {
+        "device": "nvidia_0",
+        "format": "{icon}",
+        "on-scroll-up": "brightnessctl s '+10%'",
+        "on-scroll-down": "brightnessctl s '10%-'",
+        "on-click": "((( $(brightnessctl g) == 100 )) && brightnessctl s '0') || (brightnessctl s '+10%')",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    "battery": {
+        "format": "{capacity}% {icon}",
+        "format-discharging": "{icon}",
+        "format-charging": "{icon}",
+        "format-plugged": "",
+        "format-icons": {
+            "charging": [
+                "󰢜",
+                "󰂆",
+                "󰂇",
+                "󰂈",
+                "󰢝",
+                "󰂉",
+                "󰢞",
+                "󰂊",
+                "󰂋",
+                "󰂅"
+            ],
+            "default": [
+                "󰁺",
+                "󰁻",
+                "󰁼",
+                "󰁽",
+                "󰁾",
+                "󰁿",
+                "󰂀",
+                "󰂁",
+                "󰂂",
+                "󰁹"
+            ]
+        },
+        "format-full": "󰂅",
+        "tooltip-format-discharging": "{power:>1.0f}W↓ {capacity}%",
+        "tooltip-format-charging": "{power:>1.0f}W↑ {capacity}%",
+        "interval": 5,
+        "states": {
+            "warning": 20,
+            "critical": 10
+        }
     },
     "pulseaudio#sink": {
-		"format": "{icon} {volume}%",
+        "format": "{icon} {volume}%",
         "format-muted": "",
         "format-icons": {
-			"default": [
-				"",
-				"",
-				""
-			]
+            "default": [
+                "",
+                "",
+                ""
+            ]
         },
         "scroll-step": 5,
         "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
         "on-click-middle": "pavucontrol",
-        "ignored-sinks": ["Easy Effects Sink"]
+        "ignored-sinks": [
+            "Easy Effects Sink"
+        ]
     },
     "pulseaudio#source": {
         "format": "{format_source}",
@@ -114,25 +135,36 @@
         "format-source-muted": "",
         "scroll-step": 5,
         "on-click": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
-        "ignored-sinks": ["Easy Effects Sink"]
+        "ignored-sinks": [
+            "Easy Effects Sink"
+        ]
     },
-	"custom/lock": {
-		"tooltip": false,
-		"on-click": "hyprlock &",
-		"format": ""
-	},
-	"custom/power": {
-		"tooltip": false,
-		"on-click": "wlogout &",
-		"format": "⏻"
-	},
-    "hyprland/window": {
-        "format": "{title}",
-        "separate-outputs": true,
-        "max-length": 50,
+    "custom/lock": {
         "tooltip": false,
-        "rewrite": {
-            "": "Desktop"
-        }
-    } 
+        "on-click": "hyprlock &",
+        "format": ""
+    },
+    "custom/power": {
+        "tooltip": false,
+        "on-click": "wlogout &",
+        "format": "⏻"
+    },
+    "group/tray-expander": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 600,
+            "children-class": "tray-group-item"
+        },
+        "modules": [
+            "custom/expand-icon",
+            "tray"
+        ]
+    },
+    "custom/expand-icon": {
+        "format": " ",
+        "tooltip": false
+    },
+    "tray": {
+        "spacing": 12
+    }
 }

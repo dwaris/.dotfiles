@@ -1,37 +1,33 @@
 @import "mocha.css";
 * {
+  background-color: @surface0;
+  color: @text;
   border: none;
   font-family: "SauceCodePro Nerd Font Propo";
   font-size: 1rem;
-  border-radius: 1rem;
+  border-radius: 0;
+  min-height: 0;
 }
 
-#waybar {
-  background-color: transparent;
+.modules-left {
+  margin-left: 1rem;
+}
+
+.modules-right {
+  margin-right: 1rem;
 }
 
 #workspaces {
   border-radius: 1rem;
   background-color: @surface0;
-  margin-left: 10px;
-  margin-top: 10px;
-}
-
-#workspaces button {
-  color: @text;
-  background-color: @surface0;
-  border: none;
 }
 
 #workspaces button.active {
   color: @mauve;
 }
 
-#workspaces button:hover {
-  box-shadow: none;
-  text-shadow: none;
-  background: @lavender;
-  color: @base;
+#workspaces button.empty {
+  opacity: 0.5;
 }
 
 #custom-music,
@@ -42,20 +38,9 @@
 #battery,
 #pulseaudio,
 #idle_inhibitor,
-#custom-power {
-  background-color: @surface0;
-  color: @text;
+#custom-power
+{
   padding: 0.5rem 1rem;
-  margin-right: 10px;
-  margin-top: 10px;
-}
-
-#clock {
-  color: @mauve;
- }
-
-#battery {
-  color: @green;
 }
 
 #battery.charging {
@@ -66,34 +51,11 @@
   color: @red;
 }
 
-#backlight {
-  color: @yellow;
-}
-
-#pulseaudio.sink, #backlight {
-  border-radius: 1rem 0 0 1rem;
-  margin-right: 0;
-}
-
-#pulseaudio.sink:not(.muted) {
-    color: @text;
-}
-
-#pulseaudio.source, #battery {
-  border-radius: 0 1rem 1rem 0;
-}
-
-#custom-music {
-  margin-left: 10px;
-  color: @mauve;
-}
-
 #custom-power, #workspaces button.urgent, #pulseaudio.source-muted, #pulseaudio.sink.muted {
   color: @red;
 }
 
-#idle_inhibitor.activated {
-    color: @surface0;
-    background-color: @yellow;
+#pulseaudio.sink:not(.muted) {
+    color: @text;
 }
 
