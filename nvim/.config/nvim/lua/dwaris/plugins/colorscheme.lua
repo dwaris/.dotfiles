@@ -1,9 +1,9 @@
 return {
-    'catppuccin/nvim',
-    name = 'catppuccin',
+    'folke/tokyonight.nvim',
+    lazy = false,
     priority = 1000,
-    auto_integrations = true,
+    opts = {},
     config = function()
-        vim.cmd.colorscheme 'catppuccin'
+        vim.cmd.colorscheme 'tokyonight'
     end,
 }
