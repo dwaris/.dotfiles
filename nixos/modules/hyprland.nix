@@ -37,8 +37,6 @@
 
     pavucontrol
     dunst
-    playerctl
-    networkmanagerapplet
     rofi
     wlogout
     brightnessctl
