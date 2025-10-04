@@ -1,7 +1,8 @@
-@import "mocha.css";
+@define-color foreground #cdd6f4;
+@define-color background #1a1b26;
 * {
-  background-color: @surface0;
-  color: @text;
+  background-color: @background;
+  color: @foreground;
   border: none;
   font-family: "SauceCodePro Nerd Font Propo";
   font-size: 1rem;
@@ -19,11 +20,6 @@
 
 #workspaces {
   border-radius: 1rem;
-  background-color: @surface0;
-}
-
-#workspaces button.active {
-  color: @mauve;
 }
 
 #workspaces button.empty {
@@ -44,20 +40,3 @@
 {
   padding: 0.5rem 1rem;
 }
-
-#battery.charging {
-  color: @green;
-}
-
-#battery.warning:not(.charging) {
-  color: @red;
-}
-
-#custom-power, #workspaces button.urgent, #pulseaudio.source-muted, #pulseaudio.sink.muted {
-  color: @red;
-}
-
-#pulseaudio.sink:not(.muted) {
-    color: @text;
-}
-
