@@ -23,10 +23,7 @@
   ];
 
   boot.kernelPackages = pkgs.linuxPackages_6_16;
-  boot.initrd.kernelModules = [
-    "zfs"
-    "amdgpu"
-  ];
+
   boot.kernelParams = [
     "zfs.zfs_arc_max=34359738368" # 32 GiB
     "video=DP-1:2560x1440@144"
