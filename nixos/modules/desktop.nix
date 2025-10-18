@@ -36,7 +36,7 @@
     enable = true;
   };
 
-  security.pki.certificates = ["/etc/ssl/certs/root_ca.crt"];
+  security.pki.certificateFiles = [ ../.certs/root_ca.crt ];
 
   # Enable networking
   networking.networkmanager.enable = true;
