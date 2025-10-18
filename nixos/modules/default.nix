@@ -6,6 +6,5 @@
     ./fonts.nix
     ./desktop.nix
     ./hyprland.nix
-    ./gnome.nix
   ];
 }
