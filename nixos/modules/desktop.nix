@@ -26,6 +26,7 @@
   environment.systemPackages = with pkgs; [
     sbctl
     nfs-utils
+    appimage-run
   ];
 
   services.zfs.autoSnapshot.enable = true;
@@ -71,6 +72,14 @@
 
   services.flatpak.enable = true;
   environment.sessionVariables.XDG_DATA_DIRS = ["/var/lib/flatpak/exports/share"];
+
+  programs.appimage.enable = true;
+  programs.appimage.binfmt = true;
+  programs.appimage.package = pkgs.appimage-run.override { extraPkgs = pkgs: [
+    icu
+    libxcrypt-legacy
+    ];
+  };
 
   services.fwupd.enable = true;
 
