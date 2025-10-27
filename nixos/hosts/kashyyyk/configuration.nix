@@ -16,8 +16,6 @@
     ./hardware-configuration.nix
   ];
 
-  boot.kernelPackages = pkgs.linuxPackages_6_16;
-
   boot.kernelParams = [ 
     "zfs.zfs_arc_max=8589934592" # 8 GiB 
   ];
