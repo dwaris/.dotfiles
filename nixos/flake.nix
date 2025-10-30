@@ -14,9 +14,15 @@
 
     lanzaboote = {
       url = "github:nix-community/lanzaboote";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        rust-overlay.follows = "rust-overlay";
+      };
+    };
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
     nixos-wsl.url = "github:nix-community/nixos-wsl";
 
   };
