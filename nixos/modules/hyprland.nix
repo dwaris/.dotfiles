@@ -62,14 +62,6 @@
     gnome-font-viewer
   ];
 
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
-
   services = {
     blueman.enable = true;
     gvfs.enable = true;

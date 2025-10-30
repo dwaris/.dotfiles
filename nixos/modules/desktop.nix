@@ -87,6 +87,14 @@ in
     openFirewall = true;
   };
 
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+  };
+
   services.flatpak.enable = true;
   environment.sessionVariables.XDG_DATA_DIRS = ["/var/lib/flatpak/exports/share"];
 

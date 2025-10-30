@@ -22,15 +22,6 @@
     };
     desktopManager.gnome.enable = true;
   };
-  
-  # Enable sound with pipewire.
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
 
   services.udev.packages = with pkgs; [ gnome-settings-daemon ];
 }
