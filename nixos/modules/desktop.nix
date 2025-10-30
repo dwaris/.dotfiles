@@ -111,8 +111,7 @@ in
   programs.adb.enable = true;
   users.users.dwaris.extraGroups = [
     "networkmanager"
-    "docker"
     "adbusers"
-    "gamemode"
+    "audio"
   ];
 }

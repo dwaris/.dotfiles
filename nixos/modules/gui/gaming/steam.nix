@@ -42,5 +42,8 @@
     #   capSysNice = true;
     # };
   };
+  users.users.dwaris.extraGroups = [
+    "gamemode"
+  ];
 }
 
