@@ -7,9 +7,8 @@
 {
   services.flatpak.packages = [
     "org.mozilla.firefox"
-    "org.torproject.torbrowser-launcher"
     
-    "org.chromium.Chromium"
-    "com.microsoft.Edge"
+    "com.google.Chrome"
+    "com.brave.Browser"
   ];
 }
