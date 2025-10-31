@@ -17,6 +17,7 @@ in
 {
   # Note this might jump back and forth as kernels are added or removed.
   boot.kernelPackages = latestKernelPackage;
+  boot.zfs.package = pkgs.zfs_unstable; # For Kernel 6.17 support, temporarily use
 
   boot.loader.systemd-boot = {
     enable = false;
