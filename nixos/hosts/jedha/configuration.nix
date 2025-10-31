@@ -34,11 +34,8 @@
   services.tailscale.useRoutingFeatures = "both";
 
   environment.systemPackages = with pkgs; [
-    veracrypt
-
     qbittorrent
-
-    easyeffects
+    veracrypt
   ];
 
   hardware.bluetooth.enable = false;
