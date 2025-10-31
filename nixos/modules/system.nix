@@ -13,7 +13,7 @@ in
 
   programs.zsh.enable = true;
   
-  nix.settings.trusted-users = [ username ];
+  nix.settings.trusted-users = [ "@wheel" ];
 
   nix.settings = {
     # enable flakes globally
