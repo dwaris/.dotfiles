@@ -13,5 +13,7 @@
   services.flatpak.packages = [
     "com.discordapp.Discord"
     "org.telegram.desktop"
+
+    "org.mozilla.Thunderbird"
   ];
 }
