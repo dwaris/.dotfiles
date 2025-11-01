@@ -13,31 +13,14 @@
 
   services.greetd = {
     enable = true;
-    settings = {
-        initial_session = rec {
+    settings = rec {
+        initial_session = {
           command = "${pkgs.uwsm}/bin/uwsm start hyprland-uwsm.desktop";
           user = "dwaris";
         };
         default_session = initial_session;
         };
       };
-    };
-  };
-
-  boot = {
-    plymouth.enable = true;
-    # Enable "Silent boot"
-    consoleLogLevel = 3;
-    initrd.verbose = false;
-    kernelParams = [
-      "quiet"
-      "splash"
-      "boot.shell_on_fail"
-      "udev.log_priority=3"
-      "rd.systemd.show_status=auto"
-    ];
-    loader.timeout = 0;
-  };
 
   xdg.autostart.enable = true;
   xdg.portal = {
