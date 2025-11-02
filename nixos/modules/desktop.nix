@@ -39,7 +39,7 @@ in
     patches = old.patches or [] ++ [
       (pkgs.fetchpatch {
         url = "https://github.com/systemd/systemd/pull/39089.patch";
-        hash = ""; # fill in the hash it'll tell you here
+        hash = "sha256-16l44NdplSBoSRum+P+oxYcOyxxwEztvcjl/Yow/8H4=";
       })
     ];
   });
