@@ -41,6 +41,9 @@
     grim
     slurp
 
+    remmina
+    wayvnc
+
     pavucontrol
     dunst
     rofi
