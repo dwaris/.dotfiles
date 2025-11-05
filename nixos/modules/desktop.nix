@@ -70,11 +70,12 @@ in
   networking.networkmanager.enable = true;
   networking.networkmanager.plugins = with pkgs; [ networkmanager-openvpn ]; 
   systemd.services.NetworkManager-wait-online.enable = false;
+  services.resolved.enable = true;
 
   # Enable nftables
   networking.firewall = {
     enable = true;
-    trustedInterfaces = [ "virbr0" ];
+    trustedInterfaces = [ "virbr0" "tailscale0" ];
   };
   networking.nftables.enable = true;
 
