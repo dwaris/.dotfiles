@@ -22,8 +22,16 @@
 
   networking.hostName = "kashyyyk"; # Define your hostname.
   networking.hostId = "f0cacf30";
-  services.tailscale.enable = true;
-  services.tailscale.useRoutingFeatures = "client";
+
+  networking.firewall = {
+    trustedInterfaces = [ "tailscale0" ];
+    checkReversePath = "loose";
+  };
+  services.tailscale = {
+    enable = true;
+    openFirewall = true;
+    useRoutingFeatures = "client";
+  };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
