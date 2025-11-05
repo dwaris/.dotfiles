@@ -27,8 +27,15 @@
 
   networking.hostName = "jedha"; # Define your hostname.
   networking.hostId = "74f65184";
-  services.tailscale.enable = false;
-  services.tailscale.useRoutingFeatures = "both";
+
+  networking.firewall = {
+    trustedInterfaces = [ "tailscale0" ];
+  };
+  services.tailscale = {
+    enable = true;
+    openFirewall = true;
+    useRoutingFeatures = "server";
+  };
 
   environment.systemPackages = with pkgs; [
     qbittorrent
