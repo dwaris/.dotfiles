@@ -11,16 +11,21 @@
 
   programs.hyprlock.enable = true;
 
-  services.greetd = {
-    enable = true;
-    settings = rec {
-        initial_session = {
-          command = "${pkgs.uwsm}/bin/uwsm start hyprland-uwsm.desktop";
-          user = "dwaris";
-        };
-        default_session = initial_session;
-        };
-      };
+  # services.greetd = {
+  #   enable = true;
+  #   settings = rec {
+  #       initial_session = {
+  #         command = "${pkgs.uwsm}/bin/uwsm start hyprland-uwsm.desktop";
+  #         user = "dwaris";
+  #       };
+  #       default_session = initial_session;
+  #       };
+  #     };
+
+  services.displayManager.gdm = {
+      enable = true;
+      wayland = true;
+    };
 
   xdg.autostart.enable = true;
   xdg.portal = {
