@@ -6,12 +6,11 @@
 }:
 
 {
-  environment.systemPackages = with pkgs; [
-    element-desktop
-    signal-desktop-bin
-  ];
   services.flatpak.packages = [
     "com.discordapp.Discord"
+
+    "im.riot.Riot"
+    "org.signal.Signal"
     "org.telegram.desktop"
 
     "org.mozilla.Thunderbird"
