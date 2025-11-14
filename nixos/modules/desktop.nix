@@ -35,15 +35,6 @@ in
     "ntfs"
   ];
 
-  systemd.package = pkgs.systemd.overrideAttrs (old: {
-    patches = old.patches or [] ++ [
-      (pkgs.fetchpatch {
-        url = "https://github.com/systemd/systemd/pull/39089.patch";
-        hash = "sha256-16l44NdplSBoSRum+P+oxYcOyxxwEztvcjl/Yow/8H4=";
-      })
-    ];
-  });
-
   boot.zfs.requestEncryptionCredentials = true;
   boot.zfs.forceImportRoot = true;
 
