@@ -2,6 +2,7 @@
   inputs,
   config,
   pkgs,
+  lib,
   ...
 }: {
   programs.hyprland = {
@@ -10,17 +11,9 @@
   };
 
   programs.hyprlock.enable = true;
-
-  # services.greetd = {
-  #   enable = true;
-  #   settings = rec {
-  #       initial_session = {
-  #         command = "${pkgs.uwsm}/bin/uwsm start hyprland-uwsm.desktop";
-  #         user = "dwaris";
-  #       };
-  #       default_session = initial_session;
-  #       };
-  #     };
+  services.hypridle = {
+    enable = lib.mkForce false;
+  };
 
   services.displayManager.gdm = {
       enable = true;
@@ -41,13 +34,11 @@
   environment.systemPackages = with pkgs; [
     hyprpaper
     hyprpolkitagent
+    hypridle
     waybar
 
     grim
     slurp
-
-    remmina
-    wayvnc
 
     pavucontrol
     dunst
@@ -88,8 +79,6 @@
       gnome-keyring.enable = true;
     };
   };
-
-  networking.firewall.allowedTCPPorts = [ 5900 ];
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 }
