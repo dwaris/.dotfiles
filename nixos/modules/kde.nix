@@ -52,12 +52,10 @@
   security.pam.services.sddm.kwallet.enable = true;
   environment.sessionVariables.SSH_ASKPASS_REQUIRE = "prefer";
 
-  xdg.portal.enable = true;
-  xdg.portal.xdgOpenUsePortal = true;
-  xdg.portal.extraPortals = [
-    pkgs.kdePackages.xdg-desktop-portal-kde
-    pkgs.xdg-desktop-portal-gtk
-  ];
+  xdg.portal = {
+    enable = true;
+    xdgOpenUsePortal = true;
+  };
 
   programs.partition-manager.enable = true;
   programs.kdeconnect.enable = false;
