@@ -24,7 +24,6 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export EDITOR=nvim
 export PAGER="less -R"
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
-export SSH_AUTH_SOCK="$HOME/.bitwarden-ssh-agent.sock"
 
 # Enable Starship prompt
 eval "$(starship init zsh)"
