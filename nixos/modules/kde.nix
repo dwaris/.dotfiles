@@ -20,7 +20,6 @@
     wayland-utils
     aha
     wl-clipboard
-    kdePackages.xwaylandvideobridge
     kdePackages.sddm-kcm
     kdePackages.filelight
     kdePackages.kasts
@@ -40,25 +39,9 @@
     };
   };
 
-  environment.plasma6.excludePackages = with pkgs.kdePackages; [
-    plasma-browser-integration
-    kuserfeedback # nobody wants you here ok?
-    discover
-    oxygen
-    elisa
-  ];
-
   programs.ssh.startAgent = true;
-  security.pam.services.sddm.kwallet.enable = true;
   environment.sessionVariables.SSH_ASKPASS_REQUIRE = "prefer";
-
-  xdg.portal = {
-    enable = true;
-    xdgOpenUsePortal = true;
-  };
 
   programs.partition-manager.enable = true;
   programs.kdeconnect.enable = false;
-
-  programs.dconf.enable = true;
 }
