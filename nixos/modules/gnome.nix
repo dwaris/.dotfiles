@@ -30,5 +30,7 @@
   };
   networking.firewall.allowedTCPPorts = [ 3389 ];
 
+  services.orca.enable = false;
+
   services.udev.packages = with pkgs; [ gnome-settings-daemon ];
 }
