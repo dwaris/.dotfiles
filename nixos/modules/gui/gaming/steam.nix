@@ -20,28 +20,10 @@
     };
     gamemode = {
       enable = true;
-      settings = 
-        {
-          general = {
-            renice = 10;
-          };
-          # Warning: GPU optimisations have the potential to damage hardware
-          gpu = {
-            apply_gpu_optimisations = "accept-responsibility";
-            gpu_device = 1;
-            amd_performance_level = "high";
-          };
-        };
+      enableRenice = true;
     };
-    # completly broken
-    # capSysNice doesn't work (permission error)
-    # -e launch option doesn't work either
-    #
-    # gamescope = { 
-    #   enable = true;
-    #   capSysNice = true;
-    # };
   };
+
   users.users.dwaris.extraGroups = [
     "gamemode"
   ];
