@@ -114,6 +114,5 @@ in
   users.users.dwaris.extraGroups = [
     "networkmanager"
     "adbusers"
-    "audio"
   ];
 }
