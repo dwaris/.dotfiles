@@ -13,9 +13,9 @@
   services.hypridle.enable = lib.mkForce false; # disables the default hypridle service, start it only in hyprland
 
   services.displayManager.gdm = {
-      enable = true;
-      wayland = true;
-    };
+    enable = true;
+    wayland = true;
+  };
 
   xdg.autostart.enable = true;
 
