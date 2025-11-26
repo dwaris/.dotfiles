@@ -38,8 +38,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    qbittorrent
-    veracrypt
+    easyeffects
   ];
 
   hardware.bluetooth.enable = false;

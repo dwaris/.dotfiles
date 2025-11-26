@@ -6,9 +6,8 @@
 }:
 {
   services.flatpak.packages = [
-    "org.mozilla.firefox"
-    
     "com.google.Chrome"
     "com.brave.Browser"
+    "com.microsoft.Edge"
   ];
 }

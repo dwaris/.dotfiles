@@ -12,7 +12,10 @@
       ];
     })    
     prismlauncher
-    mesen
+    # mesen
   ];
-  
+
+  services.flatpak.packages = [
+    "sh.ppy.osu"
+  ];
 }
