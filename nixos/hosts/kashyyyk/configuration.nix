@@ -35,9 +35,7 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    powertop
-  ];
+  environment.systemPackages = with pkgs; [ ];
 
   hardware.bluetooth.enable = true;
   hardware.sensor.iio.enable = true;
@@ -49,10 +47,7 @@
     libvdpau-va-gl
   ];
 
-  powerManagement.powertop.enable = true;
-  services = {
-    thermald.enable = true;
-  };
+  services.thermald.enable = true;
 
   system.stateVersion = "23.11"; # Did you read the comment?
 }
