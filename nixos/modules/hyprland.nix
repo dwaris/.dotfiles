@@ -66,6 +66,7 @@
       glib-networking.enable = true;
       gnome-keyring.enable = true;
     };
+    power-profiles-daemon.enable = true;
   };
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
