@@ -13,10 +13,10 @@
     "modules-right": [
         "group/tray-expander",
         "network",
-        "power-profiles-daemon",
         "pulseaudio#sink",
         "pulseaudio#source",
         "backlight",
+        "power-profiles-daemon",
         "battery",
         "custom/power"
     ],
