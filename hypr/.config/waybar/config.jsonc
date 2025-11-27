@@ -13,6 +13,7 @@
     "modules-right": [
         "group/tray-expander",
         "network",
+        "power-profiles-daemon",
         "pulseaudio#sink",
         "pulseaudio#source",
         "backlight",
@@ -160,6 +161,17 @@
         "ignored-sinks": [
             "Easy Effects Sink"
         ]
+    },
+    "power-profiles-daemon": {
+        "format": "{icon}",
+        "tooltip-format": "Power profile: {profile}nDriver: {driver}",
+        "tooltip": true,
+        "format-icons": {
+            "default": "",
+            "performance": "",
+            "balanced": "",
+            "power-saver": ""
+        }
     },
     "custom/lock": {
         "tooltip": false,

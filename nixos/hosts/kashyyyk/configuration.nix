@@ -52,7 +52,6 @@
   powerManagement.powertop.enable = true;
   services = {
     thermald.enable = true;
-    power-profiles-daemon.enable = true;
   };
 
   system.stateVersion = "23.11"; # Did you read the comment?
