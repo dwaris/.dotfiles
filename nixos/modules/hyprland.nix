@@ -28,6 +28,7 @@
     grim
     slurp
 
+    networkmanagerapplet
     pavucontrol
     dunst
     rofi

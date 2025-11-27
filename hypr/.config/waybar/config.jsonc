@@ -12,7 +12,6 @@
     ],
     "modules-right": [
         "group/tray-expander",
-        "bluetooth",
         "network",
         "pulseaudio#sink",
         "pulseaudio#source",
@@ -116,13 +115,6 @@
             "critical": 10
         }
     },
-    "bluetooth": {
-        "format": "",
-        "format-disabled": "󰂲",
-        "format-connected": "",
-        "tooltip-format": "Devices connected: {num_connections}",
-        "on-click": "blueman-manager"
-    },
     "network": {
         "format-icons": [
             "󰤯",
@@ -135,8 +127,8 @@
         "format-wifi": "{icon}",
         "format-ethernet": "󰀂",
         "format-disconnected": "󰤮",
-        "tooltip-format-wifi": "{essid} ({frequency} GHz)\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
-        "tooltip-format-ethernet": "⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+        "tooltip-format-wifi": "{ipaddr}\n{essid} {signaldBm} ({frequency} GHz)\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+        "tooltip-format-ethernet": "{ipaddr}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
         "tooltip-format-disconnected": "Disconnected",
         "interval": 3,
         "spacing": 1,
