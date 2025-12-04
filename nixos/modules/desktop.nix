@@ -1,6 +1,14 @@
 { config, pkgs, ... }:
 
 { 
+  fonts.packages = with pkgs; [
+    noto-fonts
+    noto-fonts-cjk-sans
+    noto-fonts-color-emoji
+    nerd-fonts.sauce-code-pro
+    source-code-pro
+  ];
+    
   services.printing.enable = false;
   services.avahi = {
     enable = false;
