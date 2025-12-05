@@ -14,10 +14,9 @@
 
   environment.systemPackages = with pkgs; [
     clang
-    
     nodejs_24
 
-    imagemagick
-    ghostscript
+    fd
+    ripgrep
   ];
 }

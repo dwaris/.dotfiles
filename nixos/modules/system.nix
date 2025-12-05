@@ -78,8 +78,5 @@ in
     vim
     curl
     git
-    git-lfs
-    sysstat
-    lm_sensors
   ];
 }
