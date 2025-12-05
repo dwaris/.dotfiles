@@ -43,18 +43,10 @@ in
   environment.systemPackages = with pkgs; [
     sbctl
     nfs-utils
-    appimage-run
   ];
 
   services.zfs.autoSnapshot.enable = true;
   services.zfs.autoScrub.enable = true;
-
-  services.smartd = {
-    autodetect = true;
-    enable = true;
-  };
-
-  security.pki.certificateFiles = [ ../.certs/root_ca.crt ];
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -71,7 +63,7 @@ in
 
   # Enable the OpenSSH daemon.
   services.openssh = {
-    enable = false;
+    enable = true;
     allowSFTP = true; 
     openFirewall = true;
     settings = {
@@ -81,11 +73,7 @@ in
     };
   };
 
-  services.fwupd.enable = true;
-
-  programs.adb.enable = true;
   users.users.dwaris.extraGroups = [
     "networkmanager"
-    "adbusers"
   ];
 }
