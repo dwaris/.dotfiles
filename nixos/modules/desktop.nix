@@ -1,6 +1,10 @@
 { config, pkgs, ... }:
 
 { 
+  environment.systemPackages = with pkgs; [
+    appimage-run
+  ];
+
   fonts.packages = with pkgs; [
     noto-fonts
     noto-fonts-cjk-sans
@@ -8,7 +12,13 @@
     nerd-fonts.sauce-code-pro
     source-code-pro
   ];
-    
+  services.fwupd.enable = true;
+
+  services.smartd = {
+    autodetect = true;
+    enable = true;
+  };
+
   services.printing.enable = false;
   services.avahi = {
     enable = false;
@@ -34,4 +44,6 @@
     pkgs.libxcrypt-legacy
     ];
   };
+
+  security.pki.certificateFiles = [ ../.certs/root_ca.crt ];
 }
