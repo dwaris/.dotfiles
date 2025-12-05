@@ -17,6 +17,7 @@
     nodejs_24
 
     fd
+    wget
     ripgrep
   ];
 }
