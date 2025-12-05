@@ -5,36 +5,22 @@
   ...
 }: {
   environment.systemPackages = with pkgs; [
-    # archive
+    # archives
     zip
     unzip
-    unrar
-    p7zip
 
     # network
-    wget 
-    
-    # usage
-    htop
-
-    # copy
     rsync
-
-    # misc
-    fastfetch
-
-    # new
-    bat
-    eza
-    delta
-    dust
-    duf
-    broot
-    fd
-    ripgrep
-    fzf
+    
+    # system monitoring
+    htop
     bottom
-    doggo
+    lm_sensors
+
+    # tools
+    bat
+
+    # git
     lazygit
   ];
 }

@@ -52,9 +52,7 @@
     gnome-calculator
     gnome-disk-utility
     gnome-system-monitor
-    gnome-usage
     gnome-logs
-    gnome-font-viewer
   ];
 
   services = {
