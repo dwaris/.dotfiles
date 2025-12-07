@@ -8,8 +8,6 @@
 {
   environment.shells = with pkgs; [ zsh ];
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
   environment.systemPackages = with pkgs; [
     kile
 
@@ -29,7 +27,15 @@
       winDecStyles = [ "classic" ];
     })
   ];
-  # Configure keymap in and Dispay Manager
+  environment.plasma6.excludePackages = with pkgs.kdePackages; [
+    plasma-browser-integration
+    konsole
+    oxygen
+    krunner
+    kwallet
+    kwalletmanager
+  ];
+  
   services = {
     desktopManager.plasma6.enable = true;
     displayManager.sddm = {
