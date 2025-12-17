@@ -1,12 +1,9 @@
 { config, pkgs, ... }:
-let
-  username = "dwaris";
-in
 {
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.dwaris = {
     isNormalUser = true;
-    description = "dwaris";
+    description = "Nils";
     extraGroups = [ "wheel" ];
     shell = pkgs.zsh;
   };
