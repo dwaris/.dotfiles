@@ -18,10 +18,6 @@ in
   # Note this might jump back and forth as kernels are added or removed.
   boot.kernelPackages = latestKernelPackage;
 
-  boot.kernelParams = [ 
-    "mem_sleep_default=s2idle" 
-  ];
-
   boot.loader.systemd-boot = {
     enable = false;
     configurationLimit = 10;
