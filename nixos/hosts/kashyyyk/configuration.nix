@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, lib,... }:
 
 {
   imports = [
@@ -11,13 +11,12 @@
     ../../modules/kde.nix
 
     ../../modules/cli
-
-    ../../modules/gui/browser.nix
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.plymouth.enable = true;
 
   networking.networkmanager.enable = true;
   networking.networkmanager.plugins = with pkgs; [ networkmanager-openvpn ]; 
@@ -28,7 +27,13 @@
   networking.hostId = "f0cacf30";
 
   environment.systemPackages = with pkgs; [ 
+    ghostty
+    tmux
+
     vlc
+
+    gimp
+
     libreoffice
   ];
 
@@ -42,7 +47,6 @@
     libvdpau-va-gl
   ];
 
-  services.printing.enable = true;
   services.thermald.enable = true;
 
   users.users.betty = {
@@ -60,6 +64,13 @@
     description = "nils06";
     extraGroups = [ "wheel" "networkmanager" ];
   };
+
+  services.flatpak.packages = [
+    "com.google.Chrome"
+    "com.brave.Browser"
+
+    "org.mozilla.firefox"
+  ];
 
   system.stateVersion = "25.05";
 }
