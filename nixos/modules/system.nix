@@ -1,15 +1,7 @@
 { config, pkgs, ... }:
 {
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.dwaris = {
-    isNormalUser = true;
-    description = "Nils";
-    extraGroups = [ "wheel" ];
-    shell = pkgs.zsh;
-  };
 
-  programs.zsh.enable = true;
-  
   nix.settings.trusted-users = [ "@wheel" ];
 
   nix.settings = {

@@ -48,7 +48,17 @@
   users.users.betty = {
     isNormalUser = true;
     description = "betty";
-    extraGroups = [ "networkmanager" ];
+    extraGroups = [ "wheel" "networkmanager" ];
+  };
+  users.users.andrew33 = {
+    isNormalUser = true;
+    description = "andrew33";
+    extraGroups = [ "wheel" "networkmanager" ];
+  };
+  users.users.nils06 = {
+    isNormalUser = true;
+    description = "nils06";
+    extraGroups = [ "wheel" "networkmanager" ];
   };
 
   system.stateVersion = "25.05";
