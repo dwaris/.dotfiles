@@ -6,36 +6,31 @@
 
 {
   imports = [
-    ../../modules
+    ../../modules/system.nix
+    ../../modules/desktop.nix
+    ../../modules/kde.nix
 
     ../../modules/cli
-    ../../modules/cli/podman.nix
 
-    ../../modules/gui
+    ../../modules/gui/browser.nix
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.kernelParams = [ 
-    "zfs.zfs_arc_max=8589934592" # 8 GiB 
-  ];
+  networking.networkmanager.enable = true;
+  networking.networkmanager.plugins = with pkgs; [ networkmanager-openvpn ]; 
+  systemd.services.NetworkManager-wait-online.enable = false;
+  services.resolved.enable = true;
 
-  networking.hostName = "kashyyyk"; # Define your hostname.
+  networking.hostName = "kashyyyk";
   networking.hostId = "f0cacf30";
 
-  networking.firewall = {
-    trustedInterfaces = [ "tailscale0" ];
-    checkReversePath = "loose";
-  };
-  services.tailscale = {
-    enable = true;
-    openFirewall = true;
-    useRoutingFeatures = "client";
-  };
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [ ];
+  environment.systemPackages = with pkgs; [ 
+    vlc
+    libreoffice
+  ];
 
   hardware.bluetooth.enable = true;
   hardware.sensor.iio.enable = true;
@@ -47,7 +42,14 @@
     libvdpau-va-gl
   ];
 
+  services.printing.enable = true;
   services.thermald.enable = true;
 
-  system.stateVersion = "23.11"; # Did you read the comment?
+  users.users.betty = {
+    isNormalUser = true;
+    description = "betty";
+    extraGroups = [ "networkmanager" ];
+  };
+
+  system.stateVersion = "25.05";
 }

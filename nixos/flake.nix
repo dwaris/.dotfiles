@@ -10,6 +10,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
     nix-flatpak.url = "github:gmodena/nix-flatpak/";
 
     lanzaboote = {
@@ -27,6 +28,7 @@
     inputs@{
       self,
       nixpkgs,
+      nixpkgs-stable,
       lanzaboote,
       nix-flatpak,
       nixos-wsl,
@@ -47,14 +49,13 @@
           ];
         };
 
-        kashyyyk = nixpkgs.lib.nixosSystem {
+        kashyyyk = nixpkgs-stable.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = {
             inherit inputs;
           };
           modules = [
             ./hosts/kashyyyk/configuration.nix
-            lanzaboote.nixosModules.lanzaboote
             nix-flatpak.nixosModules.nix-flatpak
           ];
         };
