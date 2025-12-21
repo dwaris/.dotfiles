@@ -26,5 +26,13 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [ ];
 
+  users.users.dwaris = {
+    isNormalUser = true;
+    description = "dwaris";
+    extraGroups = [ "wheel" "networkmanager" ];
+    shell = pkgs.zsh;
+  };
+  programs.zsh.enable = true;
+
   system.stateVersion = "23.05"; # Did you read the comment?
 }
