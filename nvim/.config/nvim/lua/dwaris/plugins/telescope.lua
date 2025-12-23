@@ -1,12 +1,15 @@
 return {
     'nvim-telescope/telescope.nvim',
-    branch = '0.1.x',
     dependencies = {
         'nvim-lua/plenary.nvim',
         'nvim-tree/nvim-web-devicons',
     },
     config = function()
         require('telescope').setup {
+          defaults = { preview = {
+              treesitter = false,
+              },
+            },
             pcall(require('telescope').load_extension, 'fzf'),
         }
       local builtin = require 'telescope.builtin'
