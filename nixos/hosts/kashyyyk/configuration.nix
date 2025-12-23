@@ -43,8 +43,8 @@
   hardware.graphics.enable = true;
   hardware.graphics.extraPackages = with pkgs; [
     intel-media-driver
-    libva-vdpau-driver
     libvdpau-va-gl
+    intel-compute-runtime-legacy1
   ];
 
   services.thermald.enable = true;
