@@ -24,7 +24,12 @@
     (catppuccin-kde.override {
       flavour = [ "mocha" ];
       accents = [ "rosewater" ];
-      winDecStyles = [ "classic" ];
+      winDecStyles = [ "modern" ];
+    })
+    (catppuccin-kde.override {
+      flavour = [ "latte" ];
+      accents = [ "rosewater" ];
+      winDecStyles = [ "modern" ];
     })
   ];
   
