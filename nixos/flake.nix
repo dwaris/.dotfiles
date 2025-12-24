@@ -49,13 +49,14 @@
           ];
         };
 
-        corellia = nixpkgs-stable.lib.nixosSystem {
+        corellia = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = {
             inherit inputs;
           };
           modules = [
             ./hosts/corellia/configuration.nix
+            lanzaboote.nixosModules.lanzaboote
             nix-flatpak.nixosModules.nix-flatpak
           ];
         };
@@ -71,7 +72,7 @@
           ];
         };
 
-        wsl = nixpkgs.lib.nixosSystem {
+        wsl = nixpkgs-stable.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
             ./hosts/wsl/configuration.nix
