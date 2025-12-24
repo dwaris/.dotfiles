@@ -16,7 +16,7 @@
   ];
 
   boot.kernelParams = [ 
-    "zfs.zfs_arc_max=8589934592" # 8 GiB 
+    "zfs.zfs_arc_max=3221225472" # 3 GiB (2GB + 1GiB per 1TB of storage)
   ];
 
   networking.hostName = "corellia"; # Define your hostname.
@@ -35,6 +35,7 @@
   environment.systemPackages = with pkgs; [ ];
 
   hardware.bluetooth.enable = true;
+  services.fprintd.enable = true;
   
   hardware.graphics.enable = true;
   hardware.graphics.extraPackages = with pkgs; [
