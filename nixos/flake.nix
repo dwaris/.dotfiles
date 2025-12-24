@@ -49,6 +49,17 @@
           ];
         };
 
+        corellia = nixpkgs-stable.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = {
+            inherit inputs;
+          };
+          modules = [
+            ./hosts/corellia/configuration.nix
+            nix-flatpak.nixosModules.nix-flatpak
+          ];
+        };
+
         kashyyyk = nixpkgs-stable.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = {
