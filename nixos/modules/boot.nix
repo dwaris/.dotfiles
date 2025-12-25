@@ -17,6 +17,8 @@ in
 {
   # Note this might jump back and forth as kernels are added or removed.
   boot.kernelPackages = latestKernelPackage;
+  boot.zfs.package = pkgs.zfs_2_4;
+
   services.scx = {
     enable = true;
     scheduler = "scx_bpfland";
