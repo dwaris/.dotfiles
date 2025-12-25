@@ -16,7 +16,7 @@
   ];
 
   boot.kernelParams = [ 
-    "zfs.zfs_arc_max=3221225472" # 3 GiB (2GB + 1GiB per 1TB of storage)
+    "zfs.zfs_arc_max=5368709120" # 5 GiB (4GB + 1GiB per 1TB of storage)
     "iommu=pt" # fast resume from S0ix sleep state
   ];
 

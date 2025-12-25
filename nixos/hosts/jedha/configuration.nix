@@ -20,7 +20,7 @@
   ];
 
   boot.kernelParams = [
-    "zfs.zfs_arc_max=4294967296" # 4 GiB (2GB + 1GiB per 1TB of storage) 
+    "zfs.zfs_arc_max=6442450944" # 6 GiB (4GB + 1GiB per 1TB of storage) 
     "video=DP-1:2560x1440@144"
     "video=DP-2:1920x1080@60"
   ];
