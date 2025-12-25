@@ -17,6 +17,7 @@
 
   boot.kernelParams = [ 
     "zfs.zfs_arc_max=3221225472" # 3 GiB (2GB + 1GiB per 1TB of storage)
+    "iommu=pt" # fast resume from S0ix sleep state
   ];
 
   networking.hostName = "corellia"; # Define your hostname.
@@ -49,6 +50,8 @@
     shell = pkgs.zsh;
   };
   programs.zsh.enable = true;
+
+  powerManagement.powertop.enable = true;
 
   system.stateVersion = "23.11"; # Did you read the comment?
 }
