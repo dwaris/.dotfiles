@@ -11,6 +11,11 @@
     "fs.file-max" = 524288;
   };
 
+  services.scx = lib.mkForce {
+    scheduler = "scx_lavd";
+    extraArgs = [ "--performance" ];
+  };
+
   programs = { 
     gamemode = {
       enable = true;
