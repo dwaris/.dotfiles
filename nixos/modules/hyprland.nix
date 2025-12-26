@@ -20,12 +20,6 @@
     wayland = true;
   };
 
-  xdg.autostart.enable = true;
-  xdg.portal = {
-    enable = true;
-    xdgOpenUsePortal = true;
-  };
-
   security.pam.services.login.enableGnomeKeyring = true;
 
   environment.systemPackages = with pkgs; [
@@ -39,6 +33,7 @@
 
     networkmanagerapplet
     pavucontrol
+    alsa-utils
     dunst
     rofi
     wlogout
