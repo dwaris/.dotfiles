@@ -1,4 +1,5 @@
 {
+  inputs,
   config,
   pkgs,
   lib,
@@ -10,7 +11,9 @@
   };
 
   programs.hyprlock.enable = true;
-  services.hypridle.enable = lib.mkForce false; # disables the default hypridle service, start it only in hyprland
+  services.hypridle = {
+    enable = lib.mkForce false;
+  };
 
   services.displayManager.gdm = {
     enable = true;
@@ -18,6 +21,12 @@
   };
 
   xdg.autostart.enable = true;
+  xdg.portal = {
+    enable = true;
+    xdgOpenUsePortal = true;
+  };
+
+  security.pam.services.login.enableGnomeKeyring = true;
 
   environment.systemPackages = with pkgs; [
     hyprpaper
@@ -53,12 +62,15 @@
     gnome-disk-utility
     gnome-system-monitor
     gnome-logs
+    gnome-font-viewer
   ];
 
   services = {
+    blueman.enable = true;
     gvfs.enable = true;
     udisks2.enable = true;
     upower.enable = true;
+    accounts-daemon.enable = true;
     gnome = {
       sushi.enable = true;
       glib-networking.enable = true;
