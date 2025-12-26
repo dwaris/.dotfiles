@@ -18,7 +18,6 @@
     wayland-utils
     aha
     wl-clipboard
-    kdePackages.xwaylandvideobridge
     kdePackages.sddm-kcm
     kdePackages.filelight
     kdePackages.kasts
@@ -45,6 +44,4 @@
 
   programs.partition-manager.enable = true;
   programs.kdeconnect.enable = false;
-
-  programs.dconf.enable = true;
 }
