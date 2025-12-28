@@ -65,9 +65,7 @@
     isNormalUser = true;
     description = "dwaris";
     extraGroups = [ "wheel" "networkmanager" ];
-    shell = pkgs.zsh;
   };
-  programs.zsh.enable = true;
 
   system.stateVersion = "23.11"; # Did you read the comment?
 }

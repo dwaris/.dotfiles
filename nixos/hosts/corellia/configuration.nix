@@ -47,9 +47,7 @@
     isNormalUser = true;
     description = "dwaris";
     extraGroups = [ "wheel" "networkmanager" ];
-    shell = pkgs.zsh;
   };
-  programs.zsh.enable = true;
 
   powerManagement.powertop.enable = true;
 
