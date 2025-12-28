@@ -12,5 +12,7 @@
     "im.riot.Riot"
     "org.signal.Signal"
     "org.telegram.desktop"
+
+    "org.mozilla.Thunderbird"
   ];
 }
