@@ -31,6 +31,10 @@
     enable = true;
     openFirewall = true;
     useRoutingFeatures = "client";
+    extraUpFlags = [
+      "--accept-routes"
+      "--ssh"
+    ];
   };
 
   environment.systemPackages = with pkgs; [ ];
