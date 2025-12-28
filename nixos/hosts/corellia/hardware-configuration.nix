@@ -14,7 +14,7 @@
     ];
 
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci_renesas" "xhci_pci" "rtsx_pci_sdmmc" ];
-  boot.initrd.kernelModules = [ "amdgpu" "zfs" ];
+  boot.initrd.kernelModules = [ "zfs" ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
