@@ -62,7 +62,7 @@
     enable32Bit = true;
   };
   hardware.amdgpu = {
-    opencl = true;
+    opencl.enable = true;
     initrd.enable = true;
   };
   hardware.bluetooth.enable = true;
