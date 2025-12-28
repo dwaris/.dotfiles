@@ -57,14 +57,15 @@
     ethtool
   ];
 
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
+  hardware.amdgpu = {
+    opencl = true;
+    initrd.enable = true;
+  };
   hardware.bluetooth.enable = true;
-
-  hardware.graphics.enable = true;
-  hardware.graphics.enable32Bit = true;
-
-  hardware.graphics.extraPackages = with pkgs; [
-    rocmPackages.clr.icd
-  ];
 
   services.pipewire = {
     extraConfig.pipewire."92-low-latency" = {

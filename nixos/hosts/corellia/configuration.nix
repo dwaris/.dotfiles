@@ -39,21 +39,21 @@
 
   environment.systemPackages = with pkgs; [ ];
 
-  hardware.bluetooth.enable = true;
-  services.fprintd.enable = true;
+  services.fprintd.enable = false;
+  powerManagement.powertop.enable = false;
   
   hardware.graphics.enable = true;
-  hardware.graphics.extraPackages = with pkgs; [
-    rocmPackages.clr.icd
-  ];
+  hardware.amdgpu = { 
+    opencl = true;
+    initrd.enable = true;
+  };
+  hardware.bluetooth.enable = true;
 
   users.users.dwaris = {
     isNormalUser = true;
     description = "dwaris";
     extraGroups = [ "wheel" "networkmanager" ];
   };
-
-  powerManagement.powertop.enable = true;
 
   system.stateVersion = "23.11"; # Did you read the comment?
 }

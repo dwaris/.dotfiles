@@ -22,7 +22,7 @@
     "usb_storage"
     "sd_mod"
   ];
-  boot.initrd.kernelModules = [ "amdgpu" "zfs" ];
+  boot.initrd.kernelModules = [ "zfs" ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
