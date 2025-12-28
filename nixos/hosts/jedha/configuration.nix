@@ -4,6 +4,7 @@
 {
   config,
   pkgs,
+  lib,
   inputs,
   ...
 }: {
@@ -41,19 +42,23 @@
       "--ssh"
     ];
   };
-  services.networkd-dispatcher = {
-    enable = true;
-    rules."50-tailscale" = {
-      onState = [ "routable" ];
-      script = ''
-        ${pkgs.ethtool}/bin/ethtool -K eno1 rx-udp-gro-forwarding on rx-gro-list off
-      '';
+  systemd.services."udp-gro-forwarding" = {
+    description = "UDP Gro Forwarding Service";
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "${pkgs.writeShellScript "udp-gro-forwarding" ''
+        set -eux
+        ${lib.getExe pkgs.ethtool} -K eno1 rx-udp-gro-forwarding on rx-gro-list off;
+      ''}";
     };
+    wantedBy = [ "multi-user.target" ];
+    after = [ "network.target" ];
   };
 
   environment.systemPackages = with pkgs; [
     easyeffects
-
+    
+    tailscale-systray
     ethtool
   ];
 
