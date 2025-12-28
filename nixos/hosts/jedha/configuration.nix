@@ -35,6 +35,20 @@
     enable = true;
     openFirewall = true;
     useRoutingFeatures = "server";
+    extraUpFlags = [
+      "--advertise-exit-node"
+      "--advertise-routes=192.168.178.0/24"
+      "--ssh"
+    ];
+  };
+  services.networkd-dispatcher = {
+    enable = true;
+    rules."50-tailscale" = {
+      onState = [ "routable" ];
+      script = ''
+        ${pkgs.ethtool}/bin/ethtool -K eth0 rx-udp-gro-forwarding on rx-gro-list off
+      '';
+    };
   };
 
   environment.systemPackages = with pkgs; [
