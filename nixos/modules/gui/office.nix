@@ -11,4 +11,8 @@
 
     anki-bin
   ];
+
+  services.flatpak.packages = [
+    "com.collaboraoffice.Office"
+  ];
 }
