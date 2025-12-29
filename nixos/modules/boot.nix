@@ -23,10 +23,6 @@ in {
   boot.kernelPackages = latestKernelPackage;
   boot.zfs.package = pkgs.zfs_2_4;
 
-  services.scx = {
-    enable = true;
-    scheduler = "scx_bpfland";
-  };
 
   boot.loader.systemd-boot = {
     enable = false;
