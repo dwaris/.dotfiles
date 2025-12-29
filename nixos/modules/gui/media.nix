@@ -9,8 +9,7 @@
     vlc
     tidal-hifi
 
-    # komikku
-    # foliate
+    foliate
 
     plex-desktop
     plexamp
