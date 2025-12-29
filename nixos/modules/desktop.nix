@@ -3,7 +3,6 @@
 { 
   environment.systemPackages = with pkgs; [
     appimage-run
-    alsa-utils
   ];
 
   fonts.packages = with pkgs; [
