@@ -9,5 +9,6 @@
     tmux
 
     vscode-fhs
+    alejandra
   ];
 }
