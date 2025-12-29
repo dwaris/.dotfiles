@@ -5,10 +5,9 @@
   ...
 }: {
   environment.systemPackages = with pkgs; [
-    scalpel 
-    foremost 
-    testdisk 
+    scalpel
+    foremost
+    testdisk
     ddrescue
   ];
 }
-

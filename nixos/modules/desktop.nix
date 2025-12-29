@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
-{ 
+{
+  config,
+  pkgs,
+  ...
+}: {
   environment.systemPackages = with pkgs; [
     appimage-run
   ];
@@ -45,11 +47,12 @@
 
   programs.appimage.enable = true;
   programs.appimage.binfmt = true;
-  programs.appimage.package = pkgs.appimage-run.override { extraPkgs = pkgs: [
-    pkgs.icu
-    pkgs.libxcrypt-legacy
+  programs.appimage.package = pkgs.appimage-run.override {
+    extraPkgs = pkgs: [
+      pkgs.icu
+      pkgs.libxcrypt-legacy
     ];
   };
 
-  security.pki.certificateFiles = [ ../.certs/root_ca.crt ];
+  security.pki.certificateFiles = [../.certs/root_ca.crt];
 }

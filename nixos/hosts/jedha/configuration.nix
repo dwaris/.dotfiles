@@ -21,7 +21,7 @@
   ];
 
   boot.kernelParams = [
-    "zfs.zfs_arc_max=6442450944" # 6 GiB (4GB + 1GiB per 1TB of storage) 
+    "zfs.zfs_arc_max=6442450944" # 6 GiB (4GB + 1GiB per 1TB of storage)
     "video=DP-1:2560x1440@144"
     "video=DP-2:1920x1080@60"
   ];
@@ -30,7 +30,7 @@
   networking.hostId = "74f65184";
 
   networking.firewall = {
-    trustedInterfaces = [ "tailscale0" ];
+    trustedInterfaces = ["tailscale0"];
   };
   services.tailscale = {
     enable = true;
@@ -51,13 +51,13 @@
         ${lib.getExe pkgs.ethtool} -K eno1 rx-udp-gro-forwarding on rx-gro-list off;
       ''}";
     };
-    wantedBy = [ "multi-user.target" ];
-    after = [ "network.target" ];
+    wantedBy = ["multi-user.target"];
+    after = ["network.target"];
   };
 
   environment.systemPackages = with pkgs; [
     easyeffects
-    
+
     tailscale-systray
     ethtool
   ];
@@ -79,14 +79,14 @@
         "default.clock.quantum" = 128;
         "default.clock.min-quantum" = 64;
         "default.clock.max-quantum" = 256;
-        };
+      };
     };
   };
 
   users.users.dwaris = {
     isNormalUser = true;
     description = "dwaris";
-    extraGroups = [ "wheel" "networkmanager" ];
+    extraGroups = ["wheel" "networkmanager"];
   };
 
   system.stateVersion = "23.11"; # Did you read the comment?
