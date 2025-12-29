@@ -33,7 +33,6 @@
 
     networkmanagerapplet
     pavucontrol
-    alsa-utils
     dunst
     rofi
     wlogout
