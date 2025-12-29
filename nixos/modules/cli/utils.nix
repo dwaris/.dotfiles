@@ -11,7 +11,7 @@
 
     # network
     rsync
-    
+
     # system monitoring
     htop
     bottom

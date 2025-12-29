@@ -1,20 +1,24 @@
-{ config, pkgs, lib, ... }: 
-
-let
-  zfsCompatibleKernelPackages = lib.filterAttrs (
-    name: kernelPackages:
-    (builtins.match "linux_[0-9]+_[0-9]+" name) != null
-    && (builtins.tryEval kernelPackages).success
-    && (!kernelPackages.${config.boot.zfs.package.kernelModuleAttribute}.meta.broken)
-  ) pkgs.linuxKernel.packages;
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: let
+  zfsCompatibleKernelPackages =
+    lib.filterAttrs (
+      name: kernelPackages:
+        (builtins.match "linux_[0-9]+_[0-9]+" name)
+        != null
+        && (builtins.tryEval kernelPackages).success
+        && (!kernelPackages.${config.boot.zfs.package.kernelModuleAttribute}.meta.broken)
+    )
+    pkgs.linuxKernel.packages;
   latestKernelPackage = lib.last (
     lib.sort (a: b: (lib.versionOlder a.kernel.version b.kernel.version)) (
       builtins.attrValues zfsCompatibleKernelPackages
     )
   );
-in
-
-{
+in {
   # Note this might jump back and forth as kernels are added or removed.
   boot.kernelPackages = latestKernelPackage;
   boot.zfs.package = pkgs.zfs_2_4;
@@ -56,26 +60,26 @@ in
 
   # Enable networking
   networking.networkmanager.enable = true;
-  networking.networkmanager.plugins = with pkgs; [ networkmanager-openvpn ]; 
+  networking.networkmanager.plugins = with pkgs; [networkmanager-openvpn];
   systemd.services.NetworkManager-wait-online.enable = false;
   services.resolved.enable = true;
 
   # Enable nftables
   networking.firewall = {
     enable = true;
-    trustedInterfaces = [ "virbr0" ];
+    trustedInterfaces = ["virbr0"];
   };
   networking.nftables.enable = true;
 
   # Enable the OpenSSH daemon.
   services.openssh = {
     enable = true;
-    allowSFTP = true; 
+    allowSFTP = true;
     openFirewall = true;
     settings = {
       PasswordAuthentication = false;
       PermitRootLogin = "no";
-      AllowUsers = [ "dwaris" ];
+      AllowUsers = ["dwaris"];
     };
   };
 

@@ -3,15 +3,13 @@
   lib,
   pkgs,
   ...
-}:
-
-{
+}: {
   boot.kernel.sysctl = {
     "vm.max_map_count" = 16777216;
     "fs.file-max" = 524288;
   };
 
-  programs = { 
+  programs = {
     gamemode = {
       enable = true;
       enableRenice = true;
@@ -19,7 +17,7 @@
   };
 
   users.users.dwaris.extraGroups = [
-     "gamemode"
+    "gamemode"
   ];
 
   services.flatpak.packages = [
@@ -27,4 +25,3 @@
     "com.github.Matoking.protontricks"
   ];
 }
-

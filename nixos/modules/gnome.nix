@@ -1,9 +1,11 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.shells = with pkgs; [ zsh ];
+  environment.shells = with pkgs; [zsh];
 
   environment.systemPackages = with pkgs; [
     gnomeExtensions.appindicator
@@ -25,12 +27,12 @@
   };
 
   services.gnome.gnome-remote-desktop.enable = true; # 'true' does not make the unit start automatically at boot
-  systemd.services.gnome-remote-desktop = { 
-    wantedBy = [ "graphical.target" ]; # for starting the unit automatically at boot
+  systemd.services.gnome-remote-desktop = {
+    wantedBy = ["graphical.target"]; # for starting the unit automatically at boot
   };
-  networking.firewall.allowedTCPPorts = [ 3389 ];
+  networking.firewall.allowedTCPPorts = [3389];
 
   services.orca.enable = false;
 
-  services.udev.packages = with pkgs; [ gnome-settings-daemon ];
+  services.udev.packages = with pkgs; [gnome-settings-daemon];
 }

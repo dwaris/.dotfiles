@@ -3,10 +3,8 @@
   pkgs,
   lib,
   ...
-}:
-
-{
-  environment.shells = with pkgs; [ zsh ];
+}: {
+  environment.shells = with pkgs; [zsh];
 
   environment.systemPackages = with pkgs; [
     kile
@@ -22,17 +20,17 @@
     kdePackages.filelight
     kdePackages.kasts
     (catppuccin-kde.override {
-      flavour = [ "mocha" ];
-      accents = [ "rosewater" ];
-      winDecStyles = [ "modern" ];
+      flavour = ["mocha"];
+      accents = ["rosewater"];
+      winDecStyles = ["modern"];
     })
     (catppuccin-kde.override {
-      flavour = [ "latte" ];
-      accents = [ "rosewater" ];
-      winDecStyles = [ "modern" ];
+      flavour = ["latte"];
+      accents = ["rosewater"];
+      winDecStyles = ["modern"];
     })
   ];
-  
+
   services = {
     desktopManager.plasma6.enable = true;
     displayManager.sddm = {

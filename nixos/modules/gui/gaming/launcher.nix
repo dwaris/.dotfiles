@@ -3,8 +3,7 @@
   lib,
   pkgs,
   ...
-}:
-{
+}: {
   services.flatpak.packages = [
     "com.heroicgameslauncher.hgl"
 

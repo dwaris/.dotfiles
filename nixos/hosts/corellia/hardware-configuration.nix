@@ -6,50 +6,48 @@
   lib,
   modulesPath,
   ...
-}:
+}: {
+  imports = [
+    (modulesPath + "/installer/scan/not-detected.nix")
+  ];
 
-{
-  imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
-    ];
+  boot.initrd.availableKernelModules = ["nvme" "xhci_pci_renesas" "xhci_pci" "rtsx_pci_sdmmc"];
+  boot.initrd.kernelModules = ["zfs"];
+  boot.kernelModules = ["kvm-amd"];
+  boot.extraModulePackages = [];
 
-  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci_renesas" "xhci_pci" "rtsx_pci_sdmmc" ];
-  boot.initrd.kernelModules = [ "zfs" ];
-  boot.kernelModules = [ "kvm-amd" ];
-  boot.extraModulePackages = [ ];
+  fileSystems."/" = {
+    device = "zpool/nixos/root";
+    fsType = "zfs";
+  };
 
-  fileSystems."/" =
-    { device = "zpool/nixos/root";
-      fsType = "zfs";
-    };
+  fileSystems."/var" = {
+    device = "zpool/nixos/var";
+    fsType = "zfs";
+  };
 
-  fileSystems."/var" =
-    { device = "zpool/nixos/var";
-      fsType = "zfs";
-    };
+  fileSystems."/nix" = {
+    device = "zpool/nixos/nix";
+    fsType = "zfs";
+  };
 
-  fileSystems."/nix" =
-    { device = "zpool/nixos/nix";
-      fsType = "zfs";
-    };
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/7321-60A4";
+    fsType = "vfat";
+    options = ["fmask=0077" "dmask=0077"];
+  };
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/7321-60A4";
-      fsType = "vfat";
-      options = [ "fmask=0077" "dmask=0077" ];
-    };
+  fileSystems."/home" = {
+    device = "zpool/nixos/home";
+    fsType = "zfs";
+  };
 
-  fileSystems."/home" =
-    { device = "zpool/nixos/home";
-      fsType = "zfs";
-    };
+  fileSystems."/home/dwaris/Nextcloud" = {
+    device = "zpool/nextcloud";
+    fsType = "zfs";
+  };
 
-  fileSystems."/home/dwaris/Nextcloud" =
-    { device = "zpool/nextcloud";
-      fsType = "zfs";
-    };
-
-  swapDevices = [ ];
+  swapDevices = [];
 
   networking.useDHCP = lib.mkDefault true;
 
