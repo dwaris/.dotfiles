@@ -55,8 +55,15 @@ in {
   services.zfs.autoScrub.enable = true;
 
   # Enable networking
-  networking.networkmanager.enable = true;
-  networking.networkmanager.plugins = with pkgs; [networkmanager-openvpn];
+  networking = {
+    wireless.iwd.enable = true;
+    networkmanager = {
+      enable = true;
+      wifi.backend = "iwd";
+      plugins = with pkgs; [networkmanager-openvpn];
+    };
+  };
+
   systemd.services.NetworkManager-wait-online.enable = false;
   services.resolved.enable = true;
 
