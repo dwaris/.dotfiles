@@ -26,21 +26,22 @@
     hyprpaper
     hyprpolkitagent
     hypridle
+    wlogout
     waybar
 
     grim
     slurp
 
-    networkmanagerapplet
-    pavucontrol
+    impala
+    bluetui
+    wiremix
+    brightnessctl
+
     dunst
     rofi
-    wlogout
-    brightnessctl
 
     wl-clipboard
     libsecret
-    neovide
 
     nwg-look
     adw-gtk3
@@ -60,7 +61,6 @@
   ];
 
   services = {
-    blueman.enable = true;
     gvfs.enable = true;
     udisks2.enable = true;
     upower.enable = true;
