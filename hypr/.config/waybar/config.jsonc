@@ -13,6 +13,7 @@
     "modules-right": [
         "group/tray-expander",
         "network",
+        "bluetooth",
         "pulseaudio#sink",
         "pulseaudio#source",
         "backlight",
@@ -58,7 +59,6 @@
         "format": "{:%d/%m/%Y - %H:%M}"
     },
     "backlight": {
-        "device": "nvidia_0",
         "format": "{icon}",
         "tooltip": false,
         "on-scroll-up": "brightnessctl s '+10%'",
@@ -135,6 +135,14 @@
         "spacing": 1,
         "on-click": "ghostty -e nmtui"
     },
+  "bluetooth": {
+    "format": "",
+    "format-disabled": "󰂲",
+    "format-connected": "󰂱",
+    "format-no-controller": "",
+    "tooltip-format": "Devices connected: {num_connections}",
+    "on-click": "ghostty -e bluetui"
+  },
     "pulseaudio#sink": {
         "format": "{icon} {volume}%",
         "format-muted": "",
@@ -147,7 +155,7 @@
         },
         "scroll-step": 5,
         "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
-        "on-click-middle": "pavucontrol",
+        "on-click-middle": "ghostty -e wiremix",
         "ignored-sinks": [
             "Easy Effects Sink"
         ]

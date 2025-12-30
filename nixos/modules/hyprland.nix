@@ -32,7 +32,6 @@
     grim
     slurp
 
-    impala
     bluetui
     wiremix
     brightnessctl
