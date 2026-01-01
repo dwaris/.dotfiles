@@ -24,6 +24,7 @@
 
   environment.systemPackages = with pkgs; [
     hyprpaper
+    hyprsunset
     hyprpolkitagent
     hypridle
     wlogout
