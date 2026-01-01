@@ -7,6 +7,7 @@
   imports = [
     ./system.nix
     ./boot.nix
+    ./hyprland.nix
   ];
 
   specialisation = {
@@ -34,17 +35,6 @@
 
         # keep kwallet in kde module but disable it here to avoid conflicts between different desktop environments; gnome-keyring is preferred
         services.gnome.gnome-keyring.enable = true;
-      };
-    };
-    hyprland = {
-      inheritParentConfig = true;
-      configuration = {
-        imports = [
-          ./desktop.nix
-          ./hyprland.nix
-        ];
-        boot.lanzaboote.sortKey = "02";
-        system.nixos.tags = ["hyprland"];
       };
     };
   };
