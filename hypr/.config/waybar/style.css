@@ -1,12 +1,15 @@
 @import "mocha.css";
 * {
-  background-color: @surface0;
   color: @text;
   border: none;
   font-family: "SauceCodePro Nerd Font Propo";
   font-size: 1rem;
   border-radius: 0;
   min-height: 0;
+}
+
+#waybar {
+  background-color: @surface0;
 }
 
 .modules-left {
@@ -17,9 +20,8 @@
   margin-right: 1rem;
 }
 
-#workspaces {
-  border-radius: 1rem;
-  background-color: @surface0;
+#workspaces button:hover {
+  background-color: @surface1;
 }
 
 #workspaces button.active {
@@ -62,3 +64,12 @@
     color: @text;
 }
 
+#tray menu {
+  background-color: @surface0;
+  border: 1px solid @surface2;
+  padding: 0.25rem 0.25rem;
+}
+
+#tray menuitem:hover {
+  background-color: @surface1;
+}
