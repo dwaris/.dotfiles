@@ -49,6 +49,7 @@
     initrd.enable = true;
   };
   hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = false;
 
   users.users.dwaris = {
     isNormalUser = true;

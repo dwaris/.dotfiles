@@ -70,6 +70,7 @@
     initrd.enable = true;
   };
   hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = false;
 
   services.pipewire = {
     extraConfig.pipewire."92-low-latency" = {
