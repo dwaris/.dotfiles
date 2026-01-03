@@ -36,8 +36,6 @@ in {
   boot.loader.efi.canTouchEfiVariables = true;
   boot.supportedFilesystems = [
     "zfs"
-    "nfs"
-    "ntfs"
   ];
 
   boot.zfs.requestEncryptionCredentials = true;
@@ -48,7 +46,6 @@ in {
 
   environment.systemPackages = with pkgs; [
     sbctl
-    nfs-utils
   ];
 
   services.zfs.autoSnapshot.enable = true;

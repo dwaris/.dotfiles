@@ -25,6 +25,9 @@
     "video=DP-1:2560x1440@144"
     "video=DP-2:1920x1080@60"
   ];
+  boot.supportedFilesystems = [
+    "ntfs"
+  ];
 
   networking.hostName = "jedha"; # Define your hostname.
   networking.hostId = "74f65184";
