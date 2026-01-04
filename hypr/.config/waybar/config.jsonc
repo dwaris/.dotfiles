@@ -4,6 +4,7 @@
     "position": "top",
     "spacing": 0,
     "modules-left": [
+        "custom/rofi",
         "hyprland/workspaces"
     ],
     "modules-center": [
@@ -136,14 +137,14 @@
         "spacing": 1,
         "on-click": "ghostty -e nmtui"
     },
-  "bluetooth": {
-    "format": "",
-    "format-disabled": "󰂲",
-    "format-connected": "󰂱",
-    "format-no-controller": "",
-    "tooltip-format": "Devices connected: {num_connections}",
-    "on-click": "ghostty -e bluetui"
-  },
+    "bluetooth": {
+        "format": "",
+        "format-disabled": "󰂲",
+        "format-connected": "󰂱",
+        "format-no-controller": "",
+        "tooltip-format": "Devices connected: {num_connections}",
+        "on-click": "ghostty -e bluetui"
+    },
     "pulseaudio#sink": {
         "format": "{icon} {volume}%",
         "format-muted": "",
@@ -209,5 +210,10 @@
     },
     "tray": {
         "spacing": 12
+    },
+    "custom/rofi": {
+        "format": "",
+        "tooltip": false,
+        "on-click": "rofi -show drun"
     }
 }
