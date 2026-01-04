@@ -19,3 +19,8 @@
     "action" : "systemctl reboot",
     "text" : "Reboot"
 }
+{
+    "label" : "suspend",
+    "action" : "systemctl suspend",
+    "text" : "Suspend"
+}
