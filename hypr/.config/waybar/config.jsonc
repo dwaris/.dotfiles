@@ -132,6 +132,7 @@
     },
     "bluetooth": {
         "format": "",
+        "format-off": "󰂲",
         "format-disabled": "󰂲",
         "format-connected": "󰂱",
         "format-no-controller": "",
@@ -167,7 +168,6 @@
     },
     "power-profiles-daemon": {
         "format": "{icon}",
-        "tooltip-format": "Power profile: {profile}nDriver: {driver}",
         "tooltip": true,
         "format-icons": {
             "default": "",
@@ -189,7 +189,7 @@
     "group/tray-expander": {
         "orientation": "inherit",
         "drawer": {
-            "transition-duration": 600,
+            "transition-duration": 300,
             "children-class": "tray-group-item"
         },
         "modules": [
