@@ -210,13 +210,13 @@
         "on-click": "rofi -show drun"
     },
     "idle_inhibitor": {
-        "exec": "~/.config/waybar/idle_inhibitor.sh",
+        "exec": "sh ~/.config/waybar/idle_inhibitor.sh",
         "return-type": "json",
         "format": "{icon}",
         "format-icons": {
             "activated": "",
             "deactivated": ""
         },
-        "on-click": "~/.config/waybar/idle_inhibitor_toggle.sh &",
+        "on-click": "sh ~/.config/waybar/idle_inhibitor_toggle.sh &"
    }
 }
