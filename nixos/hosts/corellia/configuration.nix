@@ -51,6 +51,13 @@
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = false;
 
+  services.logind.settings.Login = {
+    HandleLidSwitch = "ignore";
+    HandleLidSwitchDocked = "ignore";
+    LidSwitchIgnoreInhibited = "no";
+    KillUserProcesses = false;
+  };
+
   users.users.dwaris = {
     isNormalUser = true;
     description = "dwaris";
