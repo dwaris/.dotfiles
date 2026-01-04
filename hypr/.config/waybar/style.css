@@ -78,6 +78,7 @@
 #network:hover,
 #power-profiles-daemon:hover,
 #tray menuitem:hover,
+#tray :hover,
 #backlight:hover,
 #pulseaudio:hover,
 #idle_inhibitor:hover,
