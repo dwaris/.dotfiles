@@ -47,13 +47,6 @@
             "5": []
         }
     },
-    "idle_inhibitor": {
-        "format": "{icon}",
-        "format-icons": {
-            "activated": "",
-            "deactivated": ""
-        }
-    },
     "clock": {
         "timezone": "Europe/Berlin",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
@@ -215,5 +208,15 @@
         "format": "",
         "tooltip": false,
         "on-click": "rofi -show drun"
-    }
+    },
+    "idle_inhibitor": {
+        "exec": "~/.config/waybar/idle_inhibitor.sh",
+        "return-type": "json",
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        },
+        "on-click": "~/.config/waybar/idle_inhibitor_toggle.sh &",
+   }
 }
