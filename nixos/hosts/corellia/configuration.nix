@@ -52,8 +52,6 @@
   hardware.bluetooth.powerOnBoot = false;
 
   services.logind.settings.Login = {
-    HandleLidSwitch = "ignore";
-    HandleLidSwitchDocked = "ignore";
     LidSwitchIgnoreInhibited = "no";
     KillUserProcesses = false;
   };
