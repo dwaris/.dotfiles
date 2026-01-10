@@ -5,8 +5,7 @@
   ...
 }: {
   environment.systemPackages = with pkgs; [
-    ghostty
-    tmux
+    wezterm
     neovide
 
     vscode-fhs
