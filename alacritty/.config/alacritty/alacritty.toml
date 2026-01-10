@@ -1,0 +1,21 @@
+
+[font]
+size = 12
+
+[terminal.shell]
+args = ["-l", "-c", "tmux attach || tmux"]
+program = "bash"
+
+[window]
+decorations = "full"
+dynamic_title = true
+opacity = 1.0
+startup_mode = "Maximized"
+
+[general]
+live_config_reload = true
+import = [
+    "/home/dwaris/.dotfiles/alacritty/.config/alacritty/theme/catppuccin/catppuccin-mocha.toml",
+]
+
+[terminal]
