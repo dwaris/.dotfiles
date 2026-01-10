@@ -28,6 +28,7 @@
                 python-pkgs.m3u8
               ]))
               parallel
+              tmux
             ];
           };
       }
