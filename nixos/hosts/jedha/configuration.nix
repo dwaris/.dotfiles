@@ -12,6 +12,7 @@
     ../../modules
 
     ../../modules/cli
+    ../../modules/cli/k8s.nix
 
     ../../modules/gui
     ../../modules/gui/gaming
