@@ -29,7 +29,7 @@
           ./kde.nix
         ];
 
-        boot.lanzaboote.sortKey = "02";
+        boot.lanzaboote.sortKey = "01";
         system.nixos.tags = ["kde"];
 
         # keep kwallet in kde module but disable it here to avoid conflicts between different desktop environments; gnome-keyring is preferred
@@ -43,7 +43,7 @@
           ./desktop.nix
           ./hyprland.nix
         ];
-        boot.lanzaboote.sortKey = "01";
+        boot.lanzaboote.sortKey = "02";
         system.nixos.tags = ["hyprland"];
       };
     };
