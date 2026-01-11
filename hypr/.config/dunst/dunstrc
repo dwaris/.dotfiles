@@ -1,7 +1,7 @@
 [global]
 monitor = 1
 separator_color= frame
-font = "Source Code Pro 10"
+font = "BlexMono Nerd Font 10"
 corner_radius = 10
 offset = 5x5
 origin = top-right

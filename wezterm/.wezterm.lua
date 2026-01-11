@@ -13,10 +13,7 @@ config.scrollback_lines = 100000
 config.hyperlink_rules = wezterm.default_hyperlink_rules()
 config.window_close_confirmation = "NeverPrompt"
 
-config.font = wezterm.font_with_fallback({
-	"Sauce Code Pro Nerd Font",
-	"Source Code Pro",
-})
+config.font = wezterm.font("BlexMono Nerd Font")
 
 config.leader = { key = "f", mods = "CTRL" }
 
