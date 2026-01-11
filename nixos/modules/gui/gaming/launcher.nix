@@ -11,7 +11,7 @@
         pkgs.gamemode
       ];
     })    
-    prismlauncher
-    mesen 
+    # prismlauncher
+    # mesen 
   ];
 }
