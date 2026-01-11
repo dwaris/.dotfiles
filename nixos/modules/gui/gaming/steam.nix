@@ -9,7 +9,13 @@
     "fs.file-max" = 524288;
   };
 
-  programs = {
+  programs = { 
+    steam = {
+      enable = true;
+      remotePlay.openFirewall = false; # Open ports in the firewall for Steam Remote Play
+      dedicatedServer.openFirewall = false; # Open ports in the firewall for Source Dedicated Server
+      protontricks.enable = true;
+    };
     gamemode = {
       enable = true;
       enableRenice = true;
@@ -18,10 +24,5 @@
 
   users.users.dwaris.extraGroups = [
     "gamemode"
-  ];
-
-  services.flatpak.packages = [
-    "com.valvesoftware.Steam"
-    "com.github.Matoking.protontricks"
   ];
 }
