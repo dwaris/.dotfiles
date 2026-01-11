@@ -3,11 +3,15 @@
   lib,
   pkgs,
   ...
-}: {
-  services.flatpak.packages = [
-    "com.heroicgameslauncher.hgl"
-
-    "sh.ppy.osu"
-    "org.prismlauncher.PrismLauncher"
+}:
+{
+  environment.systemPackages = with pkgs; [
+    (heroic.override {
+      extraPkgs = pkgs: [
+        pkgs.gamemode
+      ];
+    })    
+    prismlauncher
+    mesen 
   ];
 }
