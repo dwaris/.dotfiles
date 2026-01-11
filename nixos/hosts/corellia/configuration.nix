@@ -42,7 +42,6 @@
   environment.systemPackages = with pkgs; [];
 
   services.fprintd.enable = false;
-  powerManagement.powertop.enable = false;
 
   hardware.graphics.enable = true;
   hardware.amdgpu = {
