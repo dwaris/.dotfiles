@@ -2,6 +2,7 @@ local wezterm = require("wezterm")
 local act = wezterm.action
 local config = wezterm.config_builder()
 
+config.enable_wayland = true
 config.disable_default_key_bindings = true
 
 config.color_scheme = "Catppuccin Mocha"
@@ -85,6 +86,24 @@ config.keys = {
 		key = "Enter",
 		mods = "LEADER",
 		action = wezterm.action.ActivateCopyMode,
+	},
+}
+
+config.mouse_bindings = {
+	{
+		event = { Up = { streak = 1, button = "Left" } },
+		mods = "NONE",
+		action = wezterm.action.DisableDefaultAssignment, -- You may want a different option here. See /u/Brian's comment below
+	},
+	{
+		event = { Up = { streak = 1, button = "Left" } },
+		mods = "CTRL",
+		action = wezterm.action.OpenLinkAtMouseCursor,
+	},
+	{
+		event = { Down = { streak = 1, button = "Left" } },
+		mods = "CTRL",
+		action = wezterm.action.Nop,
 	},
 }
 
