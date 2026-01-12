@@ -6,7 +6,7 @@ error_symbol = '[\$](bold red)'
 vicmd_symbol = "[V](bold green) "
 
 [username]
-style_user = "bold purple"
+style_user = "bold green"
 style_root = "bold red"
 format = "[$user]($style)"
 disabled = false
