@@ -19,6 +19,7 @@
     kdePackages.sddm-kcm
     kdePackages.filelight
     kdePackages.kasts
+    kdePackages.ksystemlog
     (catppuccin-kde.override {
       flavour = ["mocha"];
       accents = ["rosewater"];
