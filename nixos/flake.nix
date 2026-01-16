@@ -68,6 +68,17 @@
         ];
       };
 
+      batuu = nixpkgs-stable.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {
+          inherit inputs;
+        };
+        modules = [
+          ./hosts/batuu/configuration.nix
+          nix-flatpak.nixosModules.nix-flatpak
+        ];
+      };
+
       wsl = nixpkgs-stable.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
