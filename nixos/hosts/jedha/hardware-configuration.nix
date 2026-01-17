@@ -12,84 +12,54 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  boot.initrd.availableKernelModules = [
-    "nvme"
-    "xhci_pci"
-    "ahci"
-    "usbhid"
-    "usb_storage"
-    "sd_mod"
-  ];
-  boot.initrd.kernelModules = ["zfs"];
+  boot.initrd.availableKernelModules = ["nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod"];
+  boot.initrd.kernelModules = [];
   boot.kernelModules = ["kvm-amd"];
   boot.extraModulePackages = [];
 
   fileSystems."/" = {
-    device = "zpool/nixos/root";
+    device = "zpool/root";
     fsType = "zfs";
+    options = ["zfsutil"];
   };
 
   fileSystems."/nix" = {
-    device = "zpool/nixos/nix";
+    device = "zpool/nix";
     fsType = "zfs";
+    options = ["zfsutil"];
   };
 
   fileSystems."/var" = {
-    device = "zpool/nixos/var";
+    device = "zpool/var";
     fsType = "zfs";
+    options = ["zfsutil"];
   };
 
   fileSystems."/home" = {
-    device = "zpool/nixos/home";
+    device = "zpool/home";
     fsType = "zfs";
+    options = ["zfsutil"];
   };
 
-  fileSystems."/home/dwaris/Nextcloud" = {
-    device = "zpool/nextcloud";
-    fsType = "zfs";
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/7E8B-C715";
+    fsType = "vfat";
+    options = ["fmask=0022" "dmask=0022"];
   };
 
   fileSystems."/home/dwaris/Games" = {
     device = "zpool/games";
     fsType = "zfs";
+    options = ["zfsutil" "nofail"];
   };
 
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/3E6A-7E9B";
-    fsType = "vfat";
-    options = [
-      "fmask=0077"
-      "dmask=0077"
-    ];
-  };
-
-  fileSystems."/mnt/Bibliothek" = {
-    device = "/dev/disk/by-uuid/01D5699858F53CB0";
-    fsType = "ntfs-3g";
-    options = [
-      "rw"
-      "uid=1000"
-    ];
-  };
-
-  fileSystems."/mnt/HDD_8TB" = {
-    device = "/dev/disk/by-uuid/AA94E0A794E0776B";
-    fsType = "ntfs-3g";
-    options = [
-      "rw"
-      "uid=1000"
-    ];
+  fileSystems."/home/dwaris/Nextcloud" = {
+    device = "zpool/nextcloud";
+    fsType = "zfs";
+    options = ["zfsutil" "nofail"];
   };
 
   swapDevices = [];
-
-  # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
-  # (the default) this is the recommended approach. When using systemd-networkd it's
-  # still possible to use this option, but it's recommended to use it in conjunction
-  # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
-  networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.eno1.useDHCP = lib.mkDefault true;
-  # networking.interfaces.wlp11s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
