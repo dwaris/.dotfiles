@@ -320,7 +320,13 @@ return {
             },
 
             sources = {
-                default = { 'lsp', 'path', 'snippets', 'lazydev' },
+                default = {
+                    'buffer',
+                    'lsp',
+                    'omni',
+                    'lazydev',
+                    'path',
+                },
                 providers = {
                     lazydev = {
                         module = 'lazydev.integrations.blink',
@@ -338,7 +344,7 @@ return {
             -- the rust implementation via `'prefer_rust_with_warning'`
             --
             -- See :h blink-cmp-config-fuzzy for more information
-            fuzzy = { implementation = 'lua' },
+            fuzzy = { implementation = 'rust' },
 
             signature = { enabled = true },
         },
