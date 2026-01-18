@@ -128,7 +128,7 @@
         "tooltip-format-disconnected": "Disconnected",
         "interval": 3,
         "spacing": 1,
-        "on-click": "wezterm -e nmtui"
+        "on-click": "ghostty -e nmtui"
     },
     "bluetooth": {
         "format": "",
@@ -137,7 +137,7 @@
         "format-connected": "󰂱",
         "format-no-controller": "",
         "tooltip-format": "Devices connected: {num_connections}",
-        "on-click": "wezterm -e bluetui"
+        "on-click": "ghostty -e bluetui"
     },
     "pulseaudio#sink": {
         "format": "{icon} {volume}%",
@@ -151,7 +151,7 @@
         },
         "scroll-step": 5,
         "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
-        "on-click-middle": "wezterm -e wiremix",
+        "on-click-middle": "ghostty -e wiremix",
         "ignored-sinks": [
             "Easy Effects Sink"
         ]
