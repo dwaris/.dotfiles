@@ -12,23 +12,32 @@
   ];
 
   boot.initrd.availableKernelModules = ["nvme" "xhci_pci_renesas" "xhci_pci" "rtsx_pci_sdmmc"];
-  boot.initrd.kernelModules = ["zfs"];
+  boot.initrd.kernelModules = [];
   boot.kernelModules = ["kvm-amd"];
   boot.extraModulePackages = [];
 
   fileSystems."/" = {
     device = "zpool/nixos/root";
     fsType = "zfs";
+    options = ["zfsutil"];
   };
 
   fileSystems."/var" = {
     device = "zpool/nixos/var";
     fsType = "zfs";
+    options = ["zfsutil"];
   };
 
   fileSystems."/nix" = {
     device = "zpool/nixos/nix";
     fsType = "zfs";
+    options = ["zfsutil"];
+  };
+
+  fileSystems."/home" = {
+    device = "zpool/nixos/home";
+    fsType = "zfs";
+    options = ["zfsutil"];
   };
 
   fileSystems."/boot" = {
@@ -37,19 +46,13 @@
     options = ["fmask=0077" "dmask=0077"];
   };
 
-  fileSystems."/home" = {
-    device = "zpool/nixos/home";
-    fsType = "zfs";
-  };
-
   fileSystems."/home/dwaris/Nextcloud" = {
     device = "zpool/nextcloud";
     fsType = "zfs";
+    options = ["zfsutil"];
   };
 
   swapDevices = [];
-
-  networking.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
