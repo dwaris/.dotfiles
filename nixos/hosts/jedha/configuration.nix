@@ -32,7 +32,7 @@
   ];
 
   networking.hostName = "jedha"; # Define your hostname.
-  networking.hostId = "74f65184";
+  networking.hostId = "d83be86e";
 
   networking.firewall = {
     trustedInterfaces = ["tailscale0"];
