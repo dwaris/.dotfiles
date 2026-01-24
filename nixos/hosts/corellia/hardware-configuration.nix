@@ -46,12 +46,6 @@
     options = ["fmask=0077" "dmask=0077"];
   };
 
-  fileSystems."/home/dwaris/Nextcloud" = {
-    device = "zpool/nextcloud";
-    fsType = "zfs";
-    options = ["zfsutil"];
-  };
-
   swapDevices = [];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";

@@ -46,30 +46,6 @@
     fsType = "vfat";
     options = ["fmask=0077" "dmask=0077"];
   };
-
-  fileSystems."/home/dwaris/Games" = {
-    device = "zpool/games";
-    fsType = "zfs";
-    options = ["zfsutil" "nofail"];
-  };
-
-  fileSystems."/home/dwaris/Nextcloud" = {
-    device = "zpool/nextcloud";
-    fsType = "zfs";
-    options = ["zfsutil" "nofail"];
-  };
-
-  fileSystems."/mnt/HDD_8TB" = {
-    device = "/dev/disk/by-uuid/AA94E0A794E0776B";
-    fsType = "ntfs-3g";
-    options = [
-      "rw"
-      "uid=1000"
-      "nofail"
-      "x-systemd.device-timeout=30"
-    ];
-  };
-
   swapDevices = [];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
