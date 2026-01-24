@@ -15,9 +15,16 @@
     enable = lib.mkForce false;
   };
 
-  services.displayManager.gdm = {
+  services.greetd = {
     enable = true;
-    wayland = true;
+    useTextGreeter = true;
+    settings = {
+      default_session = {
+        command =
+          "${pkgs.tuigreet}/bin/tuigreet --time --remember --cmd 'uwsm start hyprland-uwsm.desktop'";
+        user = "greeter";
+      };
+    };
   };
 
   security.pam.services.login.enableGnomeKeyring = true;
@@ -41,6 +48,7 @@
     rofi
 
     wl-clipboard
+    cliphist
     libsecret
 
     nwg-look
