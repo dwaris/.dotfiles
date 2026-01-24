@@ -31,6 +31,17 @@
     "ntfs"
   ];
 
+  fileSystems."/mnt/HDD_8TB" = {
+    device = "/dev/disk/by-uuid/AA94E0A794E0776B";
+    fsType = "ntfs-3g";
+    options = [
+      "rw"
+      "uid=1000"
+      "nofail"
+      "x-systemd.device-timeout=30"
+    ];
+  };
+
   networking.hostName = "jedha"; # Define your hostname.
   networking.hostId = "d83be86e";
 
