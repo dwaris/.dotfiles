@@ -20,6 +20,11 @@
       };
     };
 
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nixos-wsl.url = "github:nix-community/nixos-wsl";
   };
 
@@ -29,6 +34,7 @@
     nixpkgs-stable,
     lanzaboote,
     nix-flatpak,
+    noctalia,
     nixos-wsl,
     ...
   }: {
@@ -42,6 +48,7 @@
           ./hosts/jedha/configuration.nix
           lanzaboote.nixosModules.lanzaboote
           nix-flatpak.nixosModules.nix-flatpak
+          noctalia.nixosModules.default
         ];
       };
 
