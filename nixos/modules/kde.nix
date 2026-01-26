@@ -4,8 +4,6 @@
   lib,
   ...
 }: {
-  environment.shells = with pkgs; [zsh];
-
   environment.systemPackages = with pkgs; [
     kile
 
