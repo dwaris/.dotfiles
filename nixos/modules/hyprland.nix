@@ -10,12 +10,10 @@
     withUWSM = true;
   };
 
-  services.noctalia-shell.enable = true;
-
-  # programs.hyprlock.enable = true;
-  # services.hypridle = {
-  #   enable = lib.mkForce false;
-  # };
+  programs.hyprlock.enable = true;
+  services.hypridle = {
+    enable = lib.mkForce false;
+  };
 
   services.greetd = {
     enable = true;
@@ -32,22 +30,22 @@
   security.pam.services.login.enableGnomeKeyring = true;
 
   environment.systemPackages = with pkgs; [
-    # hyprpaper
-    # hyprsunset
+    hyprpaper
+    hyprsunset
     hyprpolkitagent
-    # hypridle
-    # wlogout
-    # waybar
+    hypridle
+    wlogout
+    waybar
 
-    # grim
-    # slurp
+    grim
+    slurp
 
-    # bluetui
-    # wiremix
+    bluetui
+    wiremix
     brightnessctl
 
-    # dunst
-    # rofi
+    dunst
+    rofi
 
     wl-clipboard
     cliphist
