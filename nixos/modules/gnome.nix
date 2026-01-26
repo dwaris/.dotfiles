@@ -5,8 +5,6 @@
 }: {
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.shells = with pkgs; [zsh];
-
   environment.systemPackages = with pkgs; [
     gnomeExtensions.appindicator
     gnome-tweaks
