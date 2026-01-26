@@ -38,6 +38,10 @@
     };
   };
 
+  xdg.portal = {
+    xdgOpenUsePortal = true;
+  };
+
   programs.partition-manager.enable = true;
   programs.kdeconnect.enable = false;
 }
