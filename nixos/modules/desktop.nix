@@ -4,6 +4,7 @@
   ...
 }: {
   boot.plymouth.enable = true;
+  services.kmscon.enable = true;
 
   environment.systemPackages = with pkgs; [
     appimage-run
