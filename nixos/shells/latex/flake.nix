@@ -16,7 +16,7 @@
         devShell = with pkgs;
           mkShell {
             buildInputs = [
-              texlive.combined.scheme-medium
+              texliveMedium
               jabref
             ];
           };
