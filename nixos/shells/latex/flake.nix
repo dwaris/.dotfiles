@@ -16,7 +16,7 @@
         devShell = with pkgs;
           mkShell {
             buildInputs = [
-              texliveMedium
+              texliveFull
               jabref
             ];
           };
