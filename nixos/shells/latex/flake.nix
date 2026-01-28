@@ -18,6 +18,7 @@
             buildInputs = [
               texliveFull
               jabref
+              tex-fmt
             ];
           };
       }
