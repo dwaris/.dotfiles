@@ -7,6 +7,8 @@
   environment.systemPackages = with pkgs; [
     kile
 
+    unrar
+
     pciutils
     clinfo
     mesa-demos
