@@ -16,16 +16,6 @@ export EDITOR=nvim
 export PAGER="less -R"
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 
-#####################
-# COMPLETION INIT   #
-#####################
-autoload -Uz compinit
-if [[ -n ${HOME}/.zcompdump(#qN.mh+24) ]]; then
-   compinit
-else
-   compinit -C
-fi
-
 ##########################
 # PLUGINS
 ##########################
@@ -47,6 +37,7 @@ zinit wait lucid for \
 zinit wait lucid for \
   hlissner/zsh-autopair \
   zsh-users/zsh-autosuggestions \
+  bindmap"^R -> ^H" \
   zdharma-continuum/history-search-multi-word \
   blockf zsh-users/zsh-completions \
   Aloxaf/fzf-tab
