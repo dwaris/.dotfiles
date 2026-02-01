@@ -8,37 +8,55 @@ if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
 fi
 source "$HOME/.zinit/bin/zinit.zsh"
 
-# Enable Zinit autocompletion
-autoload -Uz _zinit
-(( ${+_comps} )) && _comps[zinit]=_zinit
-
 #####################
 # ENVIRONMENT       #
 #####################
-HISTCONTROL=erasedups:ignoredups:ignorespace
-HISTFILESIZE=100000
-HISTIGNORE="ls:cd:exit:clear"
-HISTSIZE=10000
-
 export PATH="$HOME/.cargo/bin:$PATH"
 export EDITOR=nvim
 export PAGER="less -R"
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 
-# Enable Starship prompt
+#####################
+# COMPLETION INIT   #
+#####################
+autoload -Uz compinit
+if [[ -n ${HOME}/.zcompdump(#qN.mh+24) ]]; then
+   compinit
+else
+   compinit -C
+fi
+
+##########################
+# PLUGINS
+##########################
 eval "$(starship init zsh)"
 
-#####################
-# ZSH SETTINGS      #
-#####################
-setopt promptsubst globdots histignoredups sharehistory appendhistory
-setopt hist_ignore_all_dups hist_reduce_blanks hist_save_no_dups
-setopt extendedglob autocd nocaseglob notify nomatch
-setopt histappend checkjobs
+zinit wait lucid for \
+  OMZL::history.zsh \
+  OMZL::compfix.zsh \
+  OMZL::completion.zsh \
+  OMZL::key-bindings.zsh \
+  OMZL::directories.zsh \
+  OMZL::correction.zsh \
+  OMZL::git.zsh \
+  OMZL::grep.zsh \
+  OMZP::git \
+  OMZP::sudo \
+  OMZP::fzf
 
-# Keybindings (use Vim mode)
-bindkey -v  
-export KEYTIMEOUT=1
+zinit wait lucid for \
+  hlissner/zsh-autopair \
+  zsh-users/zsh-autosuggestions \
+  zdharma-continuum/history-search-multi-word \
+  blockf zsh-users/zsh-completions \
+  Aloxaf/fzf-tab
+
+#####################
+# SYNTAX HIGHLIGHTING
+#####################
+zinit wait lucid for \
+ atinit"zpcompinit; zpcdreplay" \
+ zdharma-continuum/fast-syntax-highlighting
 
 #####################
 # ALIASES           #
@@ -49,67 +67,8 @@ alias ls='ls -a --color=auto'
 alias mv='mv -v'
 alias vim=nvim
 
-##########################
-# OMZ Libraries & Plugins
-##########################
-zinit wait lucid for \
-  OMZL::history.zsh \
-  OMZL::clipboard.zsh \
-  OMZL::compfix.zsh \
-  OMZL::completion.zsh \
-  OMZL::correction.zsh \
-  OMZL::directories.zsh \
-  OMZL::git.zsh \
-  OMZL::grep.zsh \
-  OMZL::key-bindings.zsh \
-  OMZL::spectrum.zsh \
-  OMZP::git \
-  OMZP::fzf \
-  OMZP::sudo \
-
 #####################
-# ADDITIONAL PLUGINS
+# KEYBINDINGS       #
 #####################
-zinit lucid for zdharma-continuum/fast-syntax-highlighting
-zinit wait lucid for \
-  hlissner/zsh-autopair \
-  zsh-users/zsh-autosuggestions \
-    atinit"ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20 ZSH_AUTOSUGGEST_STRATEGY=(history completion)" \
-  zdharma-continuum/history-search-multi-word \
-    atinit"
-      zstyle :history-search-multi-word page-size 10
-      zstyle :history-search-multi-word highlight-color fg=red,bold
-      zstyle :plugin:history-search-multi-word reset-prompt-protect 1" \
-    bindmap"^R -> ^H" \
-  blockf zsh-users/zsh-completions \
-  Aloxaf/fzf-tab
-
-#####################
-# COMPLETION SETTINGS (move common zstyle here)
-#####################
-# Must be after plugins like zsh-completions and fzf-tab are loaded,
-# and before or around compinit
-zstyle ':completion:*' completer _expand _complete _ignored _approximate
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-zstyle ':completion:*' menu select=2
-zstyle ':completion:*' select-prompt '%SScrolling active: current selection at %p%s'
-zstyle ':completion:*' special-dirs true
-zstyle ':completion:*:*:*:*:processes' command 'ps -u $USER -o pid,user,comm,cmd -w -w'
-zstyle ':completion:*:descriptions' format '-- %d --'
-zstyle ':completion:*:processes' command 'ps -au$USER'
-zstyle ':completion:complete:*:options' sort false
-zstyle ':fzf-tab:complete:_zlua:*' query-string input
-zstyle ':fzf-tab:complete:cd:*' extra-opts --preview=$extract'ls -1 --color=always ${~ctxt[hpre]}$in'
-zstyle ':fzf-tab:complete:kill:argument-rest' extra-opts --preview=$extract'ps --pid=$in[(w)1] -o cmd --no-headers -w -w' --preview-window=down:down:3:wrap
-
-#####################
-# UTILITIES
-#####################
-autoload -Uz compinit
-
-# Ensure completions work correctly; open shell faster with cache
-if [ "$(find ~/.zcompdump -mtime +1)" ] ; then
-    compinit
-fi
-compinit -C
-
+bindkey -v
+export KEYTIMEOUT=1
