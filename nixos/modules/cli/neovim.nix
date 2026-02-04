@@ -15,7 +15,7 @@
     tree-sitter
 
     clang
-    nodejs_24
+    nodePackages.nodejs
 
     fd
     wget

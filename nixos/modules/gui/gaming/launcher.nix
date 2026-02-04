@@ -12,6 +12,6 @@
       ];
     })    
     # prismlauncher
-    # mesen 
+    mesen 
   ];
 }
