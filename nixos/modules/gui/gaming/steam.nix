@@ -20,10 +20,10 @@
       enable = true;
       enableRenice = true;
     };
-    gamescope = {
-      enable = true;
-      capSysNice = false;
-    };
+    # gamescope = {
+    #   enable = true;
+    #   capSysNice = false;
+    # };
   };
 
   users.users.dwaris.extraGroups = [

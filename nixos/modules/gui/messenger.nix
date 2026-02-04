@@ -8,12 +8,10 @@
     "com.discordapp.Discord"
 
     "im.riot.Riot"
-    "org.signal.Signal"
-    "org.telegram.desktop"
 
     "org.mozilla.Thunderbird"
   ];
 
-  services.protonmail-bridge.enable = true;
+  services.protonmail-bridge.enable = false;
   services.protonmail-bridge.path = [ pkgs.gnome-keyring ];
 }
