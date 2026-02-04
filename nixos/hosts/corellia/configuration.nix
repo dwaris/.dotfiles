@@ -38,7 +38,9 @@
     ];
   };
 
-  environment.systemPackages = with pkgs; [];
+  environment.systemPackages = with pkgs; [
+    mesen
+  ];
 
   services.fprintd.enable = false;
 
