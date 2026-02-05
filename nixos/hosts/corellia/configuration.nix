@@ -40,6 +40,7 @@
 
   environment.systemPackages = with pkgs; [
     mesen
+    wireguard-tools 
   ];
 
   services.fprintd.enable = false;

@@ -22,6 +22,7 @@
 
   networking.networkmanager.enable = true;
   networking.networkmanager.plugins = with pkgs; [networkmanager-openvpn];
+  networking.networkmanager.dns = "systemd-resolved";
   systemd.services.NetworkManager-wait-online.enable = false;
   services.resolved.enable = true;
 
