@@ -18,7 +18,8 @@
   ];
 
   boot.kernelParams = [
-    "zfs.zfs_arc_max=5368709120" # 5 GiB (4GB + 1GiB per 1TB of storage)
+    "zfs.zfs_arc_max=8589934592"
+    "zfs.zfs_arc_min=4294967296"
   ];
 
   networking.hostName = "corellia"; # Define your hostname.
