@@ -28,10 +28,22 @@
     "video=DP-2:1920x1080@60"
   ];
 
-  fileSystems."/mnt/archiv" = {
-    device = "tank8tb";
+  fileSystems."/mnt/tank8tb/media" = {
+    device = "tank8tb/media";
     fsType = "zfs";
-    options = ["zfsutil" "nofail"];
+    options = [ "zfsutil" "nofail" ];
+  };
+
+  fileSystems."/mnt/tank8tb/picture" = {
+    device = "tank8tb/picture";
+    fsType = "zfs";
+    options = [ "zfsutil" "nofail" ];
+  };
+
+  fileSystems."/mnt/tank8tb/junk" = {
+    device = "tank8tb/junk";
+    fsType = "zfs";
+    options = [ "zfsutil" "nofail" ];
   };
 
   networking.hostName = "jedha"; # Define your hostname.
