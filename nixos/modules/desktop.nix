@@ -13,6 +13,13 @@
   fonts.packages = with pkgs; [
     ibm-plex
     nerd-fonts.blex-mono
+
+    noto-fonts
+    noto-fonts-cjk-sans
+    noto-fonts-cjk-serif
+
+    source-code-pro
+    nerd-fonts.sauce-code-pro
   ];
   services.fwupd.enable = true;
 
