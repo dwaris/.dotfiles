@@ -268,6 +268,7 @@ return {
                 python = { 'black' },
                 go = { 'gofmt' },
                 rust = { 'rustfmt' },
+                nix = { 'alejandra' },
             },
         },
     },
