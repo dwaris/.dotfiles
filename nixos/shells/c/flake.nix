@@ -1,23 +1,25 @@
 {
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    utils.url = "github:numtide/flake-utils";
+    flake-utils.url = "github:numtide/flake-utils";
   };
 
   outputs = {
     self,
     nixpkgs,
-    utils,
+    flake-utils,
   }:
-    utils.lib.eachDefaultSystem (
+    flake-utils.lib.eachDefaultSystem (
       system: let
-        pkgs = import nixpkgs {inherit system;};
+        pkgs = nixpkgs.legacyPackages.${system};
       in {
-        devShell = with pkgs;
+        devShells.default = with pkgs;
           mkShell {
-            buildInputs = [
-              gnumake
+            packages = [
               clang
+              gnumake
+
+              gdb
               valgrind
             ];
           };
