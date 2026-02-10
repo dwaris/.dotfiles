@@ -16,11 +16,7 @@
         devShells.default = with pkgs;
           mkShell {
             packages = [
-              rust-analyzer
-              rustup
-
-              openssl
-              pkg-config
+              openjdk
             ];
           };
       }
