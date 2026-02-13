@@ -5,6 +5,9 @@
 }: {
   environment.systemPackages = with pkgs; [
     wl-clipboard
+
+    nomacs
+    kdePackages.okular
   ];
 
   services.displayManager.cosmic-greeter.enable = true;
