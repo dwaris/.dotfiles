@@ -15,9 +15,7 @@
 
     lanzaboote = {
       url = "github:nix-community/lanzaboote";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-      };
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nixos-wsl.url = "github:nix-community/nixos-wsl";
@@ -27,8 +25,8 @@
     self,
     nixpkgs,
     nixpkgs-stable,
-    lanzaboote,
     nix-flatpak,
+    lanzaboote,
     nixos-wsl,
     ...
   }: {
