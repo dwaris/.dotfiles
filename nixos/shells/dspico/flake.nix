@@ -29,8 +29,10 @@
               cmake
               which
               file
+
               python3
               dotnet-sdk_9
+
               gcc-arm-embedded
               zlib
               libpng
@@ -45,7 +47,7 @@
 
           profile = ''
             # ------------------------------------------------------------------
-            # Root Layout
+            # ENVIRONMENT SETUP
             # ------------------------------------------------------------------
 
             export DSPICO_WORKDIR="$PWD"
@@ -53,12 +55,12 @@
             export DSPICO_SOURCES="$DSPICO_WORKDIR/src"
             export WONDERFUL_TOOLCHAIN="$DSPICO_TOOLS/wonderful"
 
-            mkdir -p "$DSPICO_TOOLS"
-            mkdir -p "$DSPICO_SOURCES"
-
             export BLOCKSDS="$WONDERFUL_TOOLCHAIN/thirdparty/blocksds/core"
             export DLDITOOL="$BLOCKSDS/tools/dlditool/dlditool"
             export PATH="$WONDERFUL_TOOLCHAIN/bin:$PATH"
+
+            mkdir -p "$DSPICO_TOOLS"
+            mkdir -p "$DSPICO_SOURCES"
 
             # ------------------------------------------------------------------
             # Toolchain Setup
@@ -230,6 +232,23 @@
                 echo "Launcher build complete."
             }
 
+            # ------------------------------------------------------------------
+            # Build All
+            # ------------------------------------------------------------------
+
+            build-all() {
+                setup-toolchain
+                clone-repos
+                build-firmware
+                build-loader
+                build-launcher
+                echo "All builds complete."
+            }
+
+            # ------------------------------------------------------------------
+            # Bundle Release
+            # ------------------------------------------------------------------
+
             bundle-release() {
                 cd $DSPICO_WORKDIR
 
@@ -259,18 +278,6 @@
                 echo "Bundle Complete!"
                 tree "$OUT"
             }
-            # ------------------------------------------------------------------
-            # Build All
-            # ------------------------------------------------------------------
-
-            build-all() {
-                setup-toolchain
-                clone-repos
-                build-firmware
-                build-loader
-                build-launcher
-                echo "All builds complete."
-            }
           '';
 
           runScript = "bash";
@@ -286,11 +293,13 @@
             echo "Commands:"
             echo "  setup-toolchain"
             echo "  clone-repos"
+            echo ""
             echo "  update-repos"
             echo "  build-firmware"
             echo "  build-loader"
             echo "  build-launcher"
             echo "  build-all"
+            echo ""
             echo "  bundle-release"
           '';
         };
