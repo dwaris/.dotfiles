@@ -33,11 +33,7 @@
 
   services = {
     desktopManager.plasma6.enable = true;
-    displayManager.sddm = {
-      enable = true;
-      wayland.enable = true;
-      autoNumlock = true;
-    };
+    displayManager.plasma-login-manager.enable = true;
   };
 
   xdg.portal = {
