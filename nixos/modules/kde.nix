@@ -16,7 +16,6 @@
     wayland-utils
     aha
     wl-clipboard
-    kdePackages.sddm-kcm
     kdePackages.filelight
     kdePackages.kasts
     (catppuccin-kde.override {
