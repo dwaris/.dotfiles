@@ -269,6 +269,7 @@ return {
                 go = { 'gofmt' },
                 rust = { 'rustfmt' },
                 nix = { 'alejandra' },
+                latex = { 'tex-fmt' },
             },
         },
     },
