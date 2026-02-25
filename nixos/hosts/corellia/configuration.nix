@@ -9,12 +9,8 @@
   imports = [
     ../../modules
     ../../modules/boot.nix
-
-    ../../modules/cli
     ../../modules/cli/podman.nix
 
-    ../../modules/gui
-    # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];
 

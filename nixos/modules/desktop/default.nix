@@ -66,5 +66,5 @@
     ];
   };
 
-  security.pki.certificateFiles = [../.certs/root_ca.crt];
+  security.pki.certificateFiles = [../../.certs/root_ca.crt];
 }
