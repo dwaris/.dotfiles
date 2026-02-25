@@ -12,7 +12,6 @@
 
     ./cli
     ./gui
-
  ];
 
   # specialisation = {
