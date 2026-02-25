@@ -6,8 +6,13 @@
 }: {
   imports = [
     ./system.nix
+
     ./desktop
     ./desktop/kde.nix
+
+    ./cli
+    ./gui
+
  ];
 
   # specialisation = {

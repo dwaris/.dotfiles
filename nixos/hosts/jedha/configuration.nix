@@ -11,14 +11,9 @@
   imports = [
     ../../modules
     ../../modules/boot.nix
-
-    ../../modules/cli
     ../../modules/cli/k8s.nix
-
-    ../../modules/gui
     ../../modules/gui/gaming
 
-    # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];
 
