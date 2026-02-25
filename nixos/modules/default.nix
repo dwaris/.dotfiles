@@ -5,11 +5,10 @@
   ...
 }: {
   imports = [
-    ./boot.nix
     ./system.nix
-    ./desktop.nix
-    ./kde.nix
-  ];
+    ./desktop
+    ./desktop/kde.nix
+ ];
 
   # specialisation = {
   #   gnome = {

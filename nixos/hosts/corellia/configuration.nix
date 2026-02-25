@@ -8,6 +8,7 @@
 }: {
   imports = [
     ../../modules
+    ../../modules/boot.nix
 
     ../../modules/cli
     ../../modules/cli/podman.nix

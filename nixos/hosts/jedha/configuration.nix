@@ -10,6 +10,7 @@
 }: {
   imports = [
     ../../modules
+    ../../modules/boot.nix
 
     ../../modules/cli
     ../../modules/cli/k8s.nix
