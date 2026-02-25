@@ -8,9 +8,7 @@
   ...
 }: {
   imports = [
-    ../../modules/system.nix
-    ../../modules/desktop.nix
-    ../../modules/kde.nix
+    ../../modules
 
     ../../modules/cli
     # Include the results of the hardware scan.
