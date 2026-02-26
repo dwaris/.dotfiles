@@ -9,7 +9,7 @@
       withOpenASAR = true;
       withVencord = true;
     })
-    fluffychat
+    element-desktop
 
     thunderbird
   ];
