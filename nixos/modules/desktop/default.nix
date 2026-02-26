@@ -54,17 +54,6 @@
     pulse.enable = true;
   };
 
-  services.flatpak.enable = true;
-  environment.sessionVariables.XDG_DATA_DIRS = ["/var/lib/flatpak/exports/share"];
-  
-  xdg.portal = {
-    enable = true;
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-gtk
-    ];
-    config.common.default = "*";
-  };
-
   programs.appimage.enable = true;
   programs.appimage.binfmt = true;
   programs.appimage.package = pkgs.appimage-run.override {
