@@ -12,6 +12,11 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
 
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     lanzaboote = {
       url = "github:nix-community/lanzaboote";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -24,6 +29,7 @@
     self,
     nixpkgs,
     nixpkgs-stable,
+    nur,
     lanzaboote,
     nixos-wsl,
     ...
@@ -37,6 +43,7 @@
         modules = [
           ./hosts/jedha/configuration.nix
           lanzaboote.nixosModules.lanzaboote
+          nur.modules.nixos.default
         ];
       };
 
@@ -48,6 +55,7 @@
         modules = [
           ./hosts/corellia/configuration.nix
           lanzaboote.nixosModules.lanzaboote
+          nur.modules.nixos.default
         ];
       };
 
