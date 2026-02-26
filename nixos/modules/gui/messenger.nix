@@ -4,14 +4,16 @@
   pkgs,
   ...
 }: {
-  services.flatpak.packages = [
-    "com.discordapp.Discord"
+  environment.systemPackages = with pkgs; [
+    (discord.override {
+      withOpenASAR = true;
+      withVencord = true;
+    })
+    fluffychat
 
-    "im.riot.Riot"
-
-    "org.mozilla.Thunderbird"
+    thunderbird
   ];
 
-  services.protonmail-bridge.enable = false;
-  services.protonmail-bridge.path = [ pkgs.gnome-keyring ];
+  # services.protonmail-bridge.enable = true;
+  # services.protonmail-bridge.path = [ pkgs.gnome-keyring ];
 }

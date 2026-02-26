@@ -8,9 +8,10 @@
     obsidian
 
     anki-bin
-  ];
 
-  services.flatpak.packages = [
-    "com.collaboraoffice.Office"
+    libreoffice-qt
+    hunspell
+    hunspellDicts.de_DE
+    hunspellDicts.en_US
   ];
 }

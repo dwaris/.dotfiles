@@ -33,7 +33,13 @@
 
     gimp
 
-    libreoffice
+    firefox
+    chromium
+
+    libreoffice-qt
+    hunspell
+    hunspellDicts.de_DE
+    hunspellDicts.en_US
   ];
 
   hardware.bluetooth.enable = true;
@@ -61,13 +67,6 @@
     description = "nils06";
     extraGroups = ["wheel" "networkmanager"];
   };
-
-  services.flatpak.packages = [
-    "com.google.Chrome"
-    "com.brave.Browser"
-
-    "org.mozilla.firefox"
-  ];
 
   system.stateVersion = "25.05";
 }
