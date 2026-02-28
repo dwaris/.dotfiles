@@ -64,13 +64,17 @@
     kdePackages.kwallet-pam
 
     nomacs
-    kdePackages.gwenview
+    kdePackages.kservice
     kdePackages.dolphin
     kdePackages.ark
     kdePackages.okular
+    kdePackages.gwenview
     kdePackages.filelight
     unrar
   ];
+
+  # https://github.com/NixOS/nixpkgs/issues/409986
+  environment.etc."xdg/menus/applications.menu".source = ./dolphin.menu;
 
   xdg.portal = {
     xdgOpenUsePortal = true;
