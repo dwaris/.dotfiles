@@ -27,11 +27,15 @@
     };
   };
 
-  security.pam.services.login.enableGnomeKeyring = true;
+  security.pam.services = {
+    greetd.kwallet = {
+      enable = true;
+      forceRun = true;
+    };
+  };
 
   environment.systemPackages = with pkgs; [
     hyprpaper
-    hyprsunset
     hyprpolkitagent
     hypridle
     wlogout
@@ -49,7 +53,6 @@
 
     wl-clipboard
     cliphist
-    libsecret
 
     nwg-look
     adw-gtk3
@@ -57,27 +60,29 @@
     kdePackages.qt6ct
     kdePackages.breeze-icons
 
-    file-roller
-    papers
-    loupe
-    nautilus
-    gnome-calculator
-    gnome-disk-utility
-    gnome-system-monitor
-    gnome-logs
-    gnome-font-viewer
+    kdePackages.kwallet
+    kdePackages.kwallet-pam
+
+    nomacs
+    kdePackages.gwenview
+    kdePackages.dolphin
+    kdePackages.ark
+    kdePackages.okular
+    kdePackages.filelight
+    unrar
   ];
+
+  xdg.portal = {
+    xdgOpenUsePortal = true;
+  };
+
+  programs.partition-manager.enable = true;
 
   services = {
     gvfs.enable = true;
     udisks2.enable = true;
     upower.enable = true;
     accounts-daemon.enable = true;
-    gnome = {
-      sushi.enable = true;
-      glib-networking.enable = true;
-      gnome-keyring.enable = true;
-    };
   };
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
