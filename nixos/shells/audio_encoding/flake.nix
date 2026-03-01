@@ -17,7 +17,7 @@
           mkShell {
             packages = [
               parallel
-              opusTools
+              opus-tools
               tmux
             ];
           };
