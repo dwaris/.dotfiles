@@ -9,6 +9,7 @@ export XDG_SESSION_DESKTOP=Hyprland
 export ELECTRON_OZONE_PLATFORM_HINT=auto
 
 export QT_QPA_PLATFORMTHEME=qt6ct 
+export QT_QPA_PLATFORM=wayland
 
 export SSH_AUTH_SOCK=/home/dwaris/.bitwarden-ssh-agent.sock
 export PAM_KWALLET5_LOGIN=/run/user/1000/kwallet5.socket
