@@ -40,13 +40,13 @@
         ];
       };
 
-      corellia = nixpkgs.lib.nixosSystem {
+      aldhani = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {
           inherit inputs;
         };
         modules = [
-          ./hosts/corellia/configuration.nix
+          ./hosts/aldhani/configuration.nix
           lanzaboote.nixosModules.lanzaboote
         ];
       };
