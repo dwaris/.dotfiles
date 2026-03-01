@@ -6,6 +6,7 @@
 }: {
   environment.systemPackages = with pkgs; [
     obsidian
+    anytype
 
     anki-bin
 
