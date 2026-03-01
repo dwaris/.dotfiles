@@ -19,7 +19,7 @@
     "zfs.zfs_arc_min=4294967296"
   ];
 
-  networking.hostName = "corellia"; # Define your hostname.
+  networking.hostName = "aldhani"; # Define your hostname.
   networking.hostId = "2ffb69ed";
 
   networking.firewall = {
