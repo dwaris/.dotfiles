@@ -63,30 +63,26 @@
     kdePackages.kwallet
     kdePackages.kwallet-pam
 
-    nomacs
-    kdePackages.kservice
-    kdePackages.dolphin
-    kdePackages.ark
-    kdePackages.okular
-    kdePackages.gwenview
-    kdePackages.filelight
-    unrar
+    file-roller
+    papers
+    loupe
+    nautilus
+    gnome-disk-utility
   ];
-
-  # https://github.com/NixOS/nixpkgs/issues/409986
-  environment.etc."xdg/menus/applications.menu".source = ./dolphin.menu;
 
   xdg.portal = {
     xdgOpenUsePortal = true;
   };
-
-  programs.partition-manager.enable = true;
 
   services = {
     gvfs.enable = true;
     udisks2.enable = true;
     upower.enable = true;
     accounts-daemon.enable = true;
+    gnome = {
+      sushi.enable = true;
+      glib-networking.enable = true;
+    };
   };
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
