@@ -11,7 +11,8 @@
         pkgs.gamemode
       ];
     })    
-    # prismlauncher
+    prismlauncher
     mesen 
+    osu-lazer-bin
   ];
 }
