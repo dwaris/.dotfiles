@@ -48,6 +48,15 @@
   networking.firewall = {
     trustedInterfaces = ["tailscale0"];
   };
+
+  environment.systemPackages = with pkgs; [
+    easyeffects
+    via
+
+    ethtool
+  ];
+
+
   services.tailscale = {
     enable = true;
     openFirewall = true;
@@ -58,6 +67,7 @@
       "--ssh"
     ];
   };
+
   systemd.services."udp-gro-forwarding" = {
     description = "UDP Gro Forwarding Service";
     serviceConfig = {
@@ -71,11 +81,7 @@
     after = ["network.target"];
   };
 
-  environment.systemPackages = with pkgs; [
-    easyeffects
-
-    ethtool
-  ];
+  services.udev.packages = with pkgs; [ via ];
 
   hardware.graphics = {
     enable = true;
