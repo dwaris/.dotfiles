@@ -17,7 +17,6 @@
           mkShell {
             packages = [
               texliveFull
-              jabref
               tex-fmt
             ];
           };

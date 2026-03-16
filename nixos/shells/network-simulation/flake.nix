@@ -25,8 +25,6 @@
                 python-pkgs.matplotlib
                 python-pkgs.numpy
                 python-pkgs.scipy
-
-                python-pkgs.pyvis
               ]))
             ];
           };
