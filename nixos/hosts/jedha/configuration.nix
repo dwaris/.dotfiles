@@ -45,10 +45,6 @@
   networking.hostName = "jedha"; # Define your hostname.
   networking.hostId = "d83be86e";
 
-  networking.firewall = {
-    trustedInterfaces = ["tailscale0"];
-  };
-
   environment.systemPackages = with pkgs; [
     easyeffects
     via
@@ -56,17 +52,6 @@
     ethtool
   ];
 
-
-  services.tailscale = {
-    enable = true;
-    openFirewall = true;
-    useRoutingFeatures = "server";
-    extraUpFlags = [
-      "--advertise-exit-node"
-      "--advertise-routes=192.168.178.0/24"
-      "--ssh"
-    ];
-  };
 
   systemd.services."udp-gro-forwarding" = {
     description = "UDP Gro Forwarding Service";

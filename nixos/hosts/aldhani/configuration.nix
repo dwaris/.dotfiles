@@ -22,20 +22,6 @@
   networking.hostName = "aldhani"; # Define your hostname.
   networking.hostId = "2ffb69ed";
 
-  networking.firewall = {
-    trustedInterfaces = ["tailscale0"];
-    checkReversePath = "loose";
-  };
-  services.tailscale = {
-    enable = true;
-    openFirewall = true;
-    useRoutingFeatures = "client";
-    extraUpFlags = [
-      "--accept-routes"
-      "--ssh"
-    ];
-  };
-
   environment.systemPackages = with pkgs; [
     mesen
     wireguard-tools 
