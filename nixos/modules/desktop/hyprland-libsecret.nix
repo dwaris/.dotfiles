@@ -8,37 +8,30 @@
   programs.hyprland = {
     enable = true;
     withUWSM = true;
-    xwayland.enable = false;
   };
 
-  programs.hyprlock.enable = true;
   services.hypridle = {
     enable = lib.mkForce false;
   };
 
-  services.gdm = {
-    enable = true;
-    wayland = true;
+  services.displayManager.gdm.enable = true;
+
+  programs.uwsm.waylandCompositors = {
+    hyprland = {
+      prettyName = "Hyprland";
+      comment = "Hyprland compositor managed by UWSM";
+      binPath = "/run/current-system/sw/bin/start-hyprland";
+    };
   };
 
   security.pam.services.login.enableGnomeKeyring = true;
 
   environment.systemPackages = with pkgs; [
-    hyprpaper
-    hyprpolkitagent
-    hypridle
-    wlogout
-    waybar
+    noctalia-shell
+    vicinae
 
     grim
-    slurp
-
-    bluetui
-    wiremix
-    brightnessctl
-
-    dunst
-    rofi
+    satty
 
     wl-clipboard
     cliphist
