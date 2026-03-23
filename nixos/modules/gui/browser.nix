@@ -8,7 +8,7 @@
     (chromium.override {
       enableWideVine = true;
       commandLineArgs = [
-        "--password-store=kwallet6"
+        "--password-store=gnome-libsecret"
         "--enable-features=AcceleratedVideoEncoder,VaapiOnNvidiaGPUs,VaapiIgnoreDriverChecks,Vulkan,DefaultANGLEVulkan,VulkanFromANGLE"
         "--enable-features=VaapiIgnoreDriverChecks,VaapiVideoDecoder,PlatformHEVCDecoderSupport"
         "--enable-features=UseMultiPlaneFormatForHardwareVideo"
