@@ -10,11 +10,15 @@
     withUWSM = true;
   };
 
+  programs.hyprlock.enable = true;
   services.hypridle = {
     enable = lib.mkForce false;
   };
 
-  services.displayManager.gdm.enable = true;
+  services.gdm = {
+    enable = true;
+    wayland = true;
+  };
 
   programs.uwsm.waylandCompositors = {
     hyprland = {
@@ -27,11 +31,21 @@
   security.pam.services.login.enableGnomeKeyring = true;
 
   environment.systemPackages = with pkgs; [
-    noctalia-shell
-    vicinae
+    hyprpaper
+    hyprpolkitagent
+    hypridle
+    wlogout
+    waybar
 
     grim
-    satty
+    slurp
+
+    bluetui
+    wiremix
+    brightnessctl
+
+    rofi
+    vicinae
 
     wl-clipboard
     cliphist
