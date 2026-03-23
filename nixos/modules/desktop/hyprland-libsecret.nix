@@ -15,10 +15,7 @@
     enable = lib.mkForce false;
   };
 
-  services.gdm = {
-    enable = true;
-    wayland = true;
-  };
+  services.displayManager.gdm.enable = true;
 
   programs.uwsm.waylandCompositors = {
     hyprland = {
@@ -44,7 +41,7 @@
     wiremix
     brightnessctl
 
-    rofi
+    dunst
     vicinae
 
     wl-clipboard
