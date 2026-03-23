@@ -54,7 +54,7 @@
   color: @red;
 }
 
-#custom-rofi {
+#custom-vicinae {
   padding: 0 0.5rem;
 }
 
@@ -73,7 +73,7 @@
 }
 
 #workspaces button:hover,
-#custom-rofi:hover,
+#custom-vicinae:hover,
 #bluetooth:hover,
 #network:hover,
 #power-profiles-daemon:hover,

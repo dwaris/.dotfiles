@@ -4,7 +4,7 @@
     "position": "top",
     "spacing": 0,
     "modules-left": [
-        "custom/rofi",
+        "custom/vicinae",
         "hyprland/workspaces"
     ],
     "modules-center": [
@@ -50,7 +50,7 @@
     "clock": {
         "timezone": "Europe/Berlin",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format": "{:%d/%m/%Y - %H:%M}",
+        "format": "{:%d/%m/%Y - %H:%M}"
         // "on-click": "hyprctl hyprsunset temperature | grep -q 4000 && hyprctl hyprsunset temperature 6500 || hyprctl hyprsunset temperature 4000"
     },
     "backlight": {
@@ -204,10 +204,10 @@
     "tray": {
         "spacing": 12
     },
-    "custom/rofi": {
+    "custom/vicinae": {
         "format": "",
         "tooltip": false,
-        "on-click": "rofi -show drun"
+        "on-click": "vicinae toggle"
     },
     "idle_inhibitor": {
         "exec": "sh ~/.config/waybar/idle_inhibitor.sh",
