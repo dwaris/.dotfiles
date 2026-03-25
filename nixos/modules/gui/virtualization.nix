@@ -22,4 +22,7 @@
       "libvirtd"
     ];
   };
+  networking.firewall = {
+    trustedInterfaces = ["virbr0"];
+  };
 }
