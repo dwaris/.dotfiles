@@ -6,7 +6,6 @@
 }: {
   environment.systemPackages = with pkgs; [
     nextcloud-client
-    # opencloud-desktop
 
     vorta
   ];
@@ -16,10 +15,4 @@
     fsType = "zfs";
     options = ["zfsutil" "nofail"];
   };
-
-  # fileSystems."/home/dwaris/OpenCloud" = {
-  #   device = "zpool/opencloud";
-  #   fsType = "zfs";
-  #   options = ["zfsutil" "nofail"];
-  # };
 }
