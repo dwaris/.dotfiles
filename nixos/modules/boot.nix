@@ -23,10 +23,15 @@
   # # Note this might jump back and forth as kernels are added or removed.
   # boot.kernelPackages = latestKernelPackage;
 
-  # services.scx = {
-  #   enable = true;
-  #   scheduler = "scx_bpfland";
-  # };
+  services.scx = {
+    enable = true;
+    scheduler = "scx_bpfland";
+    # extraArgs = [
+    #   "-m"
+    #   "performance"
+    #   "-w"
+    # ];
+  };
 
   boot.loader.systemd-boot = {
     enable = false;
