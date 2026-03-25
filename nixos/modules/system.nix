@@ -35,7 +35,6 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.android_sdk.accept_license = true;
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
