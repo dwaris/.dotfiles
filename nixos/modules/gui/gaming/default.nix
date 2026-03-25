@@ -15,8 +15,9 @@
     options = ["zfsutil" "nofail"];
   };
 
-  services.scx = lib.mkForce {
-    scheduler = "scx_lavd";
-    extraArgs = ["--performance"];
-  };
+  services.scx.extraArgs = [
+    "-m"
+    "performance"
+    "-w"
+  ];
 }
