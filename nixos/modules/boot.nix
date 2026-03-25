@@ -71,7 +71,6 @@
   # Enable nftables
   networking.firewall = {
     enable = true;
-    trustedInterfaces = ["virbr0"];
   };
   networking.nftables.enable = true;
 
