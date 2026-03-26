@@ -6,7 +6,7 @@
 }: {
   environment.systemPackages = with pkgs; [
     bitwarden-desktop
-    protonvpn-gui
+    proton-vpn
     qbittorrent
   ];
   environment.sessionVariables.SSH_AUTH_SOCK = "$HOME/.bitwarden-ssh-agent.sock";
