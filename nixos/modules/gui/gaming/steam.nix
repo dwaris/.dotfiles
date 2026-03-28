@@ -16,14 +16,11 @@
       dedicatedServer.openFirewall = false; # Open ports in the firewall for Source Dedicated Server
       protontricks.enable = true;
     };
-    gamemode = {
+    gamemode.enable = true;
+    gamescope = {
       enable = true;
-      enableRenice = true;
+      capSysNice = true;
     };
-    # gamescope = {
-    #   enable = true;
-    #   capSysNice = false;
-    # };
   };
 
   users.users.dwaris.extraGroups = [
