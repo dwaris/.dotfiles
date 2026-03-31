@@ -17,14 +17,13 @@
           mkShell {
             packages = [
               (python3.withPackages (python-pkgs: [
-                python-pkgs.pip
-
                 python-pkgs.networkx
                 python-pkgs.simpy
 
-                python-pkgs.matplotlib
                 python-pkgs.numpy
                 python-pkgs.scipy
+
+                python-pkgs.matplotlib
               ]))
             ];
           };
