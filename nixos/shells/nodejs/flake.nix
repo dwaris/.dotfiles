@@ -16,6 +16,8 @@
         devShells.default = with pkgs;
           mkShell {
             packages = [
+              typescript-go
+
               nodejs
               pnpm
             ];
