@@ -5,17 +5,10 @@ local conditions = {
     hide_in_width = function()
         return vim.fn.winwidth(0) > 80
     end,
-    check_git_workspace = function()
-        local filepath = vim.fn.expand '%:p:h'
-        local gitdir = vim.fn.finddir('.git', filepath .. ';')
-        return gitdir and #gitdir > 0 and #gitdir < #filepath
-    end,
 }
 
--- Config
 local config = {
     options = {
-        -- Disable sections and component separators
         component_separators = '',
         section_separators = '',
     },
@@ -61,8 +54,6 @@ ins_left { 'location' }
 ins_left {
     'diagnostics',
     sources = { 'nvim_diagnostic' },
-    diagnostics_color = {
-    },
 }
 
 ins_left {
@@ -97,8 +88,8 @@ ins_right {
 }
 
 ins_right {
-    'o:encoding', -- option component same as &encoding in viml
-    fmt = string.upper, -- I'm not sure why it's upper case either ;)
+    'o:encoding',
+    fmt = string.upper,
     cond = conditions.hide_in_width,
     color = { gui = 'bold' },
 }
@@ -106,7 +97,7 @@ ins_right {
 ins_right {
     'fileformat',
     fmt = string.upper,
-    icons_enabled = false, -- I think icons are cool but Eviline doesn't have them. sigh
+    icons_enabled = false,
     color = { gui = 'bold' },
 }
 
