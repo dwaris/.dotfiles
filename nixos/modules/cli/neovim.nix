@@ -14,9 +14,6 @@
   environment.systemPackages = with pkgs; [
     tree-sitter
 
-    clang
-    nodePackages.nodejs
-
     fd
     wget
     ripgrep
