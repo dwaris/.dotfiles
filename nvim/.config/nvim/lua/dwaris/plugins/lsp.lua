@@ -16,8 +16,6 @@ return {
             'mason-org/mason-lspconfig.nvim',
             'WhoIsSethDaniel/mason-tool-installer.nvim',
 
-            { 'j-hui/fidget.nvim',    opts = {} },
-
             'saghen/blink.cmp',
         },
 
@@ -47,21 +45,13 @@ return {
                         '[G]oto Code [A]ction',
                         { 'n', 'x' }
                     )
-                    map(
-                        'grr',
-                        telescope.lsp_references,
-                        '[G]oto [R]eferences'
-                    )
+                    map('grr', telescope.lsp_references, '[G]oto [R]eferences')
                     map(
                         'gri',
                         telescope.lsp_implementations,
                         '[G]oto [I]mplementation'
                     )
-                    map(
-                        'grd',
-                        telescope.lsp_definitions,
-                        '[G]oto [D]efinition'
-                    )
+                    map('grd', telescope.lsp_definitions, '[G]oto [D]efinition')
                     map('grD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
                     map(
                         'gO',
@@ -147,14 +137,14 @@ return {
                 severity_sort = true,
                 float = { border = 'rounded', source = 'if_many' },
                 signs = vim.g.have_nerd_font
-                    and {
-                        text = {
-                            [vim.diagnostic.severity.ERROR] = '󰅚 ',
-                            [vim.diagnostic.severity.WARN] = '󰀪 ',
-                            [vim.diagnostic.severity.INFO] = '󰋽 ',
-                            [vim.diagnostic.severity.HINT] = '󰌶 ',
-                        },
-                    }
+                        and {
+                            text = {
+                                [vim.diagnostic.severity.ERROR] = '󰅚 ',
+                                [vim.diagnostic.severity.WARN] = '󰀪 ',
+                                [vim.diagnostic.severity.INFO] = '󰋽 ',
+                                [vim.diagnostic.severity.HINT] = '󰌶 ',
+                            },
+                        }
                     or {},
                 virtual_text = {
                     source = 'if_many',
@@ -235,7 +225,7 @@ return {
                 latex = { 'tex-fmt' },
                 javascript = { 'prettierd' },
                 typescript = { 'prettierd' },
-                elixir = { "mix" },
+                elixir = { 'mix' },
             },
         },
     },
@@ -272,8 +262,6 @@ return {
             },
             'folke/lazydev.nvim',
         },
-        --- @module 'blink.cmp'
-        --- @type blink.cmp.Config
         opts = {
             keymap = {
                 preset = 'default',
