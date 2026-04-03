@@ -1,5 +1,5 @@
 if vim.g.vscode then
-    vim.opt.clipboard:append 'unnamedplus'
+    vim.opt.clipboard = 'unnamedplus'
 else
     require 'dwaris'
 end
