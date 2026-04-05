@@ -8,8 +8,12 @@
   ...
 }: {
   imports = [
-    ../../modules
+    ../../modules/system.nix
 
+    ../../modules/desktop
+    ../../modules/desktop/kde.nix
+
+    ../../modules/cli
     ./hardware-configuration.nix
   ];
   boot.loader.systemd-boot.enable = true;
