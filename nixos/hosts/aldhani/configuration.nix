@@ -24,40 +24,6 @@
   networking.hostId = "2ffb69ed";
   networking.firewall.checkReversePath = "loose"; # wireguard needs this 
 
-  systemd.tmpfiles.rules = [
-    "z /sys/class/leds/platform::micmute/brightness 0666 - - - -"
-  ];
-  systemd.user.services.mic-mute-led-sync = {
-    description = "Sync microphone mute LED with Pipewire state";
-    after = ["pipewire.service"];
-    wantedBy = ["default.target"];
-
-    serviceConfig = {
-      Type = "simple";
-      Restart = "on-failure";
-      RestartSec = "1s";
-      ExecStart = pkgs.writeShellScript "mic-mute-led-sync" ''
-        readonly LED_PATH="/sys/class/leds/platform::micmute/brightness"
-        prev_state=""
-
-        while true; do
-          if ${pkgs.wireplumber}/bin/wpctl get-volume @DEFAULT_AUDIO_SOURCE@ | ${pkgs.gnugrep}/bin/grep -q MUTED; then
-            current_state="1"
-          else
-            current_state="0"
-          fi
-
-          if [[ "$current_state" != "$prev_state" ]]; then
-            echo "$current_state" > "$LED_PATH" 2>/dev/null || true
-            prev_state="$current_state"
-          fi
-
-          sleep 0.2
-        done
-      '';
-    };
-  };
-
   environment.systemPackages = with pkgs; [
     mesen
     wireguard-tools 
@@ -76,6 +42,42 @@
   services.logind.settings.Login = {
     LidSwitchIgnoreInhibited = "no";
     KillUserProcesses = false;
+  };
+
+  systemd.tmpfiles.rules = [
+    "z /sys/class/leds/platform::micmute/brightness 0666 - - - -"
+  ];
+  systemd.user.services.mic-mute-led-sync = {
+    description = "Sync microphone mute LED with Pipewire state (Optimized)";
+    after = ["pipewire.service" "wireplumber.service"];
+    wantedBy = ["default.target"];
+
+    serviceConfig = {
+      Type = "simple";
+      Restart = "on-failure";
+      RestartSec = "1s";
+      ExecStart = pkgs.writeShellScript "mic-mute-led-sync" ''
+        readonly LED_PATH="/sys/class/leds/platform::micmute/brightness"
+        prev_state=""
+
+        while true; do
+          vol_state=$(${pkgs.wireplumber}/bin/wpctl get-volume @DEFAULT_AUDIO_SOURCE@)
+
+          if [[ "$vol_state" == *MUTED* ]]; then
+            current_state="1"
+          else
+            current_state="0"
+          fi
+
+          if [[ "$current_state" != "$prev_state" ]]; then
+            echo "$current_state" > "$LED_PATH" 2>/dev/null || true
+            prev_state="$current_state"
+          fi
+
+          sleep 0.3
+        done
+      '';
+    };
   };
 
   users.users.dwaris = {
