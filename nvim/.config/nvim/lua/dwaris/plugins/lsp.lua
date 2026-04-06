@@ -277,12 +277,12 @@ return {
 
             sources = {
                 default = {
-                    'buffer',
-                    'lsp',
-                    'omni',
-                    'lazydev',
-                    'path',
-                },
+                        'lsp',
+                        'snippets',
+                        'lazydev',
+                        'path',
+                        'buffer',
+                    },
                 providers = {
                     lazydev = {
                         module = 'lazydev.integrations.blink',
