@@ -136,14 +136,14 @@ return {
                 severity_sort = true,
                 float = { border = 'rounded', source = 'if_many' },
                 signs = vim.g.have_nerd_font
-                        and {
-                            text = {
-                                [vim.diagnostic.severity.ERROR] = '󰅚 ',
-                                [vim.diagnostic.severity.WARN] = '󰀪 ',
-                                [vim.diagnostic.severity.INFO] = '󰋽 ',
-                                [vim.diagnostic.severity.HINT] = '󰌶 ',
-                            },
-                        }
+                    and {
+                        text = {
+                            [vim.diagnostic.severity.ERROR] = '󰅚 ',
+                            [vim.diagnostic.severity.WARN] = '󰀪 ',
+                            [vim.diagnostic.severity.INFO] = '󰋽 ',
+                            [vim.diagnostic.severity.HINT] = '󰌶 ',
+                        },
+                    }
                     or {},
                 virtual_text = {
                     source = 'if_many',
@@ -217,13 +217,14 @@ return {
             end,
             formatters_by_ft = {
                 lua = { 'stylua' },
-                python = { 'black' },
-                go = { 'gofmt' },
+                python = { 'ruff_fix', 'ruff_format' },
+                go = { 'goimports', 'gofmt' },
                 rust = { 'rustfmt' },
                 nix = { 'alejandra' },
                 latex = { 'tex-fmt' },
-                javascript = { 'prettierd' },
-                typescript = { 'prettierd' },
+                javascript = { 'biome' },
+                typescript = { 'biome' },
+                json = { 'biome' },
                 elixir = { 'mix' },
             },
         },
@@ -276,6 +277,5 @@ return {
             fuzzy = { implementation = 'prefer_rust_with_warning' },
             signature = { enabled = true },
         },
-        opts_extend = { 'sources.default' },
     },
 }
