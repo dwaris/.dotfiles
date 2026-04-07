@@ -20,62 +20,38 @@
     nixos-wsl.url = "github:nix-community/nixos-wsl";
   };
 
-  outputs = inputs @ {
-    self,
-    nixpkgs,
-    nixpkgs-stable,
-    lanzaboote,
-    nixos-wsl,
-    ...
-  }: {
+  outputs = inputs: {
     nixosConfigurations = {
-      jedha = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = {
-          inherit inputs;
-        };
+      jedha = inputs.nixpkgs.lib.nixosSystem {
         modules = [
           ./hosts/jedha/configuration.nix
-          lanzaboote.nixosModules.lanzaboote
+          inputs.lanzaboote.nixosModules.lanzaboote
         ];
       };
 
-      aldhani = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = {
-          inherit inputs;
-        };
+      aldhani = inputs.nixpkgs.lib.nixosSystem {
         modules = [
           ./hosts/aldhani/configuration.nix
-          lanzaboote.nixosModules.lanzaboote
+          inputs.lanzaboote.nixosModules.lanzaboote
         ];
       };
 
-      kashyyyk = nixpkgs-stable.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = {
-          inherit inputs;
-        };
+      kashyyyk = inputs.nixpkgs-stable.lib.nixosSystem {
         modules = [
           ./hosts/kashyyyk/configuration.nix
         ];
       };
 
-      batuu = nixpkgs-stable.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = {
-          inherit inputs;
-        };
+      batuu = inputs.nixpkgs-stable.lib.nixosSystem {
         modules = [
           ./hosts/batuu/configuration.nix
         ];
       };
 
-      wsl = nixpkgs-stable.lib.nixosSystem {
-        system = "x86_64-linux";
+      wsl = inputs.nixpkgs-stable.lib.nixosSystem {
         modules = [
           ./hosts/wsl/configuration.nix
-          nixos-wsl.nixosModules.wsl
+          inputs.nixos-wsl.nixosModules.wsl
         ];
       };
     };
