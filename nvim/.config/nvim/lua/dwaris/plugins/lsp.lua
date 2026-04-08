@@ -152,10 +152,28 @@ return {
 
             local capabilities = require('blink.cmp').get_lsp_capabilities()
 
-            local servers = {}
+            local servers = {
+                lua_ls = {},
+                nil_ls = {},
+                pyright = {},
+                ruff = {},
+                gopls = {},
+                rust_analyzer = {},
+                -- texlab = {},
+                -- marksman = {},
+                -- ts_ls = {},
+                -- biome = {},
+                -- yamlls = {},
+                -- taplo = {},
+                -- expert = {},
+            }
             local ensure_installed = vim.tbl_keys(servers or {})
             vim.list_extend(ensure_installed, {
-                'stylua', -- Used to format Lua code
+                'stylua',
+                'alejandra',
+                'goimports',
+                -- 'biome',
+                -- 'tex-fmt',
             })
 
             require('mason-tool-installer').setup {
@@ -200,32 +218,23 @@ return {
             },
         },
         opts = {
-            notify_on_error = false,
-            format_on_save = function(bufnr)
-                -- Disable "format_on_save lsp_fallback" for languages that don't
-                -- have a well standardized coding style. You can add additional
-                -- languages here or re-enable it for the disabled ones.
-                local disable_filetypes = { c = true, cpp = true }
-                if disable_filetypes[vim.bo[bufnr].filetype] then
-                    return nil
-                else
-                    return {
-                        timeout_ms = 500,
-                        lsp_format = 'fallback',
-                    }
-                end
-            end,
             formatters_by_ft = {
                 lua = { 'stylua' },
                 python = { 'ruff_fix', 'ruff_format' },
                 go = { 'goimports', 'gofmt' },
                 rust = { 'rustfmt' },
                 nix = { 'alejandra' },
+                elixir = { 'mix' },
                 latex = { 'tex-fmt' },
                 javascript = { 'biome' },
                 typescript = { 'biome' },
                 json = { 'biome' },
-                elixir = { 'mix' },
+                toml = { 'taplo' },
+            },
+            notify_on_error = false,
+            format_on_save = {
+                timeout_ms = 500,
+                lsp_format = 'fallback',
             },
         },
     },
@@ -234,22 +243,35 @@ return {
         event = 'VimEnter',
         version = '1.*',
         dependencies = {
-            'rafamadriz/friendly-snippets',
             'folke/lazydev.nvim',
+            {
+                'L3MON4D3/LuaSnip',
+                version = 'v2.*',
+                build = 'make install_jsregexp',
+                dependencies = {
+                   {
+                      'rafamadriz/friendly-snippets',
+                      config = function()
+                        require('luasnip.loaders.from_vscode').lazy_load()
+                      end,
+                    },
+                },
+
+            },
         },
         opts = {
             keymap = {
                 preset = 'default',
             },
-
             appearance = {
                 nerd_font_variant = 'mono',
             },
-
             completion = {
                 documentation = { auto_show = true, auto_show_delay_ms = 500 },
             },
-
+            snippets = {
+                preset = 'luasnip',
+            },
             sources = {
                 default = {
                     'lazydev',
@@ -266,14 +288,6 @@ return {
                     },
                 },
             },
-
-            -- Blink.cmp includes an optional, recommended rust fuzzy matcher,
-            -- which automatically downloads a prebuilt binary when enabled.
-            --
-            -- By default, we use the Lua implementation instead, but you may enable
-            -- the rust implementation via `'prefer_rust_with_warning'`
-            --
-            -- See :h blink-cmp-config-fuzzy for more information
             fuzzy = { implementation = 'prefer_rust_with_warning' },
             signature = { enabled = true },
         },
