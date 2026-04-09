@@ -31,6 +31,11 @@
 
   services.fprintd.enable = false;
 
+  services.tuned = {
+    enable = true;
+    settings.dynamic_tuning = true;
+  };
+
   hardware.graphics.enable = true;
   hardware.amdgpu = {
     opencl.enable = true;
