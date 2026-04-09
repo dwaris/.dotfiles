@@ -7,9 +7,12 @@
   environment.systemPackages = with pkgs; [
     handbrake
     mkvtoolnix
-    obs-studio
 
     yt-dlp
     ffmpeg
   ];
+  programs.obs-studio = {
+    enable = true;
+    enableVirtualCamera = true;
+  };
 }
