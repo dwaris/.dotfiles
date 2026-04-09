@@ -50,6 +50,11 @@
     intel-compute-runtime-legacy1
   ];
 
+  services.tuned = {
+    enable = true;
+    settings.dynamic_tuning = true;
+  };
+
   services.thermald.enable = true;
 
   users.users.betty = {
