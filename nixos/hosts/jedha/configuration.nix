@@ -11,7 +11,7 @@
   imports = [
     ../../modules
     ../../modules/boot.nix
-    ../../modules/cli/k8s.nix
+    # ../../modules/cli/k8s.nix
     ../../modules/gui/gaming
 
     ./hardware-configuration.nix
