@@ -7,6 +7,7 @@ if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
 		print -P "%F{160}▓▒░ The clone has failed.%f"
 fi
 source "$HOME/.zinit/bin/zinit.zsh"
+[[ -f ~/.config/user-dirs.dirs ]] && source ~/.config/user-dirs.dirs
 
 #####################
 # ENVIRONMENT       #
