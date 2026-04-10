@@ -15,16 +15,20 @@
     enable = lib.mkForce false;
   };
 
-  services.displayManager.gdm.enable = true;
-
-  programs.uwsm.waylandCompositors = {
-    hyprland = {
-      prettyName = "Hyprland";
-      comment = "Hyprland compositor managed by UWSM";
-      binPath = "/run/current-system/sw/bin/start-hyprland";
+  services.greetd = {
+    enable = true;
+    useTextGreeter = true;
+    settings = {
+      initial_session = {
+        command = "uwsm start hyprland-uwsm.desktop";
+        user = "dwaris";
+      };
+      default_session = {
+        command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --cmd 'uwsm start hyprland-uwsm.desktop'";
+        user = "greeter";
+      };
     };
   };
-
   security.pam.services.login.enableGnomeKeyring = true;
 
   environment.systemPackages = with pkgs; [
