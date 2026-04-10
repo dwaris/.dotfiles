@@ -1,5 +1,0 @@
-@theme "catppuccin-default"
-
-configuration {
-    show-icons: true;
-}
