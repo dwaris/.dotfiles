@@ -31,11 +31,9 @@
     hyprpaper
     hyprpolkitagent
     hypridle
+    hyprshot
     wlogout
     waybar
-
-    grim
-    slurp
 
     bluetui
     wiremix
