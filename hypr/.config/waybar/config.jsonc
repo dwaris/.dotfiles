@@ -198,8 +198,12 @@
         ]
     },
     "custom/expand-icon": {
-        "format": " ",
-        "tooltip": false
+      "format": " ",
+      "tooltip": false,
+      "on-scroll-up": "",
+      "on-scroll-down": "",
+      "on-scroll-left": "",
+      "on-scroll-right": ""
     },
     "tray": {
         "spacing": 12
