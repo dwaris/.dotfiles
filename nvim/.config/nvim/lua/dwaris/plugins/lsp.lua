@@ -154,11 +154,11 @@ return {
 
             local servers = {
                 lua_ls = {},
-                nil_ls = {},
-                pyright = {},
-                ruff = {},
-                gopls = {},
-                rust_analyzer = {},
+                -- nil_ls = {},
+                -- pyright = {},
+                -- ruff = {},
+                -- gopls = {},
+                -- rust_analyzer = {},
                 -- texlab = {},
                 -- marksman = {},
                 -- ts_ls = {},
@@ -170,8 +170,8 @@ return {
             local ensure_installed = vim.tbl_keys(servers or {})
             vim.list_extend(ensure_installed, {
                 'stylua',
-                'alejandra',
-                'goimports',
+                -- 'alejandra',
+                -- 'goimports',
                 -- 'biome',
                 -- 'tex-fmt',
             })
