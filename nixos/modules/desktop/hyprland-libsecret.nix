@@ -41,7 +41,8 @@
     wiremix
     brightnessctl
 
-    dunst
+    mako
+    libnotify
 
     walker
     elephant
