@@ -7,14 +7,17 @@ border-size=2
 max-icon-size=32
 font=IBM Plex Sans 14px
 
-background-color=#1e1e2e
-text-color=#cdd6f4
-border-color=#b4befe
-progress-color=over #313244
+background-color= #1e1e2e
+text-color= #cdd6f4
+border-color= #b4befe
 
-[urgency=high]
-border-color=#fab387
+[urgency=low]
+border-color= #a6e3a1
+
+[urgency=normal]
+border-color= #89b4fa
 
 [urgency=critical]
 default-timeout=0
 layer=overlay
+border-color= #f38ba8
