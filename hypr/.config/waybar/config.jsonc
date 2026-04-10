@@ -4,7 +4,7 @@
     "position": "top",
     "spacing": 0,
     "modules-left": [
-        "custom/vicinae",
+        "custom/walker",
         "hyprland/workspaces"
     ],
     "modules-center": [
@@ -204,10 +204,10 @@
     "tray": {
         "spacing": 12
     },
-    "custom/vicinae": {
+    "custom/walker": {
         "format": "",
         "tooltip": false,
-        "on-click": "vicinae toggle"
+        "on-click": "nc -U /run/user/1000/walker/walker.sock"
     },
     "idle_inhibitor": {
         "exec": "sh ~/.config/waybar/idle_inhibitor.sh",

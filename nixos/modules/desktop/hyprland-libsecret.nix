@@ -42,7 +42,9 @@
     brightnessctl
 
     dunst
-    vicinae
+
+    walker
+    elephant
 
     wl-clipboard
     cliphist
