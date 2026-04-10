@@ -35,5 +35,6 @@ elif command -v fzf > /dev/null; then # debians version of fzf us too old for --
   source /usr/share/doc/fzf/examples/key-bindings.bash
   source /usr/share/doc/fzf/examples/completion.bash
 fi
+[[ -f ~/.config/user-dirs.dirs ]] && source ~/.config/user-dirs.dirs
 
 eval "$(starship init bash --print-full-init)"
