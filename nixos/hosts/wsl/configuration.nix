@@ -28,7 +28,7 @@
   users.users.dwaris = {
     isNormalUser = true;
     description = "dwaris";
-    extraGroups = ["wheel" "networkmanager"];
+    extraGroups = ["wheel"];
     shell = pkgs.zsh;
   };
 
