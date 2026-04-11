@@ -36,9 +36,11 @@
     hyprpolkitagent
     hypridle
     hyprshot
-    wlogout
-    waybar
 
+    wlogout
+    hyprshutdown
+
+    waybar
     bluetui
     wiremix
     brightnessctl
