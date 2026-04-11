@@ -75,7 +75,10 @@
   services = {
     gvfs.enable = true;
     udisks2.enable = true;
-    upower.enable = true;
+    upower = {
+      enable = true;
+      criticalPowerAction = "PowerOff";
+    };
     accounts-daemon.enable = true;
     gnome = {
       sushi.enable = true;
