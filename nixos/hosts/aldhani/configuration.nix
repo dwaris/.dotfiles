@@ -31,10 +31,7 @@
 
   services.fprintd.enable = false;
 
-  services.tuned = {
-    enable = true;
-    settings.dynamic_tuning = true;
-  };
+  services.power-profiles-daemon.enable = true;
 
   hardware.graphics.enable = true;
   hardware.amdgpu = {
