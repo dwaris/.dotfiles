@@ -13,6 +13,7 @@
           packages = [
             texliveFull
             tex-fmt
+            pdfpc
           ];
         };
     });
