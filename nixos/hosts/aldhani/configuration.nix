@@ -50,7 +50,7 @@
     "z /sys/class/leds/platform::micmute/brightness 0666 - - - -"
   ];
   systemd.user.services.mic-mute-led-sync = {
-    description = "Sync microphone mute LED with Pipewire state (Optimized)";
+    description = "Sync microphone mute LED with Pipewire state";
     after = ["pipewire.service" "wireplumber.service"];
     wantedBy = ["default.target"];
 
@@ -60,23 +60,22 @@
       RestartSec = "1s";
       ExecStart = pkgs.writeShellScript "mic-mute-led-sync" ''
         readonly LED_PATH="/sys/class/leds/platform::micmute/brightness"
-        prev_state=""
-
-        while true; do
+ 
+        update_led() {
           vol_state=$(${pkgs.wireplumber}/bin/wpctl get-volume @DEFAULT_AUDIO_SOURCE@)
-
           if [[ "$vol_state" == *MUTED* ]]; then
-            current_state="1"
+            echo "1" > "$LED_PATH" 2>/dev/null || true
           else
-            current_state="0"
+            echo "0" > "$LED_PATH" 2>/dev/null || true
           fi
+        }
 
-          if [[ "$current_state" != "$prev_state" ]]; then
-            echo "$current_state" > "$LED_PATH" 2>/dev/null || true
-            prev_state="$current_state"
-          fi
+        # Match current state on startup
+        update_led
 
-          sleep 0.3
+        # Wait for event changes from Pipewire and update LED accordingly
+        ${pkgs.pulseaudio}/bin/pactl subscribe | grep --line-buffered "Event 'change' on source" | while read -r line; do
+          update_led
         done
       '';
     };
