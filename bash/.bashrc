@@ -22,7 +22,6 @@ alias la='ls -lathr'
 alias ll='ls -la'
 alias ls='ls -a --color=auto'
 alias mv='mv -v'
-alias vim=nvim
 
 bind 'set show-all-if-ambiguous on'
 bind 'TAB:menu-complete'
