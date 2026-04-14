@@ -37,7 +37,6 @@
     hypridle
     hyprshot
 
-    wlogout
     hyprshutdown
 
     waybar
