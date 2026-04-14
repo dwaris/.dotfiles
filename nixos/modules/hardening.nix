@@ -21,13 +21,11 @@
     "erofs"
     "exofs"
     "freevxfs"
-    "f2fs"
     "hfs"
     "hpfs"
     "jfs"
     "minix"
     "nilfs2"
-    "ntfs"
     "omfs"
     "qnx4"
     "qnx6"
@@ -35,11 +33,6 @@
     "ufs"
   ];
   boot.tmp.useTmpfs = true;
-
-  security.auditd.enable = true;
-
-  services.clamav.daemon.enable = true;
-  services.clamav.updater.enable = true;
 
   boot.kernelParams = [
     "slab_nomerge"
@@ -66,10 +59,9 @@
 
     "net.ipv6.conf.all.accept_redirects" = 0;
     "net.ipv6.conf.default.accept_redirects" = 0;
-
-    "net.ipv4.conf.all.log_martians" = 1;
-    "net.ipv4.conf.default.log_martians" = 1;
   };
+
+  security.sudo.execWheelOnly = true;
 
   services.openssh = {
     settings = {
@@ -82,7 +74,4 @@
       AllowAgentForwarding = "no";
     };
   };
-  nix.settings.allowed-users = ["@users"];
-
-  security.apparmor.enable = true;
 }
