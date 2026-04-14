@@ -6,6 +6,7 @@
 }: {
   imports = [
     ./system.nix
+    ./hardening.nix
 
     ./desktop
     ./desktop/hyprland.nix
