@@ -6,17 +6,17 @@
 }
 {
     "label" : "logout",
-    "action" : "hyprshutdown",
+    "action" : "uwsm-app -- hyprshutdown",
     "text" : "Logout"
 }
 {
     "label" : "shutdown",
-    "action" : "hyprshutdown -p `systemctl poweroff`",
+    "action" : "uwsm-app -- hyprshutdown -p `systemctl poweroff`",
     "text" : "Shutdown"
 }
 {
     "label" : "reboot",
-    "action" : "hyprshutdown -p `systemctl reboot`",
+    "action" : "uwsm-app -- hyprshutdown -p `systemctl reboot`",
     "text" : "Reboot"
 }
 {
