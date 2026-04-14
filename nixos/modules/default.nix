@@ -8,7 +8,7 @@
     ./system.nix
 
     ./desktop
-    ./desktop/hyprland-libsecret.nix
+    ./desktop/hyprland.nix
 
     ./cli
     ./gui
