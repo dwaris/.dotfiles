@@ -183,7 +183,7 @@
     },
     "custom/power": {
         "tooltip": false,
-        "on-click": "wlogout &",
+        "on-click": "uwsm-app -- hyprshutdown -t 'Shutting down...' -p 'systemctl poweroff'",
         "format": "⏻"
     },
     "group/tray-expander": {
