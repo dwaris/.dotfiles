@@ -13,5 +13,6 @@
 
     plex-desktop
     plexamp
+    kew
   ];
 }
