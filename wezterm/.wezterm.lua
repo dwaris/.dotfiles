@@ -18,69 +18,71 @@ config.font = wezterm.font("BlexMono Nerd Font")
 config.leader = { key = "f", mods = "CTRL" }
 
 config.unix_domains = {
-    {
-        name = "unix",
-    },
+	{
+		name = "unix",
+	},
 }
 config.default_gui_startup_args = { "connect", "unix" }
 
--config.keys = {
-    { key = "c",             mods = "CTRL|SHIFT", action = act.CopyTo("Clipboard") },
-    { key = "v",             mods = "CTRL|SHIFT", action = act.PasteFrom("Clipboard") },
-    { key = "+",             mods = "CTRL|SHIFT", action = act.IncreaseFontSize },
-    { key = "-",             mods = "CTRL|SHIFT", action = act.DecreaseFontSize },
-    { key = "0",             mods = "CTRL|SHIFT", action = act.ResetFontSize },
+config.keys = {
+	{ key = "c",     mods = "CTRL|SHIFT",   action = act.CopyTo("Clipboard") },
+	{ key = "v",     mods = "CTRL|SHIFT",   action = act.PasteFrom("Clipboard") },
+	{ key = "+",     mods = "CTRL|SHIFT",   action = act.IncreaseFontSize },
+	{ key = "-",     mods = "CTRL|SHIFT",   action = act.DecreaseFontSize },
+	{ key = "0",     mods = "CTRL|SHIFT",   action = act.ResetFontSize },
 
-    { mods = "LEADER",       key = "v",           action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
-    { mods = "LEADER",       key = "s",           action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
+	{ key = "v",     mods = "LEADER",       action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
+	{ key = "s",     mods = "LEADER",       action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
 
-    { mods = "LEADER|SHIFT", key = "H",           action = act.AdjustPaneSize({ "Left", 10 }) },
-    { mods = "LEADER|SHIFT", key = "J",           action = act.AdjustPaneSize({ "Down", 10 }) },
-    { mods = "LEADER|SHIFT", key = "K",           action = act.AdjustPaneSize({ "Up", 10 }) },
-    { mods = "LEADER|SHIFT", key = "L",           action = act.AdjustPaneSize({ "Right", 10 }) },
+	{ key = "H",     mods = "LEADER|SHIFT", action = act.AdjustPaneSize({ "Left", 10 }) },
+	{ key = "J",     mods = "LEADER|SHIFT", action = act.AdjustPaneSize({ "Down", 10 }) },
+	{ key = "K",     mods = "LEADER|SHIFT", action = act.AdjustPaneSize({ "Up", 10 }) },
+	{ key = "L",     mods = "LEADER|SHIFT", action = act.AdjustPaneSize({ "Right", 10 }) },
 
-    { mods = "LEADER",       key = "d",           action = act.DetachDomain("CurrentPaneDomain") },
+	{ key = "w",     mods = "LEADER",       action = act.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }) },
+	{ key = "a",     mods = "LEADER",       action = act.AttachDomain("unix") },
+	{ key = "d",     mods = "LEADER",       action = act.DetachDomain({ DomainName = "unix" }) },
 
-    { mods = "LEADER",       key = "q",           action = act.CloseCurrentPane({ confirm = false }) },
-    { mods = "LEADER",       key = "m",           action = act.TogglePaneZoomState },
-    { mods = "LEADER",       key = "0",           action = act.PaneSelect({ mode = "SwapWithActive" }) },
+	{ key = "q",     mods = "LEADER",       action = act.CloseCurrentPane({ confirm = false }) },
+	{ key = "m",     mods = "LEADER",       action = act.TogglePaneZoomState },
+	{ key = "0",     mods = "LEADER",       action = act.PaneSelect({ mode = "SwapWithActive" }) },
 
-    { mods = "LEADER",       key = "c",           action = act.SpawnTab("DefaultDomain") },
-    { mods = "LEADER",       key = "n",           action = act.ActivateTabRelative(1) },
-    { mods = "LEADER",       key = "p",           action = act.ActivateTabRelative(-1) },
+	{ key = "c",     mods = "LEADER",       action = act.SpawnTab("DefaultDomain") },
+	{ key = "n",     mods = "LEADER",       action = act.ActivateTabRelative(1) },
+	{ key = "p",     mods = "LEADER",       action = act.ActivateTabRelative(-1) },
 
-    { mods = "LEADER",       key = "h",           action = act.ActivatePaneDirection("Left") },
-    { mods = "LEADER",       key = "l",           action = act.ActivatePaneDirection("Right") },
-    { mods = "LEADER",       key = "k",           action = act.ActivatePaneDirection("Up") },
-    { mods = "LEADER",       key = "j",           action = act.ActivatePaneDirection("Down") },
+	{ key = "h",     mods = "LEADER",       action = act.ActivatePaneDirection("Left") },
+	{ key = "l",     mods = "LEADER",       action = act.ActivatePaneDirection("Right") },
+	{ key = "k",     mods = "LEADER",       action = act.ActivatePaneDirection("Up") },
+	{ key = "j",     mods = "LEADER",       action = act.ActivatePaneDirection("Down") },
 
-    { mods = "LEADER",       key = "Enter",       action = act.ActivateCopyMode },
+	{ key = "Enter", mods = "LEADER",       action = act.ActivateCopyMode },
 }
 
 config.mouse_bindings = {
-    {
-        event = { Up = { streak = 1, button = "Left" } },
-        mods = "NONE",
-        action = act.DisableDefaultAssignment,
-    },
-    {
-        event = { Up = { streak = 1, button = "Left" } },
-        mods = "CTRL",
-        action = act.OpenLinkAtMouseCursor,
-    },
-    {
-        event = { Down = { streak = 1, button = "Left" } },
-        mods = "CTRL",
-        action = act.Nop,
-    },
+	{
+		event  = { Up = { streak = 1, button = "Left" } },
+		mods   = "NONE",
+		action = act.DisableDefaultAssignment,
+	},
+	{
+		event  = { Up = { streak = 1, button = "Left" } },
+		mods   = "CTRL",
+		action = act.OpenLinkAtMouseCursor,
+	},
+	{
+		event  = { Down = { streak = 1, button = "Left" } },
+		mods   = "CTRL",
+		action = act.Nop,
+	},
 }
 
 for i = 1, 8 do
-    table.insert(config.keys, {
-        key = tostring(i),
-        mods = "LEADER",
-        action = act.ActivateTab(i - 1),
-    })
+	table.insert(config.keys, {
+		key    = tostring(i),
+		mods   = "LEADER",
+		action = act.ActivateTab(i - 1),
+	})
 end
 
 return config
