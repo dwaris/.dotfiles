@@ -65,6 +65,9 @@
     loupe
     nautilus
     gnome-disk-utility
+    baobab
+    gnome-logs
+    seahorse
   ];
 
   xdg.portal = {
