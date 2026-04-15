@@ -38,36 +38,42 @@
     "slab_nomerge"
     "page_poison=1"
     "page_alloc.shuffle=1"
-    "debugfs=off"
   ];
 
   boot.kernel.sysctl = {
+    "kernel.dmesg_restrict" = 1;
     "kernel.kptr_restrict" = 1;
-    "kernel.sysrq" = 16;
-    "kernel.ftrace_enabled" = 0;
+    "kernel.unprivileged_bpf_disable" = 1;
+    "kernel.sysrq" = 244;
+
+    "net.core.bpf_jit_harden" = 2;
 
     "net.ipv4.conf.all.rp_filter" = 2;
     "net.ipv4.conf.default.rp_filter" = 2;
 
-    "net.ipv4.icmp_echo_ignore_broadcasts" = 1;
     "net.ipv4.conf.all.accept_redirects" = 0;
     "net.ipv4.conf.default.accept_redirects" = 0;
     "net.ipv4.conf.all.secure_redirects" = 0;
     "net.ipv4.conf.default.secure_redirects" = 0;
     "net.ipv4.conf.all.send_redirects" = 0;
     "net.ipv4.conf.default.send_redirects" = 0;
+    "net.ipv4.conf.all.log_martians" = 1;
+
+    "net.ipv4.icmp_echo_ignore_broadcasts" = 1;
+    "net.ipv4.tcp_syncookies" = 1;
 
     "net.ipv6.conf.all.accept_redirects" = 0;
     "net.ipv6.conf.default.accept_redirects" = 0;
   };
 
+  security.protectKernelImage = true;
   security.sudo.execWheelOnly = true;
 
   services.openssh = {
     settings = {
       LogLevel = "VERBOSE";
       MaxAuthTries = 3;
-      MaxSessions = 2;
+      MaxSessions = 3;
       TCPKeepAlive = "no";
       ClientAliveCountMax = 2;
       AllowTcpForwarding = "no";
