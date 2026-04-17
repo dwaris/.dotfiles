@@ -49,6 +49,7 @@ in {
 
   environment.systemPackages = with pkgs; [
     sbctl
+    wireguard-tools 
   ];
 
   services.zfs.trim.enable = true;
@@ -70,6 +71,7 @@ in {
   # Enable nftables
   networking.firewall = {
     enable = true;
+    checkReversePath = "loose"; # wireguard needs this
   };
   networking.nftables.enable = true;
 

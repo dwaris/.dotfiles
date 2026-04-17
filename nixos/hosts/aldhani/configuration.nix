@@ -22,11 +22,9 @@
 
   networking.hostName = "aldhani"; # Define your hostname.
   networking.hostId = "2ffb69ed";
-  networking.firewall.checkReversePath = "loose"; # wireguard needs this 
 
   environment.systemPackages = with pkgs; [
     mesen
-    wireguard-tools 
   ];
 
   services.fprintd.enable = false;
