@@ -30,7 +30,11 @@ zinit for \
   OMZP::sudo
 
 autoload -Uz compinit
-compinit
+if [[ -z ~/.zcompdump(#qN.mh+24) ]]; then
+  compinit
+else
+  compinit -C
+fi
 
 zinit wait lucid for \
   hlissner/zsh-autopair \
@@ -44,7 +48,7 @@ zinit wait"1" lucid for \
   Aloxaf/fzf-tab
 
 # 5. Load Syntax Highlighting LAST
-zinit wait"2" lucid for \
+zinit lucid for \
   zdharma-continuum/fast-syntax-highlighting
 
 #####################
