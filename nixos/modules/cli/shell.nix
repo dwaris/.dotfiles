@@ -7,6 +7,8 @@
   environment.systemPackages = with pkgs; [
     stow
     fzf
+    eza
+    bat
     starship
   ];
 
@@ -18,6 +20,7 @@
       enableZshIntegration = true;
     };
     zsh.enable = true;
+    zoxide.enable = true;
   };
 
   environment.shells = with pkgs; [zsh];

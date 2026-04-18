@@ -14,7 +14,7 @@ source "$HOME/.zinit/bin/zinit.zsh"
 #####################
 export PATH="$HOME/.cargo/bin:$PATH"
 export EDITOR=nvim
-export PAGER="less -R"
+export PAGER="bat --plain --paging=always"
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 
 ##########################
@@ -53,9 +53,10 @@ zinit wait lucid for \
 #####################
 # ALIASES           #
 #####################
-alias la='ls -lathr'
-alias ll='ls -la'
-alias ls='ls -a --color=auto'
+alias ls='eza -a --icons=auto --group-directories-first --git'
+alias ll='eza -la --icons=auto --group-directories-first --git'
+alias la='eza -lah --sort=modified --reverse --icons=auto --group-directories-first --git'
+alias cat='bat --style=plain --paging=never'
 alias mv='mv -v'
 alias vim=nvim
 
