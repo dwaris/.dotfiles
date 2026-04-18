@@ -17,9 +17,6 @@
     bottom
     lm_sensors
 
-    # tools
-    bat
-
     # git
     lazygit
   ];
