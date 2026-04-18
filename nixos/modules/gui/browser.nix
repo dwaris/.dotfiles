@@ -16,7 +16,6 @@
         "--enable-zero-copy"
       ];
     })
-    brave
   ];
 
   programs.chromium.enable = true;
