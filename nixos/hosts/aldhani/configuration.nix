@@ -44,39 +44,38 @@
     KillUserProcesses = false;
   };
 
-  systemd.tmpfiles.rules = [
-    "z /sys/class/leds/platform::micmute/brightness 0666 - - - -"
-  ];
+  services.udev.extraRules = ''
+    ACTION=="add", SUBSYSTEM=="leds", KERNEL=="*micmute", RUN+="${pkgs.coreutils}/bin/chmod 666 /sys/class/leds/%k/brightness"
+  '';
+
   systemd.user.services.mic-mute-led-sync = {
-    description = "Sync microphone mute LED with Pipewire state";
-    after = ["pipewire.service" "wireplumber.service"];
-    wantedBy = ["default.target"];
+    description = "Mic Mute LED Sync";
+    wantedBy = [ "graphical-session.target" ];
+    partOf = [ "graphical-session.target" ];
+    after = [ "pipewire.service" "wireplumber.service" ];
+    
+    # Crucial: Give the script the exact path to the tools it needs
+    path = with pkgs; [ wireplumber pulseaudio gnugrep coreutils ];
 
-    serviceConfig = {
-      Type = "simple";
-      Restart = "on-failure";
-      RestartSec = "1s";
-      ExecStart = pkgs.writeShellScript "mic-mute-led-sync" ''
-        readonly LED_PATH="/sys/class/leds/platform::micmute/brightness"
- 
-        update_led() {
-          vol_state=$(${pkgs.wireplumber}/bin/wpctl get-volume @DEFAULT_AUDIO_SOURCE@)
-          if [[ "$vol_state" == *MUTED* ]]; then
-            echo "1" > "$LED_PATH" 2>/dev/null || true
-          else
-            echo "0" > "$LED_PATH" 2>/dev/null || true
-          fi
-        }
+    script = ''
+      readonly LED_PATH="/sys/class/leds/platform::micmute/brightness"
 
-        # Match current state on startup
+      update_led() {
+        if wpctl get-volume @DEFAULT_AUDIO_SOURCE@ | grep -q MUTED; then
+          echo "1" > "$LED_PATH" 2>/dev/null || true
+        else
+          echo "0" > "$LED_PATH" 2>/dev/null || true
+        fi
+      }
+
+      # 1. Match current state on startup
+      update_led
+
+      # 2. Wait for event changes from Pipewire and update LED instantly
+      pactl subscribe | grep --line-buffered "Event 'change' on source" | while read -r _; do
         update_led
-
-        # Wait for event changes from Pipewire and update LED accordingly
-        ${pkgs.pulseaudio}/bin/pactl subscribe | grep --line-buffered "Event 'change' on source" | while read -r line; do
-          update_led
-        done
-      '';
-    };
+      done
+    '';
   };
 
   users.users.dwaris = {
