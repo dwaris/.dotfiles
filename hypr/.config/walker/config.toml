@@ -45,4 +45,4 @@ provider = "clipboard"
 
 [[emergencies]]
 text = "Terminal"
-command = "wezterm"
+command = "ghostty"
