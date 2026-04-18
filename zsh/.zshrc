@@ -20,48 +20,47 @@ export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 ##########################
 # PLUGINS
 ##########################
-eval "$(starship init zsh)"
-
-zinit wait lucid for \
+zinit for \
   OMZL::history.zsh \
-  OMZL::compfix.zsh \
-  OMZL::completion.zsh \
-  OMZL::key-bindings.zsh \
   OMZL::directories.zsh \
   OMZL::correction.zsh \
   OMZL::git.zsh \
   OMZL::grep.zsh \
   OMZP::git \
-  OMZP::sudo \
-  OMZP::fzf
+  OMZP::sudo
+
+autoload -Uz compinit
+compinit
 
 zinit wait lucid for \
   hlissner/zsh-autopair \
   zsh-users/zsh-autosuggestions \
   bindmap"^R -> ^H" \
-  zdharma-continuum/history-search-multi-word \
+  zdharma-continuum/history-search-multi-word
+
+zinit wait"1" lucid for \
+  OMZP::fzf \
   blockf zsh-users/zsh-completions \
   Aloxaf/fzf-tab
 
-#####################
-# SYNTAX HIGHLIGHTING
-#####################
-zinit wait lucid for \
- atinit"zpcompinit; zpcdreplay" \
- zdharma-continuum/fast-syntax-highlighting
+# 5. Load Syntax Highlighting LAST
+zinit wait"2" lucid for \
+  zdharma-continuum/fast-syntax-highlighting
 
 #####################
 # ALIASES           #
 #####################
-alias ls='eza -a --icons=auto --group-directories-first --git'
-alias ll='eza -la --icons=auto --group-directories-first --git'
-alias la='eza -lah --sort=modified --reverse --icons=auto --group-directories-first --git'
+alias ls='eza --group-directories-first'
+alias ll='eza -l --group-directories-first --git'
+alias la='eza -la --group-directories-first --git'
+alias lt='eza -la --sort=modified --reverse --group-directories-first --git'
+alias tree='eza --tree --level=3'
 alias cat='bat --style=plain --paging=never'
 alias mv='mv -v'
+alias less='bat --style=plain --paging=always'
 alias vim=nvim
 
-#####################
-# KEYBINDINGS       #
-#####################
 bindkey -v
 export KEYTIMEOUT=1
+
+eval "$(starship init zsh)"
