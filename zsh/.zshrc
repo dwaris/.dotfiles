@@ -22,6 +22,7 @@ export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 ##########################
 zinit for \
   OMZL::history.zsh \
+  OMZL::key-bindings.zsh \
   OMZL::directories.zsh \
   OMZL::correction.zsh \
   OMZL::git.zsh \
@@ -65,6 +66,6 @@ alias less='bat --style=plain --paging=always'
 alias vim=nvim
 
 bindkey -v
-export KEYTIMEOUT=1
+export KEYTIMEOUT=15
 
 eval "$(starship init zsh)"
