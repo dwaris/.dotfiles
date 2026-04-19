@@ -54,11 +54,10 @@
   color: @red;
 }
 
-#custom-walker {
+#custom-launcher {
   padding: 0 0.5rem;
 }
 
-#custom-music,
 #tray,
 #backlight,
 #clock,
@@ -81,7 +80,7 @@
 #battery:hover,
 #bluetooth:hover,
 #clock:hover,
-#custom-walker:hover,
+#custom-launcher:hover,
 #idle_inhibitor:hover,
 #network:hover,
 #power-profiles-daemon:hover,

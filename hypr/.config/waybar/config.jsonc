@@ -4,7 +4,7 @@
     "position": "top",
     "spacing": 0,
     "modules-left": [
-        "custom/walker",
+        "custom/launcher",
         "hyprland/workspaces"
     ],
     "modules-center": [
@@ -208,7 +208,7 @@
     "tray": {
         "spacing": 12
     },
-    "custom/walker": {
+    "custom/launcher": {
         "format": "",
         "tooltip": false,
         "on-click": "nc -U /run/user/1000/walker/walker.sock"
