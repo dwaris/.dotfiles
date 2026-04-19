@@ -8,6 +8,7 @@
         "hyprland/workspaces"
     ],
     "modules-center": [
+        "custom/dnd",
         "clock",
         "idle_inhibitor"
     ],
@@ -221,6 +222,14 @@
             "activated": "",
             "deactivated": ""
         },
-        "on-click": "sh ~/.config/waybar/idle_inhibitor_toggle.sh &"
-   }
+        "on-click": "sh ~/.config/waybar/idle_inhibitor_toggle.sh &",
+        "tooltip": false
+    },
+    "custom/dnd": {
+        "format": "{}",
+        "exec": "makoctl mode | grep -q 'dnd' && echo '' || echo ''",
+        "interval": 2,
+        "on-click": "makoctl mode -t dnd",
+        "tooltip": false
+    }
 }
