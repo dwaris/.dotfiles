@@ -8,9 +8,7 @@
         "hyprland/workspaces"
     ],
     "modules-center": [
-        "custom/dnd",
-        "clock",
-        "idle_inhibitor"
+        "group/clock-drawer"
     ],
     "modules-right": [
         "group/tray-expander",
@@ -231,5 +229,17 @@
         "interval": 2,
         "on-click": "makoctl mode -t dnd",
         "tooltip": false
+    },
+    "group/clock-drawer": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 300,
+            "children-class": "clock-drawer-item",
+        },
+        "modules": [
+            "clock",
+            "custom/dnd",
+            "idle_inhibitor"
+        ]
     }
 }
