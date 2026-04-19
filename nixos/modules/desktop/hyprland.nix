@@ -70,6 +70,10 @@
 
   xdg.portal = {
     xdgOpenUsePortal = true;
+    extraPortals = with pkgs; [
+      gnome-keyring
+    ];
+    config.common."org.freedesktop.impl.portal.Secret" = "gnome-keyring";
   };
 
   services = {
