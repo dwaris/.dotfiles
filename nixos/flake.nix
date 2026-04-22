@@ -35,7 +35,7 @@
         modules = [
           ./hosts/aldhani/configuration.nix
           inputs.lanzaboote.nixosModules.lanzaboote
-          inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t14-gen-2-amd
+          inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t14-amd-gen2
         ];
       };
 
