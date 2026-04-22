@@ -4,6 +4,6 @@ return {
     priority = 1000,
     auto_integrations = true,
     config = function()
-        vim.cmd.colorscheme 'catppuccin'
+        vim.cmd.colorscheme 'catppuccin-nvim'
     end,
 }
