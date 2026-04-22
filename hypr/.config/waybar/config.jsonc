@@ -133,7 +133,8 @@
     "custom/vpn": {
         "exec": "sh ~/.config/waybar/vpn_status.sh",
         "return-type": "json",
-        "interval": 5,
+        "interval": 60,
+        "signal": 1,
         "on-click": "sh ~/.config/waybar/vpn_toggle.sh",
         "on-click-right": "ghostty -e sh -lc 'protonvpn status; echo; echo Press Enter to close; read _'"
     },
