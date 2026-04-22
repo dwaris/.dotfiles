@@ -131,12 +131,13 @@
         "on-click": "ghostty -e nmtui"
     },
     "custom/vpn": {
-        "exec": "sh ~/.config/waybar/vpn_status.sh",
+        "exec": "sh ~/.config/waybar/scripts/vpn_status.sh",
         "return-type": "json",
         "interval": 60,
         "signal": 1,
-        "on-click": "sh ~/.config/waybar/vpn_toggle.sh",
-        "on-click-right": "sh ~/.config/waybar/vpn_toggle.sh safe"
+        "on-click": "sh ~/.config/waybar/scripts/vpn_toggle.sh",
+        "on-click-middle": "sh ~/.config/waybar/scripts/vpn_toggle.sh safe",
+        "on-click-right": "ghostty -e sh -lc 'protonvpn status; echo; echo Press Enter to close; read _'"
     },
     "bluetooth": {
         "format": "",
