@@ -18,13 +18,13 @@ run_with_timeout() {
 
 proton_status() {
   if ! command -v protonvpn >/dev/null 2>&1; then
-    text="󰖃"
+    text=""
     class="disconnected"
     tooltip="protonvpn command not found"
   else
     # Fast path: if no proton/tun interface exists, it's definitely disconnected
     if ! ip link | grep -Eq "proton|pvpn|tun[0-9]" >/dev/null 2>&1; then
-      printf '{"text":"󰖃","class":"disconnected","tooltip":"Proton VPN disconnected"}\n'
+      printf '{"text":"","class":"disconnected","tooltip":"Proton VPN disconnected"}\n'
       return
     fi
 
@@ -32,7 +32,7 @@ proton_status() {
 
     if printf '%s' "$raw_status" | grep -Eqi '(^|[[:space:]:])connected([[:space:]]|$)' \
       && ! printf '%s' "$raw_status" | grep -Eqi 'disconnected|not[[:space:]]+connected'; then
-      text="󰖂"
+      text=""
       class="connected"
       
       # 14 Eyes: US, UK, CA, AU, NZ (5) + DK, FR, NL, NO (9) + DE, BE, IT, ES, SE (14)
@@ -53,7 +53,7 @@ proton_status() {
         class="warning"
       fi
     else
-      text="󰖃"
+      text=""
       class="disconnected"
       tooltip="Proton VPN disconnected"
     fi
