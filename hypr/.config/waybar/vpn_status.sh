@@ -34,11 +34,23 @@ proton_status() {
       && ! printf '%s' "$raw_status" | grep -Eqi 'disconnected|not[[:space:]]+connected'; then
       text="󰖂"
       class="connected"
+      
+      # 14 Eyes: US, UK, CA, AU, NZ (5) + DK, FR, NL, NO (9) + DE, BE, IT, ES, SE (14)
+      eyes_regex="United States|United Kingdom|Canada|Australia|New Zealand|Denmark|France|Netherlands|Norway|Germany|Belgium|Italy|Spain|Sweden"
+      
+      # Match "Country: <name>" or "Server: <id> (<location>)"
+      location_info="$(printf '%s\n' "$raw_status" | grep -Ei 'Country:|Server:' | head -n 1)"
       server_line="$(printf '%s\n' "$raw_status" | grep -Eim1 'server|country|city|ip|gateway')"
+      
       if [ -n "$server_line" ]; then
         tooltip="${server_line}"
       else
         tooltip="Proton VPN connected"
+      fi
+
+      if printf '%s' "$location_info" | grep -Eqi "$eyes_regex"; then
+        tooltip="${tooltip} (Eyes State Warning)"
+        class="warning"
       fi
     else
       text="󰖃"
