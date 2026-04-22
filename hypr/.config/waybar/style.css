@@ -59,7 +59,7 @@
 }
 
 #custom-vpn.disconnected {
-  color: @red;
+  color: @text;
 }
 
 #battery.warning:not(.charging) {
