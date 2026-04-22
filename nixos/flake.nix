@@ -12,6 +12,8 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
 
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
     lanzaboote = {
       url = "github:nix-community/lanzaboote";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -33,18 +35,21 @@
         modules = [
           ./hosts/aldhani/configuration.nix
           inputs.lanzaboote.nixosModules.lanzaboote
+          inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t14-gen-2-amd
         ];
       };
 
       kashyyyk = inputs.nixpkgs-stable.lib.nixosSystem {
         modules = [
           ./hosts/kashyyyk/configuration.nix
+          inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x260
         ];
       };
 
       batuu = inputs.nixpkgs-stable.lib.nixosSystem {
         modules = [
           ./hosts/batuu/configuration.nix
+          inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t420
         ];
       };
 
