@@ -54,6 +54,10 @@
   color: @green;
 }
 
+#custom-vpn.warning {
+  color: @yellow;
+}
+
 #custom-vpn.disconnected {
   color: @red;
 }
