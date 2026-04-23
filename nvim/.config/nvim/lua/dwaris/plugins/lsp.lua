@@ -11,12 +11,9 @@ return {
     {
         'neovim/nvim-lspconfig',
         dependencies = {
-
             { 'mason-org/mason.nvim', opts = {} },
             'mason-org/mason-lspconfig.nvim',
             'WhoIsSethDaniel/mason-tool-installer.nvim',
-
-            'saghen/blink.cmp',
         },
         config = function()
             local telescope = require 'telescope.builtin'
@@ -260,7 +257,6 @@ return {
         event = 'VimEnter',
         version = '1.*',
         dependencies = {
-            'folke/lazydev.nvim',
             {
                 'L3MON4D3/LuaSnip',
                 version = 'v2.*',
