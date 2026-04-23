@@ -1,28 +1,23 @@
 return {
-    -- {
-    --     'zbirenbaum/copilot.lua',
-    --     requires = {
-    --         'copilotlsp-nvim/copilot-lsp', -- (optional) for NES functionality
-    --     },
-    --     cmd = 'Copilot',
-    --     event = 'InsertEnter',
-    --     config = function()
-    --         require('copilot').setup {
-    --             suggestion = {
-    --                 enabled = true,
-    --                 auto_trigger = true,
-    --                 hide_during_completion = false,
-    --                 debounce = 25,
-    --                 keymap = {
-    --                     accept = false,
-    --                     accept_word = false,
-    --                     accept_line = '<C-v>',
-    --                     next = false,
-    --                     prev = false,
-    --                     dismiss = false,
-    --                 },
-    --             },
-    --         }
-    --     end,
-    -- },
+    {
+        'github/copilot.vim',
+        config = function()
+            vim.g.copilot_no_tab_map = true
+
+            vim.keymap.set('i', '<M-l>', 'copilot#Accept("\\<CR>")', {
+                expr = true,
+                replace_keycodes = false,
+                desc = 'Copilot accept',
+            })
+            vim.keymap.set('i', '<M-]>', '<Plug>(copilot-next)', {
+                desc = 'Copilot next',
+            })
+            vim.keymap.set('i', '<M-[>', '<Plug>(copilot-previous)', {
+                desc = 'Copilot previous',
+            })
+            vim.keymap.set('i', '<C-]>', '<Plug>(copilot-dismiss)', {
+                desc = 'Copilot dismiss',
+            })
+        end,
+    },
 }
