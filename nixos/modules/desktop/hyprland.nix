@@ -10,24 +10,10 @@
     withUWSM = true;
   };
 
+  services.displayManager.ly.enable = true;
+
   programs.hyprlock.enable = true;
   services.hypridle.enable = true;
-
-  services.greetd = {
-    enable = true;
-    useTextGreeter = true;
-    settings = {
-      initial_session = {
-        command = "uwsm start hyprland-uwsm.desktop";
-        user = "dwaris";
-      };
-      default_session = {
-        command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --cmd 'uwsm start hyprland-uwsm.desktop'";
-        user = "greeter";
-      };
-    };
-  };
-  security.pam.services.login.enableGnomeKeyring = true;
 
   environment.systemPackages = with pkgs; [
     hyprpaper
@@ -50,7 +36,6 @@
 
     wl-clipboard
     cliphist
-    libsecret
 
     nwg-look
     adw-gtk3
@@ -65,14 +50,10 @@
     gnome-disk-utility
     baobab
     gnome-logs
-    seahorse
   ];
 
   xdg.portal = {
     xdgOpenUsePortal = true;
-    extraPortals = with pkgs; [
-      gnome-keyring
-    ];
     config.common."org.freedesktop.impl.portal.Secret" = "gnome-keyring";
   };
 
