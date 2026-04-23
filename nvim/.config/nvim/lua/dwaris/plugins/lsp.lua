@@ -20,49 +20,108 @@ return {
         },
         config = function()
             local telescope = require 'telescope.builtin'
+            local lsp_attach_group =
+                vim.api.nvim_create_augroup('lsp-attach', { clear = true })
+            local lsp_highlight_group =
+                vim.api.nvim_create_augroup('lsp-highlight', { clear = false })
+            local lsp_detach_group =
+                vim.api.nvim_create_augroup('lsp-detach', { clear = true })
+
+            local function map(event, keys, func, desc, mode)
+                mode = mode or 'n'
+                vim.keymap.set(mode, keys, func, {
+                    buffer = event.buf,
+                    desc = 'LSP: ' .. desc,
+                })
+            end
+
+            local function setup_document_highlight(client, event)
+                if not client then
+                    return
+                end
+
+                if
+                    not client:supports_method(
+                        vim.lsp.protocol.Methods.textDocument_documentHighlight,
+                        event.buf
+                    )
+                then
+                    return
+                end
+
+                vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
+                    buffer = event.buf,
+                    group = lsp_highlight_group,
+                    callback = vim.lsp.buf.document_highlight,
+                })
+
+                vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
+                    buffer = event.buf,
+                    group = lsp_highlight_group,
+                    callback = vim.lsp.buf.clear_references,
+                })
+
+                vim.api.nvim_create_autocmd('LspDetach', {
+                    group = lsp_detach_group,
+                    callback = function(event2)
+                        vim.lsp.buf.clear_references()
+                        vim.api.nvim_clear_autocmds {
+                            group = 'lsp-highlight',
+                            buffer = event2.buf,
+                        }
+                    end,
+                })
+            end
 
             vim.api.nvim_create_autocmd('LspAttach', {
-                group = vim.api.nvim_create_augroup(
-                    'kickstart-lsp-attach',
-                    { clear = true }
-                ),
+                group = lsp_attach_group,
                 callback = function(event)
-                    local map = function(keys, func, desc, mode)
-                        mode = mode or 'n'
-                        vim.keymap.set(
-                            mode,
-                            keys,
-                            func,
-                            { buffer = event.buf, desc = 'LSP: ' .. desc }
-                        )
-                    end
-
-                    map('grn', vim.lsp.buf.rename, '[R]e[n]ame')
+                    map(event, 'grn', vim.lsp.buf.rename, '[R]e[n]ame')
                     map(
+                        event,
                         'gra',
                         vim.lsp.buf.code_action,
                         '[G]oto Code [A]ction',
                         { 'n', 'x' }
                     )
-                    map('grr', telescope.lsp_references, '[G]oto [R]eferences')
                     map(
+                        event,
+                        'grr',
+                        telescope.lsp_references,
+                        '[G]oto [R]eferences'
+                    )
+                    map(
+                        event,
                         'gri',
                         telescope.lsp_implementations,
                         '[G]oto [I]mplementation'
                     )
-                    map('grd', telescope.lsp_definitions, '[G]oto [D]efinition')
-                    map('grD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
                     map(
+                        event,
+                        'grd',
+                        telescope.lsp_definitions,
+                        '[G]oto [D]efinition'
+                    )
+                    map(
+                        event,
+                        'grD',
+                        vim.lsp.buf.declaration,
+                        '[G]oto [D]eclaration'
+                    )
+                    map(
+                        event,
                         'gO',
                         telescope.lsp_document_symbols,
                         'Open Document Symbols'
                     )
                     map(
+                        event,
                         'gW',
                         telescope.lsp_dynamic_workspace_symbols,
                         'Open Workspace Symbols'
                     )
                     map(
+                        event,
                         'grt',
                         telescope.lsp_type_definitions,
                         '[G]oto [T]ype Definition'
@@ -70,49 +129,7 @@ return {
 
                     local client =
                         vim.lsp.get_client_by_id(event.data.client_id)
-                    if
-                        client
-                        and client:supports_method(
-                            vim.lsp.protocol.Methods.textDocument_documentHighlight,
-                            event.buf
-                        )
-                    then
-                        local highlight_augroup = vim.api.nvim_create_augroup(
-                            'kickstart-lsp-highlight',
-                            { clear = false }
-                        )
-                        vim.api.nvim_create_autocmd(
-                            { 'CursorHold', 'CursorHoldI' },
-                            {
-                                buffer = event.buf,
-                                group = highlight_augroup,
-                                callback = vim.lsp.buf.document_highlight,
-                            }
-                        )
-
-                        vim.api.nvim_create_autocmd(
-                            { 'CursorMoved', 'CursorMovedI' },
-                            {
-                                buffer = event.buf,
-                                group = highlight_augroup,
-                                callback = vim.lsp.buf.clear_references,
-                            }
-                        )
-
-                        vim.api.nvim_create_autocmd('LspDetach', {
-                            group = vim.api.nvim_create_augroup(
-                                'kickstart-lsp-detach',
-                                { clear = true }
-                            ),
-                            callback = function(event2)
-                                vim.lsp.buf.clear_references()
-                                vim.api.nvim_clear_autocmds {
-                                    group = 'kickstart-lsp-highlight',
-                                    buffer = event2.buf,
-                                }
-                            end,
-                        })
-                    end
+                    setup_document_highlight(client, event)
 
                     if
                         client
@@ -121,7 +138,7 @@ return {
                             event.buf
                         )
                     then
-                        map('<leader>th', function()
+                        map(event, '<leader>th', function()
                             vim.lsp.inlay_hint.enable(
                                 not vim.lsp.inlay_hint.is_enabled {
                                     bufnr = event.buf,
@@ -136,14 +153,14 @@ return {
                 severity_sort = true,
                 float = { border = 'rounded', source = 'if_many' },
                 signs = vim.g.have_nerd_font
-                    and {
-                        text = {
-                            [vim.diagnostic.severity.ERROR] = '󰅚 ',
-                            [vim.diagnostic.severity.WARN] = '󰀪 ',
-                            [vim.diagnostic.severity.INFO] = '󰋽 ',
-                            [vim.diagnostic.severity.HINT] = '󰌶 ',
-                        },
-                    }
+                        and {
+                            text = {
+                                [vim.diagnostic.severity.ERROR] = '󰅚 ',
+                                [vim.diagnostic.severity.WARN] = '󰀪 ',
+                                [vim.diagnostic.severity.INFO] = '󰋽 ',
+                                [vim.diagnostic.severity.HINT] = '󰌶 ',
+                            },
+                        }
                     or {},
                 virtual_text = {
                     source = 'if_many',
@@ -249,19 +266,20 @@ return {
                 version = 'v2.*',
                 build = 'make install_jsregexp',
                 dependencies = {
-                   {
-                      'rafamadriz/friendly-snippets',
-                      config = function()
-                        require('luasnip.loaders.from_vscode').lazy_load()
-                      end,
+                    {
+                        'rafamadriz/friendly-snippets',
+                        config = function()
+                            require('luasnip.loaders.from_vscode').lazy_load()
+                        end,
                     },
                 },
-
             },
         },
         opts = {
             keymap = {
                 preset = 'default',
+                ['<Tab>'] = {},
+                ['<S-Tab>'] = {},
             },
             appearance = {
                 nerd_font_variant = 'mono',
