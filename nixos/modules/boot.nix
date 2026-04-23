@@ -22,6 +22,9 @@ in {
   # Note this might jump back and forth as kernels are added or removed.
   boot.kernelPackages = latestKernelPackage;
 
+  security.sudo-rs.enable = true;
+  security.sudo-rs.execWheelOnly = true;
+
   services.scx = {
     enable = true;
     scheduler = "scx_bpfland";

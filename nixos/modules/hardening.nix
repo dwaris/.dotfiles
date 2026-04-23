@@ -67,7 +67,6 @@
   };
 
   security.protectKernelImage = true;
-  security.sudo.execWheelOnly = true;
 
   services.openssh = {
     settings = {
