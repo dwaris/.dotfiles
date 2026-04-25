@@ -1,6 +1,4 @@
 {
-  config,
-  lib,
   pkgs,
   ...
 }: {
@@ -13,7 +11,6 @@
 
   environment.systemPackages = with pkgs; [
     tree-sitter
-    nodejs
     clang
 
     fd
