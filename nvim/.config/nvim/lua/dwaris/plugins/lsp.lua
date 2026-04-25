@@ -150,14 +150,14 @@ return {
                 severity_sort = true,
                 float = { border = 'rounded', source = 'if_many' },
                 signs = vim.g.have_nerd_font
-                        and {
-                            text = {
-                                [vim.diagnostic.severity.ERROR] = '󰅚 ',
-                                [vim.diagnostic.severity.WARN] = '󰀪 ',
-                                [vim.diagnostic.severity.INFO] = '󰋽 ',
-                                [vim.diagnostic.severity.HINT] = '󰌶 ',
-                            },
-                        }
+                    and {
+                        text = {
+                            [vim.diagnostic.severity.ERROR] = '󰅚 ',
+                            [vim.diagnostic.severity.WARN] = '󰀪 ',
+                            [vim.diagnostic.severity.INFO] = '󰋽 ',
+                            [vim.diagnostic.severity.HINT] = '󰌶 ',
+                        },
+                    }
                     or {},
                 virtual_text = {
                     source = 'if_many',
@@ -167,7 +167,18 @@ return {
             local capabilities = require('blink.cmp').get_lsp_capabilities()
 
             local servers = {
-                lua_ls = {},
+                lua_ls = {
+                    on_init = function(client)
+                        client.server_capabilities.documentFormattingProvider =
+                            false -- Disable formatting (formatting is done by stylua)
+                    end,
+                    ---@type lspconfig.settings.lua_ls
+                    settings = {
+                        Lua = {
+                            format = { enable = false }, -- Disable formatting (formatting is done by stylua)
+                        },
+                    },
+                },
                 -- nil_ls = {},
                 -- pyright = {},
                 -- ruff = {},
@@ -224,7 +235,6 @@ return {
                 function()
                     require('conform').format {
                         async = true,
-                        lsp_format = 'fallback',
                     }
                 end,
                 mode = '',
@@ -246,7 +256,8 @@ return {
                 toml = { 'taplo' },
             },
             notify_on_error = false,
-            format_on_save = {
+            format_on_save = {},
+            default_format_opts = {
                 timeout_ms = 500,
                 lsp_format = 'fallback',
             },
