@@ -16,6 +16,8 @@
         "--enable-zero-copy"
       ];
     })
+    vivaldi
+    vivaldi-ffmpeg-codecs
   ];
 
   programs.chromium.enable = true;
