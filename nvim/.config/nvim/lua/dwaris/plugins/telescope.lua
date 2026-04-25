@@ -1,7 +1,17 @@
 return {
   'nvim-telescope/telescope.nvim',
+  event = 'VimEnter',
+  branch = '0.1.x',
   dependencies = {
     'nvim-lua/plenary.nvim',
+    {
+      'nvim-telescope/telescope-fzf-native.nvim',
+      build = 'make',
+      cond = function()
+        return vim.fn.executable 'make' == 1
+      end,
+    },
+    { 'nvim-telescope/telescope-ui-select.nvim' },
     'nvim-tree/nvim-web-devicons',
     'nvim-telescope/telescope-file-browser.nvim',
   },
@@ -16,9 +26,15 @@ return {
           treesitter = false,
         },
       },
+      extensions = {
+        ['ui-select'] = {
+          themes.get_dropdown(),
+        },
+      },
     }
 
     pcall(telescope.load_extension, 'fzf')
+    pcall(telescope.load_extension, 'ui-select')
     pcall(telescope.load_extension, 'file_browser')
 
     vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
