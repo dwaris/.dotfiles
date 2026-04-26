@@ -150,14 +150,14 @@ return {
                 severity_sort = true,
                 float = { border = 'rounded', source = 'if_many' },
                 signs = vim.g.have_nerd_font
-                    and {
-                        text = {
-                            [vim.diagnostic.severity.ERROR] = '󰅚 ',
-                            [vim.diagnostic.severity.WARN] = '󰀪 ',
-                            [vim.diagnostic.severity.INFO] = '󰋽 ',
-                            [vim.diagnostic.severity.HINT] = '󰌶 ',
-                        },
-                    }
+                        and {
+                            text = {
+                                [vim.diagnostic.severity.ERROR] = '󰅚 ',
+                                [vim.diagnostic.severity.WARN] = '󰀪 ',
+                                [vim.diagnostic.severity.INFO] = '󰋽 ',
+                                [vim.diagnostic.severity.HINT] = '󰌶 ',
+                            },
+                        }
                     or {},
                 virtual_text = {
                     source = 'if_many',
@@ -179,26 +179,26 @@ return {
                         },
                     },
                 },
-                -- nil_ls = {},
-                -- pyright = {},
-                -- ruff = {},
-                -- gopls = {},
-                -- rust_analyzer = {},
-                -- texlab = {},
-                -- marksman = {},
-                -- ts_ls = {},
-                -- biome = {},
-                -- yamlls = {},
-                -- taplo = {},
-                -- expert = {},
+                nil_ls = {},
+                pyright = {},
+                ruff = {},
+                gopls = {},
+                rust_analyzer = {},
+                texlab = {},
+                marksman = {},
+                ts_ls = {},
+                biome = {},
+                yamlls = {},
+                taplo = {},
+                expert = {},
+                zls = {},
             }
             local ensure_installed = vim.tbl_keys(servers or {})
             vim.list_extend(ensure_installed, {
                 'stylua',
-                -- 'alejandra',
-                -- 'goimports',
-                -- 'biome',
-                -- 'tex-fmt',
+                'alejandra',
+                'goimports',
+                'tex-fmt',
             })
 
             require('mason-tool-installer').setup {
