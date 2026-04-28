@@ -57,6 +57,7 @@
     adwaita-icon-theme
     kdePackages.qt6ct
     kdePackages.breeze-icons
+    rose-pine-hyprcursor
 
     file-roller
     papers
