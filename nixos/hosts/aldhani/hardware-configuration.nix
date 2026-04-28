@@ -22,12 +22,6 @@
     options = ["zfsutil"];
   };
 
-  fileSystems."/var" = {
-    device = "zpool/nixos/var";
-    fsType = "zfs";
-    options = ["zfsutil"];
-  };
-
   fileSystems."/nix" = {
     device = "zpool/nixos/nix";
     fsType = "zfs";
@@ -40,10 +34,16 @@
     options = ["zfsutil"];
   };
 
+  fileSystems."/var" = {
+    device = "zpool/nixos/var";
+    fsType = "zfs";
+    options = ["zfsutil"];
+  };
+
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/7321-60A4";
+    device = "/dev/disk/by-uuid/25B2-D08E";
     fsType = "vfat";
-    options = ["fmask=0077" "dmask=0077"];
+    options = ["fmask=0022" "dmask=0022"];
   };
 
   swapDevices = [];
