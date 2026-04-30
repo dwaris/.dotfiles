@@ -220,7 +220,7 @@
     "custom/launcher": {
         "format": "",
         "tooltip": false,
-        "on-click": "nc -U /run/user/1000/walker/walker.sock"
+        "on-click": "nc -U /run/user/$UID/walker/walker.sock"
     },
     "idle_inhibitor": {
         "exec": "sh ~/.config/waybar/scripts/idle_inhibitor.sh",
