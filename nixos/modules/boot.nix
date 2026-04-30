@@ -60,10 +60,8 @@ in {
 
   # Enable networking
   networking = {
-    wireless.iwd.enable = true;
     networkmanager = {
       enable = true;
-      wifi.backend = "iwd";
       plugins = with pkgs; [networkmanager-openvpn];
     };
   };
