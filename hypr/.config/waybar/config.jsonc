@@ -127,7 +127,7 @@
         "tooltip-format-disconnected": "Disconnected",
         "interval": 3,
         "spacing": 1,
-        "on-click": "ghostty -e nmtui"
+        "on-click": "ghostty -e impala"
     },
     "custom/vpn": {
         "exec": "sh ~/.config/waybar/scripts/vpn_status.sh",
