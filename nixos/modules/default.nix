@@ -8,6 +8,8 @@
     ./system.nix
     ./hardening.nix
 
+    ./networking/network-services.nix
+
     ./desktop
     ./desktop/hyprland.nix
 

@@ -10,7 +10,8 @@
 }: {
   imports = [
     ../../modules
-    ../../modules/boot.nix
+    ../../modules/bootloader.nix
+    ../../modules/zfs.nix
     # ../../modules/cli/k8s.nix
     ../../modules/gui/gaming
 
