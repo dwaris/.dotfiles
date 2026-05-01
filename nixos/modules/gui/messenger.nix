@@ -10,7 +10,4 @@
 
     thunderbird
   ];
-
-  # services.protonmail-bridge.enable = true;
-  # services.protonmail-bridge.path = [ pkgs.gnome-keyring ];
 }
