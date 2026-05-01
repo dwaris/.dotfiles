@@ -5,3 +5,4 @@ theme =  dark:Catppuccin Mocha,light:Catppuccin Latte
 maximize = true
 command = ~/.config/ghostty/ghostty-tmux.sh
 confirm-close-surface = false
+keybind = ctrl+enter=unbind
