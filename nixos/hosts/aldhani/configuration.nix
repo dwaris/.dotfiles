@@ -8,7 +8,8 @@
 }: {
   imports = [
     ../../modules
-    ../../modules/boot.nix
+    ../../modules/bootloader.nix
+    ../../modules/zfs.nix
     ../../modules/cli/podman.nix
 
     ./hardware-configuration.nix

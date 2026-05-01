@@ -5,6 +5,10 @@
   lib,
   ...
 }: {
+  imports = [
+    ../networking/iwd-networkd.nix
+  ];
+
   programs.hyprland = {
     enable = true;
     withUWSM = true;

@@ -9,18 +9,13 @@
 }: {
   imports = [
     ../../modules
+    ../../modules/networking/network-services.nix
 
     ./hardware-configuration.nix
   ];
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.plymouth.enable = true;
-
-  networking.networkmanager.enable = true;
-  networking.networkmanager.plugins = with pkgs; [networkmanager-openvpn];
-  networking.networkmanager.dns = "systemd-resolved";
-  systemd.services.NetworkManager-wait-online.enable = false;
-  services.resolved.enable = true;
 
   networking.hostName = "batuu";
   networking.hostId = "97f81ac7";

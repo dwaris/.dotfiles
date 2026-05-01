@@ -12,6 +12,8 @@
 
     ../../modules/desktop
     ../../modules/desktop/kde.nix
+    
+    ../../modules/networking/networkmanager.nix
 
     ../../modules/cli
     ./hardware-configuration.nix
@@ -19,11 +21,6 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.plymouth.enable = true;
-
-  networking.networkmanager.enable = true;
-  networking.networkmanager.plugins = with pkgs; [networkmanager-openvpn];
-  systemd.services.NetworkManager-wait-online.enable = false;
-  services.resolved.enable = true;
 
   networking.hostName = "kashyyyk";
   networking.hostId = "f0cacf30";
