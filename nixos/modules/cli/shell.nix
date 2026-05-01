@@ -10,6 +10,7 @@
     eza
     bat
     starship
+    tmux
   ];
 
   programs = {
