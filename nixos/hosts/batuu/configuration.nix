@@ -9,7 +9,6 @@
 }: {
   imports = [
     ../../modules
-    ../../modules/networking/network-services.nix
 
     ./hardware-configuration.nix
   ];
