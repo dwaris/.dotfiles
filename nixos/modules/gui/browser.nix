@@ -9,12 +9,9 @@
       enableWideVine = true;
       commandLineArgs = [
         "--password-store=gnome-libsecret"
-        "--enable-features=AcceleratedVideoEncoder,VaapiOnNvidiaGPUs,VaapiIgnoreDriverChecks,Vulkan,DefaultANGLEVulkan,VulkanFromANGLE"
-        "--enable-features=VaapiIgnoreDriverChecks,VaapiVideoDecoder,PlatformHEVCDecoderSupport"
-        "--enable-features=UseMultiPlaneFormatForHardwareVideo"
-        "--ignore-gpu-blocklist"
-        "--enable-zero-copy"
-      ];
+        "--enable-features=AcceleratedVideoDecodeLinuxGL,AcceleratedVideoEncoder,Vulkan"
+        "--disable-features=UseChromeOSDirectVideoDecoder"
+       ];
     })
   ];
 
