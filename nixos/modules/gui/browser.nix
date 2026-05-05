@@ -9,7 +9,7 @@
       enableWideVine = true;
       commandLineArgs = [
         "--password-store=gnome-libsecret"
-        "--enable-features=AcceleratedVideoDecodeLinuxGL,AcceleratedVideoEncoder,Vulkan"
+        "--enable-features=AcceleratedVideoDecodeLinuxGL,AcceleratedVideoEncoder"
         "--disable-features=UseChromeOSDirectVideoDecoder"
        ];
     })
