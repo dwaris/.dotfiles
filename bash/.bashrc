@@ -12,7 +12,7 @@ shopt -s extglob
 shopt -s checkjobs
 shopt -s globstar 2>/dev/null 
 
-export PATH="$HOME/.cargo/bin:$HOME/go/bin:$PATH"
+export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$HOME/go/bin:$PATH"
 export PAGER="less -R"
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 
