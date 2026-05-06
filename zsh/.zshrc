@@ -12,7 +12,7 @@ source "$HOME/.zinit/bin/zinit.zsh"
 #####################
 # ENVIRONMENT       #
 #####################
-export PATH="$HOME/.cargo/bin:$HOME/go/bin:$PATH"
+export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$HOME/go/bin:$PATH"
 export EDITOR=nvim
 export PAGER="bat --plain --paging=always"
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
