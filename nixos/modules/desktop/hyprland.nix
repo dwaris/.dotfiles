@@ -51,9 +51,11 @@
     rose-pine-hyprcursor
 
     file-roller
-    papers
-    loupe
     nautilus
+    loupe
+    totem
+    papers
+    gnome-epub-thumbnailer
     gnome-disk-utility
     baobab
     gnome-logs
