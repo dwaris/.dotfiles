@@ -13,7 +13,7 @@
   ];
 
   fileSystems."/home/dwaris/Nextcloud" = {
-    device = "zpool/nextcloud";
+    device = "zpool/shared/nextcloud";
     fsType = "zfs";
     options = ["zfsutil" "nofail"];
   };

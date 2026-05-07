@@ -86,5 +86,41 @@
     shell = pkgs.zsh;
   };
 
+  fileSystems."/home/dwaris/Documents" = {
+    device = "zpool/shared/dwaris/documents";
+    fsType = "zfs";
+    options = ["zfsutil"];
+  };
+
+  fileSystems."/home/dwaris/Downloads" = {
+    device = "zpool/shared/dwaris/downloads";
+    fsType = "zfs";
+    options = ["zfsutil"];
+  };
+
+  fileSystems."/home/dwaris/Music" = {
+    device = "zpool/shared/dwaris/music";
+    fsType = "zfs";
+    options = ["zfsutil"];
+  };
+
+  fileSystems."/home/dwaris/Pictures" = {
+    device = "zpool/shared/dwaris/pictures";
+    fsType = "zfs";
+    options = ["zfsutil"];
+  };
+
+  fileSystems."/home/dwaris/Projects" = {
+    device = "zpool/shared/dwaris/projects";
+    fsType = "zfs";
+    options = ["zfsutil"];
+  };
+
+  fileSystems."/home/dwaris/Videos" = {
+    device = "zpool/shared/dwaris/videos";
+    fsType = "zfs";
+    options = ["zfsutil"];
+  };
+
   system.stateVersion = "23.11"; # Did you read the comment?
 }
