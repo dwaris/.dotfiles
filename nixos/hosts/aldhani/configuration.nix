@@ -79,8 +79,13 @@
     '';
   };
 
+  users.groups.dwaris = {
+    gid = 1000;
+  };
   users.users.dwaris = {
     isNormalUser = true;
+    uid = 1000;
+    group = "dwaris";
     description = "dwaris";
     extraGroups = ["wheel" "networkmanager"];
     shell = pkgs.zsh;
