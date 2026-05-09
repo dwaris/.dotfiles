@@ -87,7 +87,7 @@
     uid = 1000;
     group = "dwaris";
     description = "dwaris";
-    extraGroups = ["wheel" "networkmanager"];
+    extraGroups = ["wheel"];
     shell = pkgs.zsh;
   };
 
