@@ -217,7 +217,9 @@
         "spacing": 12
     },
     "custom/launcher": {
-        "format": "",
+        "format": "{}",
+        "exec": "~/.config/waybar/scripts/get_icon.sh",
+        "interval": "once",
         "tooltip": false,
         "on-click": "nc -U /run/user/$UID/walker/walker.sock"
     },
