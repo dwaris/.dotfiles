@@ -10,7 +10,7 @@
   ];
 
   fileSystems."/home/dwaris/Games" = {
-    device = "zpool/games";
+    device = "zpool/shared/games";
     fsType = "zfs";
     options = ["zfsutil" "nofail"];
   };
