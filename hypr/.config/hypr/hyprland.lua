@@ -186,6 +186,7 @@ hl.animation({ leaf = "zoomFactor",    enabled = true,  speed = 7,    bezier = "
 -- See https://wiki.hypr.land/Configuring/Layouts/Dwindle-Layout/ for more
 hl.config({
     dwindle = {
+        force_split = 2,
         preserve_split = true, -- You probably want this
     },
 })
@@ -212,6 +213,10 @@ hl.config({
     misc = {
         force_default_wallpaper = 0,    -- Set to 0 or 1 to disable the anime mascot wallpapers
         disable_hyprland_logo   = true, -- If true disables the random hyprland logo / anime girl background. :(
+        mouse_move_enables_dpms = true,
+        key_press_enables_dpms = true,
+        focus_on_activate = true,
+        on_focus_under_fullscreen = 1,
     },
 })
 
