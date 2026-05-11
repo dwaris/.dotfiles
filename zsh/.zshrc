@@ -65,7 +65,7 @@ alias mv='mv -v'
 alias less='bat --style=plain --paging=always'
 alias vim=nvim
 
-bindkey -v
-export KEYTIMEOUT=15
+bindkey -e
+export KEYTIMEOUT=1
 
 eval "$(starship init zsh)"
