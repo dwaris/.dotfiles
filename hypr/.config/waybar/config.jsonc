@@ -221,7 +221,7 @@
         "exec": "~/.config/waybar/scripts/get_icon.sh",
         "interval": "once",
         "tooltip": false,
-        "on-click": "nc -U /run/user/$UID/walker/walker.sock"
+        "on-click": "nc -U $XDG_RUNTIME_DIR/walker/walker.sock"
     },
     "idle_inhibitor": {
         "exec": "sh ~/.config/waybar/scripts/idle_inhibitor.sh",
