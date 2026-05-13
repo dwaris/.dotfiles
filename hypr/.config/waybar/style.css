@@ -66,6 +66,10 @@
   color: @red;
 }
 
+#pulseaudio.sink:not(.muted) {
+  color: @text;
+}
+
 #backlight:hover,
 #battery:hover,
 #bluetooth:hover,
