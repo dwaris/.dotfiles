@@ -85,7 +85,13 @@
   padding: 0.5rem 1rem;
 }
 
-#workspaces button:hover,
+#workspaces button {
+  background: transparent;
+}
+#workspaces button:hover {
+  background-color: @surface1;
+  opacity: 1.0;
+}
 #backlight:hover,
 #battery:hover,
 #bluetooth:hover,
