@@ -13,61 +13,18 @@
   background-color: @surface0;
 }
 
-.modules-left {
-  margin-left: 1rem;
-}
 
-.modules-right {
-  margin-right: 1rem;
-}
+.modules-left { margin-left: 1rem; }
+.modules-right { margin-right: 1rem; }
 
-#workspaces button.active {
-  color: @mauve;
-}
-
-#workspaces button.empty {
-  opacity: 0.5;
-}
-
-#custom-power,
-#workspaces button.urgent,
-#pulseaudio.source-muted,
-#pulseaudio.sink.muted {
-  color: @red;
-}
-
-#pulseaudio.sink:not(.muted) {
-  color: @text;
+#custom-launcher {
+  padding: 0 0.5rem;
 }
 
 #tray menu {
   background-color: @surface0;
   border: 1px solid @surface2;
   padding: 0.25rem;
-}
-
-#battery.charging {
-  color: @green;
-}
-
-#custom-vpn.connected {
-  color: @green;
-}
-
-#custom-vpn.warning {
-  color: @text;
-}
-
-#custom-vpn.disconnected {
-  color: @text;
-}
-
-#battery.warning:not(.charging) {
-  color: @red;
-}
-
-#custom-launcher {
-  padding: 0 0.5rem;
 }
 
 #tray,
@@ -85,6 +42,9 @@
   padding: 0.5rem 1rem;
 }
 
+
+#workspaces button.active { color: @mauve; }
+#workspaces button.empty { opacity: 0.5; }
 #workspaces button {
   background: transparent;
 }
@@ -92,6 +52,20 @@
   background-color: @surface1;
   opacity: 1.0;
 }
+
+#battery.charging,
+#custom-vpn.connected {
+  color: @green;
+}
+
+#custom-power,
+#workspaces button.urgent,
+#pulseaudio.source-muted,
+#pulseaudio.sink.muted,
+#battery.warning:not(.charging) {
+  color: @red;
+}
+
 #backlight:hover,
 #battery:hover,
 #bluetooth:hover,
