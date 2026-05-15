@@ -37,9 +37,10 @@ hl.monitor({
 -- aldhani
 hl.monitor({
     output   = "desc:Lenovo Group Limited 0x40A9",
-    mode     = "preferred",
-    position = "auto",
-    scale    = "auto",
+    mode     = "1920x1080@60",
+    position = "0x0",
+    scale    = "1",
+    icc      = "/home/dwaris/Nextcloud/Backup/Monitors/T14G2a/R140NWF5_RA.icm"
 })
 
 -- fallback
