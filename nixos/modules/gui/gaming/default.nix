@@ -20,6 +20,11 @@
     "performance"
     "-w"
   ];
+  services.ananicy = {
+    enable = true;
+    rulesProvider = pkgs.ananicy-rules-cachyos;
+  };
+
   programs.gpu-screen-recorder.enable = true;
   environment.systemPackages = with pkgs; [
     gpu-screen-recorder-gtk
