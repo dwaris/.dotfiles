@@ -26,7 +26,7 @@
     user = "dwaris";
   };
   services.displayManager.defaultSession = "hyprland-uwsm";
-  security.pam.services.sddm.enableGnomeKeyring = lib.mkForce false;
+  security.pam.services.sddm.enableGnomeKeyring = true;
 
   environment.systemPackages = with pkgs; [
     hyprpaper
