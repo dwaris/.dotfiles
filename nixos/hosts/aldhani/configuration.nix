@@ -95,8 +95,9 @@
     enable = true;
     clean.enable = true;
     clean.extraArgs = "--keep-since 4d --keep 3";
-    flake = "~/Projects/.dotfiles/nixos";
+    flake = "/home/dwaris/Projects/.dotfiles/nixos";
   };
+  nix.gc.automatic = mkDefault false;
 
   fileSystems."/home/dwaris/Documents" = {
     device = "zpool/shared/dwaris/documents";
