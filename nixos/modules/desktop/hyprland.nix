@@ -17,8 +17,16 @@
   programs.hyprlock.enable = true;
   services.hypridle.enable = true;
 
-  services.displayManager.ly.enable = true;
-  security.pam.services.login.enableGnomeKeyring = true;
+  services.displayManager.sddm = {
+    enable = true;
+    wayland.enable = true;
+  };
+  services.displayManager.autoLogin = {
+    enable = true;
+    user = "dwaris";
+  };
+  services.displayManager.defaultSession = "hyprland-uwsm";
+  security.pam.services.sddm.enableGnomeKeyring = lib.mkForce false;
 
   environment.systemPackages = with pkgs; [
     hyprpaper
