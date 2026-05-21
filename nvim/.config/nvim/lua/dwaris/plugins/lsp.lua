@@ -179,26 +179,26 @@ return {
                         },
                     },
                 },
-                nil_ls = {},
-                pyright = {},
-                ruff = {},
-                gopls = {},
-                rust_analyzer = {},
-                texlab = {},
-                marksman = {},
-                ts_ls = {},
-                biome = {},
-                yamlls = {},
-                taplo = {},
-                expert = {},
-                zls = {},
-            }
+            --     nil_ls = {},
+            --     pyright = {},
+            --     ruff = {},
+            --     gopls = {},
+            --     rust_analyzer = {},
+            --     texlab = {},
+            --     marksman = {},
+            --     ts_ls = {},
+            --     biome = {},
+            --     yamlls = {},
+            --     taplo = {},
+            --     expert = {},
+            --     zls = {},
+            -- }
             local ensure_installed = vim.tbl_keys(servers or {})
             vim.list_extend(ensure_installed, {
                 'stylua',
-                'alejandra',
-                'goimports',
-                'tex-fmt',
+            --     'alejandra',
+            --     'goimports',
+            --     'tex-fmt',
             })
 
             require('mason-tool-installer').setup {
