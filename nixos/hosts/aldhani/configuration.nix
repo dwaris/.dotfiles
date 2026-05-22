@@ -36,6 +36,10 @@
   };
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = false;
+  
+  services.tuned.ppdSettings.profiles = {
+    balanced = "balanced-battery";
+  };
 
   services.logind.settings.Login = {
     LidSwitchIgnoreInhibited = "no";
