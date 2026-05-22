@@ -31,8 +31,6 @@
 
   services.fprintd.enable = false;
 
-  services.power-profiles-daemon.enable = true;
-
   hardware.graphics.enable = true;
   hardware.amdgpu = {
     opencl.enable = true;
