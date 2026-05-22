@@ -5,19 +5,10 @@
   ...
 }: {
   environment.systemPackages = with pkgs; [
-    # archives
-    zip
-    unzip
+    fd
+    ripgrep
 
-    # network
-    rsync
-
-    # system monitoring
-    htop
     bottom
     lm_sensors
-
-    # git
-    lazygit
   ];
 }
