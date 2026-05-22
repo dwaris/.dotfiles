@@ -58,6 +58,8 @@
     kdePackages.breeze-icons
     rose-pine-hyprcursor
 
+    powertop
+
     file-roller
     nautilus
     loupe
