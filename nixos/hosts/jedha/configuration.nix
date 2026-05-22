@@ -48,9 +48,7 @@
 
   environment.systemPackages = with pkgs; [
     easyeffects
-    via
   ];
-  services.udev.packages = with pkgs; [ via ];
 
   hardware.graphics = {
     enable = true;
@@ -85,14 +83,6 @@
     extraGroups = ["wheel"];
     shell = pkgs.zsh;
   };
-
-  programs.nh = {
-    enable = true;
-    clean.enable = true;
-    clean.extraArgs = "--keep-since 4d --keep 3";
-    flake = "/home/dwaris/Projects/.dotfiles/nixos";
-  };
-  nix.gc.automatic = lib.mkDefault false;
 
   fileSystems."/home/dwaris/Documents" = {
     device = "zpool/shared/dwaris/documents";
