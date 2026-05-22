@@ -5,24 +5,42 @@
     networks = {
       "20-ethernet" = {
         matchConfig = {
-          Name = "e*";
+          Name = "en*";
+        };
+        linkConfig = {
+          RequiredForOnline = "routable";
         };
         networkConfig = {
           DHCP = "yes";
+        };
+        dhcpV4Config = {
+          RouteMetric = 100;
+        };
+        ipv6AcceptRAConfig = {
+          RouteMetric = 100;
         };
       };
 
       "25-wireless" = {
         matchConfig = {
-          Name = "w*";
+          Name = "wl*";
+        };
+        linkConfig = {
+          RequiredForOnline = "routable";
         };
         networkConfig = {
           DHCP = "yes";
         };
+        dhcpV4Config = {
+          RouteMetric = 600;
+        };
+        ipv6AcceptRAConfig = {
+          RouteMetric = 600;
+        };
       };
     };
   };
-  systemd.network.wait-online.enable = true;
+  systemd.network.wait-online.enable = false;
 
   networking.wireless.iwd.enable = true;
 
