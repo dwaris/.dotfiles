@@ -104,7 +104,7 @@
         },
         "tooltip-format-discharging": "{power:>1.0f}W↓ {capacity}%",
         "tooltip-format-charging": "{power:>1.0f}W↑ {capacity}%",
-        "interval": 5,
+        "interval": 30,
         "states": {
             "warning": 20,
             "critical": 10
@@ -125,7 +125,7 @@
         "tooltip-format-wifi": "{ipaddr}\n{essid} {signaldBm} ({frequency} GHz)\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
         "tooltip-format-ethernet": "{ipaddr}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
         "tooltip-format-disconnected": "Disconnected",
-        "interval": 3,
+        "interval": 10,
         "spacing": 1,
         "on-click": "ghostty -e impala"
     },
@@ -237,7 +237,7 @@
     "custom/dnd": {
         "format": "{}",
         "exec": "makoctl mode | grep -q 'dnd' && echo '' || echo ''",
-        "interval": 2,
+        "interval": 10,
         "on-click": "makoctl mode -t dnd",
         "tooltip": false
     },
