@@ -44,8 +44,6 @@
     intel-compute-runtime-legacy1
   ];
 
-  services.power-profiles-daemon.enable = true;
-
   services.thermald.enable = true;
 
   users.users.betty = {
