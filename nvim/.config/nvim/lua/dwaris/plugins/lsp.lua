@@ -179,6 +179,7 @@ return {
                         },
                     },
                 },
+                nixd = {},
             --     nil_ls = {},
             --     pyright = {},
             --     ruff = {},
@@ -193,35 +194,29 @@ return {
             --     expert = {},
             --     zls = {},
             }
-            local ensure_installed = vim.tbl_keys(servers or {})
-            vim.list_extend(ensure_installed, {
-                'stylua',
-            --     'alejandra',
-            --     'goimports',
-            --     'tex-fmt',
-            })
 
+            for name, config in pairs(servers) do
+                config.capabilities = vim.tbl_deep_extend(
+                    'force',
+                    {},
+                    capabilities,
+                    config.capabilities or {}
+                )
+                vim.lsp.config(name, config)
+                vim.lsp.enable(name)
+            end
+
+            local ensure_installed = { 
+                'stylua' 
+                --     'alejandra',
+                --     'goimports',
+                --     'tex-fmt',
+            }
             require('mason-tool-installer').setup {
                 ensure_installed = ensure_installed,
             }
 
-            require('mason-lspconfig').setup {
-                -- Install management is handled by mason-tool-installer.
-                ensure_installed = {},
-                automatic_installation = false,
-                handlers = {
-                    function(server_name)
-                        local server = servers[server_name] or {}
-                        server.capabilities = vim.tbl_deep_extend(
-                            'force',
-                            {},
-                            capabilities,
-                            server.capabilities or {}
-                        )
-                        require('lspconfig')[server_name].setup(server)
-                    end,
-                },
-            }
+            require('mason-lspconfig').setup {}
         end,
     },
 
@@ -247,12 +242,12 @@ return {
                 go = { 'goimports', 'gofmt' },
                 rust = { 'rustfmt' },
                 nix = { 'alejandra' },
-                elixir = { 'mix' },
-                latex = { 'tex-fmt' },
-                javascript = { 'biome' },
-                typescript = { 'biome' },
-                json = { 'biome' },
-                toml = { 'taplo' },
+            --     elixir = { 'mix' },
+            --     latex = { 'tex-fmt' },
+            --     javascript = { 'biome' },
+            --     typescript = { 'biome' },
+            --     json = { 'biome' },
+            --     toml = { 'taplo' },
             },
             notify_on_error = false,
             format_on_save = {},
