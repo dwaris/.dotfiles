@@ -25,9 +25,7 @@
   networking.hostName = "aldhani"; # Define your hostname.
   networking.hostId = "2ffb69ed";
 
-  environment.systemPackages = with pkgs; [
-    mesen
-  ];
+  environment.systemPackages = with pkgs; [ ];
 
   services.fprintd.enable = false;
 
@@ -89,14 +87,6 @@
     extraGroups = ["wheel"];
     shell = pkgs.zsh;
   };
-
-  programs.nh = {
-    enable = true;
-    clean.enable = true;
-    clean.extraArgs = "--keep-since 4d --keep 3";
-    flake = "/home/dwaris/Projects/.dotfiles/nixos";
-  };
-  nix.gc.automatic = lib.mkDefault false;
 
   fileSystems."/home/dwaris/Documents" = {
     device = "zpool/shared/dwaris/documents";
