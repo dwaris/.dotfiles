@@ -6,7 +6,8 @@
 }: {
   environment.systemPackages = with pkgs; [
     ghostty
-    gemini-cli
+
+    opencode
     neovide
     vscode-fhs
   ];
