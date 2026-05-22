@@ -13,11 +13,6 @@
     tree-sitter
     clang
 
-    rustup
-    go
-    python3
-    nodejs
-
     fd
     wget
     ripgrep
