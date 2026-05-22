@@ -316,7 +316,7 @@ hl.bind(mainMod .. " + ALT + H", hl.dsp.exec_cmd("hyprctl reload"))
 
 -- Screen locking and Waybar toggles
 hl.bind("SUPER + CTRL + L", hl.dsp.exec_cmd("uwsm app -- hyprlock"))
-hl.bind(mainMod .. " + T", hl.dsp.exec_cmd("pkill -SIGUSR1 waybar"))
+hl.bind(mainMod .. " + T", hl.dsp.exec_cmd("pkill -SIGUSR2 waybar"))
 
 -- Fullscreen toggles
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ mode = "maximized", action = "toggle" }))
