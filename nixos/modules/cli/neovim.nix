@@ -11,10 +11,6 @@
 
   environment.systemPackages = with pkgs; [
     tree-sitter
-    clang
-
-    fd
-    wget
-    ripgrep
+    lazygit
   ];
 }

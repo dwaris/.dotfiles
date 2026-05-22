@@ -67,7 +67,15 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     vim
-    curl
     git
+
+    zip
+    unzip
+
+    curl
+    wget
+    rsync
+
+    htop
   ];
 }
