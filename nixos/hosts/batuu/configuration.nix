@@ -44,6 +44,9 @@
     intel-compute-runtime-legacy1
   ];
 
+  services.tuned.ppdSettings.profiles = {
+    balanced = "balanced-battery";
+  };
   services.thermald.enable = true;
 
   users.users.betty = {
