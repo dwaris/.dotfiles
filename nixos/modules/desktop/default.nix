@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: {
   services.kmscon.enable = true;
@@ -30,6 +31,11 @@
   services.tuned = {
     enable = true;
     settings.dynamic_tuning = true;
+    ppdSettings.profiles = {
+      balanced = lib.mkDefault "balanced";
+      performance = lib.mkDefault "throughput-performance";
+      power-saver = lib.mkDefault "powersave";
+    };
   };
 
   services.printing = {
