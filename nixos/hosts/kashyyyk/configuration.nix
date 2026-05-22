@@ -36,6 +36,8 @@
     firefox
     chromium
 
+    thunderbird
+
     libreoffice-qt
     hunspell
     hunspellDicts.de_DE
