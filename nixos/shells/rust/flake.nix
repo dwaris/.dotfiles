@@ -14,6 +14,8 @@
             rustup
             openssl
             pkg-config
+
+            clang
           ];
         };
     });
