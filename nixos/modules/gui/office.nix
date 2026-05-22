@@ -6,7 +6,6 @@
 }: {
   environment.systemPackages = with pkgs; [
     obsidian
-    joplin-desktop
 
     anki-bin
 
