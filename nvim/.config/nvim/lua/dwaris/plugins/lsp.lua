@@ -13,7 +13,6 @@ return {
         dependencies = {
             { 'mason-org/mason.nvim', opts = {} },
             'mason-org/mason-lspconfig.nvim',
-            'WhoIsSethDaniel/mason-tool-installer.nvim',
         },
         config = function()
             local telescope = require 'telescope.builtin'
@@ -180,7 +179,6 @@ return {
                     },
                 },
                 nixd = {},
-            --     nil_ls = {},
             --     pyright = {},
             --     ruff = {},
             --     gopls = {},
@@ -189,7 +187,6 @@ return {
             --     marksman = {},
             --     ts_ls = {},
             --     biome = {},
-            --     yamlls = {},
             --     taplo = {},
             --     expert = {},
             --     zls = {},
@@ -206,17 +203,14 @@ return {
                 vim.lsp.enable(name)
             end
 
-            local ensure_installed = { 
-                'stylua' 
-                --     'alejandra',
-                --     'goimports',
-                --     'tex-fmt',
+            require('mason-lspconfig').setup {
+                -- ensure_installed = {
+                --     "lua_ls",
+                --     "rust_analyzer",
+                --     "gopls",
+                --     "pyright",
+                -- },
             }
-            require('mason-tool-installer').setup {
-                ensure_installed = ensure_installed,
-            }
-
-            require('mason-lspconfig').setup {}
         end,
     },
 
@@ -242,12 +236,12 @@ return {
                 go = { 'goimports', 'gofmt' },
                 rust = { 'rustfmt' },
                 nix = { 'alejandra' },
-            --     elixir = { 'mix' },
-            --     latex = { 'tex-fmt' },
-            --     javascript = { 'biome' },
-            --     typescript = { 'biome' },
-            --     json = { 'biome' },
-            --     toml = { 'taplo' },
+                elixir = { 'mix' },
+                latex = { 'tex-fmt' },
+                javascript = { 'biome' },
+                typescript = { 'biome' },
+                json = { 'biome' },
+                toml = { 'taplo' },
             },
             notify_on_error = false,
             format_on_save = {},
