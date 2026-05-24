@@ -9,6 +9,7 @@
 }: {
   imports = [
     ../../modules
+    ../../modules/desktop/laptop.nix
 
     ./hardware-configuration.nix
   ];
@@ -43,10 +44,6 @@
     intel-media-driver
     intel-compute-runtime-legacy1
   ];
-
-  services.tuned.ppdSettings.profiles = {
-    balanced = "balanced-battery";
-  };
   services.thermald.enable = true;
 
   users.users.betty = {
