@@ -11,6 +11,7 @@
     ../../modules
     ../../modules/secure-boot.nix
     ../../modules/zfs.nix
+    ../../modules/desktop/laptop.nix
     ../../modules/cli/podman.nix
 
     ./hardware-configuration.nix
@@ -36,15 +37,6 @@
   };
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = false;
-  
-  services.tuned.ppdSettings.profiles = {
-    balanced = "balanced-battery";
-  };
-
-  services.logind.settings.Login = {
-    LidSwitchIgnoreInhibited = "no";
-    KillUserProcesses = false;
-  };
 
   services.udev.extraRules = ''
     ACTION=="add", SUBSYSTEM=="leds", KERNEL=="*micmute", RUN+="${pkgs.coreutils}/bin/chmod 666 /sys/class/leds/%k/brightness"

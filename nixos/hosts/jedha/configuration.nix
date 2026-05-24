@@ -12,6 +12,7 @@
     ../../modules
     ../../modules/secure-boot.nix
     ../../modules/zfs.nix
+    ../../modules/desktop/desktop.nix
     # ../../modules/cli/k8s.nix
     ../../modules/gui/gaming
 
@@ -60,12 +61,6 @@
   };
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = false;
-
-  services.tuned.ppdSettings.profiles = {
-    balanced = "desktop";
-    performance = "throughput-performance";
-    power-saver = "desktop-powersave";
-  };
 
   services.pipewire = {
     extraConfig.pipewire."92-low-latency" = {

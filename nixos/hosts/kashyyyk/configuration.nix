@@ -12,6 +12,7 @@
 
     ../../modules/desktop
     ../../modules/desktop/kde.nix
+    ../../modules/desktop/laptop.nix
     
     ../../modules/networking/networkmanager.nix
 
@@ -52,10 +53,6 @@
     intel-media-driver
     intel-compute-runtime-legacy1
   ];
-
-  services.tuned.ppdSettings.profiles = {
-    balanced = "balanced-battery";
-  };
   services.thermald.enable = true;
 
   users.users.betty = {
