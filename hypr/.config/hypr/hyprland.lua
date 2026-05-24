@@ -315,7 +315,7 @@ hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd("playerctl previous"),   { locked = tr
 hl.bind(mainMod .. " + ALT + H", hl.dsp.exec_cmd("hyprctl reload"))
 
 -- Screen locking and Waybar toggles
-hl.bind("SUPER + CTRL + L", hl.dsp.exec_cmd("uwsm app -- hyprlock"))
+hl.bind("SUPER + CTRL + L", hl.dsp.exec_cmd("uwsm-app -- hyprlock"))
 hl.bind(mainMod .. " + T", hl.dsp.exec_cmd("pkill -SIGUSR2 waybar"))
 
 -- Fullscreen toggles
