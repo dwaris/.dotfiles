@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   boot.loader.systemd-boot = {
     enable = false;
-    configurationLimit = 10;
+    configurationLimit = 8;
   };
 
   boot.lanzaboote = {
