@@ -12,7 +12,7 @@
 
     ../../modules/desktop
     ../../modules/desktop/kde.nix
-    ../../modules/desktop/laptop.nix
+    ../../modules/power/laptop.nix
     
     ../../modules/networking/networkmanager.nix
 

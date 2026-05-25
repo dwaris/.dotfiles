@@ -11,7 +11,7 @@
     ../../modules
     ../../modules/secure-boot.nix
     ../../modules/zfs.nix
-    ../../modules/desktop/laptop.nix
+    ../../modules/power/laptop.nix
     ../../modules/cli/podman.nix
 
     ./hardware-configuration.nix

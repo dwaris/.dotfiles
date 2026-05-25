@@ -9,7 +9,7 @@
 }: {
   imports = [
     ../../modules
-    ../../modules/desktop/laptop.nix
+    ../../modules/power/laptop.nix
 
     ./hardware-configuration.nix
   ];
