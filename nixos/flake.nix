@@ -10,7 +10,6 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
 
     lanzaboote = {
       url = "github:nix-community/lanzaboote";
@@ -36,19 +35,19 @@
         ];
       };
 
-      kashyyyk = inputs.nixpkgs-stable.lib.nixosSystem {
+      kashyyyk = inputs.nixpkgs.lib.nixosSystem {
         modules = [
           ./hosts/kashyyyk/configuration.nix
         ];
       };
 
-      batuu = inputs.nixpkgs-stable.lib.nixosSystem {
+      batuu = inputs.nixpkgs.lib.nixosSystem {
         modules = [
           ./hosts/batuu/configuration.nix
         ];
       };
 
-      wsl = inputs.nixpkgs-stable.lib.nixosSystem {
+      wsl = inputs.nixpkgs.lib.nixosSystem {
         modules = [
           ./hosts/wsl/configuration.nix
           inputs.nixos-wsl.nixosModules.wsl
