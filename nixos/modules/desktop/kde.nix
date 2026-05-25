@@ -1,12 +1,9 @@
+{ config, pkgs, lib, ... }:
 {
-  config,
-  pkgs,
-  lib,
-  ...
-}: {
   imports = [
     ../networking/networkmanager.nix
   ];
+
   environment.systemPackages = with pkgs; [
     kile
 

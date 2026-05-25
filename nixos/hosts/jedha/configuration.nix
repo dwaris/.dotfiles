@@ -9,10 +9,12 @@
   ...
 }: {
   imports = [
-    ../../modules
+    ../../modules/profiles/desktop.nix
     ../../modules/secure-boot.nix
     ../../modules/zfs.nix
-    ../../modules/power/desktop.nix
+
+    ../../modules/desktop/hyprland.nix
+
     ../../modules/cli/k8s.nix
     ../../modules/gui/gaming
 
