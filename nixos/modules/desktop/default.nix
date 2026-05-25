@@ -1,5 +1,9 @@
-{ config, pkgs, lib, ... }:
 {
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
   services.kmscon.enable = true;
 
   environment.systemPackages = with pkgs; [
