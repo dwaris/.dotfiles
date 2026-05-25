@@ -2,9 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 {
-  config,
   pkgs,
-  lib,
   ...
 }: {
   imports = [
@@ -28,7 +26,7 @@
   networking.hostName = "aldhani"; # Define your hostname.
   networking.hostId = "2ffb69ed";
 
-  environment.systemPackages = with pkgs; [ ];
+  environment.systemPackages = with pkgs; [];
 
   services.fprintd.enable = false;
 
@@ -46,12 +44,12 @@
 
   systemd.user.services.mic-mute-led-sync = {
     description = "Mic Mute LED Sync";
-    wantedBy = [ "graphical-session.target" ];
-    partOf = [ "graphical-session.target" ];
-    after = [ "pipewire.service" "wireplumber.service" ];
-    
+    wantedBy = ["graphical-session.target"];
+    partOf = ["graphical-session.target"];
+    after = ["pipewire.service" "wireplumber.service"];
+
     # Crucial: Give the script the exact path to the tools it needs
-    path = with pkgs; [ wireplumber pulseaudio gnugrep coreutils ];
+    path = with pkgs; [wireplumber pulseaudio gnugrep coreutils];
 
     script = ''
       readonly LED_PATH="/sys/class/leds/platform::micmute/brightness"

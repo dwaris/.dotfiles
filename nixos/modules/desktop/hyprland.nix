@@ -1,5 +1,10 @@
-{ inputs, config, pkgs, lib, ... }:
 {
+  inputs,
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
   imports = [
     ../networking/iwd-networkd.nix
   ];
