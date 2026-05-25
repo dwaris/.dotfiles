@@ -12,8 +12,8 @@
     ../../modules
     ../../modules/secure-boot.nix
     ../../modules/zfs.nix
-    ../../modules/desktop/desktop.nix
-    # ../../modules/cli/k8s.nix
+    ../../modules/power/desktop.nix
+    ../../modules/cli/k8s.nix
     ../../modules/gui/gaming
 
     ./hardware-configuration.nix
