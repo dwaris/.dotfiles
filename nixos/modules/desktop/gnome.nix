@@ -1,8 +1,9 @@
+{ config, pkgs, lib, ... }:
 {
-  config,
-  pkgs,
-  ...
-}: {
+  imports = [
+    ../networking/networkmanager.nix
+  ];
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -19,7 +20,6 @@
   services = {
     displayManager.gdm = {
       enable = true;
-      wayland = true;
     };
     desktopManager.gnome.enable = true;
   };

@@ -1,17 +1,19 @@
+{ config, pkgs, lib, ... }:
 {
-  config,
-  pkgs,
-  ...
-}: {
+  imports = [
+    ../networking/networkmanager.nix
+  ];
+
   environment.systemPackages = with pkgs; [
     wl-clipboard
 
     nomacs
     kdePackages.okular
+
+    adw-gtk3
   ];
+  programs.xwayland.enable = true;
 
-  services.displayManager.cosmic-greeter.enable = true;
   services.desktopManager.cosmic.enable = true;
-
-  services.system76-scheduler.enable = true;
+  services.displayManager.cosmic-greeter.enable = true;
 }

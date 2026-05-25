@@ -8,8 +8,9 @@
   ...
 }: {
   imports = [
-    ../../modules
-    ../../modules/power/laptop.nix
+    ../../modules/profiles/laptop.nix
+
+    ../../modules/desktop/gnome.nix
 
     ./hardware-configuration.nix
   ];

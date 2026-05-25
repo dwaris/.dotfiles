@@ -7,8 +7,7 @@
   ...
 }: {
   imports = [
-    ../../modules/system.nix
-    ../../modules/cli
+    ../../modules/profiles/headless.nix
 
     ./hardware-configuration.nix
   ];

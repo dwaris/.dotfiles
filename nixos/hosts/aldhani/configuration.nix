@@ -8,10 +8,12 @@
   ...
 }: {
   imports = [
-    ../../modules
+    ../../modules/profiles/laptop.nix
     ../../modules/secure-boot.nix
     ../../modules/zfs.nix
-    ../../modules/power/laptop.nix
+
+    ../../modules/desktop/hyprland.nix
+
     ../../modules/cli/podman.nix
 
     ./hardware-configuration.nix

@@ -8,15 +8,13 @@
   ...
 }: {
   imports = [
-    ../../modules/system.nix
+    ../../modules/profiles/headless.nix
+
+    ../../modules/power/laptop.nix
 
     ../../modules/desktop
     ../../modules/desktop/kde.nix
-    ../../modules/power/laptop.nix
-    
-    ../../modules/networking/networkmanager.nix
 
-    ../../modules/cli
     ./hardware-configuration.nix
   ];
   boot.loader.systemd-boot.enable = true;
