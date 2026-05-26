@@ -192,7 +192,8 @@
     "custom/power": {
         "tooltip": false,
         "on-click": "uwsm-app -- hyprshutdown -t 'Shutting down...' -p 'systemctl poweroff'",
-        "on-click-middle": "uwsm-app -- hyprshutdown -t 'Shutting down...' -p 'systemctl reboot'",
+        "on-click-middle": "uwsm-app -- hyprshutdown",
+        "on-click-right": "uwsm-app -- hyprshutdown -t 'Rebooting...' -p 'systemctl reboot'",
         "format": "⏻"
     },
     "group/tray-expander": {
