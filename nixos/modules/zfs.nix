@@ -18,9 +18,16 @@
       builtins.attrValues zfsCompatibleKernelPackages
     )
   );
+  zenKernelPackage = pkgs.linuxKernel.packages.linux_zen;
+  latestZfsCompatibleZenKernelPackage =
+    if
+      (builtins.tryEval zenKernelPackage).success
+      && (!zenKernelPackage.${config.boot.zfs.package.kernelModuleAttribute}.meta.broken)
+    then zenKernelPackage
+    else latestKernelPackage;
 in {
-  # Note this might jump back and forth as kernels are added or removed.
-  boot.kernelPackages = latestKernelPackage;
+  # Prefer zen when it is ZFS-compatible, otherwise fall back to the newest compatible kernel.
+  boot.kernelPackages = latestZfsCompatibleZenKernelPackage;
 
   boot.supportedFilesystems = [
     "zfs"
