@@ -62,6 +62,11 @@
         fi
       }
 
+      # Wait for WirePlumber to successfully read the default audio source (Exit Code 0)
+      while wpctl get-volume @DEFAULT_AUDIO_SOURCE@ 2>&1 | grep -q "Translate ID error: '-1'"; do
+        sleep 0.5
+      done
+
       # 1. Match current state on startup
       update_led
 
