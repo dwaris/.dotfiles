@@ -3,6 +3,6 @@
 font-family = "BlexMono Nerd Font"
 theme =  dark:Catppuccin Mocha,light:Catppuccin Latte
 maximize = true
-command = ~/.config/ghostty/ghostty-tmux.sh
+command = tmux new -A -s main
 confirm-close-surface = false
 keybind = ctrl+enter=unbind
