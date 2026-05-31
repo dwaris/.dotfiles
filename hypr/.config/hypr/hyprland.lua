@@ -77,7 +77,9 @@ hl.on("hyprland.start", function ()
   hl.exec_cmd("systemctl --user start hyprpaper.service")
   hl.exec_cmd("systemctl --user start waybar.service")
   hl.exec_cmd("systemctl --user start mako.service")
-  hl.exec_cmd("uwsm-app -- elephant")
+
+  -- Elephant will not have the needed environment variables if we don't wait. Manual workaround: pkill elephant && elephant
+  hl.exec_cmd("bash -c 'until systemctl --user is-active --quiet graphical-session.target; do sleep 0.1; done; exec uwsm-app -- elephant'")
   hl.exec_cmd("uwsm-app -- walker --gapplication-service")
 end)
 
