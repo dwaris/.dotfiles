@@ -59,6 +59,7 @@
     rose-pine-hyprcursor
 
     powertop
+    sioyek
 
     file-roller
     nautilus
