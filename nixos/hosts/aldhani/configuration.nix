@@ -17,11 +17,7 @@
     ./hardware-configuration.nix
   ];
 
-  boot.kernelParams = [
-    "zfs.zfs_arc_max=8589934592"
-    "zfs.zfs_arc_min=4294967296"
-    "iommu=pt"
-  ];
+  boot.kernelParams = [ "iommu=pt" ];
 
   networking.hostName = "aldhani"; # Define your hostname.
   networking.hostId = "2ffb69ed";

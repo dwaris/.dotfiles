@@ -21,13 +21,6 @@
     ./hardware-configuration.nix
   ];
 
-  boot.kernelParams = [
-    "zfs.zfs_arc_max=17179869184"
-    "zfs.zfs_arc_min=8589934592"
-    "video=DP-1:2560x1440@144"
-    "video=DP-2:1920x1080@60"
-  ];
-
   fileSystems."/mnt/tank8tb/media" = {
     device = "tank8tb/media";
     fsType = "zfs";
