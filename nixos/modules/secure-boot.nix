@@ -1,22 +1,14 @@
-{pkgs, ...}: {
-  boot.kernelParams = [
-    "quiet"
-    "splash"
-  ]; 
-  boot.plymouth.enable = true;
+{pkgs, lib, ...}: {
+  imports = [
+    ./bootloader.nix
+  ];
 
-  boot.loader.systemd-boot = {
-    enable = false;
-    configurationLimit = 8;
-  };
-
+  boot.loader.systemd-boot.enable = lib.mkForce false;
   boot.lanzaboote = {
     enable = true;
     pkiBundle = "/var/lib/sbctl";
   };
 
-  boot.loader.efi.efiSysMountPoint = "/boot";
-  boot.loader.efi.canTouchEfiVariables = true;
 
   environment.systemPackages = with pkgs; [
     sbctl
