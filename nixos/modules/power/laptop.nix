@@ -1,9 +1,4 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}: {
+{pkgs, ...}: {
   services.logind.settings.Login = {
     LidSwitchIgnoreInhibited = "no";
     KillUserProcesses = false;
@@ -13,9 +8,9 @@
     enable = true;
     settings.dynamic_tuning = true;
     ppdSettings.profiles = {
-      balanced = lib.mkDefault "balanced-battery";
-      performance = lib.mkDefault "throughput-performance";
-      power-saver = lib.mkDefault "powersave";
+      balanced = "balanced-battery";
+      performance = "throughput-performance";
+      power-saver = "powersave";
     };
   };
 
