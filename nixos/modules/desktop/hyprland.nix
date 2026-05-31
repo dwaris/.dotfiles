@@ -90,6 +90,7 @@
     accounts-daemon.enable = true;
     gnome = {
       sushi.enable = true;
+      localsearch.enable = true;
       glib-networking.enable = true;
       gnome-keyring.enable = true;
     };
