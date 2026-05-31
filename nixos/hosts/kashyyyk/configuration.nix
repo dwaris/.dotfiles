@@ -9,6 +9,7 @@
 }: {
   imports = [
     ../../modules/profiles/headless.nix
+    ../../modules/bootloader.nix
 
     ../../modules/power/laptop.nix
 
@@ -17,10 +18,6 @@
 
     ./hardware-configuration.nix
   ];
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.plymouth.enable = true;
-
   networking.hostName = "kashyyyk";
   networking.hostId = "f0cacf30";
 
