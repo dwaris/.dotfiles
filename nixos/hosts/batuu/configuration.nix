@@ -9,14 +9,12 @@
 }: {
   imports = [
     ../../modules/profiles/laptop.nix
+    ../../modules/bootloader.nix
 
     ../../modules/desktop/gnome.nix
 
     ./hardware-configuration.nix
   ];
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.plymouth.enable = true;
 
   networking.hostName = "batuu";
   networking.hostId = "97f81ac7";
