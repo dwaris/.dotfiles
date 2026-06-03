@@ -22,16 +22,17 @@ hl.monitor({
     output   = "desc:LG Electronics LG ULTRAGEAR 311MATWGVY21",
     mode     = "2560x1440@144",
     position = "0x0",
-    scale    = "auto",
+    scale    = "1",
     bitdepth = 10,
     icc      = "/home/dwaris/Nextcloud/Backup/Monitors/LG 27GP850B/rtings-LG 27GP850B.icm"
 })
 hl.monitor({
-    output   = "desc:Iiyama North America PL2730H 1153673801372",
-    mode     = "1920x1080@60",
+    output   = "desc:LG Electronics LG HDR 4K 0x00002991",
+    mode     = "3840x2160@60.00",
     position = "auto-left",
-    scale    = "auto",
-    icc      = "/home/dwaris/Nextcloud/Backup/Monitors/G-MASTER G2730HSU/PL2730H.icm"
+    scale    = "1.5",
+    bitdepth = 10,
+    icc      = "/home/dwaris/Downloads/LG HDR 4K/LG HDR 4K.icm",
 })
 
 -- aldhani
