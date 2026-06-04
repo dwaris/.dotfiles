@@ -32,7 +32,9 @@
   systemd.services.gnome-remote-desktop = {
     wantedBy = ["graphical.target"]; # for starting the unit automatically at boot
   };
-  networking.firewall.allowedTCPPorts = [3389];
+  networking.firewall.interfaces."tailscale0" = {
+    allowedTCPPorts = [3389];
+  };
 
   services.orca.enable = false;
 
