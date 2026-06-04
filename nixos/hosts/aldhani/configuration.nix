@@ -24,6 +24,20 @@
 
   environment.systemPackages = with pkgs; [];
 
+  networking.firewall = {
+    trustedInterfaces = ["tailscale0"];
+    checkReversePath = "loose";
+  };
+  services.tailscale = {
+    enable = true;
+    openFirewall = true;
+    useRoutingFeatures = "client";
+    extraUpFlags = [
+      "--accept-routes"
+      "--ssh"
+    ];
+  };
+
   services.fprintd.enable = false;
 
   hardware.graphics.enable = true;

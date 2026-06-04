@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   services.openssh = {
-    enable = true;
+    enable = false;
     allowSFTP = true;
     openFirewall = true;
     settings = {
