@@ -40,9 +40,14 @@
   ];
 
   boot.kernel.sysctl = {
+    "dev.tty.ldisc_autoload" = 0;
+    "fs.protected_fifos" = 2;
+    "fs.protected_regular" = 2;
+    "fs.suid_dumpable" = 0;
+
     "kernel.dmesg_restrict" = 1;
-    "kernel.kptr_restrict" = 1;
-    "kernel.unprivileged_bpf_disable" = 1;
+    "kernel.kptr_restrict" = 2;
+    "kernel.unprivileged_bpf_disabled" = 1;
     "kernel.sysrq" = 244;
 
     "net.core.bpf_jit_harden" = 2;
@@ -57,6 +62,7 @@
     "net.ipv4.conf.all.send_redirects" = 0;
     "net.ipv4.conf.default.send_redirects" = 0;
     "net.ipv4.conf.all.log_martians" = 1;
+    "net.ipv4.conf.default.log_martians" = 1;
 
     "net.ipv4.icmp_echo_ignore_broadcasts" = 1;
     "net.ipv4.tcp_syncookies" = 1;
@@ -71,7 +77,7 @@
     settings = {
       LogLevel = "VERBOSE";
       MaxAuthTries = 3;
-      MaxSessions = 3;
+      MaxSessions = 2;
       TCPKeepAlive = "no";
       ClientAliveCountMax = 2;
       AllowTcpForwarding = "no";
