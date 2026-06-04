@@ -29,7 +29,6 @@
   networking.firewall = {
     enable = true;
     checkReversePath = "loose"; # wireguard needs this
-    trustedInterfaces = [ "tailscale0" ];
   };
   networking.nftables.enable = true;
 
