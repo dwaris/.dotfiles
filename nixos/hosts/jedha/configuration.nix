@@ -44,7 +44,24 @@
 
   environment.systemPackages = with pkgs; [
     easyeffects
+    ethtool
   ];
+
+
+  systemd.services."udp-gro-forwarding" = {
+    description = "UDP Gro Forwarding Service";
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "${pkgs.writeShellScript "udp-gro-forwarding" ''
+        set -eux
+        ${lib.getExe pkgs.ethtool} -K eno1 rx-udp-gro-forwarding on rx-gro-list off;
+      ''}";
+    };
+    wantedBy = ["multi-user.target"];
+    after = ["network.target"];
+  };
+
+  services.udev.packages = with pkgs; [ via ];
 
   hardware.graphics = {
     enable = true;
