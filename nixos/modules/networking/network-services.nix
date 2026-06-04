@@ -9,6 +9,7 @@
       AllowUsers = ["dwaris"];
     };
   };
+  services.openssh.extraConfig = "TrustedUserCAKeys ${../../.certs/ca_key.pub}";
 
   networking.firewall = {
     enable = true;

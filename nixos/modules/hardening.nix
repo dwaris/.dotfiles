@@ -78,5 +78,4 @@
       AllowAgentForwarding = "no";
     };
   };
-  services.openssh.extraConfig = "TrustedUserCAKeys ${../.certs/ca_key.pub}";
 }
