@@ -32,7 +32,7 @@ hl.monitor({
     position = "auto-left",
     scale    = "1.5",
     bitdepth = 10,
-    icc      = "/home/dwaris/Downloads/LG HDR 4K/LG HDR 4K.icm",
+    icc      = "/home/dwaris/Nextcloud/Backup/Monitors/LG-27UN83A/LG HDR 4K.icm",
 })
 
 -- aldhani
