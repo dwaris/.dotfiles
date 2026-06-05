@@ -44,8 +44,7 @@
     mako
     libnotify
 
-    walker
-    elephant
+    rofi
 
     wl-clipboard
     cliphist
