@@ -60,7 +60,7 @@ hl.monitor({
 -- Set programs that you use
 local terminal    = "uwsm-app -- ghostty"
 local fileManager = "uwsm-app -- nautilus"
-local menu        = "uwsm-app -- nc -U $XDG_RUNTIME_DIR/walker/walker.sock"
+local menu        = "rofi -combi-modi window,drun -run-command 'uwsm-app -- {cmd}' -show combi"
 
 
 -------------------
@@ -78,8 +78,6 @@ hl.on("hyprland.start", function ()
   hl.exec_cmd("systemctl --user start hyprpaper.service")
   hl.exec_cmd("systemctl --user start waybar.service")
   hl.exec_cmd("systemctl --user start mako.service")
-  hl.exec_cmd("uwsm-app -- elephant")
-  hl.exec_cmd("uwsm-app -- walker --gapplication-service")
 end)
 
 
@@ -408,7 +406,7 @@ hl.window_rule({
 
 -- Layer rules
 hl.layer_rule({
-    name = "no-anim-walker",
-    match = { namespace = "^walker$" },
+    name = "no-anim-menu",
+    match = { namespace = "^rofi$" },
     no_anim = true
 })
