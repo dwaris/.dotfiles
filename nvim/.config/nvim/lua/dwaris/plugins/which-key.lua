@@ -5,7 +5,9 @@ return {
         spec = {
             { '<leader>s', group = '[S]earch' },
             { '<leader>t', group = '[T]oggle' },
-            { '<leader>h', group = '[H]arpoon' },
+            { '<leader>w', group = '[W]indow' },
+
+            { '<leader>g', group = '[G]it' },
         },
     },
 }
