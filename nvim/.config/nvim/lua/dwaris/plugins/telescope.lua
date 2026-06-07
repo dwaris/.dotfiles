@@ -12,7 +12,6 @@ return {
     },
     { 'nvim-telescope/telescope-ui-select.nvim' },
     'nvim-tree/nvim-web-devicons',
-    'nvim-telescope/telescope-file-browser.nvim',
   },
   config = function()
     local telescope = require 'telescope'
@@ -34,7 +33,6 @@ return {
 
     pcall(telescope.load_extension, 'fzf')
     pcall(telescope.load_extension, 'ui-select')
-    pcall(telescope.load_extension, 'file_browser')
 
     vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
     vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
@@ -52,16 +50,6 @@ return {
         previewer = false,
       })
     end, { desc = '[/] Search inside current buffer' })
-
-    vim.keymap.set('n', '<leader>e', function()
-      telescope.extensions.file_browser.file_browser {
-        path = vim.fn.expand '%:p:h',
-        cwd = vim.fn.expand '%:p:h',
-        hidden = true,
-        grouped = true,
-        select_buffer = true,
-      }
-    end, { desc = '[E]xplore files browser' })
 
     vim.keymap.set('n', '<leader>s/', function()
       builtin.live_grep {
