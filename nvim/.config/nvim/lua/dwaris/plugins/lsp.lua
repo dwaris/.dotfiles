@@ -178,7 +178,7 @@ return {
                         },
                     },
                 },
-                nixd = {},
+            --     nixd = {},
             --     pyright = {},
             --     ruff = {},
             --     gopls = {},
