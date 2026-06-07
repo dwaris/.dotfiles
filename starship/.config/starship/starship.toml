@@ -1,5 +1,3 @@
-right_format = """$sudo$time"""
-
 [character]
 success_symbol = '[\$](bold green)'
 error_symbol = '[\$](bold red)'
@@ -24,16 +22,10 @@ disabled = true
 truncate_to_repo = false
 
 [sudo]
-format = '[$symbol]($style)'
-symbol = "🐧 "
-disabled = false
+disabled = true
 
 [time]
-disabled = false
-use_12hr = false
-format = '[$time]($style)'
-time_format = "%T"
-utc_time_offset = "local"
+disabled = true
 
 [[battery.display]]
 threshold = 15
