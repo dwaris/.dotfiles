@@ -223,7 +223,7 @@
         "exec": "~/.config/waybar/scripts/get_icon.sh",
         "interval": "once",
         "tooltip": false,
-        "on-click": "nc -U $XDG_RUNTIME_DIR/walker/walker.sock"
+        "on-click": "rofi -combi-modi window,drun -run-command 'uwsm-app -- {cmd}' -show combi"
     },
     "idle_inhibitor": {
         "exec": "sh ~/.config/waybar/scripts/idle_inhibitor.sh",
