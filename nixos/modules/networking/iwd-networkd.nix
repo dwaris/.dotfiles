@@ -44,7 +44,10 @@
 
   networking.wireless.iwd.enable = true;
 
-  services.resolved.enable = true;
+  services.resolved = {
+    enable = true;
+    settings.Resolve.DNSStubListenerExtra = [ "[::1]:53" ];
+  };
 
   environment.systemPackages = with pkgs; [
     impala
