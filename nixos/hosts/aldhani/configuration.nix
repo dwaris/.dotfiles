@@ -10,8 +10,6 @@
     ../../modules/secure-boot.nix
     ../../modules/zfs.nix
 
-    ../../modules/desktop/hyprland.nix
-
     ../../modules/cli/podman.nix
 
     ./hardware-configuration.nix
