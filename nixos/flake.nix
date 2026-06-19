@@ -17,6 +17,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-flatpak.url = "github:gmodena/nix-flatpak";
+
     nixos-wsl.url = "github:nix-community/nixos-wsl";
   };
 
@@ -26,6 +28,7 @@
         modules = [
           ./hosts/jedha/configuration.nix
           inputs.lanzaboote.nixosModules.lanzaboote
+          inputs.nix-flatpak.nixosModules.nix-flatpak
         ];
       };
 
@@ -33,18 +36,21 @@
         modules = [
           ./hosts/aldhani/configuration.nix
           inputs.lanzaboote.nixosModules.lanzaboote
+          inputs.nix-flatpak.nixosModules.nix-flatpak
         ];
       };
 
       kashyyyk = inputs.nixpkgs-stable.lib.nixosSystem {
         modules = [
           ./hosts/kashyyyk/configuration.nix
+          inputs.nix-flatpak.nixosModules.nix-flatpak
         ];
       };
 
       batuu = inputs.nixpkgs-stable.lib.nixosSystem {
         modules = [
           ./hosts/batuu/configuration.nix
+          inputs.nix-flatpak.nixosModules.nix-flatpak
         ];
       };
 
