@@ -15,6 +15,7 @@ shopt -s globstar 2>/dev/null
 export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$HOME/go/bin:$PATH"
 export PAGER="less -R"
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
+export XDG_DATA_DIRS="$XDG_DATA_DIRS:/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share"
 
 if command -v nvim >/dev/null 2>&1; then
     export EDITOR=nvim
