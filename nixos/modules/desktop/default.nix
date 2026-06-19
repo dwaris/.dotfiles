@@ -61,10 +61,7 @@
 
   services.flatpak = {
     enable = true;
-    update.auto = {
-      enable = true;
-      onCalendar = "daily";
-    };
+    update.onActivation = true;
   };
 
   security.pki.certificateFiles = [../../.certs/root_ca.crt];
