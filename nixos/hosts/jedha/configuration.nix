@@ -13,6 +13,8 @@
     ../../modules/secure-boot.nix
     ../../modules/zfs.nix
 
+    ../../modules/desktop/hyprland.nix
+
     ../../modules/cli/k8s.nix
     ../../modules/cli/podman.nix
 

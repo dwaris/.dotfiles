@@ -15,7 +15,7 @@
     ];
   };
 
-  specialisation = {
+  # specialisation = {
     # gnome = {
     #   inheritParentConfig = true;
     #   configuration = {
@@ -24,23 +24,23 @@
     #     system.nixos.tags = [ "gnome" ];
     #   };
     # };
-    kde = {
-      inheritParentConfig = true;
-      configuration = {
-        imports = [ ../desktop/kde.nix ];
-        boot.lanzaboote.sortKey = "02";
-        system.nixos.tags = [ "kde" ];
-        services.gnome.gnome-keyring.enable = true;
-      };
-    };
-    hyprland = {
-      inheritParentConfig = true;
-      configuration = {
-        imports = [ ../desktop/hyprland.nix ];
-        boot.lanzaboote.sortKey = "01";
-        system.nixos.tags = [ "hyprland" ];
-      };
-    };
+    # kde = {
+    #   inheritParentConfig = true;
+    #   configuration = {
+    #     imports = [ ../desktop/kde.nix ];
+    #     boot.lanzaboote.sortKey = "02";
+    #     system.nixos.tags = [ "kde" ];
+    #     services.gnome.gnome-keyring.enable = true;
+    #   };
+    # };
+    # hyprland = {
+    #   inheritParentConfig = true;
+    #   configuration = {
+    #     imports = [ ../desktop/hyprland.nix ];
+    #     boot.lanzaboote.sortKey = "01";
+    #     system.nixos.tags = [ "hyprland" ];
+    #   };
+    # };
     # cosmic = {
     #   inheritParentConfig = true;
     #   configuration = {
@@ -49,5 +49,5 @@
     #     system.nixos.tags = [ "cosmic" ];
     #   };
     # };
-  };
+  # };
 }
