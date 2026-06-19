@@ -16,6 +16,7 @@ export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$HOME/go/bin:$PATH"
 export EDITOR=nvim
 export PAGER="bat --plain --paging=always"
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
+export XDG_DATA_DIRS="$XDG_DATA_DIRS:/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share"
 
 ##########################
 # PLUGINS
