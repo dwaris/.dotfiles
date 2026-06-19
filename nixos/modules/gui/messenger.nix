@@ -4,10 +4,10 @@
   pkgs,
   ...
 }: {
-  environment.systemPackages = with pkgs; [
-    discord
-    element-desktop
+  services.flatpak.packages = [
+    "com.discordapp.Discord"
+    "im.riot.Riot"
 
-    thunderbird
+    "org.mozilla.Thunderbird"
   ];
 }
