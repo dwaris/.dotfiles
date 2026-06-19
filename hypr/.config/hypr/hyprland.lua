@@ -215,7 +215,7 @@ hl.config({
         disable_hyprland_logo   = true, -- If true disables the random hyprland logo / anime girl background. :(
         mouse_move_enables_dpms = true,
         key_press_enables_dpms = true,
-        focus_on_activate = true,
+        focus_on_activate = false,
         on_focus_under_fullscreen = 1,
     },
 })
