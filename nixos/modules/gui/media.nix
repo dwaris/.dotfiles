@@ -7,11 +7,13 @@
   environment.systemPackages = with pkgs; [
     mpv
     vlc
-    tidal-hifi
 
     foliate
 
-    plex-desktop
-    plexamp
+  ];
+  services.flatpak.packages = [
+    "com.mastermindzh.tidal-hifi"
+    "tv.plex.PlexDesktop"
+    "com.plexamp.Plexamp"
   ];
 }
