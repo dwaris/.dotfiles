@@ -8,6 +8,6 @@
     "com.discordapp.Discord"
     "im.riot.Riot"
 
-    "org.mozilla.Thunderbird"
+    "org.mozilla.thunderbird"
   ];
 }
