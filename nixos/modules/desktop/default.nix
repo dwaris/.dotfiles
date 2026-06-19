@@ -59,5 +59,13 @@
     ];
   };
 
+  services.flatpak = {
+    enable = true;
+    update.auto = {
+      enable = true;
+      onCalendar = "daily";
+    };
+  };
+
   security.pki.certificateFiles = [../../.certs/root_ca.crt];
 }

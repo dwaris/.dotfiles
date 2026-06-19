@@ -16,5 +16,9 @@
   ];
 
   programs.chromium.enable = true;
-  programs.firefox.enable = true;
+
+  services.flatpak.packages = [
+    "com.brave.Browser"
+    "org.mozilla.firefox"
+  ];
 }
