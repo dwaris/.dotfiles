@@ -223,7 +223,7 @@
         "exec": "~/.config/waybar/scripts/get_icon.sh",
         "interval": "once",
         "tooltip": false,
-        "on-click": "rofi -combi-modi window,drun -run-command 'uwsm-app -- {cmd}' -show combi"
+        "on-click": "rofi -show drun -run-command 'uwsm-app -- {cmd}'"
     },
     "idle_inhibitor": {
         "exec": "sh ~/.config/waybar/scripts/idle_inhibitor.sh",

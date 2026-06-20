@@ -60,7 +60,7 @@ hl.monitor({
 -- Set programs that you use
 local terminal    = "uwsm-app -- ghostty"
 local fileManager = "uwsm-app -- nautilus"
-local menu        = "rofi -combi-modi window,drun -run-command 'uwsm-app -- {cmd}' -show combi"
+local menu        = "rofi -show drun -run-command 'uwsm-app -- {cmd}'"
 
 
 -------------------
