@@ -15,7 +15,6 @@
 
     ../../modules/desktop/hyprland.nix
 
-    ../../modules/cli/k8s.nix
     ../../modules/cli/podman.nix
 
     ../../modules/gui/gaming
