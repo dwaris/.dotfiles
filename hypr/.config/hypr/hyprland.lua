@@ -218,6 +218,9 @@ hl.config({
         focus_on_activate = false,
         on_focus_under_fullscreen = 1,
     },
+    xwayland = {
+        force_zero_scaling = false
+    }
 })
 
 
