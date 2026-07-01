@@ -316,6 +316,9 @@ hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd("playerctl previous"),   { locked = tr
 -- Reload Hyprland
 hl.bind(mainMod .. " + ALT + H", hl.dsp.exec_cmd("hyprctl reload"))
 
+-- Toggle second monitor
+hl.bind(mainMod .. " + ALT + M", hl.dsp.exec_cmd("/home/dwaris/Projects/.dotfiles/scripts/.local/bin/toggle-second-monitor.sh"))
+
 -- Screen locking and Waybar toggles
 hl.bind(mainMod .. " + CTRL + L", hl.dsp.exec_cmd("uwsm-app -- hyprlock"))
 hl.bind(mainMod .. " + SHIFT + T", hl.dsp.exec_cmd("pkill -SIGUSR1 waybar"))
