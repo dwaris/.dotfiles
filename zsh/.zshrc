@@ -34,6 +34,7 @@ zinit for \
 autoload -Uz compinit
 if [[ -z ~/.zcompdump(#qN.mh+24) ]]; then
   compinit
+  zcompile ~/.zcompdump
 else
   compinit -C
 fi
