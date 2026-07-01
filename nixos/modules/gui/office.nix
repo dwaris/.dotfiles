@@ -10,4 +10,8 @@
     hunspellDicts.de_DE
     hunspellDicts.en_US
   ];
+
+  services.flatpak.packages = [
+    "md.obsidian.Obsidian"
+  ];
 }
