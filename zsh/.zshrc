@@ -57,10 +57,8 @@ zinit lucid for \
 #####################
 # ALIASES           #
 #####################
-alias ls='eza --group-directories-first'
-alias ll='eza -l --group-directories-first --git'
-alias la='eza -la --group-directories-first --git'
-alias lt='eza -la --sort=modified --reverse --group-directories-first --git'
+alias ls='eza -a --group-directories-first'
+alias ll='eza -la --group-directories-first --git'
 alias tree='eza --tree --level=3'
 alias cat='bat --style=plain --paging=never'
 alias mv='mv -v'
@@ -69,5 +67,6 @@ alias vim=nvim
 
 bindkey -e
 export KEYTIMEOUT=1
+setopt globdots
 
 eval "$(starship init zsh)"
