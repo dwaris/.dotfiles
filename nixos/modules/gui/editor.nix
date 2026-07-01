@@ -8,7 +8,11 @@
     ghostty
 
     opencode
+    antigravity-cli
+
     neovide
-    vscode-fhs
+
+    zed-editor-fhs
+    antigravity-fhs
   ];
 }
