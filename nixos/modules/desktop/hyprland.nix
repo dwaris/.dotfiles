@@ -34,6 +34,7 @@
     hypridle
     hyprshot
 
+    hyprmoncfg
     hyprshutdown
 
     waybar
