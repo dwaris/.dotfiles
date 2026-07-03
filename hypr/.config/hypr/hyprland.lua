@@ -350,11 +350,6 @@ hl.window_rule({
     match = { tag = "floating-window" },
     center = true
 })
-hl.window_rule({
-    name = "size-floating-window",
-    match = { tag = "floating-window" },
-    size = "1280 720"
-})
 
 -- Bitwarden / Chrome rules
 hl.window_rule({
