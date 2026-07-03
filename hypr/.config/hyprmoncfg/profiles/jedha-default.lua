@@ -21,3 +21,9 @@ hl.monitor({
   sdr_max_luminance = 80,
   icc = "/home/dwaris/Nextcloud/Backup/Monitors/LG 27GP850B/rtings-LG 27GP850B.icm",
 })
+
+hl.workspace_rule({ workspace = "1", monitor = "desc:LG Electronics LG ULTRAGEAR 311MATWGVY21", default = true, persistent = true })
+hl.workspace_rule({ workspace = "2", monitor = "desc:LG Electronics LG HDR 4K 0x00002991", default = true, persistent = true })
+hl.workspace_rule({ workspace = "3", monitor = "desc:LG Electronics LG ULTRAGEAR 311MATWGVY21" })
+hl.workspace_rule({ workspace = "4", monitor = "desc:LG Electronics LG HDR 4K 0x00002991" })
+hl.workspace_rule({ workspace = "5", monitor = "desc:LG Electronics LG ULTRAGEAR 311MATWGVY21" })

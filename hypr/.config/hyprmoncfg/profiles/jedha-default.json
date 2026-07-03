@@ -1,7 +1,7 @@
 {
   "name": "Jedha-default",
-  "created_at": "2026-07-03T21:29:12.512836813Z",
-  "updated_at": "2026-07-03T21:34:14.224065625Z",
+  "created_at": "2026-07-03T22:10:45.234954456Z",
+  "updated_at": "2026-07-03T22:10:45.235301374Z",
   "outputs": [
     {
       "key": "lg electronics|lg hdr 4k|0x00002991",
@@ -66,6 +66,35 @@
       "lg electronics|lg ultragear|311matwgvy21"
     ],
     "rules": [
+      {
+        "workspace": "1",
+        "output_key": "lg electronics|lg ultragear|311matwgvy21",
+        "output_name": "DP-1",
+        "default": true,
+        "persistent": true
+      },
+      {
+        "workspace": "2",
+        "output_key": "lg electronics|lg hdr 4k|0x00002991",
+        "output_name": "DP-2",
+        "default": true,
+        "persistent": true
+      },
+      {
+        "workspace": "3",
+        "output_key": "lg electronics|lg ultragear|311matwgvy21",
+        "output_name": "DP-1"
+      },
+      {
+        "workspace": "4",
+        "output_key": "lg electronics|lg hdr 4k|0x00002991",
+        "output_name": "DP-2"
+      },
+      {
+        "workspace": "5",
+        "output_key": "lg electronics|lg ultragear|311matwgvy21",
+        "output_name": "DP-1"
+      },
       {
         "workspace": "f[1]",
         "output_key": ""
