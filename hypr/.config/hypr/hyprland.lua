@@ -32,7 +32,6 @@ local menu        = "rofi -show drun -run-command 'uwsm-app -- {cmd}'"
 -- Or execute your favorite apps at launch like this:
 --
 hl.on("hyprland.start", function ()
-  hl.exec_cmd("systemctl --user start hyprmoncfgd.service")
   hl.exec_cmd("systemctl --user start hyprpolkitagent.service")
   hl.exec_cmd("systemctl --user start hypridle.service")
   hl.exec_cmd("systemctl --user start hyprpaper.service")
