@@ -13,6 +13,5 @@
     })    
     prismlauncher
     mesen 
-    osu-lazer-bin
   ];
 }
