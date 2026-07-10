@@ -32,9 +32,3 @@ hl.monitor({
     position = "auto",
     scale    = "auto",
 })
-
-hl.workspace_rule({ workspace = "1", monitor = "desc:LG Electronics LG ULTRAGEAR 311MATWGVY21", default = true, persistent = true })
-hl.workspace_rule({ workspace = "2", monitor = "desc:LG Electronics LG HDR 4K 0x00002991", default = true, persistent = true })
-hl.workspace_rule({ workspace = "3", monitor = "desc:LG Electronics LG ULTRAGEAR 311MATWGVY21" })
-hl.workspace_rule({ workspace = "4", monitor = "desc:LG Electronics LG HDR 4K 0x00002991" })
-hl.workspace_rule({ workspace = "5", monitor = "desc:LG Electronics LG ULTRAGEAR 311MATWGVY21" })
