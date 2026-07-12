@@ -34,9 +34,9 @@ local menu        = "rofi -show drun -run-command 'uwsm-app -- {cmd}'"
 hl.on("hyprland.start", function ()
   hl.exec_cmd("systemctl --user start hyprpolkitagent.service")
   hl.exec_cmd("systemctl --user start hypridle.service")
-  hl.exec_cmd("systemctl --user start hyprpaper.service")
   hl.exec_cmd("systemctl --user start waybar.service")
   hl.exec_cmd("systemctl --user start mako.service")
+  hl.exec_cmd("awww-daemon")
 end)
 
 
@@ -233,6 +233,7 @@ hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
+hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd("/home/dwaris/Projects/.dotfiles/scripts/.local/bin/wallpaper-picker.sh"))
 hl.bind(mainMod .. " + SHIFT + J", hl.dsp.layout("togglesplit"))    -- dwindle only
 
 -- Move focus with mainMod + arrow keys
