@@ -29,7 +29,7 @@
   security.pam.services.sddm.enableGnomeKeyring = true;
 
   environment.systemPackages = with pkgs; [
-    hyprpaper
+    awww
     hyprpolkitagent
     hypridle
     hyprshot
