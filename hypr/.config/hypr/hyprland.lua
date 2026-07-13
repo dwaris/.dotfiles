@@ -86,7 +86,7 @@ hl.config({
     },
 
     decoration = {
-        rounding       = 0,
+        rounding       = 8,
         rounding_power = 2,
 
         -- Change transparency of focused and unfocused windows
@@ -338,9 +338,9 @@ hl.window_rule({
     border_color = colors.lavender
 })
 
--- Smart gaps / No gaps when only
-hl.workspace_rule({ workspace = "w[tv1]", gaps_out = 0, gaps_in = 0 })
-hl.workspace_rule({ workspace = "f[1]",   gaps_out = 0, gaps_in = 0 })
+-- -- Smart gaps / No gaps when only
+-- hl.workspace_rule({ workspace = "w[tv1]", gaps_out = 0, gaps_in = 0 })
+-- hl.workspace_rule({ workspace = "f[1]",   gaps_out = 0, gaps_in = 0 })
 
 -- Floating windows (tag matching)
 hl.window_rule({
