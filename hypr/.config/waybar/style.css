@@ -87,3 +87,11 @@
 #tray menuitem:hover {
   background-color: @surface1;
 }
+
+#power-profiles-daemon.performance {
+  color: @red;
+}
+
+#power-profiles-daemon.power-saver {
+  color: @green;
+}
