@@ -2,6 +2,9 @@
     "reload_style_on_change": true,
     "layer": "top",
     "position": "top",
+    "margin-top": 10,
+    "margin-left": 10,
+    "margin-right": 10,
     "spacing": 0,
     "modules-left": [
         "custom/launcher",
@@ -208,12 +211,12 @@
         ]
     },
     "custom/expand-icon": {
-      "format": " ",
-      "tooltip": false,
-      "on-scroll-up": "",
-      "on-scroll-down": "",
-      "on-scroll-left": "",
-      "on-scroll-right": ""
+        "format": " ",
+        "tooltip": false,
+        "on-scroll-up": "",
+        "on-scroll-down": "",
+        "on-scroll-left": "",
+        "on-scroll-right": ""
     },
     "tray": {
         "spacing": 12
