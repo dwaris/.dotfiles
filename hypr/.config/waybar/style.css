@@ -15,16 +15,24 @@
 }
 
 
-.modules-left { margin-left: 1rem; }
-.modules-right { margin-right: 1rem; }
+.modules-left {
+  margin-left: 1rem;
+}
+
+.modules-right {
+  margin-right: 1rem;
+}
 
 #custom-launcher {
   padding: 0 0.5rem;
+  border-radius: 0.5rem;
+  margin: 0.2rem 0.2rem;
 }
 
 #tray menu {
   background-color: @surface0;
   border: 1px solid @surface2;
+  border-radius: 0.5rem;
   padding: 0.25rem;
 }
 
@@ -40,15 +48,27 @@
 #power-profiles-daemon,
 #custom-dnd,
 #custom-power {
-  padding: 0.5rem 1rem;
+  padding: 0.3rem 0.8rem;
+  border-radius: 0.5rem;
+  margin: 0.2rem 0.2rem;
 }
 
 
-#workspaces button.active { color: @mauve; }
-#workspaces button.empty { opacity: 0.5; }
+#workspaces button.active {
+  color: @mauve;
+}
+
+#workspaces button.empty {
+  opacity: 0.5;
+}
+
 #workspaces button {
   background: transparent;
+  padding: 0.3rem 0.6rem;
+  border-radius: 0.5rem;
+  margin: 0.2rem 0.2rem;
 }
+
 #workspaces button:hover {
   background-color: @surface1;
   opacity: 1.0;
