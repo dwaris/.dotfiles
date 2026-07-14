@@ -13,6 +13,7 @@
     user = "dwaris";
     openFirewall = true;
     settings = {
+      music_directory = "/home/dwaris/Music";
       audio_output = [
         {
           type = "pipewire";
