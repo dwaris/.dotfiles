@@ -19,10 +19,43 @@
   border-radius: 0.5rem;
 }
 
-#custom-launcher {
-  padding: 0 0.5rem;
+.module {
+  padding: 0.3rem 0.8rem;
   border-radius: 0.5rem;
   margin: 0.2rem 0.2rem;
+}
+
+#workspaces {
+  padding: 0;
+  margin: 0;
+}
+
+#workspaces button {
+  background: transparent;
+  padding: 0.3rem 0.6rem;
+  border-radius: 0.5rem;
+  margin: 0.2rem 0.2rem;
+}
+
+#workspaces button.empty {
+  opacity: 0.5;
+}
+
+#workspaces button:hover {
+  background-color: @surface1;
+  opacity: 1.0;
+}
+
+.module:hover,
+#tray>*:hover {
+  border-radius: 0.5rem;
+  background-color: @surface1;
+}
+
+#workspaces:hover,
+#custom-expand-icon:hover,
+#tray:hover {
+  background-color: transparent;
 }
 
 tooltip,
@@ -33,45 +66,6 @@ tooltip,
   padding: 0.25rem;
 }
 
-#tray,
-#backlight,
-#clock,
-#battery,
-#network,
-#custom-vpn,
-#bluetooth,
-#pulseaudio,
-#idle_inhibitor,
-#power-profiles-daemon,
-#custom-dnd,
-#custom-power,
-#custom-expand-icon {
-  padding: 0.3rem 0.8rem;
-  border-radius: 0.5rem;
-  margin: 0.2rem 0.2rem;
-}
-
-
-#workspaces button.active {
-  color: @mauve;
-}
-
-#workspaces button.empty {
-  opacity: 0.5;
-}
-
-#workspaces button {
-  background: transparent;
-  padding: 0.3rem 0.6rem;
-  border-radius: 0.5rem;
-  margin: 0.2rem 0.2rem;
-}
-
-#workspaces button:hover {
-  background-color: @surface1;
-  opacity: 1.0;
-}
-
 #battery.charging,
 #custom-vpn.connected,
 #power-profiles-daemon.power-saver {
@@ -79,7 +73,6 @@ tooltip,
 }
 
 #custom-power,
-#workspaces button.urgent,
 #pulseaudio.source-muted,
 #pulseaudio.sink.muted,
 #battery.warning:not(.charging),
@@ -89,21 +82,4 @@ tooltip,
 
 #pulseaudio.sink:not(.muted) {
   color: @text;
-}
-
-#backlight:hover,
-#battery:hover,
-#bluetooth:hover,
-#clock:hover,
-#custom-launcher:hover,
-#custom-dnd:hover,
-#idle_inhibitor:hover,
-#network:hover,
-#custom-vpn:hover,
-#power-profiles-daemon:hover,
-#pulseaudio:hover,
-#custom-power:hover,
-#tray :hover,
-#tray menuitem:hover {
-  background-color: @surface1;
 }
