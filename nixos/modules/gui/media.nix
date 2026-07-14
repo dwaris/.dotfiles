@@ -10,10 +10,9 @@
 
     foliate
 
-  ];
-  services.flatpak.packages = [
-    "com.mastermindzh.tidal-hifi"
-    "tv.plex.PlexDesktop"
-    "com.plexamp.Plexamp"
+    tidal-hifi
+
+    plexamp
+    plex-desktop
   ];
 }
