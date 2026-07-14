@@ -46,9 +46,12 @@
   opacity: 1.0;
 }
 
+#tray>* {
+  border-radius: 0.25rem;
+}
+
 .module:hover,
 #tray>*:hover {
-  border-radius: 0.5rem;
   background-color: @surface1;
 }
 
