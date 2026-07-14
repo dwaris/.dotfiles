@@ -32,7 +32,7 @@
     "sysv"
     "ufs"
   ];
-  boot.tmp.cleanOnBoot = true;
+  boot.tmp.useTmpfs = true;
 
   boot.kernelParams = [
     "slab_nomerge"
