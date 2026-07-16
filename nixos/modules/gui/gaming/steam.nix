@@ -12,4 +12,5 @@
       protontricks.enable = true;
     };
   };
+  environment.systemPackages = [pkgs.pulseaudio];
 }
