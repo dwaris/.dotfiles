@@ -178,8 +178,11 @@ hl.config({
         on_focus_under_fullscreen = 1,
     },
     xwayland = {
-        force_zero_scaling = false
-    }
+        force_zero_scaling = true,
+    },
+    ecosystem = {
+        no_update_news = true,
+    },
 })
 
 
