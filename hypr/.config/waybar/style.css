@@ -20,7 +20,7 @@ decoration {
 }
 
 menuitem {
-  border-radius: 0.25rem;
+  border-radius: 0.5rem;
 }
 
 menu separator {
@@ -61,13 +61,17 @@ menu separator {
   opacity: 1.0;
 }
 
-#tray>* {
-  border-radius: 0.25rem;
+.module:hover {
+  background-color: @surface1;
 }
 
-.module:hover,
 #tray>*:hover {
-  background-color: @surface1;
+  opacity: 1.0;
+  background-color: transparent;
+}
+
+#tray>* {
+  opacity: 0.5;
 }
 
 #workspaces:hover,
