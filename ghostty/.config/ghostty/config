@@ -1,6 +1,8 @@
 # ~/.config/ghostty/config
 
 font-family = "BlexMono Nerd Font"
+font-style = Regular
+font-size = 10.5
 theme =  dark:Catppuccin Mocha,light:Catppuccin Latte
 maximize = true
 command = tmux new -A -s main
