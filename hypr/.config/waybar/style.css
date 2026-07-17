@@ -11,8 +11,16 @@
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-#waybar {
+#waybar,
+menu,
+decoration {
   background-color: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+menuitem {
+  border-radius: 0.25rem;
 }
 
 #waybar>box {
