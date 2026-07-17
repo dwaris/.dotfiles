@@ -73,7 +73,7 @@ menuitem {
 tooltip,
 #tray menu {
   background-color: @base;
-  border: 1px solid @surface0;
+  border: 1px solid @mauve;
   border-radius: 0.5rem;
   padding: 0.25rem;
 }

@@ -8,7 +8,7 @@
   alternate-urgent-background: @lightbg;
   lightbg:                     @mantle;
   background-color:            transparent;
-  border-color:                @foreground;
+  border-color:                @mauve;
   normal-background:           @background;
   selected-urgent-background:  @red;
   alternate-active-background: @lightbg;
