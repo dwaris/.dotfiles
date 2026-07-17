@@ -27,7 +27,7 @@
   normal-foreground:           @foreground;
   alternate-urgent-foreground: @red;
   alternate-active-foreground: @blue;
-  font:                        "BlexMono Nerd Font Text 10.5";
+  font:                        "BlexMono Nerd Font Text 12";
 }
 element {
     padding: 1px ;
@@ -87,7 +87,7 @@ window {
     padding:          5;
     background-color: @background;
     border:           2;
-    border-radius:    7px;
+    border-radius:    8px;
 }
 mainbox {
     padding: 0;
