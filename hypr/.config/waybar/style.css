@@ -3,6 +3,7 @@
 * {
   font-family: "BlexMono Nerd Font Propo";
   font-size: 14px;
+  font-weight: 500;
   color: @text;
   border: none;
   border-radius: 0;
