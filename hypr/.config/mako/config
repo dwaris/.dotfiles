@@ -6,7 +6,7 @@ padding=10,15
 border-size=2
 border-radius=7
 max-icon-size=32
-font=IBM Plex Sans 14px
+font=IBM Plex Sans Text 14px
 
 background-color=#1e1e2e
 text-color=#cdd6f4

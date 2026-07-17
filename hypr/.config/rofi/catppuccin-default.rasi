@@ -27,7 +27,7 @@
   normal-foreground:           @foreground;
   alternate-urgent-foreground: @red;
   alternate-active-foreground: @blue;
-  font:                        "BlexMono Nerd Font 10.5";
+  font:                        "BlexMono Nerd Font Text 10.5";
 }
 element {
     padding: 1px ;
