@@ -4,9 +4,9 @@ width=420
 outer-margin=20
 padding=10,15
 border-size=2
-border-radius=8
+border-radius=7
 max-icon-size=32
-font=IBM Plex Sans Text 16px
+font=IBM Plex Sans Text 14px
 
 background-color=#1e1e2e
 text-color=#cdd6f4
