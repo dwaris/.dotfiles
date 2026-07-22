@@ -17,7 +17,7 @@ local colors = require("mocha")
 ---------------------
 
 -- Set programs that you use
-local terminal    = "uwsm-app -- ghostty"
+local terminal    = "uwsm-app -- ~/.local/bin/run-or-raise-ghostty.sh"
 local fileManager = "uwsm-app -- nautilus"
 local menu        = "rofi -show drun -run-command 'uwsm-app -- {cmd}'"
 
