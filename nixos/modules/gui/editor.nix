@@ -13,6 +13,6 @@
     neovide
 
     zed-editor-fhs
-    antigravity-fhs
+    vscode-fhs
   ];
 }
