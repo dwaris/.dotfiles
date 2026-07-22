@@ -360,13 +360,8 @@ hl.window_rule({
 -- Bitwarden / Chrome rules
 hl.window_rule({
     name = "no-screen-share",
-    match = { class = "^(Bitwarden|chrome-nngceckbapebfimnlniiiahkandclblb-Default)$" },
+    match = { class = "^chrome-nngceckbapebfimnlniiiahkandclblb-Default$" },
     no_screen_share = true
-})
-hl.window_rule({
-    name = "tag-apps-as-floating",
-    match = { class = "^(Bitwarden|chrome-nngceckbapebfimnlniiiahkandclblb-Default)$" },
-    tag = "+floating-window"
 })
 
 -- Layer rules
