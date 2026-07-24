@@ -1,0 +1,7 @@
+hl.on("hyprland.start", function()
+    hl.exec_cmd("systemctl --user start hyprpolkitagent.service")
+    hl.exec_cmd("systemctl --user start hypridle.service")
+    hl.exec_cmd("systemctl --user start waybar.service")
+    hl.exec_cmd("systemctl --user start mako.service")
+    hl.exec_cmd("uwsm app -- awww-daemon")
+end)
