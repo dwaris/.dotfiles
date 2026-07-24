@@ -8,3 +8,6 @@ maximize = true
 command = tmux new -A -s main
 confirm-close-surface = false
 keybind = ctrl+enter=unbind
+window-padding-x = 0
+window-padding-y = 0
+window-padding-color = extend-always
