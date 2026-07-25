@@ -69,4 +69,5 @@ bindkey -e
 export KEYTIMEOUT=1
 setopt globdots
 
+eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
