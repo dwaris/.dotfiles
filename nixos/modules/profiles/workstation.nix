@@ -1,4 +1,3 @@
-{ lib, ... }:
 {
   imports = [
     ./headless.nix
@@ -6,14 +5,6 @@
     ../gui
   ];
 
-  services.tailscale = lib.mkForce {
-    useRoutingFeatures = "server";
-    extraUpFlags = [
-      "--advertise-exit-node"
-      "--advertise-routes=192.168.178.0/24"
-      "--ssh"
-    ];
-  };
 
   # specialisation = {
     # gnome = {
