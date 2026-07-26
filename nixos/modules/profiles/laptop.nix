@@ -1,6 +1,9 @@
 {
   imports = [
-    ./workstation.nix
+    ./headless.nix
+    ../desktop
+    ../gui
+    
     ../power/laptop.nix
   ];
 }

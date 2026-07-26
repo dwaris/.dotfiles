@@ -1,7 +1,10 @@
 {
   imports = [
-    ./workstation.nix
-    ../power/desktop.nix
+    ./headless.nix
+    ../desktop
+    ../gui
+
     ../rt-audio.nix
+    ../power/desktop.nix
   ];
 }
