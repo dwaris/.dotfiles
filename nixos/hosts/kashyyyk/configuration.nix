@@ -33,6 +33,7 @@
     chromium
 
     thunderbird
+    element-desktop
 
     libreoffice-qt
     hunspell
