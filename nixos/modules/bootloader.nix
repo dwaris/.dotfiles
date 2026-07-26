@@ -7,7 +7,6 @@
   boot.loader.efi.efiSysMountPoint = "/boot";
 
   boot.kernelParams = [
-    "mem_sleep_default=s2idle"
     "quiet"
     "nowatchdog"
   ]; 
