@@ -10,7 +10,6 @@
     "zfs"
   ];
   boot.zfs.requestEncryptionCredentials = true;
-  boot.zfs.forceImportRoot = true;
 
   boot.initrd.systemd.enable = true;
   boot.initrd.supportedFilesystems = ["zfs"];
