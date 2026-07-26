@@ -13,6 +13,8 @@
     ../../modules/secure-boot.nix
     ../../modules/zfs.nix
 
+    ../../modules/networking/tailscale/server.nix
+
     ../../modules/desktop/hyprland.nix
 
     ../../modules/cli/podman.nix
