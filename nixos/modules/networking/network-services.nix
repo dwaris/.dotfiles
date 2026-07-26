@@ -26,12 +26,6 @@
     "TS_DEBUG_FIREWALL_MODE=nftables"
   ];
 
-  networking.firewall = {
-    enable = true;
-    checkReversePath = "loose"; # wireguard needs this
-  };
-  networking.nftables.enable = true;
-
   environment.systemPackages = with pkgs; [
     wireguard-tools
   ];

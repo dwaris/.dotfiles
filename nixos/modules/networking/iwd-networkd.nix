@@ -1,4 +1,8 @@
 {pkgs, ...}: {
+  imports = [
+    ./firewall.nix
+  ];
+
   networking.useNetworkd = true;
   systemd.network = {
     enable = true;
