@@ -19,7 +19,7 @@
 
     ../../modules/cli/podman.nix
 
-    ../../modules/gui/gaming
+    ../../modules/gui/gaming/extra.nix
 
     ./hardware-configuration.nix
   ];

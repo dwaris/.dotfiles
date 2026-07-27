@@ -1,12 +1,9 @@
 {
-  config,
-  lib,
   pkgs,
   ...
-}:
-{
+}: {
   environment.systemPackages = with pkgs; [
-   osu-lazer-bin
+    osu-lazer-bin
   ];
 
   hardware.opentabletdriver = {
