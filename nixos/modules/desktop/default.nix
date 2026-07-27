@@ -64,5 +64,11 @@
     update.onActivation = true;
   };
 
+  services.ananicy = {
+    enable = true;
+    package = pkgs.ananicy-cpp;
+    rulesProvider = pkgs.ananicy-rules-cachyos;
+  };
+
   security.pki.certificateFiles = [../../.certs/root_ca.crt];
 }
