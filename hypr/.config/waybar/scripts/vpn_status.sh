@@ -2,10 +2,6 @@
 
 set -u
 
-escape_json() {
-  printf '%s' "$1" | sed ':a;N;$!ba;s/\\/\\\\/g;s/"/\\"/g;s/\n/\\n/g'
-}
-
 run_with_timeout() {
   seconds="$1"
   shift
@@ -16,14 +12,17 @@ run_with_timeout() {
   fi
 }
 
+escape_json() {
+  printf '%s' "$1" | sed -e 's/\\/\\\\/g' -e 's/"/\\"/g' | awk '{if (NR>1) printf "\\n"; printf "%s", $0}'
+}
+
 proton_status() {
   if ! command -v protonvpn >/dev/null 2>&1; then
     text=""
     class="disconnected"
     tooltip="protonvpn command not found"
   else
-    # Fast path: if no proton/tun interface exists, it's definitely disconnected
-    if ! ip link | grep -Eq "proton|pvpn|tun[0-9]" >/dev/null 2>&1; then
+    if ! ip link 2>/dev/null | grep -Eq "proton|pvpn|tun" >/dev/null 2>&1; then
       printf '{"text":"","class":"disconnected","tooltip":"Proton VPN disconnected"}\n'
       return
     fi
@@ -34,22 +33,20 @@ proton_status() {
       && ! printf '%s' "$raw_status" | grep -Eqi 'disconnected|not[[:space:]]+connected'; then
       text=""
       class="connected"
-      
+
       # 14 Eyes: US, UK, CA, AU, NZ (5) + DK, FR, NL, NO (9) + DE, BE, IT, ES, SE (14)
       eyes_regex="United States|United Kingdom|Canada|Australia|New Zealand|Denmark|France|Netherlands|Norway|Germany|Belgium|Italy|Spain|Sweden"
-      
-      # Match "Country: <name>" or "Server: <id> (<location>)"
-      location_info="$(printf '%s\n' "$raw_status" | grep -Ei 'Country:|Server:' | head -n 1)"
-      server_line="$(printf '%s\n' "$raw_status" | grep -Eim1 'server|country|city|ip|gateway')"
-      
-      if [ -n "$server_line" ]; then
-        tooltip="${server_line}"
+
+      # Extract relevant detail lines for a rich tooltip
+      details="$(printf '%s\n' "$raw_status" | grep -Ei 'server|country|city|ip|gateway|protocol|load' | sed 's/^[[:space:]]*//')"
+
+      if [ -n "$details" ]; then
+        tooltip="$details"
       else
         tooltip="Proton VPN connected"
       fi
 
-      if printf '%s' "$location_info" | grep -Eqi "$eyes_regex"; then
-        tooltip="${tooltip} (Eyes State Warning)"
+      if printf '%s' "$raw_status" | grep -Eqi "$eyes_regex"; then
         class="warning"
       fi
     else
@@ -64,3 +61,4 @@ proton_status() {
 }
 
 proton_status
+
