@@ -6,8 +6,8 @@ return {
             { '<leader>s', group = '[S]earch' },
             { '<leader>t', group = '[T]oggle' },
             { '<leader>w', group = '[W]indow' },
-
             { '<leader>g', group = '[G]it' },
+            { '<leader>n', group = '[N]otifications' },
         },
     },
 }
