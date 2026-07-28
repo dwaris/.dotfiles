@@ -11,6 +11,7 @@
     bat
     starship
     tmux
+    herdr
   ];
 
   programs = {
