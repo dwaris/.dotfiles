@@ -38,6 +38,7 @@
 
     waybar
     bluetui
+    networkmanagerapplet
     wiremix
     brightnessctl
 
