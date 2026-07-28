@@ -1,0 +1,43 @@
+onboarding = false
+
+[ui]
+sidebar_start_collapsed = true
+prompt_new_tab_name = false
+
+[theme]
+name = "catppuccin"
+
+[keys]
+prefix = "ctrl+f"
+
+split_vertical = "prefix+v"
+split_horizontal = "prefix+s"
+settings = "prefix+comma"
+
+focus_pane_left = "prefix+h"
+focus_pane_down = "prefix+j"
+focus_pane_up = "prefix+k"
+focus_pane_right = "prefix+l"
+
+close_pane = "prefix+x"
+zoom = "prefix+z"
+
+# Copy mode
+copy_mode = "prefix+Enter"
+
+# Tabs
+new_tab = "prefix+c"
+next_tab = "prefix+n"
+previous_tab = "prefix+p"
+switch_tab = "prefix+1..9"
+
+# Workspace / session
+workspace_picker = "prefix+w"
+goto = "prefix+g"
+detach = "prefix+q"
+
+# UI
+toggle_sidebar = "prefix+b"
+edit_scrollback = "prefix+e"
+reload_config = "prefix+shift+r"
+
