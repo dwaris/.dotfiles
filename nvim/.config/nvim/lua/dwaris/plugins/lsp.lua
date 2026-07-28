@@ -15,7 +15,6 @@ return {
             'mason-org/mason-lspconfig.nvim',
         },
         config = function()
-            local telescope = require 'telescope.builtin'
             local lsp_attach_group =
                 vim.api.nvim_create_augroup('lsp-attach', { clear = true })
             local lsp_highlight_group =
@@ -83,19 +82,19 @@ return {
                     map(
                         event,
                         'grr',
-                        telescope.lsp_references,
+                        vim.lsp.buf.references,
                         '[G]oto [R]eferences'
                     )
                     map(
                         event,
                         'gri',
-                        telescope.lsp_implementations,
+                        vim.lsp.buf.implementation,
                         '[G]oto [I]mplementation'
                     )
                     map(
                         event,
                         'grd',
-                        telescope.lsp_definitions,
+                        vim.lsp.buf.definition,
                         '[G]oto [D]efinition'
                     )
                     map(
@@ -107,19 +106,19 @@ return {
                     map(
                         event,
                         'gO',
-                        telescope.lsp_document_symbols,
+                        vim.lsp.buf.document_symbol,
                         'Open Document Symbols'
                     )
                     map(
                         event,
                         'gW',
-                        telescope.lsp_dynamic_workspace_symbols,
+                        vim.lsp.buf.workspace_symbol,
                         'Open Workspace Symbols'
                     )
                     map(
                         event,
                         'grt',
-                        telescope.lsp_type_definitions,
+                        vim.lsp.buf.type_definition,
                         '[G]oto [T]ype Definition'
                     )
 
