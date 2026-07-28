@@ -4,6 +4,10 @@
   lib,
   ...
 }: {
+  imports = [
+    ../networking/networkmanager.nix
+  ];
+
   services.kmscon.enable = true;
 
   environment.systemPackages = with pkgs; [
