@@ -6,7 +6,6 @@
   ...
 }: {
   imports = [
-    ../networking/iwd-networkd.nix
     ../cli/mpd.nix
   ];
 

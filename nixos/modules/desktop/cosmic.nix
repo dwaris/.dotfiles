@@ -4,10 +4,6 @@
   lib,
   ...
 }: {
-  imports = [
-    ../networking/networkmanager.nix
-  ];
-
   environment.systemPackages = with pkgs; [
     wl-clipboard
 
