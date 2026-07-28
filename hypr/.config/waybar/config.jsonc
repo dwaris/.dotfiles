@@ -16,6 +16,7 @@
     "modules-right": [
         "group/tray-expander",
         "network",
+        "custom/vpn",
         "bluetooth",
         "pulseaudio#sink",
         "pulseaudio#source",

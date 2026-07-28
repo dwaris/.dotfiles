@@ -6,5 +6,6 @@
     ./media.nix
     ./messenger.nix
     ./office.nix
+    ./privacy.nix
   ];
 }
