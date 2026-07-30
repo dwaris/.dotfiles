@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  username,
   ...
 }: {
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -26,11 +27,14 @@
     builders-use-substitutes = true;
   };
 
-  # do garbage collection weekly to keep disk usage low
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 7d";
+  # nh (Nix CLI Helper) configuration & garbage collection
+  programs.nh = {
+    enable = true;
+    clean = {
+      enable = true;
+      extraArgs = "--keep-since 4d --keep 3";
+    };
+    flake = "/home/${username}/Projects/.dotfiles/nixos";
   };
 
   # Allow unfree packages
