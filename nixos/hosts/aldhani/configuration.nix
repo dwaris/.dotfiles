@@ -23,13 +23,12 @@
     ./hardware-configuration.nix
   ];
 
-  boot.kernelParams = [ "iommu=pt" ];
+  boot.kernelParams = ["iommu=pt"];
 
   networking.hostName = "aldhani"; # Define your hostname.
   networking.hostId = "2ffb69ed";
 
-  environment.systemPackages = with pkgs; [];
-
+  environment.systemPackages = [];
 
   services.fprintd.enable = false;
 

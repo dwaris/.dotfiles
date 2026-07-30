@@ -1,4 +1,4 @@
-{pkgs, lib, ...}: {
+{
   boot.loader.systemd-boot = {
     enable = true;
     configurationLimit = 8;
@@ -9,7 +9,7 @@
   boot.kernelParams = [
     "quiet"
     "nowatchdog"
-  ]; 
+  ];
   boot.plymouth.enable = true;
   boot.plymouth.theme = "tribar";
 }
