@@ -3,6 +3,7 @@
   config,
   pkgs,
   lib,
+  username,
   ...
 }: {
   imports = [
@@ -23,7 +24,7 @@
   };
   services.displayManager.autoLogin = {
     enable = true;
-    user = "dwaris";
+    user = username;
   };
   services.displayManager.defaultSession = "hyprland-uwsm";
   security.pam.services.sddm.enableGnomeKeyring = true;

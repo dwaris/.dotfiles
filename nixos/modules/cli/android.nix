@@ -2,9 +2,10 @@
   config,
   lib,
   pkgs,
+  username,
   ...
 }: {
-  users.users.dwaris.extraGroups = ["adbusers"];
+  users.users.${username}.extraGroups = ["adbusers"];
 
   environment.systemPackages = with pkgs; [
     android-tools

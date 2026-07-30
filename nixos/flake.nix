@@ -22,44 +22,53 @@
     nixos-wsl.url = "github:nix-community/nixos-wsl";
   };
 
-  outputs = inputs: {
-    nixosConfigurations = {
-      jedha = inputs.nixpkgs.lib.nixosSystem {
-        modules = [
-          ./hosts/jedha/configuration.nix
-          inputs.lanzaboote.nixosModules.lanzaboote
-          inputs.nix-flatpak.nixosModules.nix-flatpak
-        ];
-      };
+  outputs = inputs @ { self, nixpkgs, ... }:
+    let
+      username = "dwaris";
+      specialArgs = { inherit inputs username; };
+    in {
+      nixosConfigurations = {
+        jedha = inputs.nixpkgs.lib.nixosSystem {
+          inherit specialArgs;
+          modules = [
+            ./hosts/jedha/configuration.nix
+            inputs.lanzaboote.nixosModules.lanzaboote
+            inputs.nix-flatpak.nixosModules.nix-flatpak
+          ];
+        };
 
-      aldhani = inputs.nixpkgs.lib.nixosSystem {
-        modules = [
-          ./hosts/aldhani/configuration.nix
-          inputs.lanzaboote.nixosModules.lanzaboote
-          inputs.nix-flatpak.nixosModules.nix-flatpak
-        ];
-      };
+        aldhani = inputs.nixpkgs.lib.nixosSystem {
+          inherit specialArgs;
+          modules = [
+            ./hosts/aldhani/configuration.nix
+            inputs.lanzaboote.nixosModules.lanzaboote
+            inputs.nix-flatpak.nixosModules.nix-flatpak
+          ];
+        };
 
-      kashyyyk = inputs.nixpkgs-stable.lib.nixosSystem {
-        modules = [
-          ./hosts/kashyyyk/configuration.nix
-          inputs.nix-flatpak.nixosModules.nix-flatpak
-        ];
-      };
+        kashyyyk = inputs.nixpkgs-stable.lib.nixosSystem {
+          inherit specialArgs;
+          modules = [
+            ./hosts/kashyyyk/configuration.nix
+            inputs.nix-flatpak.nixosModules.nix-flatpak
+          ];
+        };
 
-      batuu = inputs.nixpkgs-stable.lib.nixosSystem {
-        modules = [
-          ./hosts/batuu/configuration.nix
-          inputs.nix-flatpak.nixosModules.nix-flatpak
-        ];
-      };
+        batuu = inputs.nixpkgs-stable.lib.nixosSystem {
+          inherit specialArgs;
+          modules = [
+            ./hosts/batuu/configuration.nix
+            inputs.nix-flatpak.nixosModules.nix-flatpak
+          ];
+        };
 
-      wsl = inputs.nixpkgs-stable.lib.nixosSystem {
-        modules = [
-          ./hosts/wsl/configuration.nix
-          inputs.nixos-wsl.nixosModules.wsl
-        ];
+        wsl = inputs.nixpkgs-stable.lib.nixosSystem {
+          inherit specialArgs;
+          modules = [
+            ./hosts/wsl/configuration.nix
+            inputs.nixos-wsl.nixosModules.wsl
+          ];
+        };
       };
     };
-  };
 }

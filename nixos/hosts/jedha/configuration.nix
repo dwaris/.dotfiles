@@ -6,6 +6,7 @@
   pkgs,
   lib,
   inputs,
+  username,
   ...
 }: {
   imports = [
@@ -88,50 +89,50 @@
     };
   };
 
-  users.groups.dwaris = {
+  users.groups.${username} = {
     gid = 1000;
   };
-  users.users.dwaris = {
+  users.users.${username} = {
     isNormalUser = true;
     uid = 1000;
-    group = "dwaris";
-    description = "dwaris";
+    group = username;
+    description = username;
     extraGroups = ["wheel" "networkmanager"];
     shell = pkgs.zsh;
   };
 
-  fileSystems."/home/dwaris/Documents" = {
-    device = "zpool/shared/dwaris/documents";
+  fileSystems."/home/${username}/Documents" = {
+    device = "zpool/shared/${username}/documents";
     fsType = "zfs";
     options = ["zfsutil"];
   };
 
-  fileSystems."/home/dwaris/Downloads" = {
-    device = "zpool/shared/dwaris/downloads";
+  fileSystems."/home/${username}/Downloads" = {
+    device = "zpool/shared/${username}/downloads";
     fsType = "zfs";
     options = ["zfsutil"];
   };
 
-  fileSystems."/home/dwaris/Music" = {
-    device = "zpool/shared/dwaris/music";
+  fileSystems."/home/${username}/Music" = {
+    device = "zpool/shared/${username}/music";
     fsType = "zfs";
     options = ["zfsutil"];
   };
 
-  fileSystems."/home/dwaris/Pictures" = {
-    device = "zpool/shared/dwaris/pictures";
+  fileSystems."/home/${username}/Pictures" = {
+    device = "zpool/shared/${username}/pictures";
     fsType = "zfs";
     options = ["zfsutil"];
   };
 
-  fileSystems."/home/dwaris/Projects" = {
-    device = "zpool/shared/dwaris/projects";
+  fileSystems."/home/${username}/Projects" = {
+    device = "zpool/shared/${username}/projects";
     fsType = "zfs";
     options = ["zfsutil"];
   };
 
-  fileSystems."/home/dwaris/Videos" = {
-    device = "zpool/shared/dwaris/videos";
+  fileSystems."/home/${username}/Videos" = {
+    device = "zpool/shared/${username}/videos";
     fsType = "zfs";
     options = ["zfsutil"];
   };

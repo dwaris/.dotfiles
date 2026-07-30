@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  username,
   ...
 }: {
   environment.systemPackages = with pkgs; [
@@ -9,7 +10,7 @@
     nomacs
   ];
   programs.gphoto2.enable = true;
-  users.users.dwaris.extraGroups = [
+  users.users.${username}.extraGroups = [
     "camera"
   ];
 }
