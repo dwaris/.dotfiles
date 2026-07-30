@@ -9,6 +9,8 @@
     hunspell
     hunspellDicts.de_DE
     hunspellDicts.en_US
+
+    anki-bin
   ];
 
   services.flatpak.packages = [
