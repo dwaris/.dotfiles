@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  username,
   ...
 }: {
   environment.systemPackages = with pkgs; [
@@ -11,10 +12,10 @@
   services.syncthing = {
     enable = false;
     openDefaultPorts = false;
-    user = "dwaris";
+    user = username;
     group = "users";
-    dataDir = "/home/dwaris"; # default location for new folders
-    configDir = "/home/dwaris/.config/syncthing";
+    dataDir = "/home/${username}"; # default location for new folders
+    configDir = "/home/${username}/.config/syncthing";
   };
 
   networking.firewall.interfaces."tailscale0" = {

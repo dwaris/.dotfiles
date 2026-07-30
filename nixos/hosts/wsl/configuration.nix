@@ -4,6 +4,7 @@
 {
   config,
   pkgs,
+  username,
   ...
 }: {
   imports = [
@@ -13,7 +14,7 @@
   ];
 
   wsl.enable = true;
-  wsl.defaultUser = "dwaris";
+  wsl.defaultUser = username;
 
   boot.tmp.cleanOnBoot = true;
 
@@ -24,9 +25,9 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [];
 
-  users.users.dwaris = {
+  users.users.${username} = {
     isNormalUser = true;
-    description = "dwaris";
+    description = username;
     extraGroups = ["wheel"];
     shell = pkgs.zsh;
   };

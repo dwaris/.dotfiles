@@ -1,4 +1,5 @@
 {
+  username,
   ...
 }: {
   imports = [
@@ -8,7 +9,7 @@
     ./apps/osu.nix
   ];
 
-  fileSystems."/home/dwaris/Games" = {
+  fileSystems."/home/${username}/Games" = {
     device = "zpool/shared/games";
     fsType = "zfs";
     options = ["zfsutil" "nofail"];

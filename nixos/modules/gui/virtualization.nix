@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  username,
   ...
 }: {
   programs.virt-manager.enable = true;
@@ -17,7 +18,7 @@
 
   environment.sessionVariables.LIBVIRT_DEFAULT_URI = "qemu:///system";
   environment.systemPackages = with pkgs; [virt-manager];
-  users.users.dwaris = {
+  users.users.${username} = {
     extraGroups = [
       "libvirtd"
     ];

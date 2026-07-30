@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{pkgs, username, ...}: {
   services.openssh = {
     enable = true;
     allowSFTP = true;
@@ -6,7 +6,7 @@
     settings = {
       PasswordAuthentication = false;
       PermitRootLogin = "no";
-      AllowUsers = ["dwaris"];
+      AllowUsers = [username];
     };
   };
   services.openssh.extraConfig = "TrustedUserCAKeys ${../../.certs/ca_key.pub}";

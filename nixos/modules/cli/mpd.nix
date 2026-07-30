@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  username,
   ...
 }: {
   environment.systemPackages = with pkgs; [
@@ -10,10 +11,10 @@
   ];
   services.mpd = {
     enable = true;
-    user = "dwaris";
+    user = username;
     openFirewall = true;
     settings = {
-      music_directory = "/home/dwaris/Music";
+      music_directory = "/home/${username}/Music";
       audio_output = [
         {
           type = "pipewire";
@@ -24,6 +25,6 @@
     };
   };
   systemd.services.mpd.environment = {
-    XDG_RUNTIME_DIR = "/run/user/${toString config.users.users.dwaris.uid}"; # User-id must match above user. MPD will look inside this directory for the PipeWire socket.
+    XDG_RUNTIME_DIR = "/run/user/${toString config.users.users.${username}.uid}"; # User-id must match above user. MPD will look inside this directory for the PipeWire socket.
   };
 }

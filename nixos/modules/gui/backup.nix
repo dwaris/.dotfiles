@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  username,
   ...
 }: {
   environment.systemPackages = with pkgs; [
@@ -12,7 +13,7 @@
     localsend
   ];
 
-  fileSystems."/home/dwaris/Nextcloud" = {
+  fileSystems."/home/${username}/Nextcloud" = {
     device = "zpool/shared/nextcloud";
     fsType = "zfs";
     options = ["zfsutil" "nofail"];

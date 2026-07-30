@@ -1,5 +1,5 @@
-{pkgs, ...}: {
-  users.users.dwaris.extraGroups = ["audio"];
+{pkgs, username, ...}: {
+  users.users.${username}.extraGroups = ["audio"];
   security.pam.loginLimits = [
     {
       domain = "@audio";
