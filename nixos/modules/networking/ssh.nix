@@ -1,4 +1,4 @@
-{pkgs, username, ...}: {
+{username, ...}: {
   services.openssh = {
     enable = true;
     allowSFTP = true;

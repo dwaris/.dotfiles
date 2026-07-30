@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-let
+{pkgs, ...}: let
   autoPowerProfile = pkgs.writeShellScriptBin "auto-power-profile" ''
     # Check sysfs for any online non-battery power supply (AC adapter)
     on_ac=0
@@ -20,8 +18,7 @@ let
       ${pkgs.power-profiles-daemon}/bin/powerprofilesctl set balanced
     fi
   '';
-in
-{
+in {
   services.logind.settings.Login = {
     LidSwitchIgnoreInhibited = "no";
     KillUserProcesses = false;
@@ -40,9 +37,9 @@ in
   # Systemd service to set power profile based on AC state
   systemd.services.auto-power-profile = {
     description = "Auto Power Profile Switcher based on AC connection";
-    after = [ "tuned.service" "power-profiles-daemon.service" ];
-    wants = [ "tuned.service" ];
-    wantedBy = [ "multi-user.target" ];
+    after = ["tuned.service" "power-profiles-daemon.service"];
+    wants = ["tuned.service"];
+    wantedBy = ["multi-user.target"];
     serviceConfig = {
       Type = "oneshot";
       ExecStart = "${autoPowerProfile}/bin/auto-power-profile";
@@ -67,4 +64,3 @@ in
 
   networking.networkmanager.wifi.powersave = true;
 }
-

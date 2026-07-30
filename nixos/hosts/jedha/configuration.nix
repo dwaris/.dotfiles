@@ -2,10 +2,8 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 {
-  config,
   pkgs,
   lib,
-  inputs,
   username,
   ...
 }: {
@@ -46,7 +44,6 @@
   networking.hostName = "jedha"; # Define your hostname.
   networking.hostId = "d83be86e";
 
-
   environment.systemPackages = with pkgs; [
     easyeffects
     ethtool
@@ -65,7 +62,7 @@
     after = ["network.target"];
   };
 
-  services.udev.packages = with pkgs; [ via ];
+  services.udev.packages = with pkgs; [via];
 
   hardware.graphics = {
     enable = true;

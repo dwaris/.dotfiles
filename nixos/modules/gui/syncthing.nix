@@ -1,6 +1,4 @@
 {
-  config,
-  lib,
   pkgs,
   username,
   ...
@@ -19,7 +17,7 @@
   };
 
   networking.firewall.interfaces."tailscale0" = {
-    allowedTCPPorts = [ 22000 ];
-    allowedUDPPorts = [ 22000 21027 ];
+    allowedTCPPorts = [22000];
+    allowedUDPPorts = [22000 21027];
   };
 }

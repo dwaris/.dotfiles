@@ -1,9 +1,4 @@
 {
-  config,
-  lib,
-  pkgs,
-  ...
-}: {
   imports = [
     ./apps/steam.nix
     ./apps/emulators.nix

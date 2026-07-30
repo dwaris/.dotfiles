@@ -1,7 +1,4 @@
-{
-  username,
-  ...
-}: {
+{username, ...}: {
   imports = [
     ./default.nix
     ./apps/launchers.nix

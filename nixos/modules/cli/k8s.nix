@@ -1,9 +1,4 @@
 {
-  config,
-  lib,
-  pkgs,
-  ...
-}: {
   services.k3s.enable = true;
   services.k3s.role = "server";
   networking.firewall = {
