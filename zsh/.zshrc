@@ -18,6 +18,15 @@ export PAGER="bat --plain --paging=always"
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 export XDG_DATA_DIRS="$XDG_DATA_DIRS:/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share"
 
+# FZF Defaults & UI
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --exclude .git'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_DEFAULT_OPTS='
+  --height=60%
+  --layout=reverse
+  --border=rounded
+'
+
 ##########################
 # PLUGINS
 ##########################
@@ -76,5 +85,6 @@ bindkey -e
 export KEYTIMEOUT=1
 setopt globdots
 
+eval "$(fzf --zsh)"
 eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
