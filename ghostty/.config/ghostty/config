@@ -5,7 +5,7 @@ font-style = Text
 font-size = 10.5
 theme =  dark:Catppuccin Mocha,light:Catppuccin Latte
 maximize = true
-command = herdr
+command = tmux new -A -s main
 confirm-close-surface = false
 keybind = ctrl+enter=unbind
 window-padding-color = extend-always
