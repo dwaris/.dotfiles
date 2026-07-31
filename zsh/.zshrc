@@ -34,11 +34,10 @@ zinit for \
   OMZL::history.zsh \
   OMZL::key-bindings.zsh \
   OMZL::directories.zsh \
-  OMZL::correction.zsh \
   OMZL::git.zsh \
-  OMZL::grep.zsh \
   OMZP::git \
-  OMZP::sudo
+  OMZP::sudo \
+  zsh-users/zsh-history-substring-search
 
 autoload -Uz compinit
 if [[ -z ~/.zcompdump(#qN.mh+24) ]]; then
@@ -77,7 +76,12 @@ SAVEHIST=100000
 
 bindkey -e
 export KEYTIMEOUT=1
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+
 setopt globdots
+setopt NUMERIC_GLOB_SORT
+setopt HIST_FIND_NO_DUPS
 
 eval "$(fzf --zsh)"
 eval "$(zoxide init zsh)"
