@@ -14,6 +14,9 @@
 
   programs.hyprlock.enable = true;
   services.hypridle.enable = true;
+  systemd.user.services.hypridle.path = [
+    pkgs.brightnessctl
+  ];
 
   services.displayManager.sddm = {
     enable = true;
