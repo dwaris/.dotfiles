@@ -105,3 +105,15 @@ tooltip,
 #pulseaudio.sink:not(.muted) {
   color: @text;
 }
+
+#custom-display.extend {
+  color: @green;
+}
+
+#custom-display.mirror {
+  color: @red;
+}
+
+#custom-display.multi {
+  color: @blue;
+}
