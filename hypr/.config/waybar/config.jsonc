@@ -8,8 +8,17 @@
     "spacing": 0,
     "modules-left": [
         "custom/launcher",
-        "hyprland/workspaces"
+        "hyprland/workspaces",
+        "custom/display"
     ],
+    "custom/display": {
+        "exec": "sh ~/.config/waybar/scripts/display_status.sh",
+        "return-type": "json",
+        "interval": 10,
+        "on-click": "sh ~/.config/waybar/scripts/display_toggle.sh toggle",
+        "on-click-middle": "sh ~/.config/waybar/scripts/display_toggle.sh menu",
+        "on-click-right": "sh ~/.config/waybar/scripts/display_toggle.sh mirror"
+    },
     "modules-center": [
         "group/clock-drawer"
     ],
