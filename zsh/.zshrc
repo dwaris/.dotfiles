@@ -49,17 +49,11 @@ else
 fi
 
 zinit wait lucid for \
-  hlissner/zsh-autopair \
   zsh-users/zsh-autosuggestions \
-  bindmap"^R -> ^H" \
-  zdharma-continuum/history-search-multi-word
-
-zinit wait"1" lucid for \
-  OMZP::fzf \
   blockf zsh-users/zsh-completions \
   Aloxaf/fzf-tab
 
-# 5. Load Syntax Highlighting LAST
+# Load Syntax Highlighting LAST
 zinit lucid for \
   zdharma-continuum/fast-syntax-highlighting
 
