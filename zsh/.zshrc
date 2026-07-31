@@ -29,7 +29,7 @@ export FZF_DEFAULT_OPTS='
 ##########################
 # PLUGINS
 ##########################
-zinit for \
+zinit light-mode for \
   OMZL::history.zsh \
   OMZL::key-bindings.zsh \
   OMZL::directories.zsh \
@@ -37,6 +37,9 @@ zinit for \
   OMZP::git \
   OMZP::sudo \
   zsh-users/zsh-history-substring-search
+
+# Load zsh-completions before compinit so $fpath is populated
+zinit light-mode blockf for zsh-users/zsh-completions
 
 autoload -Uz compinit
 if [[ -z ~/.zcompdump(#qN.mh+24) ]]; then
@@ -46,13 +49,13 @@ else
   compinit -C
 fi
 
-zinit wait lucid for \
-  zsh-users/zsh-autosuggestions \
-  blockf zsh-users/zsh-completions \
-  Aloxaf/fzf-tab
+# Load interactive ZLE plugins synchronously so suggestions and fzf-tab work immediately on 1st command
+zinit light-mode for \
+  Aloxaf/fzf-tab \
+  zsh-users/zsh-autosuggestions
 
 # Load Syntax Highlighting LAST
-zinit lucid for \
+zinit light-mode for \
   zdharma-continuum/fast-syntax-highlighting
 
 #####################
