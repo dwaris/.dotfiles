@@ -65,6 +65,13 @@ alias mv='mv -v'
 alias less='bat --style=plain --paging=always'
 alias vim=nvim
 
+#####################
+# OPTIONS & HISTORY #
+#####################
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=100000
+SAVEHIST=100000
+
 bindkey -e
 export KEYTIMEOUT=1
 setopt globdots
