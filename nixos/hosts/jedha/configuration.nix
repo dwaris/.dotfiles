@@ -12,6 +12,8 @@
     ../../modules/secure-boot.nix
     ../../modules/zfs.nix
 
+    ../../modules/printing.nix
+
     ../../modules/networking/tailscale/server.nix
 
     ../../modules/desktop/hyprland.nix

@@ -14,6 +14,8 @@
     ../../modules/networking/wireguard.nix
     ../../modules/networking/tailscale/client.nix
 
+    ../../modules/printing.nix
+
     ../../modules/desktop/hyprland.nix
 
     ../../modules/cli/podman.nix

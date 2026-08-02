@@ -6,6 +6,8 @@
     ../../modules/profiles/headless.nix
     ../../modules/bootloader.nix
 
+    ../../modules/printing.nix
+
     ../../modules/power/laptop.nix
 
     ../../modules/desktop
