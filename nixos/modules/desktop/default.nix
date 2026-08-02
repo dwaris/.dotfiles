@@ -25,13 +25,6 @@
     enable = true;
   };
 
-  services.printing = {
-    enable = true;
-    drivers = with pkgs; [
-      cups-filters
-    ];
-  };
-
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
