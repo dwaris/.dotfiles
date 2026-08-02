@@ -12,8 +12,10 @@
         mkShell {
           packages = [
             lua
+            lua-language-server
             love
           ];
+
         };
     });
   };

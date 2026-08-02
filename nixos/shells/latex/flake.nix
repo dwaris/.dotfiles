@@ -12,9 +12,11 @@
         mkShell {
           packages = [
             texliveFull
+            texlab
             tex-fmt
             pdfpc
           ];
+
         };
     });
   };

@@ -17,9 +17,11 @@
     shfmt
     shellcheck
 
-    # Language Servers (LSPs)
+    # Language Servers (LSPs) & Runtimes
     lua-language-server
     gopls
+    rustc
+    cargo
     rust-analyzer
     pyright
     nixd
@@ -31,5 +33,3 @@
     marksman
   ];
 }
-
-

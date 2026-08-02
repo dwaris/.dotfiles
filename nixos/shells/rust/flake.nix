@@ -11,12 +11,17 @@
       default = with pkgs;
         mkShell {
           packages = [
-            rustup
+            cargo
+            rustc
+            rust-analyzer
+            clippy
+            rustfmt
+
             openssl
             pkg-config
-
             clang
           ];
+
         };
     });
   };
