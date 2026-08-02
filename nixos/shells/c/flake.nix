@@ -12,11 +12,13 @@
         mkShell {
           packages = [
             clang
+            clang-tools
             gnumake
 
             gdb
             valgrind
           ];
+
         };
     });
   };

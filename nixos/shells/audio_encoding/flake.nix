@@ -10,10 +10,12 @@
     devShells = forAllSystems (pkgs: {
       default = pkgs.mkShell {
         packages = with pkgs; [
+          ffmpeg
           parallel
           opus-tools
           tmux
         ];
+
       };
     });
   };
