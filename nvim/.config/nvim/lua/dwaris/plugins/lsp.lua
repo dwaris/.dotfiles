@@ -190,16 +190,8 @@ return {
                 marksman = { bin = 'marksman' },
             }
 
-            local ensure_mason_install = {}
-
             for name, config in pairs(servers) do
-                local bin_name = config.bin or name
                 config.bin = nil -- Clean up custom metadata field
-
-                -- If the binary is missing on $PATH, let Mason install it
-                if vim.fn.executable(bin_name) == 0 then
-                    table.insert(ensure_mason_install, name)
-                end
 
                 config.capabilities = vim.tbl_deep_extend(
                     'force',
@@ -212,8 +204,9 @@ return {
             end
 
             require('mason-lspconfig').setup {
-                ensure_installed = ensure_mason_install,
+                ensure_installed = {}, -- Disable automatic background downloads
             }
+
 
         end,
     },
