@@ -9,7 +9,4 @@
 
   boot.initrd.systemd.enable = true;
   boot.initrd.supportedFilesystems = ["zfs"];
-
-  services.zfs.trim.enable = true;
-  services.zfs.autoScrub.enable = true;
 }
