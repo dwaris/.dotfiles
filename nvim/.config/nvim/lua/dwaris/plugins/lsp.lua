@@ -166,6 +166,7 @@ return {
 
             local servers = {
                 lua_ls = {
+                    bin = 'lua-language-server',
                     on_init = function(client)
                         client.server_capabilities.documentFormattingProvider =
                             false -- Disable formatting (formatting is done by stylua)
@@ -177,21 +178,29 @@ return {
                         },
                     },
                 },
-            --     nixd = {},
-            --     pyright = {},
-            --     ruff = {},
-            --     gopls = {},
-            --     rust_analyzer = {},
-            --     texlab = {},
-            --     marksman = {},
-            --     ts_ls = {},
-            --     biome = {},
-            --     taplo = {},
-            --     expert = {},
-            --     zls = {},
+                nixd = { bin = 'nixd' },
+                pyright = { bin = 'pyright-langserver' },
+                ruff = { bin = 'ruff' },
+                gopls = { bin = 'gopls' },
+                rust_analyzer = { bin = 'rust-analyzer' },
+                ts_ls = { bin = 'typescript-language-server' },
+                bashls = { bin = 'bash-language-server' },
+                biome = { bin = 'biome' },
+                texlab = { bin = 'texlab' },
+                marksman = { bin = 'marksman' },
             }
 
+            local ensure_mason_install = {}
+
             for name, config in pairs(servers) do
+                local bin_name = config.bin or name
+                config.bin = nil -- Clean up custom metadata field
+
+                -- If the binary is missing on $PATH, let Mason install it
+                if vim.fn.executable(bin_name) == 0 then
+                    table.insert(ensure_mason_install, name)
+                end
+
                 config.capabilities = vim.tbl_deep_extend(
                     'force',
                     {},
@@ -203,13 +212,9 @@ return {
             end
 
             require('mason-lspconfig').setup {
-                -- ensure_installed = {
-                --     "lua_ls",
-                --     "rust_analyzer",
-                --     "gopls",
-                --     "pyright",
-                -- },
+                ensure_installed = ensure_mason_install,
             }
+
         end,
     },
 
@@ -235,13 +240,15 @@ return {
                 go = { 'goimports', 'gofmt' },
                 rust = { 'rustfmt' },
                 nix = { 'alejandra' },
+                bash = { 'shfmt' },
+                sh = { 'shfmt' },
                 elixir = { 'mix' },
                 latex = { 'tex-fmt' },
                 javascript = { 'biome' },
                 typescript = { 'biome' },
                 json = { 'biome' },
-                toml = { 'taplo' },
             },
+
             notify_on_error = false,
             format_on_save = {
                 timeout_ms = 500,
