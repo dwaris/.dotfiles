@@ -10,5 +10,6 @@
     tree-sitter
     lazygit
     delta
+    alejandra
   ];
 }
