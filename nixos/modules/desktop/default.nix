@@ -3,10 +3,9 @@
     ../networking/networkmanager.nix
   ];
 
-  services.kmscon.enable = true;
-
   environment.systemPackages = with pkgs; [
     appimage-run
+    fwupd
   ];
 
   fonts.packages = with pkgs; [
@@ -20,7 +19,6 @@
     source-code-pro
     nerd-fonts.sauce-code-pro
   ];
-  services.fwupd.enable = true;
 
   services.smartd = {
     autodetect = true;
@@ -58,10 +56,7 @@
     ];
   };
 
-  services.flatpak = {
-    enable = true;
-    update.onActivation = true;
-  };
+  services.flatpak.enable = true;
 
   services.ananicy = {
     enable = true;
