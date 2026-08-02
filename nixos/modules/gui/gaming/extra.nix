@@ -3,7 +3,6 @@
     ./default.nix
     ./apps/launchers.nix
     ./apps/minecraft.nix
-    ./apps/osu.nix
   ];
 
   fileSystems."/home/${username}/Games" = {
