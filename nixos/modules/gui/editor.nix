@@ -8,6 +8,5 @@
     neovide
 
     zed-editor-fhs
-    vscode-fhs
   ];
 }
