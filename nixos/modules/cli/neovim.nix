@@ -1,10 +1,16 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   programs.nix-ld.enable = true;
 
   programs.neovim = {
     enable = true;
     defaultEditor = true;
   };
+
+  programs.vim.defaultEditor = lib.mkForce false;
 
   environment.systemPackages = with pkgs; [
     tree-sitter
