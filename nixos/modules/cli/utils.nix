@@ -5,7 +5,5 @@
 
     bottom
     lm_sensors
-
-    git-lfs
   ];
 }
