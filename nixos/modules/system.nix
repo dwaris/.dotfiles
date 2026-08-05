@@ -69,9 +69,6 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    vim
-    git
-
     zip
     unzip
 
@@ -81,4 +78,14 @@
 
     htop
   ];
+
+  programs.git = {
+    enable = true;
+    lfs.enable = true;
+  };
+  programs.vim = {
+    enable = true;
+    defaultEditor = true;
+  };
+  programs.nano.enable = false;
 }
