@@ -5,6 +5,7 @@
 }: {
   imports = [
     ../cli/mpd.nix
+    ./oo7.nix
   ];
 
   programs.hyprland = {
@@ -27,8 +28,6 @@
     user = username;
   };
   services.displayManager.defaultSession = "hyprland-uwsm";
-  security.pam.services.sddm.enableGnomeKeyring = true;
-
   environment.systemPackages = with pkgs; [
     awww
     hyprpolkitagent
@@ -76,10 +75,6 @@
 
   xdg.portal = {
     xdgOpenUsePortal = true;
-    extraPortals = with pkgs; [
-      gnome-keyring
-    ];
-    config.common."org.freedesktop.impl.portal.Secret" = "gnome-keyring";
   };
 
   services = {
@@ -94,7 +89,6 @@
       sushi.enable = true;
       localsearch.enable = true;
       glib-networking.enable = true;
-      gnome-keyring.enable = true;
     };
   };
 
