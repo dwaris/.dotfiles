@@ -1,9 +1,11 @@
 { pkgs, ... }: {
   services.gnome.gnome-keyring.enable = false;
   security.pam.services.sddm.enableGnomeKeyring = false;
+  security.pam.services.gdm.enableGnomeKeyring = false;
   security.pam.services.login.enableGnomeKeyring = false;
 
   security.pam.services.sddm.enableKwallet = false;
+  security.pam.services.gdm.enableKwallet = false;
   security.pam.services.login.enableKwallet = false;
 
   environment.systemPackages = with pkgs; [

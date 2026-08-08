@@ -5,7 +5,6 @@
 }: {
   imports = [
     ../cli/mpd.nix
-    ./oo7.nix
   ];
 
   programs.hyprland = {
