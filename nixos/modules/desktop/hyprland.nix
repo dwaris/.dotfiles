@@ -1,6 +1,5 @@
 {
   pkgs,
-  username,
   ...
 }: {
   imports = [
@@ -18,13 +17,8 @@
     pkgs.brightnessctl
   ];
 
-  services.displayManager.sddm = {
+  services.displayManager.gdm = {
     enable = true;
-    wayland.enable = true;
-  };
-  services.displayManager.autoLogin = {
-    enable = true;
-    user = username;
   };
   services.displayManager.defaultSession = "hyprland-uwsm";
   environment.systemPackages = with pkgs; [
