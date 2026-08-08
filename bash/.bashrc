@@ -37,8 +37,6 @@ bind 'set show-all-if-ambiguous on'
 bind 'TAB:menu-complete'
 
 if command -v fzf-share >/dev/null 2>&1; then
-    source "$(fzf-share)/key-bindings.bash"
-    source "$(fzf-share)/completion.bash"
     eval "$(fzf --bash)"
 elif command -v fzf >/dev/null 2>&1; then 
     # Fallback for Debian/Ubuntu older versions
