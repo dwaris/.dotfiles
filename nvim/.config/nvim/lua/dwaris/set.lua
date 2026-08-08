@@ -14,7 +14,7 @@ vim.opt.wrap = false
 
 vim.opt.swapfile = false
 vim.opt.backup = false
-vim.opt.undodir = os.getenv 'HOME' .. '/.nvim/undodir'
+vim.opt.undodir = vim.fn.stdpath('state') .. '/undo'
 vim.opt.undofile = true
 
 vim.opt.hlsearch = false
@@ -31,7 +31,7 @@ vim.opt.sidescrolloff = 8
 vim.opt.signcolumn = 'yes'
 vim.opt.inccommand = 'nosplit'
 
-vim.opt.updatetime = 50
+vim.opt.updatetime = 250
 
 vim.opt.cursorline = true
 vim.opt.showmode = false
