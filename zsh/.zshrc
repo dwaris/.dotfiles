@@ -42,11 +42,12 @@ zinit light-mode for \
 zinit light-mode blockf for zsh-users/zsh-completions
 
 autoload -Uz compinit
-if [[ -z ~/.zcompdump(#qN.mh+24) ]]; then
+local dump=( ~/.zcompdump(N.mh+24) )
+if (( ${#dump} )); then
+  compinit -C
+else
   compinit
   zcompile ~/.zcompdump
-else
-  compinit -C
 fi
 
 # Load interactive ZLE plugins synchronously so suggestions and fzf-tab work immediately on 1st command
