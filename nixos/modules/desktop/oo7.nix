@@ -1,12 +1,24 @@
-{ pkgs, ... }: {
+{ pkgs, lib, ... }: {
   services.gnome.gnome-keyring.enable = false;
-  security.pam.services.sddm.enableGnomeKeyring = false;
-  security.pam.services.gdm.enableGnomeKeyring = false;
-  security.pam.services.login.enableGnomeKeyring = false;
 
-  security.pam.services.sddm.enableKwallet = false;
-  security.pam.services.gdm.enableKwallet = false;
-  security.pam.services.login.enableKwallet = false;
+  # Enable pam_oo7.so and disable legacy keyrings across all display managers & login
+  security.pam.services = let
+    oo7PamConfig = {
+      enableGnomeKeyring = false;
+      enableKwallet = false;
+      rules.auth.oo7 = {
+        control = "optional";
+        order = 11000;
+        modulePath = "${pkgs.oo7-pam}/lib/security/pam_oo7.so";
+      };
+      rules.session.oo7 = {
+        control = "optional";
+        order = 11000;
+        modulePath = "${pkgs.oo7-pam}/lib/security/pam_oo7.so";
+      };
+    };
+  in
+    lib.genAttrs [ "gdm" "plasma-login-manager" "login" ] (_: oo7PamConfig);
 
   environment.systemPackages = with pkgs; [
     oo7-server
@@ -31,8 +43,8 @@
 
   systemd.user.services.oo7-daemon = {
     description = "Secret service (oo7 implementation)";
-    wantedBy = [ "graphical-session.target" ];
-    after = [ "graphical-session.target" ];
+    wantedBy = [ "graphical-session-pre.target" "graphical-session.target" ];
+    before = [ "graphical-session.target" ];
     serviceConfig = {
       ExecStart = [
         ""
@@ -47,8 +59,8 @@
 
   systemd.user.services.oo7-portal = {
     description = "Secret portal service (oo7 implementation)";
-    wantedBy = [ "graphical-session.target" ];
-    after = [ "graphical-session.target" ];
+    wantedBy = [ "graphical-session-pre.target" "graphical-session.target" ];
+    before = [ "graphical-session.target" ];
     serviceConfig = {
       Type = "dbus";
       BusName = "org.freedesktop.impl.portal.desktop.oo7";
