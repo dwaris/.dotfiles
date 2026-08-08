@@ -27,17 +27,32 @@
     gcr
   ];
 
-  systemd.user.services.oo7-daemon.serviceConfig = {
-    ExecStart = [
-      ""
-      "/run/wrappers/bin/oo7-daemon"
-    ];
-    PrivateUsers = false;
-    NoNewPrivileges = false;
+  systemd.user.services.oo7-daemon = {
+    description = "Secret service (oo7 implementation)";
+    wantedBy = [ "graphical-session.target" ];
+    after = [ "graphical-session.target" ];
+    serviceConfig = {
+      ExecStart = [
+        ""
+        "/run/wrappers/bin/oo7-daemon"
+      ];
+      PrivateUsers = false;
+      NoNewPrivileges = false;
+      Restart = "on-failure";
+      BusName = "org.freedesktop.secrets";
+    };
   };
 
-  systemd.user.services.oo7-portal.serviceConfig = {
-    ExecStart = "${pkgs.oo7-portal}/libexec/oo7-portal";
+  systemd.user.services.oo7-portal = {
+    description = "Secret portal service (oo7 implementation)";
+    wantedBy = [ "graphical-session.target" ];
+    after = [ "graphical-session.target" ];
+    serviceConfig = {
+      Type = "dbus";
+      BusName = "org.freedesktop.impl.portal.desktop.oo7";
+      ExecStart = "${pkgs.oo7-portal}/libexec/oo7-portal";
+      Restart = "on-failure";
+    };
   };
 
   xdg.portal = {
