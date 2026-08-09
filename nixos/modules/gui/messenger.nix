@@ -1,9 +1,6 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
-    (discord.override {
-      withVencord = true;
-      withOpenAsar = true;
-    })
+    discord
     element-desktop
     thunderbird
   ];
