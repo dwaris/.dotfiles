@@ -18,8 +18,6 @@
     };
 
     nix-flatpak.url = "github:gmodena/nix-flatpak";
-
-    nixos-wsl.url = "github:nix-community/nixos-wsl";
   };
 
   outputs = inputs @ {
@@ -61,15 +59,6 @@
         inherit specialArgs;
         modules = [
           ./hosts/batuu/configuration.nix
-          inputs.nix-flatpak.nixosModules.nix-flatpak
-        ];
-      };
-
-      wsl = inputs.nixpkgs-stable.lib.nixosSystem {
-        inherit specialArgs;
-        modules = [
-          ./hosts/wsl/configuration.nix
-          inputs.nixos-wsl.nixosModules.wsl
         ];
       };
     };
