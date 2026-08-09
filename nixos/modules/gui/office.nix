@@ -6,9 +6,6 @@
     hunspellDicts.en_US
 
     anki-bin
-  ];
-
-  services.flatpak.packages = [
-    "md.obsidian.Obsidian"
+    obsidian
   ];
 }

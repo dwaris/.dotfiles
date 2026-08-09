@@ -16,8 +16,6 @@
       url = "github:nix-community/lanzaboote";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    nix-flatpak.url = "github:gmodena/nix-flatpak";
   };
 
   outputs = inputs @ {
@@ -34,7 +32,6 @@
         modules = [
           ./hosts/jedha/configuration.nix
           inputs.lanzaboote.nixosModules.lanzaboote
-          inputs.nix-flatpak.nixosModules.nix-flatpak
         ];
       };
 
@@ -43,7 +40,6 @@
         modules = [
           ./hosts/aldhani/configuration.nix
           inputs.lanzaboote.nixosModules.lanzaboote
-          inputs.nix-flatpak.nixosModules.nix-flatpak
         ];
       };
 
@@ -51,7 +47,6 @@
         inherit specialArgs;
         modules = [
           ./hosts/kashyyyk/configuration.nix
-          inputs.nix-flatpak.nixosModules.nix-flatpak
         ];
       };
 
