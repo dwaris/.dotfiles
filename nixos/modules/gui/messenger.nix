@@ -1,8 +1,10 @@
-{
-  services.flatpak.packages = [
-    "com.discordapp.Discord"
-    "im.riot.Riot"
-
-    "org.mozilla.thunderbird"
+{pkgs, ...}: {
+  environment.systemPackages = with pkgs; [
+    (discord.override {
+      withVencord = true;
+      withOpenAsar = true;
+    })
+    element-desktop
+    thunderbird
   ];
 }
