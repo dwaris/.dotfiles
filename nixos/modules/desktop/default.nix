@@ -6,8 +6,9 @@
 
   environment.systemPackages = with pkgs; [
     appimage-run
-    fwupd
   ];
+
+  services.fwupd.enable = true;
 
   fonts.packages = with pkgs; [
     ibm-plex
