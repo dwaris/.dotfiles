@@ -1,0 +1,43 @@
+# Noctalia Shell Configuration
+
+[shell]
+font_family = "BlexMono Nerd Font"
+corner_radius_scale = 1.0
+time_format = "{:%H:%M}"
+date_format = "%A, %b %d"
+clipboard_enabled = true
+clipboard_history_max_entries = 100
+button_borders = true
+card_borders = true
+popup_borders = true
+popup_shadows = true
+
+[shell.panel]
+borders = true
+shadow = true
+transparency_mode = "solid"
+floating_layer = "overlay"
+
+[shell.launcher]
+app_grid = true
+categories = true
+show_icons = true
+sort_by_usage = true
+
+[theme]
+mode = "dark"
+builtin = "Noctalia"
+community_palette = "Oxocarbon"
+source = "builtin"
+
+[osd]
+enabled = true
+position = "top_center"
+border = true
+background_opacity = 0.95
+
+[system.monitor]
+enabled = true
+cpu_poll_seconds = 2.0
+memory_poll_seconds = 2.0
+network_poll_seconds = 3.0
