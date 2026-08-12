@@ -22,7 +22,7 @@ return {
                 enabled = true,
                 sections = {
                     { section = 'header' },
-                    { section = 'keys',   gap = 1, padding = 1 },
+                    { section = 'keys', gap = 1, padding = 1 },
                     { section = 'startup' },
                     {
                         section = 'projects',
@@ -189,10 +189,10 @@ return {
             {
                 '<leader>sn',
                 function()
-                    Snacks.picker.files({ cwd = vim.fn.stdpath('config') })
+                    Snacks.picker.files { cwd = vim.fn.stdpath 'config' }
                 end,
                 desc = 'Search Neovim config files',
             },
         },
-    }
+    },
 }
