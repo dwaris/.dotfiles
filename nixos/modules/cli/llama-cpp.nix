@@ -5,6 +5,6 @@
   ];
 
   networking.firewall = {
-    allowedTCPPorts = [ 9931 ];
+    allowedTCPPorts = [ 8080 ];
   };
 }
