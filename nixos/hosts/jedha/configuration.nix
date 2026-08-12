@@ -19,6 +19,7 @@
     ../../modules/desktop/hyprland.nix
 
     ../../modules/cli/podman.nix
+    ../../modules/cli/llama-cpp.nix
 
     ../../modules/gui/gaming/extra.nix
 
