@@ -4,9 +4,7 @@
     pi-coding-agent
   ];
 
-  services.llama-cpp = {
-    enable = true;
-    package = pkgs.llama-cpp-rocm;
-    openFirewall = true;
+  networking.firewall = {
+    allowedTCPPorts = [ 9931 ];
   };
 }
