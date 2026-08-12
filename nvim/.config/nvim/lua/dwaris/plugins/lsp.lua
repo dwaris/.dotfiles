@@ -206,8 +206,6 @@ return {
             require('mason-lspconfig').setup {
                 ensure_installed = {}, -- Disable automatic background downloads
             }
-
-
         end,
     },
 

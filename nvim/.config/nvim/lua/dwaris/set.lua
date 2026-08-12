@@ -14,7 +14,7 @@ vim.opt.wrap = false
 
 vim.opt.swapfile = false
 vim.opt.backup = false
-vim.opt.undodir = vim.fn.stdpath('state') .. '/undo'
+vim.opt.undodir = vim.fn.stdpath 'state' .. '/undo'
 vim.opt.undofile = true
 
 vim.opt.hlsearch = false
@@ -23,7 +23,6 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
 vim.opt.termguicolors = true
-
 
 vim.opt.scrolloff = 8
 vim.opt.sidescroll = 1
