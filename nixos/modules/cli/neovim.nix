@@ -16,6 +16,8 @@
     tree-sitter
     lazygit
     delta
+    trash-cli
+    yazi
 
     # Formatters
     alejandra
