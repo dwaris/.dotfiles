@@ -18,6 +18,7 @@
     delta
     trash-cli
     yazi
+    sqlite
 
     # Formatters
     alejandra
