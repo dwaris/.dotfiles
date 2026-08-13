@@ -41,3 +41,7 @@ toggle_sidebar = "prefix+b"
 edit_scrollback = "prefix+e"
 reload_config = "prefix+shift+r"
 
+[experimental]
+kitty_graphics = true
+
+
