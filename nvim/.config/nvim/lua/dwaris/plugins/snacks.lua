@@ -37,6 +37,7 @@ return {
                 },
             },
             explorer = { enabled = true },
+            image = { enabled = true },
             picker = { enabled = true },
             lazygit = { enabled = true },
             indent = { enabled = true },
