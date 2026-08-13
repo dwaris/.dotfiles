@@ -2,7 +2,7 @@
   environment.systemPackages = with pkgs; [
     ghostty
 
-    opencode
+    pi-coding-agent
     antigravity-cli
 
     neovide
