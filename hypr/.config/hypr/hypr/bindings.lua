@@ -23,7 +23,7 @@ hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + SHIFT + W",
-    hl.dsp.exec_cmd("/home/dwaris/Projects/.dotfiles/scripts/.local/bin/wallpaper-picker.sh"))
+    hl.dsp.exec_cmd(os.getenv("HOME") .. "/.local/bin/wallpaper-picker.sh"))
 hl.bind(mainMod .. " + SHIFT + J", hl.dsp.layout("togglesplit")) -- dwindle only
 
 -- Move focus with mainMod + arrow keys
@@ -79,7 +79,7 @@ hl.bind(mainMod .. " + ALT + H", hl.dsp.exec_cmd("hyprctl reload"))
 
 -- Toggle second monitor
 hl.bind(mainMod .. " + ALT + M",
-    hl.dsp.exec_cmd("/home/dwaris/Projects/.dotfiles/scripts/.local/bin/toggle-second-monitor.sh"))
+    hl.dsp.exec_cmd(os.getenv("HOME") .. "/.local/bin/toggle-second-monitor.sh"))
 
 -- Screen locking and Waybar toggles
 hl.bind(mainMod .. " + CTRL + L", hl.dsp.exec_cmd("uwsm-app -- hyprlock"))
