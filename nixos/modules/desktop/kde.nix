@@ -30,9 +30,6 @@
     displayManager.plasma-login-manager.enable = true;
   };
 
-  xdg.portal = {
-    xdgOpenUsePortal = true;
-  };
 
   programs.partition-manager.enable = true;
   programs.kdeconnect.enable = false;
