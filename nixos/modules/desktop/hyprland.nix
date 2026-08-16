@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     ../cli/mpd.nix
   ];
@@ -40,7 +37,6 @@
 
     wl-clipboard
     cliphist
-    libsecret
 
     nwg-look
     adw-gtk3
