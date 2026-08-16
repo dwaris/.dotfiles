@@ -45,6 +45,11 @@
   };
 
   services.flatpak.enable = true;
+  xdg.portal = {
+    enable = true;
+    xdgOpenUsePortal = true;
+    config.common.default = "*";
+  };
 
   services.ananicy = {
     enable = true;
