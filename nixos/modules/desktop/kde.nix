@@ -30,6 +30,10 @@
     displayManager.plasma-login-manager.enable = true;
   };
 
+  environment.plasma6.excludePackages = with pkgs.kdePackages; [
+    kwallet
+    kwalletmanager
+  ];
 
   programs.partition-manager.enable = true;
   programs.kdeconnect.enable = false;
