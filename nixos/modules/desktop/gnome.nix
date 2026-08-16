@@ -19,14 +19,6 @@
     desktopManager.gnome.enable = true;
   };
 
-  services.gnome.gnome-remote-desktop.enable = true; # 'true' does not make the unit start automatically at boot
-  systemd.services.gnome-remote-desktop = {
-    wantedBy = ["graphical.target"]; # for starting the unit automatically at boot
-  };
-  networking.firewall.interfaces."tailscale0" = {
-    allowedTCPPorts = [3389];
-  };
-
   services.orca.enable = false;
 
   services.udev.packages = with pkgs; [gnome-settings-daemon];
