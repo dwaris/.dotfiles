@@ -16,7 +16,7 @@
 
     ../../modules/printing.nix
 
-    ../../modules/desktop/hyprland.nix
+    ../../modules/desktop/specialisations.nix
 
     ../../modules/cli/podman.nix
 
