@@ -17,10 +17,8 @@
     pkgs.brightnessctl
   ];
 
-  services.displayManager.gdm = {
-    enable = true;
-  };
-  services.displayManager.defaultSession = "hyprland-uwsm";
+  services.displayManager.ly.enable = true;
+
   environment.systemPackages = with pkgs; [
     awww
     hyprpolkitagent
