@@ -3,7 +3,9 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 {pkgs, ...}: {
   imports = [
-    ../../modules/profiles/headless.nix
+    ../../modules/system.nix
+    ../../modules/hardening.nix
+    ../../modules/networking/ssh.nix
     ../../modules/bootloader.nix
 
     ../../modules/printing.nix
@@ -19,8 +21,11 @@
   networking.hostId = "f0cacf30";
 
   environment.systemPackages = with pkgs; [
-    ghostty
+    stow
+    fzf
+    starship
     tmux
+    ghostty
 
     vlc
 
