@@ -42,4 +42,5 @@ systemctl --user restart oo7-daemon
 
 echo ""
 echo "Migration complete! Verifying keyring status..."
-/home/dwaris/Projects/.dotfiles/scripts/test-oo7.sh
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+"$SCRIPT_DIR/test-oo7.sh"
