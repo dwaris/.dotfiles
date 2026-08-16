@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     ../cli/mpd.nix
   ];
@@ -56,7 +53,7 @@
     ];
     config = {
       niri = {
-        default = [ "gnome" "gtk" ];
+        default = ["gnome" "gtk"];
       };
     };
   };

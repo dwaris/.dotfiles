@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }: {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
   services.gnome.gnome-keyring.enable = false;
 
 
@@ -13,7 +18,7 @@
       exit 0
     '';
   in
-    lib.genAttrs [ "login" ] (svc: {
+    lib.genAttrs ["login"] (svc: {
       oo7.enable = true;
       rules.session.oo7-wait = {
         control = "optional";
