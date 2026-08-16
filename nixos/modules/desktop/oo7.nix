@@ -6,7 +6,6 @@
 }: {
   services.gnome.gnome-keyring.enable = false;
 
-
   security.pam.services = let
     waitForPamSocket = pkgs.writeShellScript "oo7-wait-for-pam-socket" ''
       uid=$(id -u "$PAM_USER")
@@ -29,4 +28,7 @@
     });
 
   services.oo7.enable = true;
+  environment.systemPackages = with pkgs; [
+    libsecret
+  ];
 }

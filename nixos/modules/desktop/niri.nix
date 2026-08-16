@@ -21,7 +21,6 @@
 
     wl-clipboard
     cliphist
-    libsecret
 
     nwg-look
     adw-gtk3
