@@ -17,7 +17,6 @@
     lazygit
     delta
     trash-cli
-    yazi
     sqlite
 
     # Formatters
