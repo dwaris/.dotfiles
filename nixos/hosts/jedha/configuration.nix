@@ -16,7 +16,7 @@
 
     ../../modules/networking/tailscale/server.nix
 
-    ../../modules/desktop/hyprland.nix
+    ../../modules/desktop/specialisations.nix
 
     ../../modules/cli/podman.nix
     ../../modules/cli/llama-cpp.nix
