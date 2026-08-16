@@ -3,7 +3,16 @@
     enable = true;
     drivers = with pkgs; [
       cups-filters
+      brlaser
+      gutenprint
     ];
+  };
+
+  # Enable Avahi for network printer auto-discovery (mDNS)
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
   };
 
   hardware.printers = {
