@@ -11,7 +11,6 @@
   services.mpd = {
     enable = true;
     user = username;
-    openFirewall = true;
     settings = {
       music_directory = "/home/${username}/Music";
       audio_output = [

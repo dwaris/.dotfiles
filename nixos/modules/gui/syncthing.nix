@@ -16,8 +16,4 @@
     configDir = "/home/${username}/.config/syncthing";
   };
 
-  networking.firewall.interfaces."tailscale0" = {
-    allowedTCPPorts = [22000];
-    allowedUDPPorts = [22000 21027];
-  };
 }
