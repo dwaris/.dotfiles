@@ -16,6 +16,11 @@
       url = "github:nix-community/lanzaboote";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    omarchy-src = {
+      url = "github:basecamp/omarchy";
+      flake = false;
+    };
   };
 
   outputs = inputs @ {
