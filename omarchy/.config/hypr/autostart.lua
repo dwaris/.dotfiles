@@ -1,0 +1,4 @@
+-- Extra autostart processes.
+-- Examples:
+-- o.launch_on_start("nextcloud")
+-- o.launch_on_start("discord", "--minimized")
