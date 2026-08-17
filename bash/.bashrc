@@ -17,6 +17,22 @@ export PAGER="less -R"
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 export XDG_DATA_DIRS="$XDG_DATA_DIRS:/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share"
 
+# Universal Omarchy Environment Setup (Works on Arch Linux & NixOS)
+if [[ -z "$OMARCHY_PATH" ]]; then
+  if [[ -d "/usr/share/omarchy" ]]; then
+    export OMARCHY_PATH="/usr/share/omarchy"
+  elif [[ -d "$HOME/.local/share/omarchy" ]]; then
+    export OMARCHY_PATH="$HOME/.local/share/omarchy"
+  fi
+fi
+
+if [[ -n "$OMARCHY_PATH" && -d "$OMARCHY_PATH/bin" ]]; then
+  case ":$PATH:" in
+    *":$OMARCHY_PATH/bin:"*) ;;
+    *) export PATH="$OMARCHY_PATH/bin:$PATH" ;;
+  esac
+fi
+
 if command -v nvim >/dev/null 2>&1; then
     export EDITOR=nvim
     alias vim='nvim'
