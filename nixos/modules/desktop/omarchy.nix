@@ -11,6 +11,7 @@
 
   # Runtime dependencies for Omarchy CLI, Quickshell & GUI applications
   deps = with pkgs; [
+    adwaita-icon-theme
     bash
     brightnessctl
     btop
@@ -26,19 +27,26 @@
     grim
     gtk3
     gum
+    hicolor-icon-theme
     hyprland
     hyprpaper
     hyprsunset
+    inotify-tools
     jq
+    kdePackages.breeze-icons
     lazygit
     libnotify
+    libxkbcommon
     loupe
     nautilus
     pamixer
+    papirus-icon-theme
     pavucontrol
     playerctl
     procps
     psmisc
+    python3
+    python3Packages.requests
     quickshell
     slurp
     socat
@@ -51,6 +59,7 @@
     wl-clipboard
     xdg-terminal-exec
     xdg-utils
+    yaru-theme
     zenity
   ];
 
@@ -62,6 +71,12 @@
     installPhase = ''
       mkdir -p $out/bin $out/share/omarchy
       cp -r * $out/share/omarchy/
+
+      # Ensure theme state directory is user-writable on copy & bypass /etc browser writes
+      substituteInPlace $out/share/omarchy/bin/omarchy-theme-set \
+        --replace-fail 'flock 9' 'flock 9; chmod -R u+w "$HOME/.local/state/omarchy" 2>/dev/null || true'
+      substituteInPlace $out/share/omarchy/bin/omarchy-theme-set-browser \
+        --replace-fail '[[ -d $policy_dir ]]' '[[ -d $policy_dir && -w $policy_dir ]]'
 
       for f in $out/share/omarchy/bin/*; do
         if [ -x "$f" ]; then
