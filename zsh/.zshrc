@@ -13,6 +13,23 @@ source "$HOME/.zinit/bin/zinit.zsh"
 # ENVIRONMENT       #
 #####################
 export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$HOME/go/bin:$PATH"
+
+# Universal Omarchy Environment Setup (Works on Arch Linux & NixOS)
+if [[ -z "$OMARCHY_PATH" ]]; then
+  if [[ -d "/usr/share/omarchy" ]]; then
+    export OMARCHY_PATH="/usr/share/omarchy"
+  elif [[ -d "$HOME/.local/share/omarchy" ]]; then
+    export OMARCHY_PATH="$HOME/.local/share/omarchy"
+  fi
+fi
+
+if [[ -n "$OMARCHY_PATH" && -d "$OMARCHY_PATH/bin" ]]; then
+  case ":$PATH:" in
+    *":$OMARCHY_PATH/bin:"*) ;;
+    *) export PATH="$OMARCHY_PATH/bin:$PATH" ;;
+  esac
+fi
+
 export EDITOR=nvim
 export PAGER="bat --plain --paging=always"
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
