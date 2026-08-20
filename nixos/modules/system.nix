@@ -39,19 +39,6 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  nixpkgs.overlays = [
-    (final: prev: {
-      ananicy-cpp = prev.ananicy-cpp.overrideAttrs (oldAttrs: {
-        patches = (oldAttrs.patches or [ ]) ++ [
-          (prev.fetchpatch {
-            url = "https://gitlab.com/ananicy-cpp/ananicy-cpp/-/merge_requests/43.patch";
-            hash = "sha256-Pdqlc/o/8Tt7i2ZBqosrmpZL5bLQYK025pTGSaDqCeA=";
-          })
-        ];
-      });
-    })
-  ];
-
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
 
