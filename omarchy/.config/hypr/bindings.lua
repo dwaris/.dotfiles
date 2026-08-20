@@ -27,3 +27,7 @@
 -- o.bind("SUPER + SHIFT + S", nil, "omarchy-capture-screenshot")
 -- o.bind("SUPER + H", nil, "voxtype record toggle")
 -- o.bind("SUPER + PERIOD", nil, "omarchy-shell shell toggle omarchy.emojis")
+
+-- Microphone Mute Hotkey (F14 mouse/keyboard key)
+-- Note: XF86AudioMicMute is already bound natively by Omarchy to omarchy-audio-input-mute
+o.bind("F14", "Mute Microphone", "omarchy-audio-input-mute", { locked = true })

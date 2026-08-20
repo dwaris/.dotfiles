@@ -41,9 +41,11 @@
 --       -- Left-click-and-drag with three fingers.
 --       drag_3fg = 1,
 --     },
--- Linear mouse speed (flat acceleration profile, 1:1 raw input)
+-- Linear mouse speed and extended F13-F24 function keys (enables F14)
 hl.config({
   input = {
+    kb_layout = "eu",
+    kb_options = "fkeys:basic_13-24",
     accel_profile = "flat",
     sensitivity = 0,
   },
