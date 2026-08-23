@@ -78,13 +78,16 @@ zinit light-mode for \
 #####################
 # ALIASES           #
 #####################
-alias ls='eza -a --group-directories-first'
-alias ll='eza -la --group-directories-first --git'
-alias tree='eza --tree --level=3'
-alias cat='bat --style=plain --paging=never'
 alias mv='mv -v'
-alias less='bat --style=plain --paging=always'
-alias vim=nvim
+
+(( $+commands[eza] )) && alias ls='eza -a --group-directories-first' \
+                               ll='eza -la --group-directories-first --git' \
+                               tree='eza --tree --level=3'
+
+(( $+commands[bat] )) && alias cat='bat --style=plain --paging=never' \
+                               less='bat --style=plain --paging=always'
+
+(( $+commands[nvim] )) && alias vim='nvim'
 
 #####################
 # OPTIONS & HISTORY #
@@ -102,6 +105,10 @@ setopt globdots
 setopt NUMERIC_GLOB_SORT
 setopt HIST_FIND_NO_DUPS
 
-eval "$(fzf --zsh)"
-eval "$(zoxide init zsh)"
-eval "$(starship init zsh)"
+#####################
+# INITIALIZATIONS   #
+#####################
+(( $+commands[mise] ))     && eval "$(mise activate zsh)"
+(( $+commands[fzf] ))      && eval "$(fzf --zsh)"
+(( $+commands[zoxide] ))   && eval "$(zoxide init zsh)"
+(( $+commands[starship] )) && eval "$(starship init zsh)"
