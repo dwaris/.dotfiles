@@ -46,13 +46,12 @@ hl.config({
   input = {
     kb_layout = "eu",
     kb_options = "fkeys:basic_13-24",
-    accel_profile = "flat",
-    sensitivity = 0,
   },
 })
 
 -- BenQ ZOWIE gaming mouse linear profile
-hl.device({
-  name = "benq-zowie-benq-zowie-gaming-mouse",
-  accel_profile = "flat",
-})
+hl.device {
+    name = "benq-zowie-benq-zowie-gaming-mouse",
+    sensitivity = 0.0,
+    accel_profile = "flat",
+}
