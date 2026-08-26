@@ -1,27 +1,16 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
-    kile
-
     unrar
 
-    pciutils
-    clinfo
-    mesa-demos
-    vulkan-tools
-    wayland-utils
-    aha
     wl-clipboard
     kdePackages.filelight
-    kdePackages.kasts
     (catppuccin-kde.override {
       flavour = ["mocha"];
-      accents = ["rosewater"];
-      winDecStyles = ["modern"];
+      accents = ["mauve"];
     })
     (catppuccin-kde.override {
       flavour = ["latte"];
-      accents = ["rosewater"];
-      winDecStyles = ["modern"];
+      accents = ["mauve"];
     })
   ];
 
