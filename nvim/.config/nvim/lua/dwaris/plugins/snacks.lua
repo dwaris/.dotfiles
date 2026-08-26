@@ -14,7 +14,6 @@ return {
         'folke/snacks.nvim',
         priority = 1000,
         lazy = false,
-        ---@type snacks.Config
         opts = {
             bigfile = { enabled = true },
             bufdelete = { enabled = true },
@@ -24,11 +23,7 @@ return {
                     { section = 'header' },
                     { section = 'keys', gap = 1, padding = 1 },
                     { section = 'startup' },
-                    {
-                        section = 'projects',
-                        title = 'Projects',
-                        padding = 1,
-                    },
+                    { section = 'projects', title = 'Projects', padding = 1 },
                     {
                         section = 'recent_files',
                         title = 'Recent Files',
@@ -36,80 +31,42 @@ return {
                     },
                 },
             },
-            explorer = { enabled = true },
+            explorer = { enabled = false },
             image = { enabled = true },
-            picker = { enabled = true },
-            lazygit = { enabled = true },
             indent = { enabled = true },
+            lazygit = { enabled = true },
             notifier = { enabled = true },
+            picker = { enabled = true },
             quickfile = { enabled = true },
             scope = { enabled = true },
+            scratch = { enabled = true },
             words = { enabled = true },
         },
         keys = {
+            -- Scratchpad & Undo
             {
-                '<leader>e',
+                '<leader>.',
                 function()
-                    Snacks.explorer()
+                    Snacks.scratch()
                 end,
-                desc = 'File Explorer',
+                desc = 'Toggle Scratchpad',
             },
             {
-                '<leader>nh',
+                '<leader>S',
                 function()
-                    Snacks.notifier.show_history()
+                    Snacks.scratch.select()
                 end,
-                desc = 'Notification History',
+                desc = 'Select Scratchpad',
             },
             {
-                '<leader>nd',
+                '<leader>u',
                 function()
-                    Snacks.notifier.hide()
+                    Snacks.picker.undo()
                 end,
-                desc = 'Dismiss All Notifications',
+                desc = 'Visual [U]ndo History',
             },
-            {
-                '<leader>bd',
-                function()
-                    Snacks.bufdelete()
-                end,
-                desc = 'Delete Buffer',
-            },
-            {
-                '<leader>cR',
-                function()
-                    Snacks.rename.rename_file()
-                end,
-                desc = 'Rename File',
-            },
-            {
-                '<leader>gf',
-                function()
-                    Snacks.lazygit.log_file()
-                end,
-                desc = 'Lazygit Current File Log',
-            },
-            {
-                '<leader>gg',
-                function()
-                    Snacks.lazygit()
-                end,
-                desc = 'Lazygit',
-            },
-            {
-                '<leader>gl',
-                function()
-                    Snacks.lazygit.log()
-                end,
-                desc = 'Lazygit Log',
-            },
-            {
-                '<leader>sp',
-                function()
-                    Snacks.picker.projects()
-                end,
-                desc = 'Search Projects',
-            },
+
+            -- Search Pickers
             {
                 '<leader>sf',
                 function()
@@ -129,7 +86,28 @@ return {
                 function()
                     Snacks.picker.grep_word()
                 end,
-                desc = 'Search current Word',
+                desc = 'Search Word',
+            },
+            {
+                '<leader>sp',
+                function()
+                    Snacks.picker.projects()
+                end,
+                desc = 'Search Projects',
+            },
+            {
+                '<leader>s.',
+                function()
+                    Snacks.picker.recent()
+                end,
+                desc = 'Recent Files',
+            },
+            {
+                '<leader>sd',
+                function()
+                    Snacks.picker.diagnostics()
+                end,
+                desc = 'Search Diagnostics',
             },
             {
                 '<leader>sh',
@@ -146,53 +124,131 @@ return {
                 desc = 'Search Keymaps',
             },
             {
-                '<leader>sd',
-                function()
-                    Snacks.picker.diagnostics()
-                end,
-                desc = 'Search Diagnostics',
-            },
-            {
                 '<leader>sr',
                 function()
                     Snacks.picker.resume()
                 end,
-                desc = 'Search Resume',
-            },
-            {
-                '<leader>s.',
-                function()
-                    Snacks.picker.recent()
-                end,
-                desc = 'Search Recent Files',
+                desc = 'Resume Search',
             },
             {
                 '<leader><leader>',
                 function()
                     Snacks.picker.buffers()
                 end,
-                desc = 'Find existing buffers',
+                desc = 'Find Buffers',
             },
             {
                 '<leader>/',
                 function()
                     Snacks.picker.lines()
                 end,
-                desc = 'Search inside current buffer',
+                desc = 'Search Buffer Lines',
             },
             {
                 '<leader>s/',
                 function()
                     Snacks.picker.grep_buffers()
                 end,
-                desc = 'Search in Open Files',
+                desc = 'Search Open Files',
             },
             {
                 '<leader>sn',
                 function()
                     Snacks.picker.files { cwd = vim.fn.stdpath 'config' }
                 end,
-                desc = 'Search Neovim config files',
+                desc = 'Search Neovim Config',
+            },
+
+            -- Toggles
+            {
+                '<leader>td',
+                function()
+                    Snacks.toggle.diagnostics():toggle()
+                end,
+                desc = 'Toggle Diagnostics',
+            },
+            {
+                '<leader>th',
+                function()
+                    Snacks.toggle.inlay_hints():toggle()
+                end,
+                desc = 'Toggle Inlay Hints',
+            },
+            {
+                '<leader>tl',
+                function()
+                    Snacks.toggle.line_number():toggle()
+                end,
+                desc = 'Toggle Line Numbers',
+            },
+            {
+                '<leader>tw',
+                function()
+                    Snacks.toggle.option('wrap', { name = 'Wrap' }):toggle()
+                end,
+                desc = 'Toggle Wrap',
+            },
+            {
+                '<leader>ts',
+                function()
+                    Snacks.toggle
+                        .option('spell', { name = 'Spelling' })
+                        :toggle()
+                end,
+                desc = 'Toggle Spelling',
+            },
+
+            -- Git
+            {
+                '<leader>gg',
+                function()
+                    Snacks.lazygit()
+                end,
+                desc = 'Lazygit',
+            },
+            {
+                '<leader>gf',
+                function()
+                    Snacks.lazygit.log_file()
+                end,
+                desc = 'Lazygit File Log',
+            },
+            {
+                '<leader>gl',
+                function()
+                    Snacks.lazygit.log()
+                end,
+                desc = 'Lazygit Log',
+            },
+
+            -- Utilities
+            {
+                '<leader>bd',
+                function()
+                    Snacks.bufdelete()
+                end,
+                desc = 'Delete Buffer',
+            },
+            {
+                '<leader>cR',
+                function()
+                    Snacks.rename.rename_file()
+                end,
+                desc = 'Rename File',
+            },
+            {
+                '<leader>nh',
+                function()
+                    Snacks.notifier.show_history()
+                end,
+                desc = 'Notification History',
+            },
+            {
+                '<leader>nd',
+                function()
+                    Snacks.notifier.hide()
+                end,
+                desc = 'Dismiss Notifications',
             },
         },
     },
