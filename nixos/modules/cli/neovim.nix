@@ -19,25 +19,8 @@
     trash-cli
     sqlite
 
-    # Formatters
+    # Nix Formatter & Language Server
     alejandra
-    stylua
-    shfmt
-    shellcheck
-
-    # Language Servers (LSPs) & Runtimes
-    lua-language-server
-    gopls
-    rustc
-    cargo
-    rust-analyzer
-    pyright
     nixd
-    typescript-language-server
-    bash-language-server
-    biome
-    ruff
-    texlab
-    marksman
   ];
 }
