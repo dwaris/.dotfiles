@@ -40,3 +40,6 @@ vim.keymap.set(
 )
 vim.keymap.set('n', '<leader>wc', '<C-w>c', { desc = '[W]indow [C]lose' })
 vim.keymap.set('n', '<leader>wo', '<C-w>o', { desc = '[W]indow [O]nly' })
+
+vim.keymap.set('n', '<leader>qq', '<cmd>qa<CR>', { desc = '[Q]uit all' })
+vim.keymap.set('n', '<leader>qQ', '<cmd>qa!<CR>', { desc = 'Force [Q]uit all' })
