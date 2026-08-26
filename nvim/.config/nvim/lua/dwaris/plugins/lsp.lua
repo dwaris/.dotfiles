@@ -186,6 +186,7 @@ return {
                 ts_ls = { bin = 'typescript-language-server' },
                 bashls = { bin = 'bash-language-server' },
                 biome = { bin = 'biome' },
+                volar = { bin = 'vue-language-server' },
                 texlab = { bin = 'texlab' },
                 marksman = { bin = 'marksman' },
             }
