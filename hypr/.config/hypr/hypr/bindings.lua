@@ -2,10 +2,10 @@
 ---- MY PROGRAMS ----
 ---------------------
 
-local terminal    = "uwsm-app -- ~/.local/bin/run-or-raise-ghostty.sh"
+local terminal = "uwsm-app -- ~/.local/bin/run-or-raise-ghostty.sh"
 local fileManager = "uwsm-app -- nautilus"
-local menu        = "rofi -show drun -run-command 'uwsm-app -- {cmd}'"
-
+local browser = "uwsm-app -- xdg-open https://"
+local menu = "rofi -show drun -run-command 'uwsm-app -- {cmd}'"
 
 ---------------------
 ---- KEYBINDINGS ----
@@ -15,15 +15,16 @@ local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 
 -- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
 hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd(terminal))
+hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(browser))
 hl.bind(mainMod .. " + W", hl.dsp.window.close())
-hl.bind(mainMod .. " + M",
-    hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
+hl.bind(
+	mainMod .. " + BACKSPACE",
+	hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'")
+)
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
-hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
-hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
-hl.bind(mainMod .. " + SHIFT + W",
-    hl.dsp.exec_cmd(os.getenv("HOME") .. "/.local/bin/wallpaper-picker.sh"))
+hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd(menu))
+hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd(os.getenv("HOME") .. "/.local/bin/wallpaper-picker.sh"))
 hl.bind(mainMod .. " + SHIFT + J", hl.dsp.layout("togglesplit")) -- dwindle only
 
 -- Move focus with mainMod + arrow keys
@@ -35,9 +36,9 @@ hl.bind(mainMod .. " + j", hl.dsp.focus({ direction = "down" }))
 -- Switch workspaces with mainMod + [0-9]
 -- Move active window to a workspace with mainMod + SHIFT + [0-9]
 for i = 1, 10 do
-    local key = i % 10 -- 10 maps to key 0
-    hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = i }))
-    hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
+	local key = i % 10 -- 10 maps to key 0
+	hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = i }))
+	hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
 end
 
 -- Scroll through existing workspaces with mainMod + scroll
@@ -49,22 +50,37 @@ hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
 hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
 -- Laptop multimedia keys for volume and LCD brightness
-hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"),
-    { locked = true, repeating = true })
-hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"),
-    { locked = true, repeating = true })
-hl.bind("XF86AudioMute",
-    hl.dsp.exec_cmd(
-        [[sh -c "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle; wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -q MUTED && notify-send -u low 'Audio Muted' || notify-send 'Audio Unmuted'"]]),
-    { locked = true, repeating = true })
-hl.bind("XF86AudioMicMute",
-    hl.dsp.exec_cmd(
-        [[sh -c "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle; wpctl get-volume @DEFAULT_AUDIO_SOURCE@ | grep -q MUTED && notify-send -u low 'Mic Muted' || notify-send 'Mic Unmuted'"]]),
-    { locked = true, repeating = true })
-hl.bind("F14",
-    hl.dsp.exec_cmd(
-        [[sh -c "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle; wpctl get-volume @DEFAULT_AUDIO_SOURCE@ | grep -q MUTED && notify-send -u low 'Mic Muted' || notify-send 'Mic Unmuted'"]]),
-    { locked = true })
+hl.bind(
+	"XF86AudioRaiseVolume",
+	hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"),
+	{ locked = true, repeating = true }
+)
+hl.bind(
+	"XF86AudioLowerVolume",
+	hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"),
+	{ locked = true, repeating = true }
+)
+hl.bind(
+	"XF86AudioMute",
+	hl.dsp.exec_cmd(
+		[[sh -c "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle; wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -q MUTED && notify-send -u low 'Audio Muted' || notify-send 'Audio Unmuted'"]]
+	),
+	{ locked = true, repeating = true }
+)
+hl.bind(
+	"XF86AudioMicMute",
+	hl.dsp.exec_cmd(
+		[[sh -c "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle; wpctl get-volume @DEFAULT_AUDIO_SOURCE@ | grep -q MUTED && notify-send -u low 'Mic Muted' || notify-send 'Mic Unmuted'"]]
+	),
+	{ locked = true, repeating = true }
+)
+hl.bind(
+	"F14",
+	hl.dsp.exec_cmd(
+		[[sh -c "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle; wpctl get-volume @DEFAULT_AUDIO_SOURCE@ | grep -q MUTED && notify-send -u low 'Mic Muted' || notify-send 'Mic Unmuted'"]]
+	),
+	{ locked = true }
+)
 hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%+"), { locked = true, repeating = true })
 hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%-"), { locked = true, repeating = true })
 
@@ -78,8 +94,7 @@ hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true 
 hl.bind(mainMod .. " + ALT + H", hl.dsp.exec_cmd("hyprctl reload"))
 
 -- Toggle second monitor
-hl.bind(mainMod .. " + ALT + M",
-    hl.dsp.exec_cmd(os.getenv("HOME") .. "/.local/bin/toggle-second-monitor.sh"))
+hl.bind(mainMod .. " + ALT + M", hl.dsp.exec_cmd(os.getenv("HOME") .. "/.local/bin/toggle-second-monitor.sh"))
 
 -- Screen locking and Waybar toggles
 hl.bind(mainMod .. " + CTRL + L", hl.dsp.exec_cmd("uwsm-app -- hyprlock"))
@@ -92,6 +107,7 @@ hl.bind(mainMod .. " + G", hl.dsp.window.fullscreen({ mode = "fullscreen", actio
 
 -- Push the current workspace to the next monitor, then follow it
 hl.bind(mainMod .. " + SHIFT + P", hl.dsp.workspace.move({ monitor = "+1" }))
+
 -- Screenshots
 hl.bind(mainMod .. " + PRINT", hl.dsp.exec_cmd("hyprshot -m window"))
 hl.bind("PRINT", hl.dsp.exec_cmd("hyprshot -m output"))
@@ -99,6 +115,11 @@ hl.bind("SHIFT + PRINT", hl.dsp.exec_cmd("hyprshot -m region"))
 
 -- To switch between windows in a floating workspace:
 hl.bind("SUPER + Tab", function()
-    hl.dispatch(hl.dsp.window.cycle_next())   -- Change focus to another window
-    hl.dispatch(hl.dsp.window.bring_to_top()) -- Bring it to the top
+	hl.dispatch(hl.dsp.window.cycle_next()) -- Change focus to another window
+	hl.dispatch(hl.dsp.window.bring_to_top()) -- Bring it to the top
 end)
+
+--  Notification
+hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("makoctl dismiss"))
+hl.bind(mainMod .. " + SHIFT + N", hl.dsp.exec_cmd("makoctl dismiss -a"))
+hl.bind(mainMod .. " + ALT + N", hl.dsp.exec_cmd("makoctl restore"))
