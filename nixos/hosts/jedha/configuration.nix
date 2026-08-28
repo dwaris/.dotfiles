@@ -19,7 +19,6 @@
     ../../modules/desktop/specialisations.nix
 
     ../../modules/cli/podman.nix
-    ../../modules/cli/llama-cpp.nix
 
     ../../modules/gui/gaming/extra.nix
 
@@ -50,6 +49,8 @@
   environment.systemPackages = with pkgs; [
     easyeffects
     ethtool
+    llama-cpp-rocm
+    pi-coding-agent
   ];
 
   systemd.services."udp-gro-forwarding" = {
