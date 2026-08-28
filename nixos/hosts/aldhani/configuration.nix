@@ -30,7 +30,10 @@
   networking.hostName = "aldhani"; # Define your hostname.
   networking.hostId = "2ffb69ed";
 
-  environment.systemPackages = [];
+  environment.systemPackages = with pkgs; [
+    llama-cpp-vulkan
+    pi-coding-agent
+  ];
 
   services.fprintd.enable = false;
 
