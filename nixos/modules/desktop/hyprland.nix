@@ -19,7 +19,6 @@
   environment.systemPackages = with pkgs; [
     awww
     hyprpolkitagent
-    hypridle
     hyprshot
 
     hyprshutdown
@@ -74,6 +73,4 @@
       glib-networking.enable = true;
     };
   };
-
-  programs.dconf.enable = true;
 }
