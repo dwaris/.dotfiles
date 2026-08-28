@@ -13,7 +13,6 @@
   programs.vim.defaultEditor = lib.mkForce false;
 
   environment.systemPackages = with pkgs; [
-    tree-sitter
     lazygit
     delta
     trash-cli
