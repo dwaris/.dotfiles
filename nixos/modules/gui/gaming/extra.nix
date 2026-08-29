@@ -11,9 +11,13 @@
     options = ["zfsutil" "nofail"];
   };
 
-  services.scx.extraArgs = [
-    "-m"
-    "performance"
-    "-w"
-  ];
+  services.scx = {
+    enable = true;
+    scheduler = "scx_rusty";
+    extraArgs = [
+      "-m"
+      "performance"
+      "-w"
+    ];
+  };
 }
