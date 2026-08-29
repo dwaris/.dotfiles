@@ -15,9 +15,8 @@
     enable = true;
     scheduler = "scx_rusty";
     extraArgs = [
-      "-m"
-      "performance"
-      "-w"
+      "--perf"
+      "1024"
     ];
   };
 }
