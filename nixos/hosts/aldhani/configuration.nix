@@ -25,7 +25,11 @@
     ./hardware-configuration.nix
   ];
 
-  boot.kernelParams = ["iommu=pt"];
+  boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest-x86_64-v3;
+  boot.kernelParams = [
+    "iommu=pt"
+    "amd_pstate=active"
+  ];
 
   networking.hostName = "aldhani"; # Define your hostname.
   networking.hostId = "2ffb69ed";
