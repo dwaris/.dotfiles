@@ -2,15 +2,21 @@
   description = "Dwaris NixOS Flake";
 
   nixConfig = {
-    extra-substituters = ["https://nix-community.cachix.org"];
+    extra-substituters = [
+      "https://nix-community.cachix.org"
+      "https://attic.xuyh0120.win/lantian"
+    ];
     extra-trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="
     ];
   };
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-26.05";
+
+    nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
 
     lanzaboote = {
       url = "github:nix-community/lanzaboote";
