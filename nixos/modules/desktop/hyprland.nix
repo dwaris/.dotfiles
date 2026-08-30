@@ -20,7 +20,6 @@
     awww
     hyprpolkitagent
     hyprshot
-
     hyprshutdown
 
     waybar
@@ -28,7 +27,6 @@
     networkmanagerapplet
     wiremix
     brightnessctl
-
     mako
     libnotify
 
@@ -43,9 +41,6 @@
     kdePackages.qt6ct
     kdePackages.breeze-icons
     rose-pine-hyprcursor
-
-    powertop
-    sioyek
 
     file-roller
     nautilus
