@@ -5,5 +5,7 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("systemctl --user start mako.service")
     hl.exec_cmd("uwsm app -- nm-applet --indicator")
     hl.exec_cmd("uwsm app -- awww-daemon")
-    hl.exec_cmd("wl-paste --watch cliphist store")
+    hl.exec_cmd("uwsm app -- wl-paste --watch cliphist store")
+    hl.exec_cmd("uwsm app -- brave-origin --no-startup-window")
 end)
+
