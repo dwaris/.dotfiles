@@ -31,7 +31,7 @@ if [[ -n "$OMARCHY_PATH" && -d "$OMARCHY_PATH/bin" ]]; then
 fi
 
 export EDITOR=nvim
-export PAGER="bat --plain --paging=always"
+export PAGER="less -R"
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 export XDG_DATA_DIRS="$XDG_DATA_DIRS:/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share"
 
@@ -79,13 +79,8 @@ zinit light-mode for \
 # ALIASES           #
 #####################
 alias mv='mv -v'
-
-(( $+commands[eza] )) && alias ls='eza -a --group-directories-first' \
-                               ll='eza -la --group-directories-first --git' \
-                               tree='eza --tree --level=3'
-
-(( $+commands[bat] )) && alias cat='bat --style=plain --paging=never' \
-                               less='bat --style=plain --paging=always'
+alias ls='ls -A --color=auto --group-directories-first'
+alias ll='ls -la -h --color=auto --group-directories-first'
 
 (( $+commands[nvim] )) && alias vim='nvim'
 

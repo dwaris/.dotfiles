@@ -3,8 +3,6 @@
     mise
     stow
     fzf
-    eza
-    bat
     starship
     tmux
     herdr
