@@ -20,6 +20,8 @@
 
     ../../modules/cli/podman.nix
 
+    ../../modules/desktop/oo7.nix
+
     ../../modules/gui/gaming/extra.nix
 
     ./hardware-configuration.nix

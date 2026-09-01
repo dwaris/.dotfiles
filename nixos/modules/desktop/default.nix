@@ -1,7 +1,6 @@
 {pkgs, ...}: {
   imports = [
     ../networking/networkmanager.nix
-    ./oo7.nix
   ];
 
   environment.systemPackages = with pkgs; [
