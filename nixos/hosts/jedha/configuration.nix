@@ -27,8 +27,6 @@
     ./hardware-configuration.nix
   ];
 
-  boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest-zen4;
-
   fileSystems."/mnt/tank8tb/media" = {
     device = "tank8tb/media";
     fsType = "zfs";

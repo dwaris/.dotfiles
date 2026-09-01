@@ -1,9 +1,5 @@
-{pkgs, config, inputs, ...}: {
-  nixpkgs.overlays = [
-        inputs.nix-cachyos-kernel.overlays.pinned
-  ];
-
-  boot.zfs.package = config.boot.kernelPackages.zfs_cachyos;
+{pkgs, ...}: {
+  boot.kernelPackages = pkgs.linuxPackages;
 
   boot.supportedFilesystems = [
     "zfs"
