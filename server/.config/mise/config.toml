@@ -1,0 +1,24 @@
+[settings]
+experimental = true
+legacy_version_file = true
+all_compile = false
+
+[tools]
+neovim = "stable"
+agy = "latest"
+
+starship = "latest"
+lazygit = "latest"
+bottom = "latest"
+ripgrep = "latest"
+fd = "latest"
+fzf = "latest"
+zoxide = "latest"
+
+lua-language-server = "latest"
+stylua = "latest"
+shfmt = "latest"
+shellcheck = "latest"
+marksman = "latest"
+node = "lts"
+"npm:bash-language-server" = "latest"
