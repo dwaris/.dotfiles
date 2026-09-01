@@ -1,7 +1,4 @@
-{
-  lib,
-  ...
-}: {
+{lib, ...}: {
   specialisation = {
     hyprland = {
       inheritParentConfig = true;

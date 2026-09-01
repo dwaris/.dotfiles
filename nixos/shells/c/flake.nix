@@ -18,7 +18,6 @@
             gdb
             valgrind
           ];
-
         };
     });
   };

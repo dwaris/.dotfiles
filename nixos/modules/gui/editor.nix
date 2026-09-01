@@ -4,6 +4,6 @@
 
     neovide
 
-    vscode-fhs 
+    vscode-fhs
   ];
 }
