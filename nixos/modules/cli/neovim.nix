@@ -8,6 +8,8 @@
   programs.neovim = {
     enable = true;
     defaultEditor = true;
+    viAlias = true;
+    vimAlias = true;
   };
 
   programs.vim.defaultEditor = lib.mkForce false;
