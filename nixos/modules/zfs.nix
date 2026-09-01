@@ -21,6 +21,6 @@
   };
   services.zfs.autoScrub = {
     enable = true;
-    pools = [ "zpool" ];
+    pools = ["zpool"];
   };
 }

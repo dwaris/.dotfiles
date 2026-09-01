@@ -15,7 +15,6 @@
             lua-language-server
             love
           ];
-
         };
     });
   };

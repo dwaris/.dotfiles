@@ -1,4 +1,8 @@
-{pkgs, lib, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   imports = [
     ./bootloader.nix
   ];
@@ -8,7 +12,6 @@
     enable = true;
     pkiBundle = "/var/lib/sbctl";
   };
-
 
   environment.systemPackages = with pkgs; [
     sbctl

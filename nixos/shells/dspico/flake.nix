@@ -1,17 +1,16 @@
 {
   description = "DSPico Build Environment";
 
-    inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    outputs = {nixpkgs, ...}: let
-        forAllSystems = function:
-            nixpkgs.lib.genAttrs ["x86_64-linux"] (
-                system: function nixpkgs.legacyPackages.${system}
-            );
-    in {
-        devShells = forAllSystems (
-            pkgs: let
-
+  outputs = {nixpkgs, ...}: let
+    forAllSystems = function:
+      nixpkgs.lib.genAttrs ["x86_64-linux"] (
+        system: function nixpkgs.legacyPackages.${system}
+      );
+  in {
+    devShells = forAllSystems (
+      pkgs: let
         fhs = pkgs.buildFHSEnv {
           name = "dspico-shell";
 
@@ -277,10 +276,10 @@
             }
           '';
 
-                    runScript = "bash --login";
+          runScript = "bash --login";
         };
-            in {
-                default = pkgs.mkShell {
+      in {
+        default = pkgs.mkShell {
           buildInputs = [fhs];
           shellHook = ''
             echo "DSPico Development Environment (dspico-shell)"
@@ -302,5 +301,5 @@
         };
       }
     );
-    };
+  };
 }
