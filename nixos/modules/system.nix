@@ -8,6 +8,7 @@
   nix.settings.trusted-users = ["@wheel"];
 
   nix.settings = {
+    auto-optimise-store = true;
     # enable flakes globally
     experimental-features = [
       "nix-command"

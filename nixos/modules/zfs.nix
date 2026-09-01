@@ -23,4 +23,6 @@
     weekly = 4;
     monthly = 12;
   };
+  services.zfs.autoScrub.enable = true;
+  services.zfs.trim.enable = true;
 }
