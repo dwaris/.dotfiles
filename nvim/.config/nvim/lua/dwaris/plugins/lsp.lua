@@ -125,22 +125,6 @@ return {
                     local client =
                         vim.lsp.get_client_by_id(event.data.client_id)
                     setup_document_highlight(client, event)
-
-                    if
-                        client
-                        and client:supports_method(
-                            vim.lsp.protocol.Methods.textDocument_inlayHint,
-                            event.buf
-                        )
-                    then
-                        map(event, '<leader>th', function()
-                            vim.lsp.inlay_hint.enable(
-                                not vim.lsp.inlay_hint.is_enabled {
-                                    bufnr = event.buf,
-                                }
-                            )
-                        end, '[T]oggle Inlay [H]ints')
-                    end
                 end,
             })
 
@@ -257,19 +241,7 @@ return {
         event = 'VimEnter',
         version = '1.*',
         dependencies = {
-            {
-                'L3MON4D3/LuaSnip',
-                version = 'v2.*',
-                build = 'make install_jsregexp',
-                dependencies = {
-                    {
-                        'rafamadriz/friendly-snippets',
-                        config = function()
-                            require('luasnip.loaders.from_vscode').lazy_load()
-                        end,
-                    },
-                },
-            },
+            'rafamadriz/friendly-snippets',
         },
         opts = {
             keymap = {
@@ -282,9 +254,6 @@ return {
             },
             completion = {
                 documentation = { auto_show = true, auto_show_delay_ms = 500 },
-            },
-            snippets = {
-                preset = 'luasnip',
             },
             sources = {
                 default = {
