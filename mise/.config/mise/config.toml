@@ -4,13 +4,13 @@ legacy_version_file = true
 all_compile = false
 
 [tools]
-# Standalone binaries (no runtime dependency)
+agy = "latest"
+
 lua-language-server = "latest"
 stylua = "latest"
 shfmt = "latest"
 shellcheck = "latest"
 marksman = "latest"
 
-# Node as infrastructure runtime for npm-based LSPs
 node = "lts"
 "npm:bash-language-server" = "latest"
