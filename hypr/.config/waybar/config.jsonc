@@ -131,7 +131,7 @@
         "tooltip-format-disconnected": "Disconnected",
         "interval": 10,
         "spacing": 1,
-        "on-click": "ghostty -e nmtui"
+        "on-click": "uwsm-app -- ghostty -e nmtui"
     },
     "custom/vpn": {
         "exec": "sh ~/.config/waybar/scripts/vpn_status.sh",
@@ -139,7 +139,7 @@
         "interval": 60,
         "signal": 1,
         "on-click": "sh ~/.config/waybar/scripts/vpn_toggle.sh",
-        "on-click-middle": "ghostty -e sh -lc 'protonvpn status; echo; echo Press Enter to close; read _'",
+        "on-click-middle": "uwsm-app -- ghostty -e sh -lc 'protonvpn status; echo; echo Press Enter to close; read _'",
         "on-click-right": "sh ~/.config/waybar/scripts/vpn_toggle.sh safe"
     },
     "bluetooth": {
@@ -149,7 +149,7 @@
         "format-connected": "󰂱",
         "format-no-controller": "",
         "tooltip-format": "Devices connected: {num_connections}",
-        "on-click": "ghostty -e bluetui"
+        "on-click": "uwsm-app -- ghostty -e bluetui"
     },
     "pulseaudio#sink": {
         "format": "{icon} {volume}%",
