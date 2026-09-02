@@ -15,6 +15,9 @@
   programs.vim.defaultEditor = lib.mkForce false;
 
   environment.systemPackages = with pkgs; [
+    gcc
+    tree-sitter
+
     lazygit
     trash-cli
     sqlite
