@@ -163,7 +163,7 @@ return {
                     },
                 },
                 nixd = { bin = 'nixd' },
-                pyright = { bin = 'pyright-langserver' },
+                basedpyright = { bin = 'basedpyright-langserver' },
                 ruff = { bin = 'ruff' },
                 gopls = { bin = 'gopls' },
                 rust_analyzer = { bin = 'rust-analyzer' },
