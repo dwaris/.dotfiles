@@ -8,6 +8,8 @@ return {
             { '<leader>w', group = '[W]indow' },
             { '<leader>g', group = '[G]it' },
             { '<leader>n', group = '[N]otifications' },
+            { '<leader>b', group = '[B]uffer' },
+            { 'gr', group = '[L]SP Actions' },
         },
     },
 }
