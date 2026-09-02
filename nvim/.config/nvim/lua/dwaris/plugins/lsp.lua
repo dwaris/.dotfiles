@@ -172,7 +172,10 @@ return {
                 biome = { bin = 'biome' },
                 volar = { bin = 'vue-language-server' },
                 texlab = { bin = 'texlab' },
-                marksman = { bin = 'marksman' },
+                marksman = {
+                    bin = 'marksman',
+                    cmd_env = { DOTNET_SYSTEM_GLOBALIZATION_INVARIANT = '1' },
+                },
             }
 
             for name, config in pairs(servers) do
