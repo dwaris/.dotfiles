@@ -2,7 +2,8 @@
 ---- MY PROGRAMS ----
 ---------------------
 
-local terminal = "uwsm-app -- ~/.local/bin/run-or-raise-ghostty.sh"
+local scriptDir = os.getenv("HOME") .. "/.config/hypr/scripts/"
+local terminal = "uwsm-app -- " .. scriptDir .. "run-or-raise-ghostty.sh"
 local fileManager = "uwsm-app -- nautilus"
 local browser = "uwsm-app -- xdg-open https://"
 local menu = "rofi -show drun -run-command 'uwsm-app -- {cmd}'"
@@ -24,8 +25,8 @@ hl.bind(
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + N", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd(menu))
-hl.bind(mainMod .. " + V", hl.dsp.exec_cmd("rofi -modi clipboard:~/Projects/.dotfiles/scripts/cliphist-rofi-img -show clipboard -show-icons"))
-hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd(os.getenv("HOME") .. "/.local/bin/wallpaper-picker.sh"))
+hl.bind(mainMod .. " + V", hl.dsp.exec_cmd("rofi -modi clipboard:" .. scriptDir .. "cliphist-rofi-img -show clipboard -show-icons"))
+hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd(scriptDir .. "wallpaper-picker.sh"))
 hl.bind(mainMod .. " + SHIFT + J", hl.dsp.layout("togglesplit")) -- dwindle only
 
 -- Move focus with mainMod + arrow keys
@@ -94,8 +95,8 @@ hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true 
 -- Reload Hyprland
 hl.bind(mainMod .. " + ALT + H", hl.dsp.exec_cmd("hyprctl reload"))
 
--- Toggle second monitor
-hl.bind(mainMod .. " + ALT + M", hl.dsp.exec_cmd(os.getenv("HOME") .. "/.local/bin/toggle-second-monitor.sh"))
+-- Display management
+hl.bind(mainMod .. " + P", hl.dsp.exec_cmd(scriptDir .. "toggle-display.sh"))
 
 -- Screen locking and Waybar toggles
 hl.bind(mainMod .. " + CTRL + L", hl.dsp.exec_cmd("uwsm-app -- hyprlock"))
