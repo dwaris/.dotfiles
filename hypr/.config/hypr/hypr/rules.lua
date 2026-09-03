@@ -46,11 +46,14 @@ hl.window_rule({
     center = true
 })
 
--- Bitwarden / Chrome rules
+-- Bitwarden extension & popup
 hl.window_rule({
-    name            = "no-screen-share",
-    match           = { class = "^chrome-nngceckbapebfimnlniiiahkandclblb-Default$" },
-    no_screen_share = true
+    name            = "bitwarden-popup",
+    match           = { class = ".*nngceckbapebfimnlniiiahkandclblb.*" },
+    float           = true,
+    center          = true,
+    size            = { 400, 600 },
+    no_screen_share = true,
 })
 
 -- Layer rules
