@@ -13,7 +13,7 @@
         location = "Arbeitszimmer";
         description = "Brother MFC-J5720DW series";
         deviceUri = "ipp://192.168.178.20:631/ipp/print";
-        model = "everywhere";
+        model = "drv:///cupsfilters.drv/pwgrast.ppd";
       }
       {
         name = "Brother_HL-4150CDN";
