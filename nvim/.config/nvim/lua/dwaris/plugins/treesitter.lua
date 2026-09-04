@@ -12,6 +12,7 @@ return {
         ts.install {
             'bash',
             'c',
+            'cpp',
             'go',
             'html',
             'javascript',
