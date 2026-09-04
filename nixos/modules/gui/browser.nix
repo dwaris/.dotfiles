@@ -7,5 +7,6 @@
       ];
     })
     firefox
+    tor-browser
   ];
 }
