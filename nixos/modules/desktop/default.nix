@@ -1,12 +1,4 @@
 {pkgs, ...}: {
-  imports = [
-    ../networking/networkmanager.nix
-  ];
-
-  environment.systemPackages = with pkgs; [
-    appimage-run
-  ];
-
   services.fwupd.enable = true;
 
   fonts.packages = with pkgs; [
@@ -14,11 +6,9 @@
     nerd-fonts.blex-mono
 
     noto-fonts
+    noto-fonts-color-emoji
     noto-fonts-cjk-sans
     noto-fonts-cjk-serif
-
-    source-code-pro
-    nerd-fonts.sauce-code-pro
   ];
 
   services.smartd = {
@@ -56,5 +46,5 @@
     rulesProvider = pkgs.ananicy-rules-cachyos;
   };
 
-  security.pki.certificateFiles = [../../.certs/root_ca.crt];
+  security.pki.certificateFiles = [../../certs/root_ca.crt];
 }

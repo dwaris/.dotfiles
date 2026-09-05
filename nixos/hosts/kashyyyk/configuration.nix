@@ -3,16 +3,11 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 {pkgs, ...}: {
   imports = [
-    ../../modules/system.nix
-    ../../modules/hardening.nix
-    ../../modules/networking/ssh.nix
-    ../../modules/bootloader.nix
-
-    ../../modules/printing.nix
-
-    ../../modules/power/laptop.nix
-
-    ../../modules/desktop
+    ../../modules/core
+    ../../modules/hardware/laptop.nix
+    ../../modules/hardware/boot.nix
+    ../../modules/hardware/printing.nix
+    ../../modules/hardware/hardening.nix
     ../../modules/desktop/kde.nix
 
     ./hardware-configuration.nix
@@ -21,10 +16,6 @@
   networking.hostId = "f0cacf30";
 
   environment.systemPackages = with pkgs; [
-    stow
-    fzf
-    starship
-    tmux
     ghostty
 
     vlc
