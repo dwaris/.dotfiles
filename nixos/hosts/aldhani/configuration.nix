@@ -17,7 +17,6 @@ in {
     ../../modules/desktop/oo7.nix
 
     ../../modules/apps
-    ../../modules/apps/gaming
 
     ./hardware-configuration.nix
   ];
