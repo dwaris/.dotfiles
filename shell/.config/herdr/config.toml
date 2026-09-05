@@ -43,5 +43,3 @@ reload_config = "prefix+shift+r"
 
 [experimental]
 kitty_graphics = true
-
-
