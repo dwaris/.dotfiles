@@ -1,0 +1,91 @@
+{
+	"window.autoDetectColorScheme": true,
+	"files.autoSave": "onFocusChange",
+	"editor.fontFamily": "IBM Plex Mono",
+	"telemetry.telemetryLevel": "off",
+	"editor.cursorSmoothCaretAnimation": "on",
+	"editor.cursorBlinking": "solid",
+	"editor.fontLigatures": false,
+	"editor.formatOnPaste": true,
+	"editor.formatOnSave": true,
+	"editor.minimap.autohide": "mouseover",
+	"editor.rulers": [80, 120],
+	"workbench.editor.limit.enabled": true,
+	"workbench.editor.limit.value": 5,
+	"git.autofetch": true,
+	"nix.enableLanguageServer": true,
+	"nix.serverPath": ["nixd", "--semantic-tokens"],
+	"editor.semanticHighlighting.enabled": true,
+	"nix.serverSettings": {
+		"nixd": {
+			"formatting": {
+				"command": ["alejandra"]
+			}
+		}
+	},
+	"terminal.integrated.enableVisualBell": false,
+	"diffEditor.experimental.showMoves": true,
+	"python.analysis.typeCheckingMode": "standard",
+	"workbench.editor.empty.hint": "hidden",
+	"extensions.ignoreRecommendations": true,
+	"telemetry.feedback.enabled": false,
+	"python.createEnvironment.trigger": "off",
+	"latex-workshop.bibtex-format.sort.enabled": true,
+	"latex-workshop.formatting.latex": "tex-fmt",
+	"git.blame.editorDecoration.enabled": true,
+	"update.showReleaseNotes": true,
+	"editor.minimap.renderCharacters": false,
+	"workbench.colorTheme": "Catppuccin Mocha",
+	"workbench.preferredDarkColorTheme": "Catppuccin Mocha",
+	"workbench.preferredLightColorTheme": "Catppuccin Latte",
+	"workbench.iconTheme": "catppuccin-mocha",
+	"Lua.diagnostics.enableScheme": [],
+	"Lua.diagnostics.globals": ["vim"],
+	"git.autoStash": true,
+	"diffEditor.codeLens": true,
+	"antigravity.enableTelemetry": false,
+	"chat.disableAIFeatures": true,
+	"extensions.experimental.affinity": {
+		"asvetliakov.vscode-neovim": 1
+	},
+	"json.schemaDownload.trustedDomains": {
+		"https://schemastore.azurewebsites.net/": true,
+		"https://raw.githubusercontent.com/microsoft/vscode/": true,
+		"https://raw.githubusercontent.com/devcontainers/spec/": true,
+		"https://www.schemastore.org/": true,
+		"https://json.schemastore.org/": true,
+		"https://json-schema.org/": true,
+		"https://developer.microsoft.com/json-schemas/": true,
+		"https://raw.githubusercontent.com/catppuccin/vscode/": true,
+		"https://biomejs.dev": true
+	},
+	"[json]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"biome.lsp.bin": "/home/dwaris/.local/share/mise/shims/biome",
+	"[jsonc]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"[javascript]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"[typescript]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"[python]": {
+		"editor.defaultFormatter": "charliermarsh.ruff",
+		"editor.codeActionsOnSave": {
+			"source.fixAll": "explicit",
+			"source.organizeImports": "explicit"
+		}
+	},
+	"[rust]": {
+		"editor.defaultFormatter": "rust-lang.rust-analyzer"
+	},
+	"[nix]": {
+		"editor.defaultFormatter": "jnoortheen.nix-ide"
+	},
+	"[go]": {
+		"editor.defaultFormatter": "golang.go"
+	}
+}
