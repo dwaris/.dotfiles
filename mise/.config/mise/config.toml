@@ -5,6 +5,7 @@ all_compile = false
 
 [tools]
 agy = "latest"
+"npm:@earendil-works/pi-coding-agent" = "latest"
 
 lua-language-server = "latest"
 stylua = "latest"
