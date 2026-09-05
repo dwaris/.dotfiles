@@ -9,6 +9,7 @@ agy = "latest"
 
 starship = "latest"
 lazygit = "latest"
+lazydocker = "latest"
 bottom = "latest"
 ripgrep = "latest"
 fd = "latest"
