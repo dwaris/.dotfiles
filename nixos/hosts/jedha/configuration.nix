@@ -4,25 +4,23 @@
 {
   pkgs,
   lib,
-  username,
   ...
-}: {
+}: let
+  username = "dwaris";
+in {
   imports = [
-    ../../modules/profiles/desktop.nix
-    ../../modules/secure-boot.nix
-    ../../modules/zfs.nix
+    ../../modules/core
+    ../../modules/hardware/desktop.nix
+    ../../modules/hardware/secure-boot.nix
+    ../../modules/hardware/zfs.nix
+    ../../modules/hardware/printing.nix
+    ../../modules/hardware/vpn/tailscale-server.nix
 
-    ../../modules/printing.nix
-
-    ../../modules/networking/tailscale/server.nix
-
-    ../../modules/desktop/specialisations.nix
-
-    ../../modules/cli/podman.nix
-
+    ../../modules/desktop/hyprland.nix
     ../../modules/desktop/oo7.nix
 
-    ../../modules/gui/gaming/extra.nix
+    ../../modules/apps
+    ../../modules/apps/gaming/extra.nix
 
     ./hardware-configuration.nix
   ];
@@ -51,8 +49,6 @@
   environment.systemPackages = with pkgs; [
     easyeffects
     ethtool
-    llama-cpp-rocm
-    pi-coding-agent
   ];
 
   systemd.services."udp-gro-forwarding" = {
@@ -68,8 +64,7 @@
     after = ["network.target"];
   };
 
-  services.udev.packages = with pkgs; [via];
-
+  hardware.keyboard.qmk.enable = true;
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
@@ -90,6 +85,16 @@
         "default.clock.max-quantum" = 256;
       };
     };
+  };
+
+  programs.nh.flake = "/home/${username}/Projects/dotfiles/nixos";
+
+  services.scx = {
+    enable = true;
+    scheduler = "scx_lavd";
+    extraArgs = [
+      "--performance"
+    ];
   };
 
   users.groups.${username} = {
@@ -138,6 +143,18 @@
     device = "zpool/shared/${username}/videos";
     fsType = "zfs";
     options = ["zfsutil"];
+  };
+
+  fileSystems."/home/${username}/Nextcloud" = {
+    device = "zpool/shared/nextcloud";
+    fsType = "zfs";
+    options = ["zfsutil" "nofail"];
+  };
+
+  fileSystems."/home/${username}/Games" = {
+    device = "zpool/shared/games";
+    fsType = "zfs";
+    options = ["zfsutil" "nofail"];
   };
 
   system.stateVersion = "25.05"; # Did you read the comment?

@@ -3,9 +3,9 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 {pkgs, ...}: {
   imports = [
-    ../../modules/profiles/laptop.nix
-    ../../modules/bootloader.nix
-
+    ../../modules/core
+    ../../modules/hardware/laptop.nix
+    ../../modules/hardware/boot.nix
     ../../modules/desktop/gnome.nix
 
     ./hardware-configuration.nix
@@ -16,7 +16,6 @@
 
   environment.systemPackages = with pkgs; [
     ghostty
-    tmux
 
     vlc
 

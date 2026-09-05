@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   imports = [
-    ../cli/mpd.nix
+    ./default.nix
   ];
 
   programs.hyprland = {

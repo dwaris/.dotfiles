@@ -18,6 +18,11 @@
       url = "github:nix-community/lanzaboote";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nixos-wsl = {
+      url = "github:nix-community/NixOS-WSL";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
@@ -25,8 +30,7 @@
     nixpkgs,
     ...
   }: let
-    username = "dwaris";
-    specialArgs = {inherit inputs username;};
+    specialArgs = {inherit inputs;};
   in {
     nixosConfigurations = {
       jedha = inputs.nixpkgs.lib.nixosSystem {
@@ -56,6 +60,14 @@
         inherit specialArgs;
         modules = [
           ./hosts/batuu/configuration.nix
+        ];
+      };
+
+      wsl = inputs.nixpkgs.lib.nixosSystem {
+        inherit specialArgs;
+        modules = [
+          ./hosts/wsl/configuration.nix
+          inputs.nixos-wsl.nixosModules.default
         ];
       };
     };

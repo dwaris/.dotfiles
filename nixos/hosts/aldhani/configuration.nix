@@ -1,28 +1,23 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-{
-  pkgs,
-  username,
-  ...
-}: {
+{pkgs, ...}: let
+  username = "dwaris";
+in {
   imports = [
-    ../../modules/profiles/laptop.nix
-    ../../modules/secure-boot.nix
-    ../../modules/zfs.nix
+    ../../modules/core
+    ../../modules/hardware/laptop.nix
+    ../../modules/hardware/secure-boot.nix
+    ../../modules/hardware/zfs.nix
+    ../../modules/hardware/printing.nix
+    ../../modules/hardware/vpn/wireguard.nix
+    ../../modules/hardware/vpn/tailscale-client.nix
 
-    ../../modules/networking/wireguard.nix
-    ../../modules/networking/tailscale/client.nix
-
-    ../../modules/printing.nix
-
-    ../../modules/desktop/specialisations.nix
-
-    ../../modules/cli/podman.nix
-
+    ../../modules/desktop/hyprland.nix
     ../../modules/desktop/oo7.nix
 
-    ../../modules/gui/gaming
+    ../../modules/apps
+    ../../modules/apps/gaming
 
     ./hardware-configuration.nix
   ];
@@ -34,11 +29,6 @@
 
   networking.hostName = "aldhani"; # Define your hostname.
   networking.hostId = "2ffb69ed";
-
-  environment.systemPackages = with pkgs; [
-    llama-cpp-vulkan
-    pi-coding-agent
-  ];
 
   services.fprintd.enable = false;
 
@@ -89,6 +79,8 @@
     '';
   };
 
+  programs.nh.flake = "/home/${username}/Projects/dotfiles/nixos";
+
   users.groups.${username} = {
     gid = 1000;
   };
@@ -135,6 +127,12 @@
     device = "zpool/shared/${username}/videos";
     fsType = "zfs";
     options = ["zfsutil"];
+  };
+
+  fileSystems."/home/${username}/Nextcloud" = {
+    device = "zpool/shared/nextcloud";
+    fsType = "zfs";
+    options = ["zfsutil" "nofail"];
   };
 
   system.stateVersion = "23.11"; # Did you read the comment?
