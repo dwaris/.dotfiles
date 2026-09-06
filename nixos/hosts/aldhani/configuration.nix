@@ -50,7 +50,7 @@ in {
     after = ["pipewire.service" "wireplumber.service"];
 
     # Crucial: Give the script the exact path to the tools it needs
-    path = with pkgs; [wireplumber pulseaudio gnugrep coreutils];
+    path = with pkgs; [wireplumber pulseaudio gnugrep coreutils llama-cpp-vulkan];
 
     script = ''
       readonly LED_PATH="/sys/class/leds/platform::micmute/brightness"

@@ -53,6 +53,7 @@ in {
   environment.systemPackages = with pkgs; [
     easyeffects
     ethtool
+    llama-cpp-rocm
   ];
 
   systemd.services."udp-gro-forwarding" = {
