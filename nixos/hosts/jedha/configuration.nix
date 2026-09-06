@@ -46,6 +46,10 @@ in {
   networking.hostName = "jedha"; # Define your hostname.
   networking.hostId = "d83be86e";
 
+  boot.kernelParams = [
+    "mem_sleep_default=s2idle"
+  ];
+
   environment.systemPackages = with pkgs; [
     easyeffects
     ethtool
