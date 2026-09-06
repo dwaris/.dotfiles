@@ -87,5 +87,11 @@
 	},
 	"[go]": {
 		"editor.defaultFormatter": "golang.go"
+	},
+	"[lua]": {
+		"editor.defaultFormatter": "JohnnyMorganz.stylua"
+	},
+	"[dockercompose]": {
+		"editor.defaultFormatter": "ms-azuretools.vscode-containers"
 	}
 }
