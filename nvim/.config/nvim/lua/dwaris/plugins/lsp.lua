@@ -177,6 +177,7 @@ return {
                     bin = 'marksman',
                     cmd_env = { DOTNET_SYSTEM_GLOBALIZATION_INVARIANT = '1' },
                 },
+                hls = { bin = 'haskell-language-server-wrapper' },
             }
 
             for name, config in pairs(servers) do
@@ -226,6 +227,7 @@ return {
                 sh = { 'shfmt' },
                 elixir = { 'mix' },
                 latex = { 'tex-fmt' },
+                haskell = { 'fourmolu' },
                 javascript = { 'biome' },
                 typescript = { 'biome' },
                 json = { 'biome' },

@@ -14,6 +14,7 @@ return {
             'c',
             'cpp',
             'go',
+            'haskell',
             'html',
             'javascript',
             'json',
