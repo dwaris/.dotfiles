@@ -30,7 +30,6 @@ if [[ -n "$OMARCHY_PATH" && -d "$OMARCHY_PATH/bin" ]]; then
   esac
 fi
 
-export EDITOR=nvim
 export PAGER="less -R"
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 
@@ -78,10 +77,20 @@ zinit light-mode for \
 # ALIASES           #
 #####################
 alias mv='mv -v'
-alias ls='ls -A --color=auto --group-directories-first'
-alias ll='ls -la -h --color=auto --group-directories-first'
+alias ls='ls -A --color=auto'
+alias ll='ls -la -h --color=auto'
+alias la='ls -lathr --color=auto'
 
-(( $+commands[nvim] )) && alias vim='nvim'
+# Editor & Vim fallback
+if (( $+commands[nvim] )); then
+  export EDITOR=nvim
+  alias vim='nvim'
+elif (( $+commands[vim] )); then
+  export EDITOR=vim
+else
+  export EDITOR=vi
+  alias vim='vi'
+fi
 
 #####################
 # OPTIONS & HISTORY #
