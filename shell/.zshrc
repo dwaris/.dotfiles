@@ -33,7 +33,6 @@ fi
 export EDITOR=nvim
 export PAGER="less -R"
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
-export XDG_DATA_DIRS="$XDG_DATA_DIRS:/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share"
 
 # FZF Defaults & UI
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --exclude .git'
