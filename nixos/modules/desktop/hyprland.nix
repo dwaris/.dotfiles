@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   imports = [
     ./default.nix
   ];
@@ -14,7 +18,23 @@
     pkgs.brightnessctl
   ];
 
-  services.displayManager.ly.enable = true;
+  services.greetd = {
+    enable = true;
+    useTextGreeter = true;
+    settings = {
+      default_session = {
+        command = builtins.concatStringsSep " " [
+          "${pkgs.tuigreet}/bin/tuigreet"
+          "--time"
+          "--remember"
+          "--remember-session"
+          "--asterisks"
+          "--sessions ${config.services.displayManager.sessionData.desktops}/share/wayland-sessions"
+        ];
+        user = "greeter";
+      };
+    };
+  };
 
   environment.systemPackages = with pkgs; [
     awww
