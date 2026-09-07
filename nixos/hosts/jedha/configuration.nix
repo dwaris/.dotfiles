@@ -74,10 +74,8 @@ in {
     enable = true;
     enable32Bit = true;
   };
-  hardware.amdgpu = {
-    opencl.enable = true;
-    initrd.enable = true;
-  };
+  hardware.amdgpu.opencl.enable = true;
+
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = false;
 

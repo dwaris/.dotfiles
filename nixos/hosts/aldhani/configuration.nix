@@ -32,10 +32,8 @@ in {
   services.fprintd.enable = false;
 
   hardware.graphics.enable = true;
-  hardware.amdgpu = {
-    opencl.enable = true;
-    initrd.enable = true;
-  };
+  hardware.amdgpu.opencl.enable = true;
+
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = false;
 
