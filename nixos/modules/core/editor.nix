@@ -16,6 +16,10 @@
     trash-cli
     sqlite
 
+    # Search & picker dependencies
+    fd
+    ripgrep
+
     # Nix Formatter & Language Server
     alejandra
     nixd

@@ -73,6 +73,8 @@
     rsync
 
     htop
+    bottom
+    lm_sensors
   ];
 
   programs.git = {

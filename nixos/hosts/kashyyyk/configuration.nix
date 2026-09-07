@@ -7,7 +7,6 @@
     ../../modules/hardware/laptop.nix
     ../../modules/hardware/boot.nix
     ../../modules/hardware/printing.nix
-    ../../modules/hardware/hardening.nix
     ../../modules/desktop/kde.nix
 
     ./hardware-configuration.nix
