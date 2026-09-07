@@ -10,6 +10,22 @@
   boot.initrd.systemd.enable = true;
   boot.initrd.supportedFilesystems = ["zfs"];
 
+  boot.initrd.clevis = {
+    enable = true;
+    devices."zpool".secretFile = "/etc/clevis/zpool.jwe";
+  };
+
+  systemd.services.tpm-pcr15-invalidation = {
+    description = "Invalidate PCR 15 to lock disk keys away from runtime userspace";
+    wantedBy = ["multi-user.target"];
+    unitConfig.ConditionPathExists = "/dev/tpmrm0";
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+      ExecStart = "${pkgs.tpm2-tools}/bin/tpm2_pcrextend 15:sha256=0000000000000000000000000000000000000000000000000000000000000000";
+    };
+  };
+
   services.zfs.autoSnapshot = {
     enable = true;
     flags = "-k -p";
