@@ -7,9 +7,4 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot";
 
-  boot.kernelParams = [
-    "quiet"
-  ];
-  boot.plymouth.enable = true;
-  boot.plymouth.theme = "tribar";
 }
