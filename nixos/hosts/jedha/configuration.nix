@@ -50,7 +50,24 @@ in {
     "mem_sleep_default=s2idle"
   ];
 
+  boot.initrd.clevis = {
+    enable = true;
+    devices."zpool".secretFile = "/etc/clevis/zpool.jwe";
+  };
+
+  systemd.services.tpm-pcr15-invalidation = {
+    description = "Invalidate PCR 15 to lock disk keys away from userspace";
+    wantedBy = ["multi-user.target"];
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+      ExecStart = "${pkgs.tpm2-tools}/bin/tpm2_pcrextend 15:sha256=0000000000000000000000000000000000000000000000000000000000000000";
+    };
+  };
+
   environment.systemPackages = with pkgs; [
+    clevis
+    tpm2-tools
     easyeffects
     ethtool
     llama-cpp-rocm
