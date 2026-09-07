@@ -11,7 +11,7 @@ in {
     ../../modules/hardware/zfs.nix
     ../../modules/hardware/printing.nix
     ../../modules/hardware/vpn/wireguard.nix
-    ../../modules/hardware/vpn/tailscale-client.nix
+    # ../../modules/hardware/vpn/tailscale-client.nix
 
     ../../modules/desktop/hyprland.nix
     ../../modules/desktop/oo7.nix
