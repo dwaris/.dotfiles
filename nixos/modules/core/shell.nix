@@ -1,11 +1,15 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   environment.systemPackages = with pkgs; [
     mise
     stow
     fzf
     starship
     tmux
-  ];
+  ] ++ lib.optional (pkgs ? herdr) pkgs.herdr;
 
   programs = {
     direnv = {
