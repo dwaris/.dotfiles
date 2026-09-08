@@ -14,7 +14,7 @@ in {
     ../../modules/hardware/secure-boot.nix
     ../../modules/hardware/zfs.nix
     ../../modules/hardware/printing.nix
-    # ../../modules/hardware/vpn/tailscale-server.nix
+    ../../modules/hardware/vpn/tailscale-server.nix
 
     ../../modules/desktop/hyprland.nix
     ../../modules/desktop/oo7.nix
