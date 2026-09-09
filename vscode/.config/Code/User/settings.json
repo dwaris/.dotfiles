@@ -44,7 +44,6 @@
 	"git.autoStash": true,
 	"diffEditor.codeLens": true,
 	"antigravity.enableTelemetry": false,
-	"chat.disableAIFeatures": true,
 	"extensions.experimental.affinity": {
 		"asvetliakov.vscode-neovim": 1
 	},
@@ -93,5 +92,6 @@
 	},
 	"[dockercompose]": {
 		"editor.defaultFormatter": "ms-azuretools.vscode-containers"
-	}
+	},
+	"chat.viewSessions.orientation": "stacked"
 }
