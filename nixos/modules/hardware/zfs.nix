@@ -22,9 +22,11 @@
     serviceConfig = {
       Type = "oneshot";
       RemainAfterExit = true;
-      ExecStart = "${pkgs.tpm2-tools}/bin/tpm2_pcrextend 15:sha256=0000000000000000000000000000000000000000000000000000000000000000";
+      ExecStart = "${pkgs.tpm2-tools}/bin/tpm2_pcrextend -T device:/dev/tpmrm0 15:sha256=0000000000000000000000000000000000000000000000000000000000000000";
     };
   };
+
+  systemd.oomd.enable = false;
 
   services.zfs.autoSnapshot = {
     enable = true;
