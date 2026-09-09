@@ -47,7 +47,8 @@ in {
   networking.hostId = "d83be86e";
 
   boot.kernelParams = [
-    "amdgpu.runpm=0" # Stop discrete GPU from entering broken BACO sleep on DPMS
+    "amdgpu.runpm=0" # broken BACO sleep
+    "amdgpu.aspm=0"  # dcn32 compbuf timeout
   ];
 
   environment.systemPackages = with pkgs; [
