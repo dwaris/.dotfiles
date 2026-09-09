@@ -91,4 +91,6 @@
     nixos.enable = false;
     man.enable = true;
   };
+
+  system.tools.nixos-generate-config.enable = false;
 }
