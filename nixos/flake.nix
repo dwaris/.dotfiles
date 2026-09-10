@@ -19,10 +19,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixos-wsl = {
-      url = "github:nix-community/NixOS-WSL";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # nixos-wsl = {
+    #   url = "github:nix-community/NixOS-WSL";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
   };
 
   outputs = inputs @ {
@@ -63,13 +63,13 @@
         ];
       };
 
-      wsl = inputs.nixpkgs.lib.nixosSystem {
-        inherit specialArgs;
-        modules = [
-          ./hosts/wsl/configuration.nix
-          inputs.nixos-wsl.nixosModules.default
-        ];
-      };
+      # wsl = inputs.nixpkgs.lib.nixosSystem {
+      #   inherit specialArgs;
+      #   modules = [
+      #     ./hosts/wsl/configuration.nix
+      #     inputs.nixos-wsl.nixosModules.default
+      #   ];
+      # };
     };
   };
 }
