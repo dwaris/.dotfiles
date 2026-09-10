@@ -49,6 +49,7 @@
     brightnessctl
     mako
     libnotify
+    playerctl
 
     rofi
 
