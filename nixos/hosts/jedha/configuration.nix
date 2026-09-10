@@ -48,7 +48,7 @@ in {
 
   boot.kernelParams = [
     "amdgpu.runpm=0" # broken BACO sleep
-    "amdgpu.aspm=0"  # dcn32 compbuf timeout
+    "amdgpu.aspm=0" # dcn32 compbuf timeout
   ];
 
   environment.systemPackages = with pkgs; [
