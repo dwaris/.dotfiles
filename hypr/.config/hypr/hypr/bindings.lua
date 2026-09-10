@@ -20,12 +20,17 @@ hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(browser))
 hl.bind(mainMod .. " + W", hl.dsp.window.close())
 hl.bind(
 	mainMod .. " + BACKSPACE",
-	hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown -t 'Logging out...' || hyprctl dispatch 'hl.dsp.exit()'")
+	hl.dsp.exec_cmd(
+		"command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown -t 'Logging out...' || hyprctl dispatch 'hl.dsp.exit()'"
+	)
 )
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + N", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd(menu))
-hl.bind(mainMod .. " + V", hl.dsp.exec_cmd("rofi -modi clipboard:" .. scriptDir .. "cliphist-rofi-img -show clipboard -show-icons"))
+hl.bind(
+	mainMod .. " + V",
+	hl.dsp.exec_cmd("rofi -modi clipboard:" .. scriptDir .. "cliphist-rofi-img -show clipboard -show-icons")
+)
 hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd(scriptDir .. "wallpaper-picker.sh"))
 hl.bind(mainMod .. " + SHIFT + J", hl.dsp.layout("togglesplit")) -- dwindle only
 
@@ -121,7 +126,7 @@ hl.bind("SUPER + Tab", function()
 	hl.dispatch(hl.dsp.window.bring_to_top()) -- Bring it to the top
 end)
 
---  Notification
-hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("makoctl dismiss"))
+-- Notification
+hl.bind(mainMod .. " + CTRL + N", hl.dsp.exec_cmd("makoctl dismiss"))
 hl.bind(mainMod .. " + SHIFT + N", hl.dsp.exec_cmd("makoctl dismiss -a"))
 hl.bind(mainMod .. " + ALT + N", hl.dsp.exec_cmd("makoctl restore"))
