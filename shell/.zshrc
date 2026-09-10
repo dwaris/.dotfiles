@@ -6,7 +6,7 @@ if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
 		print -P "%F{33}▓▒░ %F{34}Installation successful.%f" || \
 		print -P "%F{160}▓▒░ The clone has failed.%f"
 fi
-source "$HOME/.zinit/bin/zinit.zsh"
+[[ -r "$HOME/.zinit/bin/zinit.zsh" ]] && source "$HOME/.zinit/bin/zinit.zsh"
 [[ -f ~/.config/user-dirs.dirs ]] && source ~/.config/user-dirs.dirs
 
 #####################
