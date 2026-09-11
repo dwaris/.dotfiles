@@ -34,7 +34,6 @@
   boot.tmp.useTmpfs = true;
 
   boot.kernelParams = [
-    "lockdown=confidentiality"
     "slab_nomerge"
     "page_alloc.shuffle=1"
   ];

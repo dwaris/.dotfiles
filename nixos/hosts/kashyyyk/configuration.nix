@@ -5,18 +5,16 @@
   imports = [
     ../../modules/core
     ../../modules/hardware/laptop.nix
-    ../../modules/hardware/boot.nix
+    ../../modules/hardware/secure-boot.nix
     ../../modules/hardware/printing.nix
     ../../modules/desktop/kde.nix
 
     ./hardware-configuration.nix
   ];
   networking.hostName = "kashyyyk";
-  networking.hostId = "f0cacf30";
+  networking.hostId = "e409d00a";
 
   environment.systemPackages = with pkgs; [
-    ghostty
-
     vlc
 
     gimp
@@ -32,6 +30,11 @@
     hunspellDicts.de_DE
     hunspellDicts.en_US
   ];
+
+  boot.kernelParams = [
+    "quiet"
+  ];
+  boot.plymouth.enable = true;
 
   hardware.bluetooth.enable = true;
   hardware.sensor.iio.enable = true;
@@ -59,5 +62,5 @@
     extraGroups = ["wheel" "networkmanager"];
   };
 
-  system.stateVersion = "25.05";
+  system.stateVersion = "26.05";
 }
