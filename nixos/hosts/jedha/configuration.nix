@@ -28,19 +28,19 @@ in {
   fileSystems."/mnt/tank8tb/media" = {
     device = "tank8tb/media";
     fsType = "zfs";
-    options = ["zfsutil" "nofail" "x-systemd.automount" "x-systemd.idle-timeout=10min" "x-gvfs-hide"];
+    options = ["zfsutil" "nofail" "x-systemd.automount" "x-gvfs-hide"];
   };
 
   fileSystems."/mnt/tank8tb/picture" = {
     device = "tank8tb/picture";
     fsType = "zfs";
-    options = ["zfsutil" "nofail" "x-systemd.automount" "x-systemd.idle-timeout=10min" "x-gvfs-hide"];
+    options = ["zfsutil" "nofail" "x-systemd.automount" "x-gvfs-hide"];
   };
 
   fileSystems."/mnt/tank8tb/junk" = {
     device = "tank8tb/junk";
     fsType = "zfs";
-    options = ["zfsutil" "nofail" "x-systemd.automount" "x-systemd.idle-timeout=10min" "x-gvfs-hide"];
+    options = ["zfsutil" "nofail" "x-systemd.automount" "x-gvfs-hide"];
   };
 
   networking.hostName = "jedha"; # Define your hostname.
@@ -112,6 +112,8 @@ in {
     extraGroups = ["wheel" "networkmanager"];
     shell = pkgs.zsh;
   };
+
+  systemd.services."zfs-sync-tank8tb".enable = false;
 
   fileSystems."/home/${username}/Documents" = {
     device = "zpool/shared/${username}/documents";
