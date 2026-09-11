@@ -8,7 +8,7 @@ in {
     ../../modules/core
     ../../modules/hardware/laptop.nix
     ../../modules/hardware/boot.nix
-    ../../modules/hardware/printing.ni
+    ../../modules/hardware/printing.nix
     ../../modules/desktop/gnome.nix
 
     ../../modules/apps
