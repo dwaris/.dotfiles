@@ -1,7 +1,9 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-{pkgs, ...}: {
+{pkgs, ...}: let
+  username = "betty";
+in {
   imports = [
     ../../modules/core
     ../../modules/hardware/laptop.nix
@@ -48,9 +50,11 @@
   zramSwap.enable = true;
   services.thermald.enable = true;
 
-  users.users.betty = {
+  programs.nh.flake = "/home/${username}/Projects/dotfiles/nixos";
+
+  users.users.${username} = {
     isNormalUser = true;
-    description = "betty";
+    description = username;
     extraGroups = ["wheel" "networkmanager"];
   };
   users.users.andrew33 = {
