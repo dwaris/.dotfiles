@@ -17,6 +17,7 @@ in {
     ../../modules/desktop/oo7.nix
 
     ../../modules/apps
+    ../../modules/apps/sunshine.nix
 
     ./hardware-configuration.nix
   ];
@@ -41,6 +42,11 @@ in {
     ACTION=="add", SUBSYSTEM=="leds", KERNEL=="*micmute", RUN+="${pkgs.coreutils}/bin/chmod 666 /sys/class/leds/%k/brightness"
   '';
 
+  environment.systemPackages = with pkgs; [
+    llama-cpp-vulkan
+    moonlight-qt
+  ];
+
   systemd.user.services.mic-mute-led-sync = {
     description = "Mic Mute LED Sync";
     wantedBy = ["graphical-session.target"];
@@ -48,7 +54,7 @@ in {
     after = ["pipewire.service" "wireplumber.service"];
 
     # Crucial: Give the script the exact path to the tools it needs
-    path = with pkgs; [wireplumber pulseaudio gnugrep coreutils llama-cpp-vulkan];
+    path = with pkgs; [wireplumber pulseaudio gnugrep coreutils];
 
     script = ''
       readonly LED_PATH="/sys/class/leds/platform::micmute/brightness"
@@ -86,7 +92,7 @@ in {
     uid = 1000;
     group = username;
     description = username;
-    extraGroups = ["wheel" "networkmanager"];
+    extraGroups = ["wheel" "networkmanager" "uinput" "input"];
     shell = pkgs.zsh;
   };
 

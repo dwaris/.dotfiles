@@ -20,6 +20,7 @@ in {
     ../../modules/desktop/oo7.nix
 
     ../../modules/apps
+    ../../modules/apps/sunshine.nix
     ../../modules/apps/gaming/extra.nix
 
     ./hardware-configuration.nix
@@ -55,6 +56,7 @@ in {
     easyeffects
     ethtool
     llama-cpp-rocm
+    moonlight-qt
   ];
 
   systemd.services."udp-gro-forwarding" = {
@@ -109,7 +111,7 @@ in {
     uid = 1000;
     group = username;
     description = username;
-    extraGroups = ["wheel" "networkmanager"];
+    extraGroups = ["wheel" "networkmanager" "uinput" "input"];
     shell = pkgs.zsh;
   };
 
