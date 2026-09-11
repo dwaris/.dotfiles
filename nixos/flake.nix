@@ -57,7 +57,6 @@
         inherit specialArgs;
         modules = [
           ./hosts/batuu/configuration.nix
-          inputs.lanzaboote.nixosModules.lanzaboote
         ];
       };
 

@@ -44,6 +44,8 @@
     intel-media-driver
     intel-compute-runtime-legacy1
   ];
+
+  zramSwap.enable = true;
   services.thermald.enable = true;
 
   users.users.betty = {
