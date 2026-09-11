@@ -44,7 +44,6 @@
 
     waybar
     bluetui
-    networkmanagerapplet
     wiremix
     brightnessctl
     mako
