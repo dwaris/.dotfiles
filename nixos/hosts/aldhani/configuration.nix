@@ -38,49 +38,10 @@ in {
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = false;
 
-  services.udev.extraRules = ''
-    ACTION=="add", SUBSYSTEM=="leds", KERNEL=="*micmute", RUN+="${pkgs.coreutils}/bin/chmod 666 /sys/class/leds/%k/brightness"
-  '';
-
   environment.systemPackages = with pkgs; [
     llama-cpp-vulkan
     moonlight-qt
   ];
-
-  systemd.user.services.mic-mute-led-sync = {
-    description = "Mic Mute LED Sync";
-    wantedBy = ["graphical-session.target"];
-    partOf = ["graphical-session.target"];
-    after = ["pipewire.service" "wireplumber.service"];
-
-    # Crucial: Give the script the exact path to the tools it needs
-    path = with pkgs; [wireplumber pulseaudio gnugrep coreutils];
-
-    script = ''
-      readonly LED_PATH="/sys/class/leds/platform::micmute/brightness"
-
-      update_led() {
-        if wpctl get-volume @DEFAULT_AUDIO_SOURCE@ | grep -q MUTED; then
-          echo "1" > "$LED_PATH" 2>/dev/null || true
-        else
-          echo "0" > "$LED_PATH" 2>/dev/null || true
-        fi
-      }
-
-      # Wait for WirePlumber to successfully read the default audio source (Exit Code 0)
-      while wpctl get-volume @DEFAULT_AUDIO_SOURCE@ 2>&1 | grep -q "Translate ID error: '-1'"; do
-        sleep 0.5
-      done
-
-      # 1. Match current state on startup
-      update_led
-
-      # 2. Wait for event changes from Pipewire and update LED instantly
-      pactl subscribe | grep --line-buffered "Event 'change' on source" | while read -r _; do
-        update_led
-      done
-    '';
-  };
 
   programs.nh.flake = "/home/${username}/Projects/dotfiles/nixos";
 
