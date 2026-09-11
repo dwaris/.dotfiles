@@ -25,11 +25,7 @@
     # };
   };
 
-  outputs = inputs @ {
-    self,
-    nixpkgs,
-    ...
-  }: let
+  outputs = inputs @ {...}: let
     specialArgs = {inherit inputs;};
   in {
     nixosConfigurations = {
@@ -53,6 +49,7 @@
         inherit specialArgs;
         modules = [
           ./hosts/kashyyyk/configuration.nix
+          inputs.lanzaboote.nixosModules.lanzaboote
         ];
       };
 
@@ -60,6 +57,7 @@
         inherit specialArgs;
         modules = [
           ./hosts/batuu/configuration.nix
+          inputs.lanzaboote.nixosModules.lanzaboote
         ];
       };
 
