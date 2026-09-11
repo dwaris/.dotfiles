@@ -20,7 +20,7 @@ in {
   networking.hostId = "264853fa";
 
   hardware.bluetooth.enable = true;
-  harware.bluetooth.powerOnBoot = false;
+  hardware.bluetooth.powerOnBoot = false;
 
   hardware.graphics.enable = true;
   hardware.graphics.extraPackages = with pkgs; [
