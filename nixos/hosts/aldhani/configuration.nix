@@ -23,7 +23,6 @@ in {
 
   boot.kernelParams = [
     "iommu=pt"
-    "amd_pstate=active"
   ];
 
   environment.systemPackages = with pkgs; [
