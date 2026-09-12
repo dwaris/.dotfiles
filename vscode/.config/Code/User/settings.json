@@ -13,6 +13,7 @@
 	"workbench.editor.limit.enabled": true,
 	"workbench.editor.limit.value": 5,
 	"git.autofetch": true,
+	"git.detectSubmodules": false,
 	"nix.enableLanguageServer": true,
 	"nix.serverPath": ["nixd", "--semantic-tokens"],
 	"editor.semanticHighlighting.enabled": true,
