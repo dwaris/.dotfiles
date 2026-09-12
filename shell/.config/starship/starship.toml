@@ -1,40 +1,18 @@
 [character]
 success_symbol = '[\$](bold green)'
 error_symbol = '[\$](bold red)'
-vicmd_symbol = "[V](bold green) "
+vicmd_symbol = '[V](bold green)'
 
 [username]
 style_user = "bold purple"
-style_root = "bold red"
 format = "[$user]($style)"
-disabled = false
 show_always = true
 
 [hostname]
 ssh_only = false
-format = "(bold)[@](bold)[$hostname](bold yellow) "
-disabled = false
+format = "[@](bold)[$hostname](bold yellow) "
 
 [cmd_duration]
-disabled = true
-
-[directory]
-truncate_to_repo = false
-
-[sudo]
-disabled = true
-
-[time]
-disabled = true
-
-[[battery.display]]
-threshold = 15
-style = "bold red"
-
-[memory_usage]
-disabled = false
-format = '[$ram]($style) '
-threshold = 75
-symbol = " "
-style = "bold white"
+min_time = 5_000
+format = "[$duration](bold yellow) "
 
