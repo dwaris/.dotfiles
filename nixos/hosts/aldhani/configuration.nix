@@ -17,7 +17,6 @@ in {
     ../../modules/desktop/oo7.nix
 
     ../../modules/apps
-    ../../modules/apps/sunshine.nix
 
     ./hardware-configuration.nix
   ];
@@ -40,7 +39,6 @@ in {
 
   environment.systemPackages = with pkgs; [
     llama-cpp-vulkan
-    moonlight-qt
   ];
 
   programs.nh.flake = "/home/${username}/Projects/dotfiles/nixos";
