@@ -6,13 +6,13 @@ in {
     ./hardware-configuration.nix
   ];
 
+  networking.hostName = "wsl";
+  networking.hostId = "533cdfa7";
+
   wsl.enable = true;
   wsl.defaultUser = username;
 
   boot.tmp.cleanOnBoot = true;
-
-  networking.hostName = "wsl";
-  networking.hostId = "533cdfa7";
 
   programs.nh.flake = "/home/${username}/Projects/dotfiles/nixos";
 

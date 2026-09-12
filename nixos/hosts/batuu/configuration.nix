@@ -1,6 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
 {pkgs, ...}: let
   username = "dwaris";
 in {
@@ -19,18 +16,6 @@ in {
   networking.hostName = "batuu";
   networking.hostId = "264853fa";
 
-  hardware.bluetooth.enable = true;
-  hardware.bluetooth.powerOnBoot = false;
-
-  hardware.graphics.enable = true;
-  hardware.graphics.extraPackages = with pkgs; [
-    intel-media-driver
-    intel-compute-runtime-legacy1
-  ];
-
-  zramSwap.enable = true;
-  services.thermald.enable = true;
-
   programs.nh.flake = "/home/${username}/Projects/dotfiles/nixos";
 
   users.groups.${username} = {
@@ -44,6 +29,17 @@ in {
     extraGroups = ["wheel" "networkmanager"];
     shell = pkgs.zsh;
   };
+
+  hardware.graphics.enable = true;
+  hardware.graphics.extraPackages = with pkgs; [
+    intel-media-driver
+    intel-compute-runtime-legacy1
+  ];
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = false;
+
+  zramSwap.enable = true;
+  services.thermald.enable = true;
 
   system.stateVersion = "26.05";
 }

@@ -1,6 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
 {pkgs, ...}: let
   username = "betty";
 in {
@@ -13,42 +10,27 @@ in {
 
     ./hardware-configuration.nix
   ];
+
   networking.hostName = "kashyyyk";
   networking.hostId = "e409d00a";
-
-  environment.systemPackages = with pkgs; [
-    vlc
-
-    gimp
-
-    firefox
-    chromium
-
-    thunderbird
-    element-desktop
-
-    libreoffice-qt
-    hunspell
-    hunspellDicts.de_DE
-    hunspellDicts.en_US
-  ];
 
   boot.kernelParams = [
     "quiet"
   ];
   boot.plymouth.enable = true;
 
-  hardware.bluetooth.enable = true;
-  hardware.sensor.iio.enable = true;
-
-  hardware.graphics.enable = true;
-  hardware.graphics.extraPackages = with pkgs; [
-    intel-media-driver
-    intel-compute-runtime-legacy1
+  environment.systemPackages = with pkgs; [
+    vlc
+    gimp
+    firefox
+    chromium
+    thunderbird
+    element-desktop
+    libreoffice-qt
+    hunspell
+    hunspellDicts.de_DE
+    hunspellDicts.en_US
   ];
-
-  zramSwap.enable = true;
-  services.thermald.enable = true;
 
   programs.nh.flake = "/home/${username}/Projects/dotfiles/nixos";
 
@@ -67,6 +49,17 @@ in {
     description = "nils06";
     extraGroups = ["wheel" "networkmanager"];
   };
+
+  hardware.graphics.enable = true;
+  hardware.graphics.extraPackages = with pkgs; [
+    intel-media-driver
+    intel-compute-runtime-legacy1
+  ];
+  hardware.bluetooth.enable = true;
+  hardware.sensor.iio.enable = true;
+
+  zramSwap.enable = true;
+  services.thermald.enable = true;
 
   system.stateVersion = "26.05";
 }

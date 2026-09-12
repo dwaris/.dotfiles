@@ -1,6 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
 {pkgs, ...}: let
   username = "dwaris";
 in {
@@ -21,21 +18,13 @@ in {
     ./hardware-configuration.nix
   ];
 
+  networking.hostName = "aldhani";
+  networking.hostId = "2ffb69ed";
+
   boot.kernelParams = [
     "iommu=pt"
     "amd_pstate=active"
   ];
-
-  networking.hostName = "aldhani"; # Define your hostname.
-  networking.hostId = "2ffb69ed";
-
-  services.fprintd.enable = false;
-
-  hardware.graphics.enable = true;
-  hardware.amdgpu.opencl.enable = true;
-
-  hardware.bluetooth.enable = true;
-  hardware.bluetooth.powerOnBoot = false;
 
   environment.systemPackages = with pkgs; [
     llama-cpp-vulkan
@@ -55,47 +44,48 @@ in {
     shell = pkgs.zsh;
   };
 
+  hardware.graphics.enable = true;
+  hardware.amdgpu.opencl.enable = true;
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = false;
+
+  services.fprintd.enable = false;
+
   fileSystems."/home/${username}/Documents" = {
     device = "zpool/shared/${username}/documents";
     fsType = "zfs";
     options = ["zfsutil"];
   };
-
   fileSystems."/home/${username}/Downloads" = {
     device = "zpool/shared/${username}/downloads";
     fsType = "zfs";
     options = ["zfsutil"];
   };
-
   fileSystems."/home/${username}/Music" = {
     device = "zpool/shared/${username}/music";
     fsType = "zfs";
     options = ["zfsutil"];
   };
-
   fileSystems."/home/${username}/Pictures" = {
     device = "zpool/shared/${username}/pictures";
     fsType = "zfs";
     options = ["zfsutil"];
   };
-
   fileSystems."/home/${username}/Projects" = {
     device = "zpool/shared/${username}/projects";
     fsType = "zfs";
     options = ["zfsutil"];
   };
-
   fileSystems."/home/${username}/Videos" = {
     device = "zpool/shared/${username}/videos";
     fsType = "zfs";
     options = ["zfsutil"];
   };
-
   fileSystems."/home/${username}/Nextcloud" = {
     device = "zpool/shared/nextcloud";
     fsType = "zfs";
     options = ["zfsutil" "nofail"];
   };
 
-  system.stateVersion = "23.11"; # Did you read the comment?
+  system.stateVersion = "23.11";
 }
