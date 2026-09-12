@@ -32,7 +32,6 @@ in {
 
   environment.systemPackages = with pkgs; [
     easyeffects
-    ethtool
     llama-cpp-rocm
   ];
 
@@ -78,29 +77,16 @@ in {
     };
   };
 
-  programs.nh.flake = "/home/${username}/Projects/dotfiles/nixos";
-
-  services.scx = {
-    enable = true;
-    scheduler = "scx_lavd";
-    extraArgs = [
-      "--performance"
-    ];
+  systemd.services.udp-gro-forwarding = {
+    description = "Tailscale UDP GRO forwarding for eno1";
+    wantedBy = ["multi-user.target"];
+    after = ["network.target"];
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+      ExecStart = "${lib.getExe pkgs.ethtool} -K eno1 rx-udp-gro-forwarding on rx-gro-list off";
+    };
   };
-
-  users.groups.${username} = {
-    gid = 1000;
-  };
-  users.users.${username} = {
-    isNormalUser = true;
-    uid = 1000;
-    group = username;
-    description = username;
-    extraGroups = ["wheel" "networkmanager" "uinput" "input"];
-    shell = pkgs.zsh;
-  };
-
-  systemd.services."zfs-sync-tank8tb".enable = false;
 
   fileSystems."/home/${username}/Documents" = {
     device = "zpool/shared/${username}/documents";
