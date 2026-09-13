@@ -6,20 +6,10 @@
   services.tuned = {
     enable = true;
     settings.dynamic_tuning = true;
-    profiles = {
-      desktop-custom = {
-        main.include = "desktop";
-        scsi_host.alpm = "max_performance";
-      };
-      desktop-powersave-custom = {
-        main.include = "desktop-powersave";
-        scsi_host.alpm = "max_performance";
-      };
-    };
     ppdSettings.profiles = {
-      balanced = "desktop-custom";
+      balanced = "desktop";
       performance = "throughput-performance";
-      power-saver = "desktop-powersave-custom";
+      power-saver = "desktop-powersave";
     };
   };
 }
