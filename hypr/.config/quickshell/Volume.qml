@@ -5,9 +5,9 @@ import "."
 
 BarItem {
     id: root
+    isSquare: true
 
-    minWidth: 58
-    text: " 100%"
+    text: ""
     textColor: Theme.text
 
     function updateVolume() {
@@ -30,7 +30,7 @@ BarItem {
                 var volPercent = Math.round(vol * 100);
 
                 if (isMuted) {
-                    root.text = " " + volPercent + "%";
+                    root.text = "";
                     root.textColor = Theme.red;
                     root.tooltipText = "Sink Muted (" + volPercent + "%)";
                 } else {
@@ -40,7 +40,7 @@ BarItem {
                     } else if (volPercent < 70) {
                         icon = "";
                     }
-                    root.text = icon + " " + volPercent + "%";
+                    root.text = icon;
                     root.textColor = Theme.text;
                     root.tooltipText = "Volume: " + volPercent + "%";
                 }
