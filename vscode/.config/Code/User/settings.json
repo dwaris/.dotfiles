@@ -1,7 +1,7 @@
 {
 	"window.autoDetectColorScheme": true,
 	"files.autoSave": "onFocusChange",
-	"editor.fontFamily": "IBM Plex Mono",
+	"editor.fontFamily": "BlexMono Nerd Font",
 	"telemetry.telemetryLevel": "off",
 	"editor.cursorSmoothCaretAnimation": "on",
 	"editor.cursorBlinking": "solid",
@@ -94,5 +94,11 @@
 	"[dockercompose]": {
 		"editor.defaultFormatter": "ms-azuretools.vscode-containers"
 	},
-	"chat.viewSessions.orientation": "stacked"
+	"chat.viewSessions.orientation": "stacked",
+	"workbench.editorAssociations": {
+		"*.copilotmd": "vscode.markdown.preview.editor",
+		"{hexdiff}:/**/*.*": "hexEditor.hexedit",
+		"{git,gitlens,chat-editing-snapshot-text-model,copilot,git-graph,git-graph-3}:/**/*.qrc": "default",
+		"*.qrc": "qt-core.qrcEditor"
+	}
 }
