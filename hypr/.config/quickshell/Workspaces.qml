@@ -134,7 +134,7 @@ Row {
                 anchors.centerIn: parent
                 width: 26
                 height: 26
-                radius: 8
+                radius: Theme.radiusSmall
                 color: btnMouse.containsMouse ? Theme.surface1 : "transparent"
                 opacity: (btnMouse.containsMouse || !wsBtn.isEmpty) ? 1.0 : 0.5
 

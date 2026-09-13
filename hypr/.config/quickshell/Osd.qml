@@ -155,7 +155,7 @@ Scope {
                 Rectangle {
                     id: osdCard
                     anchors.fill: parent
-                    radius: 23
+                    radius: Theme.radiusLarge
                     color: Theme.base
                     border.color: Theme.surface1
                     border.width: 1
@@ -192,14 +192,14 @@ Scope {
 
                             Rectangle {
                                 anchors.fill: parent
-                                radius: 4
+                                radius: Theme.radiusSmall
                                 color: Theme.surface0
 
                                 Rectangle {
                                     id: fillBar
                                     height: parent.height
                                     width: parent.width * (root.osdMuted ? 0 : (root.osdValue / 100.0))
-                                    radius: 4
+                                    radius: Theme.radiusSmall
                                     color: root.osdMuted ? Theme.surface2 : (root.osdType === "brightness" ? Theme.yellow : Theme.mauve)
 
                                     Behavior on width {

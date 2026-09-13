@@ -30,8 +30,13 @@ QtObject {
     readonly property color mantle: "#181825"
     readonly property color crust: "#11111b"
 
+    // Radii (consistent with Hyprland & hyprtoolkit settings)
+    readonly property int radiusLarge: 8   // outer bar, cards, tooltips
+    readonly property int radiusSmall: 4   // buttons, hover highlights, sliders
+
     // Font Configuration
     readonly property string fontFamily: "BlexMono Nerd Font Propo"
     readonly property int fontSize: 14
+    readonly property int fontSizeSmall: 11
     readonly property int fontWeight: Font.Medium
 }

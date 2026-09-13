@@ -29,7 +29,7 @@ Item {
                : (root.fixedWidth > 0 ? root.fixedWidth
                : Math.max(root.minWidth, label.implicitWidth + 16))
         height: 26
-        radius: 8
+        radius: Theme.radiusSmall
         color: (mouseArea.containsMouse && root.clickable) ? root.hoverColor : "transparent"
         opacity: root.customOpacity
 
@@ -98,7 +98,7 @@ Item {
             color: Theme.base
             border.color: Theme.mauve
             border.width: 1
-            radius: 8
+            radius: Theme.radiusLarge
 
             Text {
                 id: tipText

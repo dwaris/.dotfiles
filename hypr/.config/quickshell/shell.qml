@@ -111,7 +111,7 @@ ShellRoot {
                     id: barContainer
                     anchors.fill: parent
                     color: Theme.base
-                    radius: 8
+                    radius: Theme.radiusLarge
 
                     // Left Section: Launcher & Workspaces
                     Row {

@@ -96,7 +96,7 @@ Scope {
 
                             width: 360
                             implicitHeight: cardContent.implicitHeight + 20
-                            radius: 12
+                            radius: Theme.radiusLarge
                             color: Theme.base
                             border.color: notif.urgency === NotificationUrgency.Critical
                                           ? Theme.red
@@ -228,7 +228,7 @@ Scope {
 
                                             width: btnLabel.implicitWidth + 16
                                             height: 26
-                                            radius: 6
+                                            radius: Theme.radiusSmall
                                             color: btnMouse.containsMouse ? Theme.surface1 : Theme.surface0
 
                                             Behavior on color {

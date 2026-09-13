@@ -75,9 +75,9 @@ Item {
             Row {
                 id: trayRow
                 anchors.verticalCenter: parent.verticalCenter
-                spacing: 12
-                leftPadding: 4
-                rightPadding: 6
+                spacing: 4
+                leftPadding: 2
+                rightPadding: 4
 
                 Repeater {
                     model: SystemTray.items
@@ -86,19 +86,25 @@ Item {
                         id: trayItem
                         required property var modelData
 
-                        width: 20
-                        height: 20
+                        width: 26
+                        height: 26
+
+                        Rectangle {
+                            id: trayItemBg
+                            anchors.fill: parent
+                            radius: Theme.radiusSmall
+                            color: trayMouse.containsMouse ? Theme.surface1 : "transparent"
+
+                            Behavior on color {
+                                ColorAnimation { duration: 200 }
+                            }
+                        }
 
                         IconImage {
                             id: iconImg
                             anchors.centerIn: parent
                             implicitSize: 16
                             source: trayItem.modelData ? (trayItem.modelData.icon || "") : ""
-                            opacity: trayMouse.containsMouse ? 1.0 : 0.65
-
-                            Behavior on opacity {
-                                NumberAnimation { duration: 200 }
-                            }
                         }
 
                         QsMenuAnchor {
