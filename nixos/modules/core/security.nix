@@ -36,6 +36,9 @@
   boot.kernelParams = [
     "slab_nomerge"
     "page_alloc.shuffle=1"
+    "randomize_kstack_offset=on"
+    "vsyscall=none"
+    "debugfs=off"
   ];
 
   boot.kernel.sysctl = {
@@ -68,6 +71,30 @@
 
     "net.ipv6.conf.all.accept_redirects" = 0;
     "net.ipv6.conf.default.accept_redirects" = 0;
+  };
+
+  systemd.coredump.enable = false;
+  security.pam.loginLimits = [
+    {
+      domain = "*";
+      type = "-";
+      item = "core";
+      value = "0";
+    }
+  ];
+
+  security.sudo.enable = false;
+  security.sudo-rs.enable = true;
+
+  services.chrony = {
+    enable = true;
+    enableNTS = true;
+    servers = [
+      "time.cloudflare.com"
+      "ptbtime1.ptb.de"
+      "ntppool1.time.nl"
+      "nts.netnod.se"
+    ];
   };
 
   security.protectKernelImage = true;
