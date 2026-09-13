@@ -1,0 +1,17 @@
+singleton Theme 1.0 Theme.qml
+BarItem 1.0 BarItem.qml
+Launcher 1.0 Launcher.qml
+Workspaces 1.0 Workspaces.qml
+ClockDrawer 1.0 ClockDrawer.qml
+TrayExpander 1.0 TrayExpander.qml
+Network 1.0 Network.qml
+Vpn 1.0 Vpn.qml
+Bluetooth 1.0 Bluetooth.qml
+Volume 1.0 Volume.qml
+Microphone 1.0 Microphone.qml
+Backlight 1.0 Backlight.qml
+PowerProfile 1.0 PowerProfile.qml
+Battery 1.0 Battery.qml
+PowerMenu 1.0 PowerMenu.qml
+Osd 1.0 Osd.qml
+Notifications 1.0 Notifications.qml

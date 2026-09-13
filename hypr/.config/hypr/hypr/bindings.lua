@@ -59,37 +59,53 @@ hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 -- Laptop multimedia keys for volume and LCD brightness
 hl.bind(
 	"XF86AudioRaiseVolume",
-	hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"),
+	hl.dsp.exec_cmd(
+		[[sh -c "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+ && qs ipc call osd volumeSync 2>/dev/null || true"]]
+	),
 	{ locked = true, repeating = true }
 )
 hl.bind(
 	"XF86AudioLowerVolume",
-	hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"),
+	hl.dsp.exec_cmd(
+		[[sh -c "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- && qs ipc call osd volumeSync 2>/dev/null || true"]]
+	),
 	{ locked = true, repeating = true }
 )
 hl.bind(
 	"XF86AudioMute",
 	hl.dsp.exec_cmd(
-		[[sh -c "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle; wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -q MUTED && notify-send -u low 'Audio Muted' || notify-send 'Audio Unmuted'"]]
+		[[sh -c "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && qs ipc call osd volumeSync 2>/dev/null || true"]]
 	),
 	{ locked = true, repeating = true }
 )
 hl.bind(
 	"XF86AudioMicMute",
 	hl.dsp.exec_cmd(
-		[[sh -c "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle; wpctl get-volume @DEFAULT_AUDIO_SOURCE@ | grep -q MUTED && notify-send -u low 'Mic Muted' || notify-send 'Mic Unmuted'"]]
+		[[sh -c "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle && qs ipc call osd micSync 2>/dev/null || true"]]
 	),
 	{ locked = true, repeating = true }
 )
 hl.bind(
 	"F14",
 	hl.dsp.exec_cmd(
-		[[sh -c "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle; wpctl get-volume @DEFAULT_AUDIO_SOURCE@ | grep -q MUTED && notify-send -u low 'Mic Muted' || notify-send 'Mic Unmuted'"]]
+		[[sh -c "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle && qs ipc call osd micSync 2>/dev/null || true"]]
 	),
 	{ locked = true }
 )
-hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%+"), { locked = true, repeating = true })
-hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%-"), { locked = true, repeating = true })
+hl.bind(
+	"XF86MonBrightnessUp",
+	hl.dsp.exec_cmd(
+		[[sh -c "brightnessctl -e4 -n2 set 5%+; qs ipc call osd brightness $(brightnessctl -m | cut -d, -f4 | tr -d '%') 2>/dev/null || true"]]
+	),
+	{ locked = true, repeating = true }
+)
+hl.bind(
+	"XF86MonBrightnessDown",
+	hl.dsp.exec_cmd(
+		[[sh -c "brightnessctl -e4 -n2 set 5%-; qs ipc call osd brightness $(brightnessctl -m | cut -d, -f4 | tr -d '%') 2>/dev/null || true"]]
+	),
+	{ locked = true, repeating = true }
+)
 
 -- Requires playerctl
 hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"), { locked = true })
@@ -103,10 +119,10 @@ hl.bind(mainMod .. " + ALT + H", hl.dsp.exec_cmd("hyprctl reload"))
 -- Display management
 hl.bind(mainMod .. " + P", hl.dsp.exec_cmd(scriptDir .. "toggle-display.sh"))
 
--- Screen locking and Waybar toggles
+-- Screen locking and Bar toggles
 hl.bind(mainMod .. " + CTRL + L", hl.dsp.exec_cmd("uwsm-app -- hyprlock"))
-hl.bind(mainMod .. " + SHIFT + T", hl.dsp.exec_cmd("pkill -SIGUSR1 waybar"))
-hl.bind(mainMod .. " + T", hl.dsp.exec_cmd("pkill -SIGUSR2 waybar"))
+hl.bind(mainMod .. " + SHIFT + T", hl.dsp.exec_cmd("qs ipc call bar toggle 2>/dev/null || pkill -SIGUSR1 waybar"))
+hl.bind(mainMod .. " + T", hl.dsp.exec_cmd("qs ipc call bar toggle 2>/dev/null || pkill -SIGUSR2 waybar"))
 
 -- Fullscreen toggles
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ mode = "maximized", action = "toggle" }))
@@ -127,6 +143,6 @@ hl.bind("SUPER + Tab", function()
 end)
 
 -- Notification
-hl.bind(mainMod .. " + CTRL + N", hl.dsp.exec_cmd("makoctl dismiss"))
-hl.bind(mainMod .. " + SHIFT + N", hl.dsp.exec_cmd("makoctl dismiss -a"))
-hl.bind(mainMod .. " + ALT + N", hl.dsp.exec_cmd("makoctl restore"))
+hl.bind(mainMod .. " + CTRL + N", hl.dsp.exec_cmd("qs ipc call notif dismissLast 2>/dev/null || makoctl dismiss"))
+hl.bind(mainMod .. " + SHIFT + N", hl.dsp.exec_cmd("qs ipc call notif dismissAll 2>/dev/null || makoctl dismiss -a"))
+hl.bind(mainMod .. " + ALT + N", hl.dsp.exec_cmd("qs ipc call notif toggleDnd 2>/dev/null || makoctl restore"))
