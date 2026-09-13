@@ -149,7 +149,7 @@ Row {
                     id: wsLabel
                     anchors.centerIn: parent
                     text: wsBtn.isActive ? "󱓻" : wsBtn.wsId.toString()
-                    color: wsBtn.isActive ? Theme.mauve : Theme.text
+                    color: Theme.text
                     font.family: Theme.fontFamily
                     font.pixelSize: Theme.fontSize
                     font.weight: Theme.fontWeight

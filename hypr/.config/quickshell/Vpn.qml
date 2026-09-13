@@ -25,7 +25,7 @@ BarItem {
                     root.text = data.text || "";
                     root.tooltipText = data.tooltip || "Proton VPN";
                     if (data.class === "connected") {
-                        root.textColor = Theme.green;
+                        root.textColor = Theme.text;
                     } else if (data.class === "warning") {
                         root.textColor = Theme.peach;
                     } else {
