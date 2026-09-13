@@ -42,12 +42,10 @@
     hyprshot
     hyprshutdown
 
-    waybar
     quickshell
     bluetui
     wiremix
     brightnessctl
-    mako
     libnotify
     playerctl
 
