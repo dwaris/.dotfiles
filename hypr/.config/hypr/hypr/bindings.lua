@@ -103,10 +103,9 @@ hl.bind(mainMod .. " + ALT + H", hl.dsp.exec_cmd("hyprctl reload"))
 -- Display management
 hl.bind(mainMod .. " + P", hl.dsp.exec_cmd(scriptDir .. "toggle-display.sh"))
 
--- Screen locking and Waybar toggles
+-- Screen locking and Bar toggles
 hl.bind(mainMod .. " + CTRL + L", hl.dsp.exec_cmd("uwsm-app -- hyprlock"))
-hl.bind(mainMod .. " + SHIFT + T", hl.dsp.exec_cmd("pkill -SIGUSR1 waybar"))
-hl.bind(mainMod .. " + T", hl.dsp.exec_cmd("pkill -SIGUSR2 waybar"))
+hl.bind(mainMod .. " + T", hl.dsp.exec_cmd("pkill -SIGUSR1 waybar"))
 
 -- Fullscreen toggles
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ mode = "maximized", action = "toggle" }))
@@ -120,13 +119,14 @@ hl.bind(mainMod .. " + PRINT", hl.dsp.exec_cmd("hyprshot -m window"))
 hl.bind("PRINT", hl.dsp.exec_cmd("hyprshot -m output"))
 hl.bind("SHIFT + PRINT", hl.dsp.exec_cmd("hyprshot -m region"))
 
--- To switch between windows in a floating workspace:
+-- Window switcher (Rofi window switcher on Alt-Tab, cycle on Super-Tab)
+hl.bind("ALT + Tab", hl.dsp.exec_cmd("rofi -show window -show-icons"))
 hl.bind("SUPER + Tab", function()
-	hl.dispatch(hl.dsp.window.cycle_next()) -- Change focus to another window
-	hl.dispatch(hl.dsp.window.bring_to_top()) -- Bring it to the top
+	hl.dispatch(hl.dsp.window.cycle_next())
+	hl.dispatch(hl.dsp.window.bring_to_top())
 end)
 
--- Notification
+-- Notifications (Mako)
 hl.bind(mainMod .. " + CTRL + N", hl.dsp.exec_cmd("makoctl dismiss"))
 hl.bind(mainMod .. " + SHIFT + N", hl.dsp.exec_cmd("makoctl dismiss -a"))
-hl.bind(mainMod .. " + ALT + N", hl.dsp.exec_cmd("makoctl restore"))
+hl.bind(mainMod .. " + ALT + N", hl.dsp.exec_cmd("makoctl mode -t dnd"))

@@ -37,16 +37,16 @@
   };
 
   environment.systemPackages = with pkgs; [
-    awww
+    hyprpaper
     hyprpolkitagent
     hyprshot
     hyprshutdown
 
     waybar
+    mako
     bluetui
     wiremix
     brightnessctl
-    mako
     libnotify
     playerctl
 
