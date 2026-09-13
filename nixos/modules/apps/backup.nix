@@ -2,7 +2,7 @@
   environment.systemPackages = with pkgs; [
     nextcloud-client
 
-    vorta
+    pika-backup
 
     localsend
   ];
