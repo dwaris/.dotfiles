@@ -1,7 +1,8 @@
 {
 	"window.autoDetectColorScheme": true,
 	"files.autoSave": "onFocusChange",
-	"editor.fontFamily": "BlexMono Nerd Font",
+	"editor.fontFamily": "'BlexMono Nerd Font', monospace",
+	"terminal.integrated.fontFamily": "'BlexMono Nerd Font Mono', monospace",
 	"telemetry.telemetryLevel": "off",
 	"editor.cursorSmoothCaretAnimation": "on",
 	"editor.cursorBlinking": "solid",
