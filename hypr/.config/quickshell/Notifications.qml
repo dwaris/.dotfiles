@@ -98,20 +98,35 @@ Scope {
                             implicitHeight: cardContent.implicitHeight + 20
                             radius: Theme.radiusLarge
                             color: Theme.base
-                            property bool userPinned: false
-                            readonly property bool isPinned: notif.urgency === NotificationUrgency.Critical || userPinned
 
                             border.color: notif.urgency === NotificationUrgency.Critical
                                           ? Theme.red
                                           : (notif.urgency === NotificationUrgency.Low ? Theme.green : Theme.mauve)
                             border.width: notif.urgency === NotificationUrgency.Critical ? 2 : 1
 
-                            // Auto-expire timer (disabled for critical or pinned notifications)
+                            // Auto-expire timer (critical notifications are sticky)
                             Timer {
                                 interval: notif.expireTimeout > 0 ? notif.expireTimeout : 5000
-                                running: !notifCard.isPinned
+                                running: notif.urgency !== NotificationUrgency.Critical
                                 repeat: false
                                 onTriggered: notif.dismiss()
+                            }
+
+                            // Dismiss on click (invoking default action if present)
+                            MouseArea {
+                                anchors.fill: parent
+                                cursorShape: Qt.PointingHandCursor
+                                onClicked: {
+                                    if (notif.actions) {
+                                        for (var i = 0; i < notif.actions.length; i++) {
+                                            if (notif.actions[i].identifier === "default") {
+                                                notif.actions[i].invoke();
+                                                break;
+                                            }
+                                        }
+                                    }
+                                    notif.dismiss();
+                                }
                             }
 
                             Column {
@@ -128,6 +143,7 @@ Scope {
                                     spacing: 8
 
                                     IconImage {
+                                        id: appIconImg
                                         anchors.verticalCenter: parent.verticalCenter
                                         implicitSize: 16
                                         source: notif.appIcon || ""
@@ -144,50 +160,7 @@ Scope {
                                         font.pixelSize: 11
                                         font.weight: Theme.fontWeight
                                         elide: Text.ElideRight
-                                        width: parent.width - (notif.urgency === NotificationUrgency.Critical ? 48 : 64)
-                                    }
-
-                                    Item {
-                                        width: 1
-                                        height: 1
-                                    }
-
-                                    // Pin / Unpin Button (for non-critical notifications)
-                                    Text {
-                                        anchors.verticalCenter: parent.verticalCenter
-                                        text: notifCard.userPinned ? "󰐃" : "󰤱"
-                                        color: notifCard.userPinned ? Theme.mauve : (pinMouse.containsMouse ? Theme.text : Theme.subtext0)
-                                        font.family: Theme.fontFamily
-                                        font.pixelSize: 13
-                                        visible: notif.urgency !== NotificationUrgency.Critical
-
-                                        MouseArea {
-                                            id: pinMouse
-                                            anchors.fill: parent
-                                            anchors.margins: -4
-                                            hoverEnabled: true
-                                            cursorShape: Qt.PointingHandCursor
-                                            onClicked: notifCard.userPinned = !notifCard.userPinned
-                                        }
-                                    }
-
-                                    // Close button
-                                    Text {
-                                        anchors.verticalCenter: parent.verticalCenter
-                                        text: "✕"
-                                        color: closeMouse.containsMouse ? Theme.red : Theme.subtext0
-                                        font.family: Theme.fontFamily
-                                        font.pixelSize: 12
-                                        font.weight: Theme.fontWeight
-
-                                        MouseArea {
-                                            id: closeMouse
-                                            anchors.fill: parent
-                                            anchors.margins: -4
-                                            hoverEnabled: true
-                                            cursorShape: Qt.PointingHandCursor
-                                            onClicked: notif.dismiss()
-                                        }
+                                        width: parent.width - (appIconImg.visible ? (appIconImg.implicitSize + parent.spacing) : 0)
                                     }
                                 }
 
@@ -281,23 +254,6 @@ Scope {
                                             }
                                         }
                                     }
-                                }
-                            }
-
-                            // Click card to dismiss or trigger default action
-                            MouseArea {
-                                anchors.fill: parent
-                                z: -1
-                                onClicked: {
-                                    if (notif.actions) {
-                                        for (var i = 0; i < notif.actions.length; i++) {
-                                            if (notif.actions[i].identifier === "default") {
-                                                notif.actions[i].invoke();
-                                                break;
-                                            }
-                                        }
-                                    }
-                                    notif.dismiss();
                                 }
                             }
                         }
