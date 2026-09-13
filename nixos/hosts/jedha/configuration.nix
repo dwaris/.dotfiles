@@ -25,7 +25,6 @@ in {
   networking.hostName = "jedha";
   networking.hostId = "d83be86e";
 
-
   environment.systemPackages = with pkgs; [
     easyeffects
     llama-cpp-rocm
@@ -129,17 +128,17 @@ in {
   fileSystems."/mnt/tank8tb/media" = {
     device = "tank8tb/media";
     fsType = "zfs";
-    options = ["zfsutil" "nofail" "x-systemd.automount" "x-gvfs-hide"];
+    options = ["zfsutil" "nofail" "noauto" "x-systemd.automount" "x-gvfs-hide"];
   };
   fileSystems."/mnt/tank8tb/picture" = {
     device = "tank8tb/picture";
     fsType = "zfs";
-    options = ["zfsutil" "nofail" "x-systemd.automount" "x-gvfs-hide"];
+    options = ["zfsutil" "nofail" "noauto" "x-systemd.automount" "x-gvfs-hide"];
   };
   fileSystems."/mnt/tank8tb/junk" = {
     device = "tank8tb/junk";
     fsType = "zfs";
-    options = ["zfsutil" "nofail" "x-systemd.automount" "x-gvfs-hide"];
+    options = ["zfsutil" "nofail" "noauto" "x-systemd.automount" "x-gvfs-hide"];
   };
 
   system.stateVersion = "25.05";
