@@ -17,14 +17,14 @@ ShellRoot {
         if (idleInhibited) {
             Quickshell.execDetached(["sh", "-c", "nohup systemd-inhibit --what=idle:sleep:handle-lid-switch --why='Quickshell keep-awake' --mode=block sleep infinity >/dev/null 2>&1 &"]);
         } else {
-            Quickshell.execDetached(["sh", "-c", "pkill -f 'systemd-inhibit.*sleep infinity' || true"]);
+            Quickshell.execDetached(["sh", "-c", "pkill -f 'systemd-inhibit.*Quickshell keep-awake' || true"]);
         }
     }
 
     // Process to check initial idle inhibitor state
     Process {
         id: initIdleCheck
-        command: ["sh", "-c", "pgrep -f 'systemd-inhibit.*sleep infinity' >/dev/null 2>&1 && echo 'active' || echo 'inactive'"]
+        command: ["sh", "-c", "systemd-inhibit --list | grep -q 'Quickshell keep-awake' && echo 'active' || echo 'inactive'"]
         stdout: StdioCollector {
             onTextChanged: {
                 if (text.trim() === "active") {
