@@ -17,6 +17,4 @@
       power-saver = "powersave";
     };
   };
-
-  networking.networkmanager.wifi.powersave = true;
 }
