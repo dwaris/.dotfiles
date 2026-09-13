@@ -1,13 +1,16 @@
 anchor=top-right
 default-timeout=5000
+max-visible=5
+group-by=app-name,summary,body
 width=420
 outer-margin=20
 padding=10,15
 border-size=2
-border-radius=7
+border-radius=8
 max-icon-size=32
 font=IBM Plex Sans Text 14px
 
+# Catppuccin Mocha Colors
 background-color=#1e1e2e
 text-color=#cdd6f4
 border-color=#cba6f7
