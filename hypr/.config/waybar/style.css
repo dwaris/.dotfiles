@@ -29,10 +29,11 @@ menu separator {
   background-color: @surface0;
 }
 
-#waybar>box {
+#waybar > box {
   background-color: @base;
   border-radius: 0.5rem;
   min-height: 34px;
+  padding: 0 6px;
 }
 
 .module,
