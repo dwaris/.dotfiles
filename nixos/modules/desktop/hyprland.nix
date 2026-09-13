@@ -43,6 +43,7 @@
     hyprshutdown
 
     waybar
+    quickshell
     bluetui
     wiremix
     brightnessctl
