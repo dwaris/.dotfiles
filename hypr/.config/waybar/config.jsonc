@@ -2,6 +2,7 @@
     "reload_style_on_change": true,
     "layer": "top",
     "position": "top",
+    "height": 34,
     "margin-top": 8,
     "margin-left": 8,
     "margin-right": 8,
@@ -152,8 +153,9 @@
         "on-click": "uwsm-app -- ghostty -e bluetui"
     },
     "pulseaudio#sink": {
-        "format": "{icon} {volume}%",
+        "format": "{icon}",
         "format-muted": "",
+        "tooltip-format": "Volume: {volume}%",
         "format-icons": {
             "default": [
                 "",
