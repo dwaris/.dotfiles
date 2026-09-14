@@ -1,7 +1,7 @@
 {...}: {
   imports = [
     ./default.nix
-    ./apps/launchers.nix
+    ./apps/emulators.nix
     ./apps/minecraft.nix
   ];
 }

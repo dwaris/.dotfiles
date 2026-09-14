@@ -1,7 +1,10 @@
-{
+{pkgs, ...}: {
   imports = [
     ./apps/steam.nix
-    ./apps/emulators.nix
+  ];
+
+  environment.systemPackages = with pkgs; [
+    heroic
   ];
 
   boot.kernel.sysctl = {
