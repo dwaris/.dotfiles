@@ -82,7 +82,7 @@ hl.bind(
 	{ locked = true, repeating = true }
 )
 hl.bind(
-	"F14",
+	"F13",
 	hl.dsp.exec_cmd(
 		[[sh -c "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle; wpctl get-volume @DEFAULT_AUDIO_SOURCE@ | grep -q MUTED && notify-send -u low 'Mic Muted' || notify-send 'Mic Unmuted'"]]
 	),

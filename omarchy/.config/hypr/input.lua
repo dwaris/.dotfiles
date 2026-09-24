@@ -41,17 +41,17 @@
 --       -- Left-click-and-drag with three fingers.
 --       drag_3fg = 1,
 --     },
--- Linear mouse speed and extended F13-F24 function keys (enables F14)
+-- Linear mouse speed and extended F13-F24 function keys
 hl.config({
-  input = {
-    kb_layout = "eu",
-    kb_options = "fkeys:basic_13-24",
-  },
+	input = {
+		kb_layout = "eu",
+		kb_options = "fkeys:basic_13-24",
+	},
 })
 
 -- BenQ ZOWIE gaming mouse linear profile
-hl.device {
-    name = "benq-zowie-benq-zowie-gaming-mouse",
-    sensitivity = 0.0,
-    accel_profile = "flat",
-}
+hl.device({
+	name = "benq-zowie-benq-zowie-gaming-mouse",
+	sensitivity = 0.0,
+	accel_profile = "flat",
+})
