@@ -1,8 +1,7 @@
 {pkgs, ...}: let
   brave-pkg =
-    if pkgs ? brave-origin
-    then pkgs.brave-origin
-    else pkgs.brave;
+    pkgs.brave-origin
+    or pkgs.unstable.brave-origin;
 in {
   environment.systemPackages = with pkgs; [
     (brave-pkg.override {
