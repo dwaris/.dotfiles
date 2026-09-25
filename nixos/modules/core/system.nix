@@ -3,6 +3,8 @@
 
   nix.settings.trusted-users = ["@wheel"];
 
+  nix.package = pkgs.lix;
+
   nix.settings = {
     # enable flakes globally
     experimental-features = [
