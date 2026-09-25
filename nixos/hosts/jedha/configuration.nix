@@ -40,7 +40,7 @@ in {
     uid = 1000;
     group = username;
     description = username;
-    extraGroups = ["wheel" "networkmanager" "uinput" "input"];
+    extraGroups = ["wheel" "networkmanager" "dialout"];
     shell = pkgs.zsh;
   };
 
