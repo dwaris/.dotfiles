@@ -1,8 +1,13 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  inputs,
+  ...
+}: let
   username = "dwaris";
 in {
   imports = [
     ../../modules/core
+    inputs.nixos-wsl.nixosModules.default
     ./hardware-configuration.nix
   ];
 
