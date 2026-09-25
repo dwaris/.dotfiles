@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   # Define a user account. Don't forget to set a password with ‘passwd’.
 
   nix.settings.trusted-users = ["@wheel"];
@@ -29,6 +33,15 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+
+  nixpkgs.overlays = [
+    (final: prev: {
+      unstable = import inputs.nixpkgs {
+        inherit (final.stdenv.hostPlatform) system;
+        config.allowUnfree = true;
+      };
+    })
+  ];
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
