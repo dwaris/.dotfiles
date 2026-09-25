@@ -6,7 +6,7 @@
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-26.05";
 
     lanzaboote = {
-      url = "github:nix-community/lanzaboote";
+      url = "github:nix-community/lanzaboote/v1.1.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -24,7 +24,6 @@
         inherit specialArgs;
         modules = [
           ./hosts/jedha/configuration.nix
-          inputs.lanzaboote.nixosModules.lanzaboote
         ];
       };
 
@@ -32,7 +31,6 @@
         inherit specialArgs;
         modules = [
           ./hosts/aldhani/configuration.nix
-          inputs.lanzaboote.nixosModules.lanzaboote
         ];
       };
 
@@ -40,7 +38,6 @@
         inherit specialArgs;
         modules = [
           ./hosts/kashyyyk/configuration.nix
-          inputs.lanzaboote.nixosModules.lanzaboote
         ];
       };
 
