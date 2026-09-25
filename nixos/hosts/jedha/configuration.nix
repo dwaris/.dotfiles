@@ -18,6 +18,7 @@ in {
 
     ../../modules/apps
     ../../modules/apps/gaming
+    ../../modules/apps/k3s.nix
 
     ./hardware-configuration.nix
   ];
