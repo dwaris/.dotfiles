@@ -1,7 +1,7 @@
-{pkgs, ...}: {
+{...}: {
   networking.networkmanager = {
     enable = true;
-    plugins = with pkgs; [networkmanager-openvpn];
+    wifi.macAddress = "stable-ssid";
   };
 
   systemd.services.NetworkManager-wait-online.enable = false;
