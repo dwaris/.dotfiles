@@ -1,6 +1,4 @@
 {pkgs, ...}: {
-  boot.kernelPackages = pkgs.linuxPackages_7_2;
-
   boot.supportedFilesystems = [
     "zfs"
   ];
