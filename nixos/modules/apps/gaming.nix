@@ -1,10 +1,15 @@
 {pkgs, ...}: {
-  imports = [
-    ./apps/steam.nix
-  ];
+  programs.steam = {
+    enable = true;
+    extraCompatPackages = [
+      pkgs.unstable.proton-ge-bin
+    ];
+  };
 
   environment.systemPackages = with pkgs; [
     heroic
+    # prismlauncher
+    # mesen
   ];
 
   boot.kernel.sysctl = {

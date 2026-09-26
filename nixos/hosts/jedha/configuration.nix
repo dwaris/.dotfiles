@@ -17,7 +17,7 @@ in {
     ../../modules/desktop/oo7.nix
 
     ../../modules/apps
-    ../../modules/apps/gaming
+    ../../modules/apps/gaming.nix
     ../../modules/apps/k3s.nix
 
     ./hardware-configuration.nix

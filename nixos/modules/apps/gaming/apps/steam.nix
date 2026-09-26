@@ -1,9 +1,0 @@
-{
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = false;
-    dedicatedServer.openFirewall = false;
-    protontricks.enable = true;
-    gamescopeSession.enable = true;
-  };
-}
