@@ -25,9 +25,7 @@ in {
     "iommu=pt"
   ];
 
-  environment.systemPackages = with pkgs; [
-    llama-cpp-vulkan
-  ];
+  environment.systemPackages = [];
 
   systemd.services.alsa-init = {
     description = "Initialize ALSA sound cards and UCM";

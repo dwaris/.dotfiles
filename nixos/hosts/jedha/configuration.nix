@@ -28,7 +28,6 @@ in {
 
   environment.systemPackages = with pkgs; [
     easyeffects
-    llama-cpp-rocm
   ];
 
   programs.nh.flake = "/home/${username}/Projects/dotfiles/nixos";
