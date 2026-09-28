@@ -31,6 +31,7 @@
     '')
   ];
 
+  zramSwap.enable = true;
   systemd.oomd.enable = false;
 
   services.zfs.autoSnapshot = {

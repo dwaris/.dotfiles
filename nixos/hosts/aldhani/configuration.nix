@@ -25,6 +25,10 @@ in {
     "iommu=pt"
   ];
 
+  boot.extraModprobeConfig = ''
+    options zfs zfs_arc_max=8589934592
+  '';
+
   environment.systemPackages = [];
 
   systemd.services.alsa-init = {

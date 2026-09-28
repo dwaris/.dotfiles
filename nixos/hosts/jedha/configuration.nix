@@ -26,6 +26,10 @@ in {
   networking.hostName = "jedha";
   networking.hostId = "d83be86e";
 
+  boot.extraModprobeConfig = ''
+    options zfs zfs_arc_max=17179869184
+  '';
+
   environment.systemPackages = with pkgs; [
     easyeffects
   ];
