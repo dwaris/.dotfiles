@@ -107,5 +107,6 @@
 	},
 	"[markdown]": {
 		"editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
-	}
+	},
+	"chat.disableAIFeatures": true
 }
