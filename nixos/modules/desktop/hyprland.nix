@@ -73,6 +73,21 @@
     seahorse
   ];
 
+  nixpkgs.overlays = [
+    (final: prev: {
+      nautilus = prev.nautilus.overrideAttrs (oldAttrs: {
+        buildInputs =
+          oldAttrs.buildInputs
+          ++ (with prev.gst_all_1; [
+            gst-plugins-good
+            gst-plugins-bad
+            gst-plugins-ugly
+            gst-libav
+          ]);
+      });
+    })
+  ];
+
   services = {
     gvfs.enable = true;
     udisks2.enable = true;
