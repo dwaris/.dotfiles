@@ -71,6 +71,7 @@
     baobab
     gnome-logs
     seahorse
+    kdePackages.kdeconnect-kde
   ];
 
   services = {
