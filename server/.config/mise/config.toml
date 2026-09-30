@@ -11,10 +11,12 @@ starship = "latest"
 lazygit = "latest"
 lazydocker = "latest"
 bottom = "latest"
+zoxide = "latest"
+
+tree-sitter = "latest"
 ripgrep = "latest"
 fd = "latest"
 fzf = "latest"
-zoxide = "latest"
 
 lua-language-server = "latest"
 stylua = "latest"
@@ -26,4 +28,3 @@ node = "lts"
 "npm:bash-language-server" = "latest"
 biome = "latest"
 uv = "latest"
-
