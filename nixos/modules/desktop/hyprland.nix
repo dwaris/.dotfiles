@@ -1,8 +1,4 @@
-{
-  pkgs,
-  config,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     ./default.nix
   ];
@@ -29,7 +25,8 @@
           "--remember"
           "--remember-session"
           "--asterisks"
-          "--sessions ${config.services.displayManager.sessionData.desktops}/share/wayland-sessions"
+          "--sessions /run/current-system/sw/share/wayland-sessions"
+          "--cmd 'uwsm start hyprland-uwsm.desktop'"
         ];
         user = "greeter";
       };
