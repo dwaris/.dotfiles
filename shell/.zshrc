@@ -77,9 +77,34 @@ zinit light-mode for \
 # ALIASES           #
 #####################
 alias mv='mv -v'
-alias ls='ls -A --color=auto'
-alias ll='ls -la -h --color=auto'
-alias la='ls -lathr --color=auto'
+
+# Modern CLI tools with graceful fallbacks (NixOS / Arch / Debian Server)
+if (( $+commands[eza] )); then
+  alias ls='eza -a --icons=auto --group-directories-first'
+  alias ll='eza -la --icons=auto --group-directories-first --git'
+  alias la='eza -lathr --icons=auto'
+  alias tree='eza --tree --icons=auto'
+else
+  alias ls='ls -A --color=auto'
+  alias ll='ls -la -h --color=auto'
+  alias la='ls -lathr --color=auto'
+fi
+
+if (( $+commands[bat] )); then
+  alias cat='bat --style=plain --paging=never'
+fi
+
+if (( $+commands[dust] )); then
+  alias du='dust'
+fi
+
+if (( $+commands[procs] )); then
+  alias ps='procs'
+fi
+
+if (( $+commands[delta] )); then
+  export GIT_PAGER='delta'
+fi
 
 # Editor & Vim fallback
 if (( $+commands[nvim] )); then

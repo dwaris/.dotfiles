@@ -23,6 +23,12 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[delta]
+	navigate = true
+	line-numbers = true
+	side-by-side = false
+[diff]
+	colorMoved = default
 [includeIf "gitdir:~/Projects/uni/"]
 	path = ~/.gitconfig-uni
 

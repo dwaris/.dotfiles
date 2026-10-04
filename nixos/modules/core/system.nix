@@ -82,10 +82,20 @@
     dust
     lm_sensors
 
+    eza
+    bat
+    delta
+    sd
+    procs
+    trippy
+    ouch
+
     pciutils
     usbutils
     lsof
     file
+
+    sequoia-sq
   ];
 
   programs.git = {
@@ -101,6 +111,11 @@
     info.enable = false;
     nixos.enable = false;
     man.enable = true;
+  };
+
+  services.kmscon = {
+    enable = true;
+    hwRender = true;
   };
 
   system.tools.nixos-generate-config.enable = false;
