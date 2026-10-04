@@ -5,6 +5,7 @@
     fzf
     starship
     tmux
+    (pkgs.herdr or pkgs.unstable.herdr)
   ];
 
   programs = {
