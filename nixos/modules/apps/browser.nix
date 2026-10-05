@@ -1,10 +1,6 @@
-{pkgs, ...}: let
-  brave-pkg =
-    pkgs.brave-origin
-    or pkgs.unstable.brave-origin;
-in {
+{pkgs, ...}: {
   environment.systemPackages = with pkgs; [
-    (brave-pkg.override {
+    (brave-origin.override {
       enableVideoAcceleration = true;
       commandLineArgs = [
         "--password-store=gnome-libsecret"
