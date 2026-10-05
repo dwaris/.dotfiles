@@ -2,7 +2,7 @@
   programs.steam = {
     enable = true;
     extraCompatPackages = [
-      pkgs.unstable.proton-ge-bin
+      pkgs.proton-ge-bin
     ];
   };
 

@@ -34,15 +34,6 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  nixpkgs.overlays = [
-    (final: prev: {
-      unstable = import inputs.nixpkgs {
-        inherit (final.stdenv.hostPlatform) system;
-        config.allowUnfree = true;
-      };
-    })
-  ];
-
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
 

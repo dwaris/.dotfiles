@@ -23,7 +23,7 @@ in {
     vlc
     gimp
     firefox
-    unstable.brave-origin
+    chromium
     thunderbird
     element-desktop
     libreoffice-qt
