@@ -108,5 +108,6 @@
 	"[markdown]": {
 		"editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
 	},
-	"chat.disableAIFeatures": true
+	"chat.disableAIFeatures": true,
+	"dev.containers.dockerPath": "podman",
 }
