@@ -32,7 +32,7 @@ in {
     hunspellDicts.en_US
   ];
 
-  programs.nh.flake = "/home/${username}/Projects/dotfiles/nixos";
+  programs.nh.flake = "/home/${username}/Projekte/dotfiles/nixos";
 
   users.users.${username} = {
     isNormalUser = true;
