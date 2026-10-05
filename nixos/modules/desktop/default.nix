@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   services.fwupd.enable = true;
 
   fonts.packages = with pkgs; [
@@ -43,6 +47,9 @@
     enable = true;
     package = pkgs.ananicy-cpp;
     rulesProvider = pkgs.ananicy-rules-cachyos;
+    settings = {
+      cgroup_realtime_workaround = lib.mkForce false;
+    };
   };
 
   security.pki.certificateFiles = [../../certs/root_ca.crt];
