@@ -21,7 +21,8 @@ if [ -n "$SELECTED_NAME" ]; then
     SELECTED_IMAGE=$(echo "$FILES" | grep "/$SELECTED_NAME$" | head -n 1)
     
     if [ -n "$SELECTED_IMAGE" ]; then
-        hyprctl hyprpaper preload "$SELECTED_IMAGE"
+        mkdir -p "$HOME/.cache"
+        ln -sf "$SELECTED_IMAGE" "$HOME/.cache/current_wallpaper"
         hyprctl hyprpaper wallpaper ",$SELECTED_IMAGE"
     fi
 fi
