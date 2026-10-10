@@ -67,9 +67,6 @@
     papers
     gnome-epub-thumbnailer
     gnome-disk-utility
-    baobab
-    gnome-logs
-    seahorse
   ];
 
   services = {
