@@ -2,19 +2,6 @@ vim.g.mapleader = ' '
 
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
-vim.keymap.set(
-    'n',
-    '[d',
-    vim.diagnostic.goto_prev,
-    { desc = 'Go to previous [D]iagnostic message' }
-)
-vim.keymap.set(
-    'n',
-    ']d',
-    vim.diagnostic.goto_next,
-    { desc = 'Go to next [D]iagnostic message' }
-)
-
 -- Window navigation
 vim.keymap.set('n', '<leader>wh', '<C-w>h', { desc = '[W]indow [H] left' })
 vim.keymap.set('n', '<leader>wj', '<C-w>j', { desc = '[W]indow [J] down' })

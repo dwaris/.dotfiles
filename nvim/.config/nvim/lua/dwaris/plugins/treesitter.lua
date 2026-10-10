@@ -25,6 +25,7 @@ return {
             'nix',
             'python',
             'query',
+            'regex',
             'rust',
             'typescript',
             'vue',
