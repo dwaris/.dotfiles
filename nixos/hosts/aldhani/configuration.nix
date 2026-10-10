@@ -30,7 +30,7 @@ in {
   '';
 
   environment.systemPackages = with pkgs; [
-    llama-cpp-vulkan
+    # llama-cpp-vulkan
   ];
 
   systemd.services.alsa-init = {
