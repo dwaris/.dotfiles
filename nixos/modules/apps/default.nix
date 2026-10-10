@@ -5,6 +5,5 @@
     ./communication.nix
     ./development.nix
     ./media.nix
-    ./office.nix
   ];
 }
