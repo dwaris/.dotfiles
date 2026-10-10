@@ -10,10 +10,6 @@ return {
     },
     {
         'neovim/nvim-lspconfig',
-        dependencies = {
-            { 'mason-org/mason.nvim', opts = {} },
-            'mason-org/mason-lspconfig.nvim',
-        },
         config = function()
             local lsp_attach_group =
                 vim.api.nvim_create_augroup('lsp-attach', { clear = true })
@@ -150,7 +146,6 @@ return {
 
             local servers = {
                 lua_ls = {
-                    bin = 'lua-language-server',
                     on_init = function(client)
                         client.server_capabilities.documentFormattingProvider =
                             false -- Disable formatting (formatting is done by stylua)
@@ -162,27 +157,41 @@ return {
                         },
                     },
                 },
-                nixd = { bin = 'nixd' },
-                basedpyright = { bin = 'basedpyright-langserver' },
-                ruff = { bin = 'ruff' },
-                gopls = { bin = 'gopls' },
-                rust_analyzer = { bin = 'rust-analyzer' },
-                clangd = { bin = 'clangd' },
-                ts_ls = { bin = 'typescript-language-server' },
-                bashls = { bin = 'bash-language-server' },
-                biome = { bin = 'biome' },
-                volar = { bin = 'vue-language-server' },
-                texlab = { bin = 'texlab' },
+                nixd = {},
+                basedpyright = {
+                    settings = {
+                        basedpyright = {
+                            analysis = {
+                                autoSearchPaths = true,
+                                diagnosticMode = 'openFilesOnly',
+                                useLibraryCodeForTypes = true,
+                                inlayHints = {
+                                    variableTypes = true,
+                                    callArgumentNames = true,
+                                    functionReturnTypes = true,
+                                    genericTypes = true,
+                                },
+                            },
+                        },
+                    },
+                },
+                ruff = {},
+                gopls = {},
+                rust_analyzer = {},
+                clangd = {},
+                ts_ls = {},
+                bashls = {},
+                biome = {},
+                volar = {},
+                elixirls = {},
+                texlab = {},
                 marksman = {
-                    bin = 'marksman',
                     cmd_env = { DOTNET_SYSTEM_GLOBALIZATION_INVARIANT = '1' },
                 },
-                hls = { bin = 'haskell-language-server-wrapper' },
+                hls = {},
             }
 
             for name, config in pairs(servers) do
-                config.bin = nil -- Clean up custom metadata field
-
                 config.capabilities = vim.tbl_deep_extend(
                     'force',
                     {},
@@ -192,10 +201,6 @@ return {
                 vim.lsp.config(name, config)
                 vim.lsp.enable(name)
             end
-
-            require('mason-lspconfig').setup {
-                ensure_installed = {}, -- Disable automatic background downloads
-            }
         end,
     },
 
@@ -231,6 +236,7 @@ return {
                 javascript = { 'biome' },
                 typescript = { 'biome' },
                 json = { 'biome' },
+                vue = { 'biome' },
             },
 
             notify_on_error = false,
