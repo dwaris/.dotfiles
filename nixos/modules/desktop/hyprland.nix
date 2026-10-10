@@ -47,6 +47,8 @@
     libnotify
     playerctl
 
+    proton-vpn-cli
+
     rofi
 
     wl-clipboard

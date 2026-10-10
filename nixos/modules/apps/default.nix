@@ -6,7 +6,6 @@
     ./development.nix
     ./media.nix
     ./office.nix
-    ./privacy.nix
     ./syncthing.nix
   ];
 }
