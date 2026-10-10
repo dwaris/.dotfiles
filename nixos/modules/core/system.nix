@@ -102,10 +102,7 @@
     man.enable = true;
   };
 
-  services.kmscon = {
-    enable = true;
-    hwRender = true;
-  };
+  services.kmscon.enable = true;
 
   system.tools.nixos-generate-config.enable = false;
 }
