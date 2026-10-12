@@ -8,6 +8,7 @@
   fonts.packages = with pkgs; [
     ibm-plex
     nerd-fonts.blex-mono
+    nerd-fonts.symbols-only
 
     noto-fonts
     noto-fonts-color-emoji
