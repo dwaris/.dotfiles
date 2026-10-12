@@ -63,7 +63,14 @@ in {
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = false;
 
-  services.fprintd.enable = false;
+  services.fprintd.enable = true;
+
+  security.pam.services = {
+    sudo.fprintAuth = false;
+    login.fprintAuth = false;
+    su.fprintAuth = false;
+    hyprlock.fprintAuth = false;
+  };
 
   fileSystems."/home/${username}/Documents" = {
     device = "zpool/shared/${username}/documents";
