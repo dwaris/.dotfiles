@@ -1,8 +1,7 @@
-{pkgs, ...}: let
-  username = "dwaris";
-in {
+{pkgs, ...}: {
   imports = [
     ../../modules/core
+    ../../modules/users/dwaris.nix
     ../../modules/hardware/laptop.nix
     ../../modules/hardware/boot.nix
     ../../modules/hardware/printing.nix
@@ -15,20 +14,6 @@ in {
 
   networking.hostName = "batuu";
   networking.hostId = "264853fa";
-
-  programs.nh.flake = "/home/${username}/Projects/dotfiles/nixos";
-
-  users.groups.${username} = {
-    gid = 1000;
-  };
-  users.users.${username} = {
-    isNormalUser = true;
-    uid = 1000;
-    group = username;
-    description = username;
-    extraGroups = ["wheel" "networkmanager"];
-    shell = pkgs.zsh;
-  };
 
   hardware.graphics.enable = true;
   hardware.graphics.extraPackages = with pkgs; [
