@@ -62,10 +62,10 @@
 
     file-roller
     nautilus
-    loupe
-    totem
-    papers
     gnome-epub-thumbnailer
+    ffmpegthumbnailer
+    loupe
+    papers
     gnome-disk-utility
   ];
 
