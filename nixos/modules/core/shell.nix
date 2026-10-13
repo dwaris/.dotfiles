@@ -5,7 +5,6 @@
     fzf
     starship
     tmux
-    herdr
   ];
 
   programs = {
