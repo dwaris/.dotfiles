@@ -58,7 +58,6 @@
     "kernel.sysrq" = 244;
     "kernel.yama.ptrace_scope" = 1;
     "kernel.randomize_va_space" = 2;
-    "kernel.panic_on_oops" = 1;
     "kernel.perf_event_paranoid" = 2;
 
     "net.core.bpf_jit_harden" = 2;
