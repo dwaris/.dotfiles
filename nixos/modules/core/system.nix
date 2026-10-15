@@ -7,7 +7,6 @@
 
   nix.settings.trusted-users = ["@wheel"];
 
-  nix.package = pkgs.lix;
   nix.channel.enable = false;
 
   nix.settings = {
