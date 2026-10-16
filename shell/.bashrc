@@ -51,12 +51,14 @@ alias mv='mv -v'
 bind 'set show-all-if-ambiguous on'
 bind 'TAB:menu-complete'
 
-if command -v fzf-share >/dev/null 2>&1; then
+if command -v fzf >/dev/null 2>&1; then
+    if fzf --bash >/dev/null 2>&1; then
     eval "$(fzf --bash)"
-elif command -v fzf >/dev/null 2>&1; then 
+    else
     # Fallback for Debian/Ubuntu older versions
     [[ -f /usr/share/doc/fzf/examples/key-bindings.bash ]] && source /usr/share/doc/fzf/examples/key-bindings.bash
     [[ -f /usr/share/doc/fzf/examples/completion.bash ]] && source /usr/share/doc/fzf/examples/completion.bash
+    fi
 fi
 
 [[ -f ~/.config/user-dirs.dirs ]] && source ~/.config/user-dirs.dirs
