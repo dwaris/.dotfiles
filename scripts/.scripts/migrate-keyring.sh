@@ -22,10 +22,7 @@ echo "Please enter the password used to encrypt your old GNOME keyring."
 echo ""
 
 # Read password without echoing to terminal
-stty -echo
-printf "Password: "
-read -r KEYRING_PASS
-stty echo
+read -rsp "Password: " KEYRING_PASS
 echo ""
 
 if [[ -z "$KEYRING_PASS" ]]; then

@@ -10,7 +10,7 @@
 [user]
 	email = "dwaris@itclowd.de"
 	name = "dwaris"
-	signingkey = /home/dwaris/.ssh/id_ed25519.pub
+	signingkey = ~/.ssh/id_ed25519.pub
 
 [core]
 	excludesfile = ~/.gitignore.global

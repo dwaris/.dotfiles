@@ -2,10 +2,14 @@
 
 WALLPAPER_DIR="$HOME/Nextcloud/Media/Wallpaper"
 
+[ -d "$WALLPAPER_DIR" ] || exit 0
+
 FILES=$(find "$WALLPAPER_DIR" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.gif" \))
+[ -z "$FILES" ] && exit 0
 
 ROFI_INPUT=""
 while read -r file; do
+    [ -z "$file" ] && continue
     filename=$(basename "$file")
     ROFI_INPUT+="${filename}\0icon\x1f${file}\n"
 done <<< "$FILES"
@@ -18,7 +22,7 @@ SELECTED_NAME=$(echo -en "$ROFI_INPUT" | rofi -dmenu -i -show-icons -p "Wallpape
     -theme-str 'element-text {vertical-align: 0.5; font: "BlexMono Nerd Font Propo 12";}')
 
 if [ -n "$SELECTED_NAME" ]; then
-    SELECTED_IMAGE=$(echo "$FILES" | grep "/$SELECTED_NAME$" | head -n 1)
+    SELECTED_IMAGE=$(echo "$FILES" | grep -F "/$SELECTED_NAME" | head -n 1)
     
     if [ -n "$SELECTED_IMAGE" ]; then
         mkdir -p "$HOME/.cache"

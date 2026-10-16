@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 process_file() {
     local file="$1"
@@ -6,16 +6,26 @@ process_file() {
     local work_dir="tmp/${name}"
 
     mkdir -p "$work_dir"
-    unrar x -inul "$file" "$work_dir/"
+    if ! unrar x -inul "$file" "$work_dir/"; then
+        echo "Failed to unrar $file"
+        rm -rf "$work_dir"
+        return 1
+    fi
+
+    # Ensure unrar actually unpacked files
+    if [ -z "$(ls -A "$work_dir")" ]; then
+        echo "Extracted directory is empty for $file"
+        rm -rf "$work_dir"
+        return 1
+    fi
 
     # remember where you are coming from
-    (cd "$work_dir" && zip -r -q -1 "../../${name}.cbz" .)
-
-    if [ -f "${name}.cbz" ]; then
+    if (cd "$work_dir" && zip -r -q -1 "../../${name}.cbz" .) && [ -s "${name}.cbz" ]; then
         rm "$file"
         rm -rf "$work_dir"
     else
         echo "Failed to create cbz for $file"
+        rm -f "${name}.cbz"
         rm -rf "$work_dir"
         return 1
     fi
@@ -23,6 +33,6 @@ process_file() {
 export -f process_file
 
 mkdir -p tmp
-find . -maxdepth 1 -name "*.cbr" | parallel --tmux-pane --bar process_file {}
+find . -maxdepth 1 -name "*.cbr" | parallel --tmuxpane --bar process_file {}
 
 rmdir tmp 2>/dev/null

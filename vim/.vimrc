@@ -37,6 +37,9 @@ set noswapfile
 set nobackup
 set undofile
 set undodir=~/.vim/undodir
+if !isdirectory(expand('~/.vim/undodir'))
+    call mkdir(expand('~/.vim/undodir'), 'p')
+endif
 
 highlight Comment ctermfg=green
 highlight LineNr ctermfg=darkgrey
