@@ -49,14 +49,7 @@
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = false;
 
-  services.fprintd.enable = true;
-
-  security.pam.services = {
-    sudo.fprintAuth = false;
-    login.fprintAuth = false;
-    su.fprintAuth = false;
-    hyprlock.fprintAuth = false;
-  };
+  services.fprintd.enable = false;
 
   system.stateVersion = "23.11";
 }
