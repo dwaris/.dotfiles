@@ -118,6 +118,7 @@ tooltip,
 #pulseaudio.source-muted,
 #pulseaudio.sink.muted,
 #battery.warning:not(.charging),
+#battery.critical:not(.charging),
 #power-profiles-daemon.performance {
   color: @red;
 }

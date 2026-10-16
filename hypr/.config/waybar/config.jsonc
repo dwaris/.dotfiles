@@ -62,7 +62,7 @@
         "tooltip": false,
         "on-scroll-up": "brightnessctl s '+10%'",
         "on-scroll-down": "brightnessctl s '10%-'",
-        "on-click": "((( $(brightnessctl g) == 100 )) && brightnessctl s '0') || (brightnessctl s '+10%')",
+        "on-click": "[ $(brightnessctl g) -ge $(brightnessctl m) ] && brightnessctl s 10% || brightnessctl s +10%",
         "format-icons": [
             "",
             "",
@@ -190,11 +190,6 @@
             "power-saver": ""
         }
     },
-    "custom/lock": {
-        "tooltip": false,
-        "on-click": "hyprlock &",
-        "format": ""
-    },
     "custom/power": {
         "tooltip": false,
         "on-click": "uwsm-app -- hyprshutdown -t 'Shutting down...' -p 'systemctl poweroff'",
@@ -232,14 +227,11 @@
         "on-click": "rofi -show drun -run-command 'uwsm-app -- {cmd}'"
     },
     "idle_inhibitor": {
-        "exec": "sh ~/.config/waybar/scripts/idle_inhibitor.sh",
-        "return-type": "json",
         "format": "{icon}",
         "format-icons": {
             "activated": "",
             "deactivated": ""
         },
-        "on-click": "sh ~/.config/waybar/scripts/idle_inhibitor_toggle.sh &",
         "tooltip": false
     },
     "custom/dnd": {

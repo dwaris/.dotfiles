@@ -20,7 +20,7 @@
           ./kde.nix
         ];
         boot.lanzaboote.sortKey = "02";
-        services.displayManager.ly.enable = lib.mkForce false;
+        services.greetd.enable = lib.mkForce false;
         services.displayManager.sddm.enable = lib.mkForce false;
         system.nixos.tags = ["kde"];
       };
