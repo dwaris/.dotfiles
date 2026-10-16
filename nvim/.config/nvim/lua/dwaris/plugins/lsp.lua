@@ -40,6 +40,11 @@ return {
                     return
                 end
 
+                vim.api.nvim_clear_autocmds {
+                    group = lsp_highlight_group,
+                    buffer = event.buf,
+                }
+
                 vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
                     buffer = event.buf,
                     group = lsp_highlight_group,
@@ -54,10 +59,11 @@ return {
 
                 vim.api.nvim_create_autocmd('LspDetach', {
                     group = lsp_detach_group,
+                    buffer = event.buf,
                     callback = function(event2)
                         vim.lsp.buf.clear_references()
                         vim.api.nvim_clear_autocmds {
-                            group = 'lsp-highlight',
+                            group = lsp_highlight_group,
                             buffer = event2.buf,
                         }
                     end,
@@ -175,6 +181,7 @@ return {
                         },
                     },
                 },
+                pyright = {},
                 ruff = {},
                 gopls = {},
                 rust_analyzer = {},
@@ -183,6 +190,8 @@ return {
                 bashls = {},
                 biome = {},
                 volar = {},
+                vue_ls = {},
+                taplo = {},
                 elixirls = {},
                 texlab = {},
                 marksman = {
@@ -237,6 +246,7 @@ return {
                 typescript = { 'biome' },
                 json = { 'biome' },
                 vue = { 'biome' },
+                toml = { 'taplo' },
             },
 
             notify_on_error = false,
