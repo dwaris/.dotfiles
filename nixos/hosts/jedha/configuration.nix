@@ -15,7 +15,7 @@ in {
     ../../modules/hardware/printing.nix
     ../../modules/hardware/vpn/tailscale-server.nix
 
-    ../../modules/desktop/hyprland.nix
+    ../../modules/desktop/kde.nix
     ../../modules/desktop/oo7.nix
 
     ../../modules/apps
@@ -81,7 +81,6 @@ in {
     options = ["zfsutil" "nofail"];
   };
 
-  systemd.services."zfs-sync-tank8tb".enable = false;
   fileSystems."/mnt/tank8tb/media" = {
     device = "tank8tb/media";
     fsType = "zfs";
