@@ -99,5 +99,9 @@ in {
     options = ["zfsutil" "nofail" "noauto" "x-systemd.automount" "x-gvfs-hide"];
   };
 
+  services.udev.extraRules = ''
+    KERNEL=="card[0-9]", SUBSYSTEM=="drm", DRIVERS=="amdgpu", ATTR{device/power_dpm_force_performance_level}="high"
+  '';
+
   system.stateVersion = "25.05";
 }
