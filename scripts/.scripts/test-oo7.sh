@@ -44,13 +44,13 @@ else
   pass "gnome-keyring is not running."
 fi
 
-# 4. Verify KWallet is NOT running
-info "4. Verifying KWallet is disabled..."
-if pgrep -f "kwalletd" >/dev/null; then
-  fail "kwalletd daemon is still running!"
-  ERRORS=$((ERRORS + 1))
+# 4. Verify KWallet does NOT claim Secret Service API
+info "4. Verifying KWallet does not hijack org.freedesktop.secrets..."
+if busctl --user status org.freedesktop.secrets 2>/dev/null | grep -q "oo7-daemon"; then
+  pass "org.freedesktop.secrets is cleanly owned by oo7-daemon (KWallet Secret Service API disabled)."
 else
-  pass "kwalletd is not running."
+  fail "org.freedesktop.secrets is not owned by oo7-daemon!"
+  ERRORS=$((ERRORS + 1))
 fi
 
 # 5. Check oo7 portal backend...

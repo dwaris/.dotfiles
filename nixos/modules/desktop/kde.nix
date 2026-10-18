@@ -28,22 +28,6 @@
     displayManager.plasma-login-manager.enable = true;
   };
 
-  # Disable legacy KWallet in favor of oo7 Secret Service
-  environment.plasma6.excludePackages = with pkgs.kdePackages; [
-    kwallet
-    kwalletmanager
-  ];
-
-  environment.etc."xdg/kwalletrc".text = ''
-    [Wallet]
-    Enabled=false
-  '';
-
-  security.pam.services = {
-    login.kwallet.enable = lib.mkForce false;
-    kde.kwallet.enable = lib.mkForce false;
-  };
-
   programs.partition-manager.enable = true;
   programs.kdeconnect.enable = false;
 
