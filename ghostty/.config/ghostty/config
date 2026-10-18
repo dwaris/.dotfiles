@@ -4,6 +4,7 @@ font-family = "BlexMono Nerd Font"
 font-style = Text
 font-size = 10.5
 theme =  dark:Catppuccin Mocha,light:Catppuccin Latte
+command = tmux new -A -s main
 maximize = true
 confirm-close-surface = false
 keybind = ctrl+enter=unbind
