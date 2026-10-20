@@ -9,6 +9,7 @@
   environment.systemPackages = with pkgs; [
     unrar
     proton-vpn
+    remmina
 
     wl-clipboard
     kdePackages.filelight
