@@ -64,7 +64,8 @@
         {
           "id": "omarchy.monitor"
         }
-      ]
+      ],
+      "tray": []
     },
     "position": "top"
   },
