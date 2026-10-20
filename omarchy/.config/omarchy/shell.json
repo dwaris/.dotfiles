@@ -1,20 +1,25 @@
 {
   "bar": {
-    "centerAnchor": "omarchy.clock",
+    "background": "opaque",
     "fontSize": 14,
     "layout": {
       "center": [
         {
-          "id": "omarchy.indicators"
-        },
-        {
-          "id": "omarchy.keyboard-layout"
-        },
-        {
-          "id": "omarchy.clock",
           "format": "ddd d MMM HH:mm",
           "formatAlt": "d MMMM 'W'ww yyyy",
+          "id": "omarchy.clock",
           "verticalFormat": "HH\n—\nmm"
+        }
+      ],
+      "centerBegin": [
+        {
+          "id": "omarchy.indicators"
+        }
+      ],
+      "centerEnd": [
+        {
+          "id": "omarchy.elsewhen",
+          "zones": "Berlin|Europe/Berlin, Delhi|Asia/Kolkata, Tokyo|Asia/Tokyo, Los Angeles|America/Los_Angeles, New York|America/New_York"
         },
         {
           "id": "omarchy.weather"
@@ -34,6 +39,9 @@
       "right": [
         {
           "id": "omarchy.tray"
+        },
+        {
+          "id": "omarchy.keyboard-layout"
         },
         {
           "id": "omarchy.agents"
@@ -58,8 +66,7 @@
         }
       ]
     },
-    "position": "top",
-    "transparent": false
+    "position": "top"
   },
   "idle": {
     "lock": 300,
