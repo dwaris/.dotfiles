@@ -47,11 +47,7 @@ export FZF_DEFAULT_OPTS='
 zinit light-mode for \
   OMZL::history.zsh \
   OMZL::key-bindings.zsh \
-  OMZL::directories.zsh \
-  OMZL::git.zsh \
-  OMZP::git \
-  OMZP::sudo \
-  zsh-users/zsh-history-substring-search
+  OMZP::sudo
 
 # Load zsh-completions before compinit so $fpath is populated
 zinit light-mode blockf for zsh-users/zsh-completions
@@ -126,8 +122,6 @@ SAVEHIST=100000
 
 bindkey -e
 export KEYTIMEOUT=1
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
 
 setopt globdots
 setopt NUMERIC_GLOB_SORT
@@ -136,6 +130,7 @@ setopt HIST_FIND_NO_DUPS
 #####################
 # INITIALIZATIONS   #
 #####################
+(( $+commands[direnv] ))   && eval "$(direnv hook zsh)"
 (( $+commands[mise] ))     && eval "$(mise activate zsh)"
 (( $+commands[fzf] ))      && eval "$(fzf --zsh)"
 (( $+commands[zoxide] ))   && eval "$(zoxide init zsh)"

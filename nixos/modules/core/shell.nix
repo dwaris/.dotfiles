@@ -5,17 +5,20 @@
     fzf
     starship
     tmux
+    zoxide
   ];
 
   programs = {
     direnv = {
       enable = true;
       nix-direnv.enable = true;
-      enableBashIntegration = true;
-      enableZshIntegration = true;
+      enableZshIntegration = false;
     };
-    zsh.enable = true;
-    zoxide.enable = true;
+    zsh = {
+      enable = true;
+      enableGlobalCompInit = false;
+      promptInit = "";
+    };
   };
 
   environment.shells = with pkgs; [zsh];
