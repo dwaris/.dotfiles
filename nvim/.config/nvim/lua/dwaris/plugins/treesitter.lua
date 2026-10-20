@@ -32,6 +32,7 @@ return {
             'rust',
             'toml',
             'typescript',
+            'typst',
             'vim',
             'vimdoc',
             'vue',

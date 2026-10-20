@@ -194,6 +194,7 @@ return {
                 taplo = {},
                 elixirls = {},
                 texlab = {},
+                tinymist = {},
                 marksman = {
                     cmd_env = { DOTNET_SYSTEM_GLOBALIZATION_INVARIANT = '1' },
                 },
@@ -241,6 +242,7 @@ return {
                 sh = { 'shfmt' },
                 elixir = { 'mix' },
                 latex = { 'tex-fmt' },
+                typst = { 'typstyle' },
                 haskell = { 'fourmolu' },
                 javascript = { 'biome' },
                 typescript = { 'biome' },
