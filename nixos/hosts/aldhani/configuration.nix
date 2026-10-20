@@ -29,9 +29,7 @@
     options zfs zfs_arc_max=8589934592
   '';
 
-  environment.systemPackages = with pkgs; [
-    # llama-cpp-vulkan
-  ];
+  environment.systemPackages = [];
 
   systemd.services.alsa-init = {
     description = "Initialize ALSA sound cards and UCM";
