@@ -18,18 +18,5 @@ in {
       "dialout"
     ];
     shell = pkgs.zsh;
-    homeMode = "701";
-    subUidRanges = [
-      {
-        startUid = 100000;
-        count = 65536;
-      }
-    ];
-    subGidRanges = [
-      {
-        startGid = 100000;
-        count = 65536;
-      }
-    ];
   };
 }

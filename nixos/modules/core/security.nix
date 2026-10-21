@@ -42,6 +42,7 @@
     "randomize_kstack_offset=on"
     "vsyscall=none"
     "debugfs=off"
+    "audit=0"
   ];
 
   boot.kernel.sysctl = {
