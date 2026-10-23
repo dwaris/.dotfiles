@@ -1,4 +1,49 @@
-{pkgs, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
+  nixpkgs.overlays = [
+    (_: prev: {
+      kernelPackagesExtensions =
+        prev.kernelPackagesExtensions
+        ++ [
+          (_: prev: let
+            packageName = config.boot.zfs.package.kernelModuleAttribute;
+          in {
+            ${packageName} = prev.${packageName}.overrideAttrs (old: {
+              patches =
+                (old.patches or [])
+                ++ [
+                  (pkgs.writeText "zfs-disable-tmpfile.patch" (builtins.concatStringsSep "\n" [
+                    "diff --git a/module/os/linux/zfs/zpl_inode.c b/module/os/linux/zfs/zpl_inode.c"
+                    "--- a/module/os/linux/zfs/zpl_inode.c"
+                    "+++ b/module/os/linux/zfs/zpl_inode.c"
+                    "@@ -279,3 +279,4 @@"
+                    "+#if 0"
+                    " static int"
+                    " #ifdef HAVE_TMPFILE_IDMAP"
+                    " zpl_tmpfile(struct mnt_idmap *userns, struct inode *dir,"
+                    "@@ -347,5 +348,6 @@"
+                    " \treturn (error);"
+                    " }"
+                    "+#endif"
+                    " "
+                    " static int"
+                    " zpl_unlink(struct inode *dir, struct dentry *dentry)"
+                    "@@ -853,3 +853,2 @@"
+                    " \t.rename\t\t= zpl_rename,"
+                    "-\t.tmpfile\t= zpl_tmpfile,"
+                    " \t.setattr\t= zpl_setattr,"
+                    ""
+                  ]))
+                ];
+            });
+          })
+        ];
+    })
+  ];
+
   boot.kernelPackages = pkgs.linuxPackages_7_2;
 
   boot.supportedFilesystems = [
