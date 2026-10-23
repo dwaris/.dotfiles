@@ -34,9 +34,4 @@
     "d %h/.local/share/plasma/desktoptheme/default/translucent 0755 - - -"
     "L+ %h/.local/share/plasma/desktoptheme/default/translucent/colors - - - - ${pkgs.kdePackages.libplasma}/share/plasma/desktoptheme/breeze-dark/colors"
   ];
-
-  # Deduplicate entries in XDG_DATA_DIRS to avoid redundant path traversal in Qt/KDE
-  environment.extraInit = ''
-    export XDG_DATA_DIRS="$(awk -v RS=: '{ if (!arr[$0]++) { printf("%s%s", !ln++ ? "" : ":", $0) }}' <<<"$XDG_DATA_DIRS")"
-  '';
 }
