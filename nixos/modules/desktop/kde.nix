@@ -22,10 +22,10 @@
   services = {
     desktopManager.plasma6.enable = true;
     displayManager.plasma-login-manager.enable = true;
+    colord.enable = true;
   };
 
   programs.partition-manager.enable = true;
-  programs.kdeconnect.enable = false;
 
   # Workaround for NixOS/nixpkgs#363068:
   # Prevents libplasma/ksvg from scanning ~90 Nix store paths across XDG_DATA_DIRS
