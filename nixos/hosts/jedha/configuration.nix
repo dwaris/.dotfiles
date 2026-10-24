@@ -19,7 +19,7 @@ in {
     ../../modules/desktop/oo7.nix
 
     ../../modules/apps
-    ../../modules/apps/gaming.nix
+    ../../modules/apps/steam.nix
 
     ./hardware-configuration.nix
   ];
