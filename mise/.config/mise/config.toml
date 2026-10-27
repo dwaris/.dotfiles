@@ -4,7 +4,7 @@ legacy_version_file = true
 all_compile = false
 
 [tools]
-agy = "latest"
+antigravity-cli = "latest"
 
 lua-language-server = "latest"
 stylua = "latest"
