@@ -10,10 +10,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # nixos-wsl = {
-    #   url = "github:nix-community/NixOS-WSL";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
   };
 
   outputs = inputs: let
@@ -29,8 +25,6 @@
       aldhani = mkHost inputs.nixpkgs "aldhani";
       kashyyyk = mkHost inputs.nixpkgs-stable "kashyyyk";
       batuu = mkHost inputs.nixpkgs-stable "batuu";
-
-      # wsl = mkHost inputs.nixpkgs "wsl";
     };
   };
 }
