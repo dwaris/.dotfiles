@@ -1,8 +1,4 @@
-{
-  pkgs,
-  inputs,
-  ...
-}: {
+{pkgs, ...}: {
   # Define a user account. Don't forget to set a password with ‘passwd’.
 
   nix.settings.trusted-users = ["@wheel"];
@@ -69,30 +65,22 @@
     rsync
 
     bottom
-    dust
     lm_sensors
-
-    eza
-    bat
-    delta
-    sd
-    procs
-    trippy
-    ouch-rar
 
     pciutils
     usbutils
     lsof
     file
-
-    sequoia-sq
   ];
 
   programs.git = {
     enable = true;
     lfs.enable = true;
   };
-  programs.vim.enable = true;
+  programs.vim = {
+    enable = true;
+    defaultEditor = true;
+  };
   programs.nano.enable = false;
 
   documentation = {

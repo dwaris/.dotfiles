@@ -1,6 +1,10 @@
 {pkgs, ...}: let
   username = "dwaris";
 in {
+  imports = [
+    ../dev
+  ];
+
   programs.nh.flake = "/home/${username}/Projects/dotfiles/nixos";
 
   users.groups.${username} = {

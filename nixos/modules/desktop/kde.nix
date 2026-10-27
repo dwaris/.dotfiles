@@ -8,7 +8,6 @@
 
     wl-clipboard
     kdePackages.filelight
-    kdePackages.keepsecret
     (catppuccin-kde.override {
       flavour = ["mocha"];
       accents = ["mauve"];
