@@ -6,7 +6,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    kitty
+    ghostty
     neovide
     vscode
 
