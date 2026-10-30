@@ -3,7 +3,7 @@
 ---------------------
 
 local scriptDir = os.getenv("HOME") .. "/.config/hypr/scripts/"
-local terminal = "uwsm-app -- " .. scriptDir .. "run-or-raise-ghostty.sh"
+local terminal = scriptDir .. "run-or-raise-ghostty.sh"
 local fileManager = "uwsm-app -- nautilus"
 local browser = "uwsm-app -- xdg-open https://"
 local menu = "rofi -show drun -run-command 'uwsm-app -- {cmd}'"
