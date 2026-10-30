@@ -6,12 +6,12 @@
     nixpkgs-stable.url = "https://channels.nixos.org/nixos-26.05/nixexprs.tar.zst";
 
     lanzaboote = {
-      url = "https://github.com/nix-community/lanzaboote/archive/refs/tags/v1.2.0.tar.gz";
+      url = "github:nix-community/lanzaboote/v1.2.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     lanzaboote-stable = {
-      url = "https://github.com/nix-community/lanzaboote/archive/refs/tags/v1.2.0.tar.gz";
+      url = "github:nix-community/lanzaboote/v1.2.0";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
   };
