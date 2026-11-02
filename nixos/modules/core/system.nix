@@ -12,6 +12,7 @@
       "flakes"
     ];
     warn-dirty = false;
+    auto-optimise-store = true;
   };
 
   nix.optimise = {
@@ -57,6 +58,8 @@
 
   # Configure console keymap
   console.keyMap = "us";
+
+  environment.defaultPackages = [];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget

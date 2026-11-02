@@ -4,6 +4,8 @@
   ...
 }: {
   services.fwupd.enable = true;
+  services.orca.enable = false;
+  services.speechd.enable = false;
 
   fonts.packages = with pkgs; [
     ibm-plex

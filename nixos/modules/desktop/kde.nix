@@ -25,6 +25,13 @@
   };
 
   programs.partition-manager.enable = true;
+  programs.kde-pim.enable = false;
+
+  environment.plasma6.excludePackages = with pkgs.kdePackages; [
+    plasma-workspace-wallpapers
+    kate
+    khelpcenter
+  ];
 
   # Workaround for NixOS/nixpkgs#363068:
   # Prevents libplasma/ksvg from scanning ~90 Nix store paths across XDG_DATA_DIRS
