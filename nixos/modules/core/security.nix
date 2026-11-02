@@ -98,7 +98,13 @@
   ];
 
   security.sudo.enable = false;
-  security.sudo-rs.enable = true;
+  security.sudo-rs = {
+    enable = true;
+    execWheelOnly = true;
+    extraConfig = ''
+      Defaults !pwfeedback
+    '';
+  };
 
   services.chrony = {
     enable = true;
