@@ -33,9 +33,6 @@ in {
 
   environment.systemPackages = with pkgs; [
     easyeffects
-
-    llama-cpp-rocm
-    pi-coding-agent
   ];
 
   hardware.keyboard.qmk.enable = true;
