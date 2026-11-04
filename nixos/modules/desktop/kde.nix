@@ -6,6 +6,7 @@
     unrar
     proton-vpn
 
+    libva-utils
     wl-clipboard
     kdePackages.filelight
     (catppuccin-kde.override {
