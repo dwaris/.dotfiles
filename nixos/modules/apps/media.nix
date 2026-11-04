@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
-    mpv
+    (mpv.override {youtubeSupport = false;})
 
     foliate
 
