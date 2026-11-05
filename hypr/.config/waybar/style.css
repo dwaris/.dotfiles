@@ -66,6 +66,7 @@ menu separator {
 
 #workspaces button {
   background: transparent;
+  box-shadow: none;
 }
 
 #workspaces button.empty {
@@ -74,6 +75,7 @@ menu separator {
 
 #workspaces button:hover {
   background-color: @surface1;
+  box-shadow: none;
   opacity: 1.0;
 }
 
