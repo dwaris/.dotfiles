@@ -7,6 +7,7 @@ local terminal = scriptDir .. "run-or-raise-ghostty.sh"
 local fileManager = "uwsm-app -- nautilus"
 local browser = "uwsm-app -- xdg-open https://"
 local menu = "rofi -show drun -run-command 'uwsm-app -- {cmd}'"
+local clipDb = (os.getenv("XDG_RUNTIME_DIR") or "/run/user/1000") .. "/cliphist.db"
 
 ---------------------
 ---- KEYBINDINGS ----
@@ -29,7 +30,13 @@ hl.bind(mainMod .. " + N", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd(menu))
 hl.bind(
 	mainMod .. " + V",
-	hl.dsp.exec_cmd("rofi -modi clipboard:" .. scriptDir .. "cliphist-rofi-img -show clipboard -show-icons")
+	hl.dsp.exec_cmd(
+		string.format(
+			[[sh -c 'cliphist -db-path "%s" list 2>/dev/null | rofi -dmenu -p "Clipboard" | cliphist -db-path "%s" decode | wl-copy']],
+			clipDb,
+			clipDb
+		)
+	)
 )
 hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd(scriptDir .. "wallpaper-picker.sh"))
 hl.bind(mainMod .. " + SHIFT + J", hl.dsp.layout("togglesplit")) -- dwindle only
@@ -106,6 +113,7 @@ hl.bind(mainMod .. " + P", hl.dsp.exec_cmd(scriptDir .. "toggle-display.sh"))
 -- Screen locking and Bar toggles
 hl.bind(mainMod .. " + CTRL + L", hl.dsp.exec_cmd("uwsm-app -- hyprlock"))
 hl.bind(mainMod .. " + T", hl.dsp.exec_cmd("pkill -SIGUSR1 waybar"))
+hl.bind(mainMod .. " + SHIFT + T", hl.dsp.exec_cmd("pkill -SIGUSR2 waybar"))
 
 -- Fullscreen toggles
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ mode = "maximized", action = "toggle" }))
