@@ -44,12 +44,9 @@ in {
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = false;
 
-  services.scx = {
+  services.scx-loader = {
     enable = true;
-    scheduler = "scx_lavd";
-    extraArgs = [
-      "--performance"
-    ];
+    config.default_sched = "scx_bpfland";
   };
 
   services.pipewire = {

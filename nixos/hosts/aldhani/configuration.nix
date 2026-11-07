@@ -49,6 +49,11 @@
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = false;
 
+  services.scx-loader = {
+    enable = true;
+    config.default_sched = "scx_lavd";
+  };
+
   services.fprintd.enable = false;
 
   system.stateVersion = "23.11";
