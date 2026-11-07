@@ -18,7 +18,6 @@
       ],
       "centerEnd": [
         {
-          "id": "omarchy.elsewhen",
           "cities": [
             {
               "name": "Berlin",
@@ -36,7 +35,8 @@
               "name": "New York",
               "zone": "America/New_York"
             }
-          ]
+          ],
+          "id": "omarchy.elsewhen"
         },
         {
           "id": "omarchy.weather"
