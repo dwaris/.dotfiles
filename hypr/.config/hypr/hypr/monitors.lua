@@ -4,12 +4,14 @@ hl.monitor({
 	mode = "2560x1440@144",
 	position = "0x0",
 	scale = 1,
+	bitdepth = 10,
 })
 hl.monitor({
 	output = "desc:LG Electronics LG HDR 4K 0x00002991",
 	mode = "3840x2160@60.00",
 	position = "auto-left",
 	scale = 1.5,
+	bitdepth = 10,
 })
 
 -- aldhani
