@@ -29,6 +29,7 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
+    extraLadspaPackages = [pkgs.rnnoise-plugin];
   };
 
   programs.appimage.enable = true;

@@ -31,10 +31,6 @@ in {
     options zfs zfs_arc_max=17179869184
   '';
 
-  environment.systemPackages = with pkgs; [
-    easyeffects
-  ];
-
   hardware.keyboard.qmk.enable = true;
   hardware.graphics = {
     enable = true;
@@ -47,17 +43,6 @@ in {
   services.scx-loader = {
     enable = true;
     config.default_sched = "scx_bpfland";
-  };
-
-  services.pipewire = {
-    extraConfig.pipewire."92-low-latency" = {
-      "context.properties" = {
-        "default.clock.rate" = 48000;
-        "default.clock.quantum" = 128;
-        "default.clock.min-quantum" = 64;
-        "default.clock.max-quantum" = 256;
-      };
-    };
   };
 
   systemd.services.udp-gro-forwarding = {
