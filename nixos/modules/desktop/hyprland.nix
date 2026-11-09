@@ -62,8 +62,6 @@
 
     file-roller
     nautilus
-    gnome-epub-thumbnailer
-    ffmpegthumbnailer
     loupe
     papers
     gnome-disk-utility
