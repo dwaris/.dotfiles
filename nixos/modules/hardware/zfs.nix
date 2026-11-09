@@ -1,8 +1,34 @@
 {
+  config,
   pkgs,
+  lib,
   ...
-}: {
-  boot.kernelPackages = pkgs.linuxPackages_7_2;
+}: let
+  zfsModule = config.boot.zfs.package.kernelModuleAttribute;
+
+  # OpenZFS 2.4.4 does not yet officially support Linux 7.3.
+  # Ubuntu backported the 7.3 compat commits from OpenZFS master (openzfs/zfs#19032)
+  # in zfs-linux 2.4.4-1ubuntu4.
+  zfsLinux73Compat = _: prev: {
+    ${zfsModule} =
+      if prev.${zfsModule}.version == "2.4.4" && lib.versions.majorMinor prev.kernel.version == "7.3"
+      then
+        prev.${zfsModule}.overrideAttrs (old: {
+          patches =
+            (old.patches or [])
+            ++ [
+              ./zfs-linux-7.3/linux-7.3-iops-create-no-flag.patch
+              ./zfs-linux-7.3/linux-7.3-bvec-iter-bi-offset.patch
+              ./zfs-linux-7.3/linux-cpu-feature-enabled.patch
+              ./zfs-linux-7.3/linux-7.3-kthread-init-fs.patch
+            ];
+          configureFlags = (old.configureFlags or []) ++ ["--enable-linux-experimental"];
+          meta = (old.meta or {}) // {broken = false;};
+        })
+      else prev.${zfsModule};
+  };
+in {
+  boot.kernelPackages = pkgs.linuxPackages_latest.extend zfsLinux73Compat;
 
   boot.supportedFilesystems = [
     "zfs"
