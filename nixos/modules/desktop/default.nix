@@ -56,4 +56,8 @@
   };
 
   security.pki.certificateFiles = [../../certs/root_ca.crt];
+
+  environment.systemPackages = with pkgs; [
+    wl-clipboard
+  ];
 }

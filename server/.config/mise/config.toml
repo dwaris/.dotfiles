@@ -5,17 +5,13 @@ all_compile = false
 
 [tools]
 neovim = "stable"
-agy = "latest"
+antigravity-cli = "latest"
 
 starship = "latest"
 lazygit = "latest"
 lazydocker = "latest"
 bottom = "latest"
 zoxide = "latest"
-eza = "latest"
-bat = "latest"
-delta = "latest"
-dust = "latest"
 
 tree-sitter = "latest"
 ripgrep = "latest"

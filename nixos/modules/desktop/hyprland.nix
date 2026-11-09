@@ -51,13 +51,11 @@
 
     rofi
 
-    wl-clipboard
     cliphist
 
     nwg-look
     adw-gtk3
     adwaita-icon-theme
-    kdePackages.qt6ct
     rose-pine-hyprcursor
 
     file-roller

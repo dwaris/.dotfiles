@@ -8,7 +8,6 @@
     gnomeExtensions.appindicator
     gnome-tweaks
     gnome-connections
-    wl-clipboard
     adw-gtk3
   ];
   # Enable the XWayland Fallback windowing system.
@@ -21,8 +20,6 @@
     };
     desktopManager.gnome.enable = true;
   };
-
-  services.orca.enable = false;
 
   services.udev.packages = with pkgs; [gnome-settings-daemon];
 }
