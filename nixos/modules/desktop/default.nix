@@ -38,6 +38,7 @@
     extraPkgs = pkgs: [
       pkgs.icu
       pkgs.libxcrypt-legacy
+      pkgs.libgpg-error
     ];
   };
 
