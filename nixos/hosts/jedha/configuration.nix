@@ -15,7 +15,7 @@ in {
     ../../modules/hardware/printing.nix
     ../../modules/hardware/vpn/tailscale-server.nix
 
-    ../../modules/desktop/kde.nix
+    ../../modules/desktop/hyprland.nix
     ../../modules/desktop/oo7.nix
 
     ../../modules/apps
