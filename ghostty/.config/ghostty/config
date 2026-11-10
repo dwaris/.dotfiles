@@ -4,7 +4,7 @@ font-family = "BlexMono Nerd Font"
 font-style = Text
 font-size = 10.5
 theme =  dark:Catppuccin Mocha,light:Catppuccin Latte
-command = tmux new -A -s main
+command = sh -c 'command -v herdr >/dev/null 2>&1 && exec herdr || exec tmux new-session -A -s main'
 maximize = true
 confirm-close-surface = false
 keybind = ctrl+enter=unbind
