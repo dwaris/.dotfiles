@@ -54,6 +54,7 @@
     cliphist
 
     nwg-look
+    qt6Packages.qt6ct
     adw-gtk3
     adwaita-icon-theme
     rose-pine-hyprcursor
