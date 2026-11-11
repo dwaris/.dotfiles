@@ -6,7 +6,7 @@
   services.k3s = {
     enable = true;
     role = "server";
-    extraFlags = "--write-kubeconfig-mode 644";
+    extraFlags = "--write-kubeconfig-mode 600";
   };
 
   # Do not auto-start at boot; run on-demand with `sudo systemctl start k3s`
