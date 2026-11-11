@@ -15,11 +15,6 @@
     auto-optimise-store = true;
   };
 
-  nix.optimise = {
-    automatic = true;
-    dates = ["weekly"];
-  };
-
   # nh (Nix CLI Helper) configuration & garbage collection
   programs.nh = {
     enable = true;
