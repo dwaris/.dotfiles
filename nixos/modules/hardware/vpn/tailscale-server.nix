@@ -3,11 +3,6 @@
     enable = true;
     useRoutingFeatures = "server";
     openFirewall = true;
-    extraUpFlags = [
-      "--advertise-exit-node"
-      "--advertise-routes=192.168.178.0/24"
-      "--ssh"
-    ];
   };
 
   networking.firewall.trustedInterfaces = ["tailscale0"];

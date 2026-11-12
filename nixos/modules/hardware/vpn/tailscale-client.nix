@@ -3,10 +3,6 @@
     enable = true;
     useRoutingFeatures = "client";
     openFirewall = true;
-    extraUpFlags = [
-      "--accept-routes"
-      "--ssh"
-    ];
   };
 
   networking.firewall.trustedInterfaces = ["tailscale0"];
