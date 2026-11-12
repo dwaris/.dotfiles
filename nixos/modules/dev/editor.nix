@@ -4,6 +4,7 @@
   environment.systemPackages = with pkgs; [
     neovim
 
+    # Tooling-tier exception: Neovim compiles Tree-sitter parsers with GCC.
     gcc
     tree-sitter
 

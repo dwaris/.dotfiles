@@ -5,6 +5,7 @@
 }: {
   environment.systemPackages = with pkgs;
     [
+      bubblewrap
       mise
       stow
       fzf
