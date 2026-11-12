@@ -54,9 +54,12 @@ in {
         exit 1
       fi
       sudo mkdir -p /etc/clevis
-      echo -n "$pass" | sudo ${pkgs.clevis}/bin/clevis encrypt tpm2 '{"pcr_bank":"sha256","pcr_ids":"0,7"}' | sudo tee /etc/clevis/zpool.jwe > /dev/null
-      sudo chmod 600 /etc/clevis/zpool.jwe
+      tmp=$(sudo mktemp /etc/clevis/.zpool.jwe.XXXXXX)
+      trap 'sudo rm -f -- "$tmp"' EXIT
+      printf '%s' "$pass" | sudo ${pkgs.clevis}/bin/clevis encrypt tpm2 '{"pcr_bank":"sha256","pcr_ids":"0,7"}' | sudo tee "$tmp" > /dev/null
       unset pass
+      sudo mv -f -- "$tmp" /etc/clevis/zpool.jwe
+      trap - EXIT
       echo "Successfully updated /etc/clevis/zpool.jwe"
     '')
   ];
