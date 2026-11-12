@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+nixos_dir=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
+
+alejandra --check "$nixos_dir"
+nix eval --no-write-lock-file --json "$nixos_dir#nixosConfigurations" \
+	--apply 'hosts: builtins.mapAttrs (_: host: host.config.system.build.toplevel.drvPath) hosts'
+printf '\nAll NixOS hosts evaluated successfully.\n'
