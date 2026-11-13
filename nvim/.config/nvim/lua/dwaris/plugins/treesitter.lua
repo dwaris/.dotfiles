@@ -12,6 +12,7 @@ return {
         ts.install {
             'bash',
             'c',
+            'c_sharp',
             'cpp',
             'diff',
             'elixir',
@@ -25,6 +26,7 @@ return {
             'luadoc',
             'markdown',
             'markdown_inline',
+            'matlab',
             'nix',
             'python',
             'query',

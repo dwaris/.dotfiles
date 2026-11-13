@@ -196,6 +196,13 @@ return {
                     cmd_env = { DOTNET_SYSTEM_GLOBALIZATION_INVARIANT = '1' },
                 },
                 hls = {},
+                roslyn_ls = {
+                    cmd = {
+                        'Microsoft.CodeAnalysis.LanguageServer',
+                        '--stdio',
+                        '--autoLoadProjects',
+                    },
+                },
             }
 
             for name, config in pairs(servers) do
@@ -234,6 +241,7 @@ return {
                 rust = { 'rustfmt' },
                 c = { 'clang-format' },
                 cpp = { 'clang-format' },
+                cs = { 'csharpier' },
                 nix = { 'alejandra' },
                 bash = { 'shfmt' },
                 sh = { 'shfmt' },
