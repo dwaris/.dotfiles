@@ -15,13 +15,16 @@
   networking.hostName = "batuu";
   networking.hostId = "264853fa";
 
-  hardware.graphics.enable = true;
-  hardware.graphics.extraPackages = with pkgs; [
-    intel-media-driver
-    intel-compute-runtime-legacy1
-  ];
-  hardware.bluetooth.enable = true;
-  hardware.bluetooth.powerOnBoot = false;
+  hardware = {
+    graphics.extraPackages = with pkgs; [
+      intel-media-driver
+      intel-compute-runtime-legacy1
+    ];
+    bluetooth = {
+      enable = true;
+      powerOnBoot = false;
+    };
+  };
 
   zramSwap.enable = true;
   services.thermald.enable = true;

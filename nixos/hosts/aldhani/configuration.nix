@@ -44,10 +44,13 @@
     };
   };
 
-  hardware.graphics.enable = true;
-  hardware.amdgpu.opencl.enable = true;
-  hardware.bluetooth.enable = true;
-  hardware.bluetooth.powerOnBoot = false;
+  hardware = {
+    amdgpu.opencl.enable = true;
+    bluetooth = {
+      enable = true;
+      powerOnBoot = false;
+    };
+  };
 
   services.scx-loader = {
     enable = true;

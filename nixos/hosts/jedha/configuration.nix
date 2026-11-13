@@ -31,13 +31,14 @@ in {
     options zfs zfs_arc_max=17179869184
   '';
 
-  hardware.keyboard.qmk.enable = true;
-  hardware.graphics = {
-    enable = true;
+  hardware = {
+    amdgpu.opencl.enable = true;
+    bluetooth = {
+      enable = true;
+      powerOnBoot = false;
+    };
+    keyboard.qmk.enable = true;
   };
-  hardware.amdgpu.opencl.enable = true;
-  hardware.bluetooth.enable = true;
-  hardware.bluetooth.powerOnBoot = false;
 
   services.scx-loader = {
     enable = true;
@@ -79,6 +80,8 @@ in {
 
   services.udev.extraRules = ''
     KERNEL=="card[0-9]", SUBSYSTEM=="drm", DRIVERS=="amdgpu", ATTR{device/power_dpm_force_performance_level}="high"
+    ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="1d50", ATTR{idProduct}=="615e", ATTR{power/wakeup}="enabled"
+    ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="04a5", ATTR{idProduct}=="800a", ATTR{power/wakeup}="enabled"
   '';
 
   system.stateVersion = "25.05";

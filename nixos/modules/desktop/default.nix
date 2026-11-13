@@ -3,9 +3,7 @@
   lib,
   ...
 }: {
-  services.fwupd.enable = true;
-  services.orca.enable = false;
-  services.speechd.enable = false;
+  hardware.graphics.enable = true;
 
   fonts.packages = with pkgs; [
     ibm-plex
@@ -18,10 +16,8 @@
     noto-fonts-cjk-serif
   ];
 
-  services.smartd = {
-    autodetect = true;
-    enable = true;
-  };
+  services.fwupd.enable = true;
+  services.smartd.enable = true;
 
   security.rtkit.enable = true;
   services.pipewire = {
@@ -31,21 +27,6 @@
     extraLadspaPackages = [pkgs.rnnoise-plugin];
   };
 
-  programs.appimage.enable = true;
-  programs.appimage.binfmt = true;
-  programs.appimage.package = pkgs.appimage-run.override {
-    extraPkgs = pkgs: [
-      pkgs.icu
-      pkgs.libxcrypt-legacy
-      pkgs.libgpg-error
-    ];
-  };
-
-  xdg.portal = {
-    enable = true;
-    xdgOpenUsePortal = true;
-  };
-
   services.ananicy = {
     enable = true;
     package = pkgs.ananicy-cpp;
@@ -53,6 +34,23 @@
     settings = {
       cgroup_realtime_workaround = lib.mkForce false;
     };
+  };
+
+  programs.appimage = {
+    enable = true;
+    binfmt = true;
+    package = pkgs.appimage-run.override {
+      extraPkgs = pkgs: [
+        pkgs.icu
+        pkgs.libxcrypt-legacy
+        pkgs.libgpg-error
+      ];
+    };
+  };
+
+  xdg.portal = {
+    enable = true;
+    xdgOpenUsePortal = true;
   };
 
   security.pki.certificateFiles = [../../certs/root_ca.crt];

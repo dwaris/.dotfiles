@@ -49,13 +49,16 @@ in {
     extraGroups = ["wheel" "networkmanager"];
   };
 
-  hardware.graphics.enable = true;
-  hardware.graphics.extraPackages = with pkgs; [
-    intel-media-driver
-    intel-compute-runtime-legacy1
-  ];
-  hardware.bluetooth.enable = true;
-  hardware.sensor.iio.enable = true;
+  hardware = {
+    graphics.extraPackages = with pkgs; [
+      intel-media-driver
+      intel-compute-runtime-legacy1
+    ];
+    bluetooth = {
+      enable = true;
+    };
+    sensor.iio.enable = true;
+  };
 
   zramSwap.enable = true;
   services.thermald.enable = true;
