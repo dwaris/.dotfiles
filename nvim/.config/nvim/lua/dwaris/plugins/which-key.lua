@@ -9,6 +9,7 @@ return {
             { '<leader>g', group = '[G]it' },
             { '<leader>n', group = '[N]otifications' },
             { '<leader>b', group = '[B]uffer' },
+            { '<leader>d', group = '[D]ebug' },
             { 'gr', group = '[L]SP Actions' },
         },
     },
