@@ -17,7 +17,6 @@ in {
   boot.kernelParams = [
     "quiet"
   ];
-  boot.plymouth.enable = true;
 
   environment.systemPackages = with pkgs; [
     vlc
