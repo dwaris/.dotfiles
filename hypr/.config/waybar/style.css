@@ -79,7 +79,8 @@ menu separator {
   opacity: 1.0;
 }
 
-.module:hover {
+.module:hover,
+box:hover>label.module {
   background-color: @surface1;
 }
 
