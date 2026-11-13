@@ -3,9 +3,9 @@
 ---------------------
 
 local scriptDir = os.getenv("HOME") .. "/.config/hypr/scripts/"
-local terminal = scriptDir .. "run-or-raise-ghostty.sh"
-local fileManager = "uwsm-app -- nautilus"
-local browser = "uwsm-app -- xdg-open https://"
+local terminal = scriptDir .. "run-or-raise.sh com.mitchellh.ghostty ghostty"
+local fileManager = scriptDir .. "run-or-raise.sh org.gnome.Nautilus nautilus"
+local browser = scriptDir .. "run-or-raise.sh vivaldi-stable xdg-open https://"
 local menu = "rofi -show drun -run-command 'uwsm-app -- {cmd}'"
 local clipDb = (os.getenv("XDG_RUNTIME_DIR") or "/run/user/1000") .. "/cliphist.db"
 
