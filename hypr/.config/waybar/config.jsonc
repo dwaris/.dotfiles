@@ -60,9 +60,9 @@
     "backlight": {
         "format": "{icon}",
         "tooltip": false,
-        "on-scroll-up": "brightnessctl s '+10%'",
-        "on-scroll-down": "brightnessctl s '10%-'",
-        "on-click": "[ $(brightnessctl g) -ge $(brightnessctl m) ] && brightnessctl s 10% || brightnessctl s +10%",
+        "on-scroll-up": "brightnessctl -c backlight s '+10%'",
+        "on-scroll-down": "brightnessctl -c backlight s '10%-'",
+        "on-click": "[ $(brightnessctl -c backlight g) -ge $(brightnessctl -c backlight m) ] && brightnessctl -c backlight s 10% || brightnessctl -c backlight s +10%",
         "format-icons": [
             "",
             "",
