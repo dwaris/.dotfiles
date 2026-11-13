@@ -1,7 +1,16 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-DOTFILES_DIR="$(cd "$SCRIPT_DIR/../../.." && pwd)"
+SCRIPT_PATH="$(readlink -f -- "${BASH_SOURCE[0]}")"
+SCRIPT_DIR="$(dirname -- "$SCRIPT_PATH")"
+SHELLS_DIR="$(cd -- "$SCRIPT_DIR/../../../nixos/shells" && pwd)"
 
-find "$DOTFILES_DIR" -name "flake.nix" -execdir nix flake update \;
+for flake in "$SHELLS_DIR"/*/flake.nix; do
+	[[ -f "$flake" ]] || continue
+	shell_dir="${flake%/*}"
+	printf 'Updating %s\n' "${shell_dir##*/}"
+	(
+		cd -- "$shell_dir"
+		nix flake update
+	)
+done
