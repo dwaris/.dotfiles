@@ -53,6 +53,8 @@
     xdgOpenUsePortal = true;
   };
 
+  services.speechd.enable = false;
+
   security.pki.certificateFiles = [../../certs/root_ca.crt];
 
   environment.systemPackages = with pkgs; [
