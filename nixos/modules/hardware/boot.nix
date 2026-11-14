@@ -1,8 +1,4 @@
-{inputs, ...}: {
-  imports = [inputs.bootvine.nixosModules.default];
-
-  services.bootvine.enable = true;
-
+{
   boot.loader.timeout = 1;
   boot.loader.systemd-boot = {
     enable = true;
