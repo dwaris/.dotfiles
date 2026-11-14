@@ -78,11 +78,5 @@ in {
     options = ["zfsutil" "nofail" "noauto" "x-systemd.automount" "x-gvfs-hide"];
   };
 
-  services.udev.extraRules = ''
-    KERNEL=="card[0-9]", SUBSYSTEM=="drm", DRIVERS=="amdgpu", ATTR{device/power_dpm_force_performance_level}="high"
-    ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="1d50", ATTR{idProduct}=="615e", ATTR{power/wakeup}="enabled"
-    ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="04a5", ATTR{idProduct}=="800a", ATTR{power/wakeup}="enabled"
-  '';
-
   system.stateVersion = "25.05";
 }
