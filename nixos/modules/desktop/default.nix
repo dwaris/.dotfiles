@@ -53,7 +53,7 @@
     xdgOpenUsePortal = true;
   };
 
-  services.speechd.enable = false;
+  services.speechd.enable = lib.mkForce false;
 
   security.pki.certificateFiles = [../../certs/root_ca.crt];
 

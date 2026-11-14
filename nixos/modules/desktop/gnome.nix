@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   imports = [
     ./default.nix
   ];
@@ -15,6 +19,8 @@
 
   # Configure keymap in and Dispay Manager
   services = {
+    avahi.enable = lib.mkForce false;
+    orca.enable = lib.mkForce false;
     displayManager.gdm = {
       enable = true;
     };
