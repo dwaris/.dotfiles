@@ -1,7 +1,7 @@
 -- jedha
 hl.monitor({
 	output = "desc:LG Electronics LG ULTRAGEAR 311MATWGVY21",
-	mode = "2560x1440@144",
+	mode = "2560x1440@120",
 	position = "0x0",
 	scale = 1,
 })
