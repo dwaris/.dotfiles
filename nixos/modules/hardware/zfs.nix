@@ -44,6 +44,11 @@ in {
     devices."zpool".secretFile = "/etc/clevis/zpool.jwe";
   };
 
+  boot.initrd.systemd.storePaths = [
+    "${pkgs.tpm2-tools}/bin/tpm2_startauthsession"
+    "${pkgs.tpm2-tools}/bin/tpm2_policypcr"
+  ];
+
   environment.systemPackages = [
     (pkgs.writeShellScriptBin "zfs-tpm-rekey" ''
       set -euo pipefail
