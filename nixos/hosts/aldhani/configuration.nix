@@ -10,7 +10,7 @@
     ../../modules/hardware/vpn/wireguard.nix
     ../../modules/hardware/vpn/tailscale-client.nix
 
-    ../../modules/desktop/hyprland.nix
+    ../../modules/desktop/kde.nix
     ../../modules/desktop/oo7.nix
 
     ../../modules/apps
