@@ -7,7 +7,9 @@
 
   environment.systemPackages = with pkgs; [
     ghostty
+
     vscode
+    jetbrains-toolbox
 
     podman-tui
     podman-compose
