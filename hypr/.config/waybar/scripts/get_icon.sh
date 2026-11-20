@@ -3,9 +3,9 @@
 DISTRO=$(grep '^ID=' /etc/os-release | cut -d= -f2 | tr -d '"')
 
 if [ "$DISTRO" = "nixos" ]; then
-    echo ""
+	echo ""
 elif [ "$DISTRO" = "arch" ]; then
-    echo ""
+	echo ""
 else
-    echo ""
+	echo ""
 fi

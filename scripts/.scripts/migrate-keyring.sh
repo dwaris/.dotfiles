@@ -8,13 +8,13 @@ echo "=== oo7 GNOME Keyring Migration Utility ==="
 echo ""
 
 if [[ ! -f "$KEYRING_FILE" && -f "$LOGIN_FILE" ]]; then
-  echo "Copying login.keyring to Default.keyring..."
-  cp "$LOGIN_FILE" "$KEYRING_FILE"
+	echo "Copying login.keyring to Default.keyring..."
+	cp "$LOGIN_FILE" "$KEYRING_FILE"
 fi
 
 if [[ ! -f "$KEYRING_FILE" ]]; then
-  echo "Error: No legacy keyring found at $KEYRING_FILE"
-  exit 1
+	echo "Error: No legacy keyring found at $KEYRING_FILE"
+	exit 1
 fi
 
 echo "Legacy keyring found: $KEYRING_FILE"
@@ -26,8 +26,8 @@ read -rsp "Password: " KEYRING_PASS
 echo ""
 
 if [[ -z "$KEYRING_PASS" ]]; then
-  echo "Migration canceled: empty password provided."
-  exit 1
+	echo "Migration canceled: empty password provided."
+	exit 1
 fi
 
 echo "Starting oo7 keyring migration..."

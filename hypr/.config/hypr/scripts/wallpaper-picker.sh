@@ -9,24 +9,24 @@ FILES=$(find "$WALLPAPER_DIR" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -i
 
 ROFI_INPUT=""
 while read -r file; do
-    [ -z "$file" ] && continue
-    filename=$(basename "$file")
-    ROFI_INPUT+="${filename}\0icon\x1f${file}\n"
-done <<< "$FILES"
+	[ -z "$file" ] && continue
+	filename=$(basename "$file")
+	ROFI_INPUT+="${filename}\0icon\x1f${file}\n"
+done <<<"$FILES"
 
 SELECTED_NAME=$(echo -en "$ROFI_INPUT" | rofi -dmenu -i -show-icons -p "Wallpaper" \
-    -theme-str 'window {width: 48%; border-radius: 10px;}' \
-    -theme-str 'listview {columns: 1; lines: 7; fixed-height: true; spacing: 6px; padding: 10px;}' \
-    -theme-str 'element {orientation: horizontal; padding: 6px 12px; border-radius: 6px; spacing: 14px;}' \
-    -theme-str 'element-icon {size: 4.8em; border-radius: 4px;}' \
-    -theme-str 'element-text {vertical-align: 0.5; font: "BlexMono Nerd Font Propo 12";}')
+	-theme-str 'window {width: 48%; border-radius: 10px;}' \
+	-theme-str 'listview {columns: 1; lines: 7; fixed-height: true; spacing: 6px; padding: 10px;}' \
+	-theme-str 'element {orientation: horizontal; padding: 6px 12px; border-radius: 6px; spacing: 14px;}' \
+	-theme-str 'element-icon {size: 4.8em; border-radius: 4px;}' \
+	-theme-str 'element-text {vertical-align: 0.5; font: "BlexMono Nerd Font Propo 12";}')
 
 if [ -n "$SELECTED_NAME" ]; then
-    SELECTED_IMAGE=$(echo "$FILES" | grep -F "/$SELECTED_NAME" | head -n 1)
-    
-    if [ -n "$SELECTED_IMAGE" ]; then
-        mkdir -p "$HOME/.cache"
-        ln -sf "$SELECTED_IMAGE" "$HOME/.cache/current_wallpaper"
-        hyprctl hyprpaper wallpaper ",$SELECTED_IMAGE"
-    fi
+	SELECTED_IMAGE=$(echo "$FILES" | grep -F "/$SELECTED_NAME" | head -n 1)
+
+	if [ -n "$SELECTED_IMAGE" ]; then
+		mkdir -p "$HOME/.cache"
+		ln -sf "$SELECTED_IMAGE" "$HOME/.cache/current_wallpaper"
+		hyprctl hyprpaper wallpaper ",$SELECTED_IMAGE"
+	fi
 fi

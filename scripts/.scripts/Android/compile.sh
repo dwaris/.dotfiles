@@ -12,10 +12,10 @@ mkdir -p out
 make O=out ARCH=arm64 exynos9810-star2lte_defconfig
 
 PATH="$DIR/clang/bin:$DIR/gcc.64/bin:$DIR/gcc.32/bin:${PATH}" \
-make -j"$(nproc --all)" O=out \
-        ARCH=arm64 \
-        CC=clang \
-        CLANG_TRIPLE=aarch64-linux-gnu- \
-        CROSS_COMPILE=aarch64-linux-android- \
-        CROSS_COMPILE_ARM32=arm-linux-androideabi- \
-        LLVM=1
+	make -j"$(nproc --all)" O=out \
+	ARCH=arm64 \
+	CC=clang \
+	CLANG_TRIPLE=aarch64-linux-gnu- \
+	CROSS_COMPILE=aarch64-linux-android- \
+	CROSS_COMPILE_ARM32=arm-linux-androideabi- \
+	LLVM=1
