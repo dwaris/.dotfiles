@@ -7,14 +7,19 @@
         system: function nixpkgs.legacyPackages.${system}
       );
   in {
-    devShells = forAllSystems (pkgs: {
-      default = with pkgs;
-        mkShell {
-          packages = [
-            llama-cpp-rocm
-            pi-coding-agent
-          ];
-        };
+    devShells = forAllSystems (pkgs: let
+      commonPackages = with pkgs; [
+        pi-coding-agent
+        llama-swap
+        python3Packages.huggingface-hub
+      ];
+    in {
+      default = pkgs.mkShell {
+        packages = [pkgs.llama-cpp-rocm] ++ commonPackages;
+      };
+      vulkan = pkgs.mkShell {
+        packages = [pkgs.llama-cpp-vulkan] ++ commonPackages;
+      };
     });
   };
 }
