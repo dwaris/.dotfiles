@@ -63,13 +63,7 @@
 		"https://raw.githubusercontent.com/catppuccin/vscode/": true,
 		"https://biomejs.dev": true
 	},
-	"[json]": {
-		"editor.defaultFormatter": "biomejs.biome"
-	},
 	"biome.lsp.bin": "~/.local/share/mise/shims/biome",
-	"[jsonc]": {
-		"editor.defaultFormatter": "biomejs.biome"
-	},
 	"[javascript]": {
 		"editor.defaultFormatter": "biomejs.biome"
 	},
