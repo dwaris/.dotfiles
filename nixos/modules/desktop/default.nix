@@ -24,7 +24,8 @@
     enable = true;
     alsa.enable = true;
     pulse.enable = true;
-    extraLadspaPackages = [pkgs.rnnoise-plugin];
+    extraLadspaPackages = [pkgs.deepfilternet];
+    extraLv2Packages = [pkgs.lsp-plugins];
   };
 
   services.ananicy = {
