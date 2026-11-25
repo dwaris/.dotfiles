@@ -9,9 +9,6 @@
         export GBM_BACKENDS_PATH=/run/opengl-driver/lib/gbm
       '';
     };
-    extraCompatPackages = with pkgs; [
-      proton-ge-bin
-    ];
     protontricks.enable = true;
   };
 }
